@@ -1,0 +1,65 @@
+{{- /*gotype: source/apps/frontend/controller.AssignPlaylistEdit*/ -}}
+{{$Playlist := .Schema.LANG.Pages.Playlist}}
+<div class="dm21" style="margin: 0 20px;margin-top: 20px;" data-toggle="collapse" href="#collapseLanguage" aria-controls="collapseLanguage" role="button" aria-expanded="false">
+    <div class="dm13">
+        <a href="#" class="">{{$Playlist.Language}}</a>
+    </div>
+    <div class="dm15">
+        <div class="dm22">
+            <span id="text_for_language">all language</span>
+        </div>
+    </div>
+    <div class="dm23" role="button">
+        <button type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16" role="button">
+                <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"></path>
+            </svg>
+        </button>
+    </div>
+</div>
+<div class="collapse" id="collapseLanguage" data-parent=".accordion">
+    <div class="dm16 block_language">
+        <div class="pp7" style="margin: 0;width: 100%;">
+            <span class="icon-search">
+                <img src="https://apps.valueimpression.com/assets/svg/icons/search@16.svg" alt="Search">
+            </span>
+            <input style="width: calc(50% - 46px);" class="pp10 input-search-target" type="text" placeholder="Search" id="search_language">
+            <div class="row mb-3 header-target" style="width: calc(50% + 20px);margin-left: 5px;">
+                <div class="col-md-6">
+                    <div class="d-flex">
+                        <div class="btn-group mr-auto ">
+                            <input type="radio" class="btn-check type_language" name="type_language" value="1" id="option_language1" {{if ne .TypeLanguage 2}}checked{{end}} disabled>
+                            <label class="btn btn-outline-primary text-black  m-0" for="option_language1" style='border-top-left-radius: 3px;border-bottom-left-radius: 3px;'>Include</label>
+                            <input type="radio" class="btn-check type_language" name="type_language" value="2" id="option_language2" {{if eq .TypeLanguage 2}}checked{{end}} disabled>
+                            <label class="btn btn-outline-primary text-black  m-0" for="option_language2">Exclude</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 text-end">
+                    <div class="">
+                        <a class="btn btn-clear-target ms-auto remove_all_language"> Clear </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dm17">
+            <div class="dm18 box-target" id="list_language"></div>
+            <div class="dm19 box-target-selected box_language">
+                {{range .Language}}
+                    {{if (InArray .TableLanguage.Id $.LanguageOfPlaylist true)}}
+                        <div class="dm20 target-item item_selected" id="{{.TableLanguage.Id}}">
+                            <span>{{.TableLanguage.LanguageName}}</span>
+                            <button class="remove_language" id="{{.TableLanguage.Id}}" name="{{.TableLanguage.LanguageName}}" type="button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 16 16">
+                                    <path d="M0 8a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    {{end}}
+                {{end}}
+            </div>
+            {{/*            <input hidden value="true" id="is_more_language"/>*/}}
+            {{/*            <input hidden value="1" id="pageInventory"/>*/}}
+        </div>
+    </div>
+</div>

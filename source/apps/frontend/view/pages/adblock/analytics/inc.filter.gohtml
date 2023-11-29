@@ -1,0 +1,50 @@
+{{- /*gotype: source/apps/frontend/controller.AssignAdBlockIndex*/ -}}
+{{/*<link href="//cdn.syncfusion.com/ej2/19.1.64/ej2-base/styles/material.css" rel="stylesheet" type="text/css"/>*/}}
+{{/*<link href="//cdn.syncfusion.com/ej2/19.1.64/ej2-buttons/styles/material.css" rel="stylesheet" type="text/css"/>*/}}
+{{/*<link href="//cdn.syncfusion.com/ej2/19.1.64/ej2-calendars/styles/material.css" rel="stylesheet" type="text/css"/>*/}}
+<form id="formFilterAdblock" class="g-3">
+    <div class="row">
+        <div class="col-sm-7 form-inline filter-selectpicker">
+            <div class="form-inline">
+                <div class="form-group-sm pe-3 py-2 d-flex flex-column">
+                    <select id="inventory_id" name="inventory_id" title="Sort By Domain"
+                            class="selectpicker select-picker-filter form-control border-0 show-menu-arrow"
+                            data-style="border-0" data-live-search="false" data-actions-box="false" tabindex="-1" aria-hidden="true"
+                            data-selected-text-format="count > 1">
+                        {{range $index, $element := .Inventories}}
+                            <option value="{{$element.Id}}" {{if eq $element.Id $.Params.InventoryId}}selected{{end}}>{{$element.Name}}</option>
+                        {{end}}
+                    </select>
+                </div>
+            </div>
+            {{/*Filter Status*/}}
+        </div>
+        <div class="col-sm-5">
+            <div class="mt-2 p-0 d-flex align-items-center justify-content-end">
+                <input class="me-2 " id="date_syncfusion"/>
+                <input type="hidden" name="startDate" value="{{.Params.StartDate}}">
+                <input type="hidden" name="endDate" value="{{.Params.EndDate}}">
+                <button type="submit" class="btn btn-outline-secondary btn-sm submit">
+                    Run
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+<style>
+    span.e-input-group.e-control-wrapper.e-date-range-wrapper {
+        margin-right: 15px;
+        max-width: 210px;
+        margin-bottom: 0px !important;
+    }
+    .highcharts-credits, g.highcharts-legend.highcharts-no-tooltip {
+        display: none;
+    }
+
+</style>
+{{/*<script src="//cdn.syncfusion.com/ej2/19.1.64/ej2-base/dist/global/ej2-base.min.js" type="text/javascript"></script>*/}}
+{{/*<script src="//cdn.syncfusion.com/ej2/19.1.64/ej2-inputs/dist/global/ej2-inputs.min.js" type="text/javascript"></script>*/}}
+{{/*<script src="//cdn.syncfusion.com/ej2/19.1.64/ej2-buttons/dist/global/ej2-buttons.min.js" type="text/javascript"></script>*/}}
+{{/*<script src="//cdn.syncfusion.com/ej2/19.1.64/ej2-lists/dist/global/ej2-lists.min.js" type="text/javascript"></script>*/}}
+{{/*<script src="//cdn.syncfusion.com/ej2/19.1.64/ej2-popups/dist/global/ej2-popups.min.js" type="text/javascript"></script>*/}}
+{{/*<script src="//cdn.syncfusion.com/ej2/19.1.64/ej2-calendars/dist/global/ej2-calendars.min.js" type="text/javascript"></script>*/}}

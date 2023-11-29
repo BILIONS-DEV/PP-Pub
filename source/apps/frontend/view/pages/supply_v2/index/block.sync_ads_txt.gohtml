@@ -1,0 +1,10 @@
+{{- /*gotype: source/apps/frontend/model.InventoryRecord*/ -}}
+{{if eq .SyncAdsTxt 1}}
+    <span>{{.SyncAdsTxt.String}}</span>
+{{else if eq .SyncAdsTxt 2}}
+    <span >{{.SyncAdsTxt.String}}</span>
+{{else if eq .SyncAdsTxt 3}}
+    <span>{{.SyncAdsTxt.String}}</span>
+{{else}}
+    <span >Not scanned yet</span>
+{{end}}

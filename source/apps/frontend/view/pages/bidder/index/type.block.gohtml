@@ -1,0 +1,6 @@
+{{- /*gotype: source/apps/frontend/model.BidderRecord*/ -}}
+{{if eq .TableBidder.BidderTemplateId 1}}
+    <span>Google {{.TableBidder.AccountType.String}}</span>
+{{else}}
+    <span>Prebid</span>
+{{end}}

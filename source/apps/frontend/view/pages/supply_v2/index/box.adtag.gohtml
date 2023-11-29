@@ -1,0 +1,80 @@
+{{- /*gotype: source/apps/frontend/controller.CopyTag*/ -}}
+<div class="tab-pane fade active show" id="pills-by-domain" role="tabpanel" aria-labelledby="tab-by-domain">
+    {{if not .VastAdTag}}
+    {{else}}
+        <div class="card rounded-0 shadow-dark-80 border border-gray-50 mb-5">
+            <div class="d-flex align-items-center bg-dominant px-4">
+                <h5 class="card-header-title font-weight-semibold m-2">Vast Url</h5>
+            </div>
+            <div class="card-body py-for-card">
+
+                {{range .VastAdTag}}
+                    <div class="mb-3 px-1">
+                        <label for="jsNormal" class="form-control-label">{{.VastName}}</label>
+                        <input type="text" class="form-control text-muted"
+                               value='{{.VastUrl}}'
+                               readonly="readonly" onclick="this.select();"/>
+                    </div>
+                {{end}}
+            </div>
+        </div>
+    {{end}}
+    <div class="card rounded-0 shadow-dark-80 border border-gray-50 mb-5">
+        <div class="d-flex align-items-center bg-dominant px-4">
+            <h5 class="card-header-title font-weight-semibold m-2">Header JS</h5>
+        </div>
+        <div class="card-body py-for-card">
+            <div class="mb-3 px-1">
+                <label for="jsNormal" class="form-control-label">Normal</label>
+                <textarea id="jsNormal" class="form-control text-muted" rows="1" onclick="this.select();"><script type="text/javascript" src="//cdn.vlitag.com/w/{{.Inventory.Uuid}}.js"></script><script>var vitag = vitag || {};vitag.gdprShowConsentToolButton = false;</script></textarea>
+            </div>
+            <div class="mb-3 px-1">
+                <label for="jsAsynchronous" class="form-control-label">Asynchronous</label>
+                <textarea id="jsAsynchronous" class="form-control text-muted" rows="1" onclick="this.select();"><script type="text/javascript" src="//cdn.vlitag.com/w/{{.Inventory.Uuid}}.js" async defer></script><script>var vitag = vitag || {};vitag.gdprShowConsentToolButton = false;</script></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="card rounded-0 shadow-dark-80 border border-gray-50">
+        <div class="d-flex align-items-center bg-dominant px-4">
+            <h5 class="card-header-title font-weight-semibold m-2">Ad Tag</h5>
+        </div>
+        <div class="card-body py-for-card">
+            {{if not .ListAdTag}}
+                <p class="text-danger">Sorry, we couldn't find any data. Please initialize your ad tag</p>
+            {{else}}
+                {{range .ListAdTag}}
+                    <div class="mb-3 px-1">
+
+                        {{if eq .AdTagAdTag.Type 1 }}
+                            <label for="jsNormal" class="form-control-label">{{.AdTagAdTag.Name}}</label>
+                            <input type="text" class="form-control text-muted"
+                                   value='<div class="adsbyvli" style="width:{{.Size.TableAdSize.Width}}px;height:{{.Size.TableAdSize.Height}}px;display:inline-block;" data-ad-slot="pw_{{.AdTagAdTag.Id}}"></div> <script type="text/javascript">(vitag.Init = window.vitag.Init || []).push(function () { viAPItag.display("pw_{{.AdTagAdTag.Id}}") })</script>'
+                                   readonly="readonly" onclick="this.select();"/>
+                        {{else if and (eq .AdTagAdTag.Type 2) (ne .AdTagAdTag.Renderer 2) }}
+                            <label for="jsNormal" class="form-control-label">{{.AdTagAdTag.Name}}</label>
+                            <input type="text" class="form-control text-muted"
+                                   value='<div class="adsbyvli" data-ad-slot="pw_{{.AdTagAdTag.Id}}"></div> <script type="text/javascript"> (vitag.Init = window.vitag.Init || []).push(function () { viAPItag.initPowerInstream("pw_{{.AdTagAdTag.Id}}"); }); </script>'
+                                   readonly="readonly" onclick="this.select();"/>
+                        {{else if and (eq .AdTagAdTag.Type 3) (ne .AdTagAdTag.Renderer 2)}}
+                            <label for="jsNormal" class="form-control-label">{{.AdTagAdTag.Name}}</label>
+                            <input type="text" class="form-control text-muted"
+                                   value='<div class="adsbyvli" data-ad-slot="pw_{{.AdTagAdTag.Id}}"></div> <script type="text/javascript"> (vitag.Init = window.vitag.Init || []).push(function () { viAPItag.initPowerOutstream("pw_{{.AdTagAdTag.Id}}"); }); </script>'
+                                   readonly="readonly" onclick="this.select();"/>
+                        {{else if eq .AdTagAdTag.Type 4}}
+                            <label for="jsNormal" class="form-control-label">{{.AdTagAdTag.Name}}</label>
+                            <input type="text" class="form-control text-muted"
+                                   value='<div class="adsbyvli" data-ad-slot="pw_{{.AdTagAdTag.Id}}"></div> <script type="text/javascript"> (vitag.Init = window.vitag.Init || []).push(function () { viAPItag.initPowerTopArticles("pw_{{.AdTagAdTag.Id}}"); }); </script>'
+                                   readonly="readonly" onclick="this.select();"/>
+                        {{else if eq .AdTagAdTag.Type 5}}
+                            <label for="jsNormal" class="form-control-label">{{.AdTagAdTag.Name}}</label>
+                            <input type="text" class="form-control text-muted"
+                                   value='<script type="text/javascript"> (vitag.Init = window.vitag.Init || []).push(function () { viAPItag.initStickyBanner("pw_{{.AdTagAdTag.Id}}"); }); </script>'
+                                   readonly="readonly" onclick="this.select();"/>
+                        {{end}}
+                    </div>
+                {{end}}
+            {{end}}
+        </div>
+    </div>
+</div>

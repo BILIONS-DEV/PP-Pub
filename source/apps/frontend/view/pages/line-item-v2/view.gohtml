@@ -1,0 +1,684 @@
+{{- /*gotype: source/apps/frontend/controller.AssignBidderEdit*/ -}}
+{{$DemandLang := .Schema.LANG.Pages.LineItem}}
+<div class="px-5 py-3 border-bottom border-gray-200">
+    <div class="container-fluid px-0">
+        <div class="row align-items-center">
+            <div class="col">
+                <a href="/line-item-v2">
+                    <span class="text-uppercase tiny text-gray-600 Montserrat-font font-weight-semibold">{{$DemandLang.Title}}</span>
+                </a>
+                <h1 class="h4 mb-0">{{$DemandLang.Edit}}</h1>
+            </div>
+        </div>
+    </div>
+</div>
+{{/*End Header*/}}
+
+<div class="px-5 pt-5 pb-3 height-main">
+    <div class="container-fluid px-0">
+        <div class="row">
+            <div class="col-12">
+                <form id="EditBidder">
+                    <input type="hidden" name="id" value="{{.Row.TableLineItemV2.Id}}">
+                    <div id="MainBox" class="card rounded-0 shadow-dark-80 border border-gray-50 mb-5">
+                        <div class="d-flex align-items-center bg-dominant px-4 toggle-collapse">
+                            <h5 class="card-header-title font-weight-semibold m-2">{{$DemandLang.Main}}</h5>
+                            <div class="ms-auto pe-md-2">
+                                <div class="export-dropdown">
+                                    <a aria-controls="collapseMainBox" data-bs-target="#collapseMainBox"
+                                       data-bs-toggle="collapse"
+                                       aria-expanded="{{if (InArray "collapseMainBox" $.ListBoxCollapse false)}}false{{else}}true{{end}}"
+                                       class="btn btn-link px-3 {{if (InArray "collapseMainBox" $.ListBoxCollapse false)}}{{else}}collapsed{{end}}"
+                                       href="javascript:void(0);">
+                                        <svg class="ms-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                             viewBox="0 0 13 13">
+                                            <rect data-name="Icons/Tabler/Chevron Down background" width="16"
+                                                  height="16" fill="none"></rect>
+                                            <path d="M.214.212a.738.738,0,0,1,.952-.07l.082.07L7.1,5.989a.716.716,0,0,1,.071.94L7.1,7.011l-5.85,5.778a.738.738,0,0,1-1.034,0,.716.716,0,0,1-.071-.94l.071-.081L5.547,6.5.214,1.233A.716.716,0,0,1,.143.293Z"
+                                                  transform="translate(13 3.25) rotate(90)" fill="#1e1e1e"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="collapseMainBox"
+                             class="collapse {{if (InArray "collapseMainBox" $.ListBoxCollapse false)}}{{else}}show{{end}}"
+                             data-bs-parent="#MainBox">
+                            <div class="card-body px-5 py-for-card">
+                                <div class="row my-4">
+                                    <div class="d-flex align-items-center">
+                                        <label class="col-form-label form-label form-label-lg w-input-group"
+                                               for="name">
+                                            {{$DemandLang.LineItemName}}
+                                        </label>
+                                        <input type="text" class="form-control w-50-custom" disabled
+                                               id="name" name="name" value="{{.Row.TableLineItemV2.Name}}">
+                                        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                                    </div>
+                                </div>
+                                {{/*Line Item Name*/}}
+
+                                <div class="row my-4">
+                                    <div class="d-flex">
+                                        <label class="col-form-label form-label form-label-lg w-input-group"
+                                               for="description">
+                                            {{$DemandLang.Description}}
+                                        </label>
+                                        <textarea id="description" name="description" disabled
+                                                  class="form-control w-50-custom">{{.Row.TableLineItemV2.Description}}</textarea>
+                                        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                                    </div>
+                                </div>
+                                {{/*Description*/}}
+
+                                <div class="row my-4">
+                                    <div class="d-flex align-items-center">
+                                        <label class="col-form-label form-label form-label-lg w-input-group"
+                                               for="server_type">
+                                            {{$DemandLang.Type}}
+                                        </label>
+                                        <select id="server_type" name="server_type" class="form-select w-50-custom"
+                                                data-placeholder="Select a type" disabled>
+                                            <option value="1"
+                                                    {{if eq .Row.TableLineItemV2.ServerType.Int 1}}selected{{end}}>Prebid
+                                            </option>
+                                            <option value="2"
+                                                    {{if eq .Row.TableLineItemV2.ServerType.Int 2}}selected{{end}}>Google
+                                            </option>
+                                        </select>
+                                        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                                    </div>
+                                </div>
+                                {{/*Bidder Type*/}}
+
+                                <div class="row my-4 box_type_google_show {{if eq .Row.TableLineItemV2.ServerType.Int 1}}d-none{{end}}">
+                                    <div class="d-flex">
+                                        <label class="col-form-label form-label form-label-lg w-input-group"
+                                               for="select_account">
+                                            {{$DemandLang.SelectAccount}}
+                                        </label>
+                                        <div class="box-select2 w-50-custom">
+                                            <select id="select_account" name="select_account"
+                                                    class="form-select select2"
+                                                    data-placeholder="Select Account"
+                                                    style="text-transform: capitalize" disabled>
+                                                <option></option>
+                                                {{range .ListAccountGoogle}}
+                                                    <option class="h4" value="{{.TableBidder.Id}}"
+                                                            {{if eq .TableBidder.Id $.AccountGoogleSelected.TableBidder.Id}}selected{{end}}>{{.TableBidder.DisplayName}}</option>
+                                                {{end}}
+                                            </select>
+                                        </div>
+                                        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                                    </div>
+                                </div>
+                                {{/*Select account*/}}
+
+                                <div class="row my-4 box_type_google_show {{if eq .Row.TableLineItemV2.ServerType.Int 1}}d-none{{end}}">
+                                    <div class="d-flex align-items-center">
+                                        <label class="col-form-label form-label form-label-lg w-input-group">
+                                            {{$DemandLang.LinkedGam}}
+                                        </label>
+                                        <div class="box-select2 w-50-custom">
+                                            <select id="linked_gam" name="linked_gam" disabled
+                                                    class="form-select select2"
+                                                    data-placeholder="Select a GAM">
+                                                <option></option>
+                                                {{range .GamNetworks}}
+                                                    <option value="{{.TableGamNetwork.Id}}"
+                                                            {{if eq .TableGamNetwork.Id $.Row.TableLineItemV2.LinkedGam}}selected{{end}}>{{.TableGamNetwork.NetworkName}}</option>
+                                                {{end}}
+                                            </select>
+                                        </div>
+                                        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                                    </div>
+                                </div>
+                                {{/*Linked GAM*/}}
+
+                                <div class="row my-4">
+                                    <div class="d-flex">
+                                        <label class="col-form-label form-label form-label-lg w-input-group">
+                                            {{$DemandLang.Priority}}
+                                        </label>
+                                        <select id="priority" name="priority" class="form-select w-50-custom" disabled>
+                                            <option {{if eq 1 .Row.TableLineItemV2.Priority}}selected{{end}}
+                                                    value="1">1
+                                            </option>
+                                            <option {{if eq 2 .Row.TableLineItemV2.Priority}}selected{{end}}
+                                                    value="2">2
+                                            </option>
+                                            <option {{if eq 3 .Row.TableLineItemV2.Priority}}selected{{end}}
+                                                    value="3">3
+                                            </option>
+                                            <option {{if eq 4 .Row.TableLineItemV2.Priority}}selected{{end}}
+                                                    value="4">4
+                                            </option>
+                                            <option {{if eq 5 .Row.TableLineItemV2.Priority}}selected{{end}}
+                                                    value="5">5
+                                            </option>
+                                            <option {{if eq 6 .Row.TableLineItemV2.Priority}}selected{{end}}
+                                                    value="6">6
+                                            </option>
+                                            <option {{if eq 7 .Row.TableLineItemV2.Priority}}selected{{end}}
+                                                    value="7">7
+                                            </option>
+                                            <option {{if eq 8 .Row.TableLineItemV2.Priority}}selected{{end}}
+                                                    value="8">8
+                                            </option>
+                                            <option {{if eq 9 .Row.TableLineItemV2.Priority}}selected{{end}}
+                                                    value="9">9
+                                            </option>
+                                            <option {{if eq 10 .Row.TableLineItemV2.Priority}}selected{{end}}
+                                                    value="10">10
+                                            </option>
+                                            <option {{if eq 11 .Row.TableLineItemV2.Priority}}selected{{end}}
+                                                    value="11">11
+                                            </option>
+                                            <option {{if eq 12 .Row.TableLineItemV2.Priority}}selected{{end}}
+                                                    value="12">12
+                                            </option>
+                                            <option {{if eq 13 .Row.TableLineItemV2.Priority}}selected{{end}}
+                                                    value="13">13
+                                            </option>
+                                            <option {{if eq 14 .Row.TableLineItemV2.Priority}}selected{{end}}
+                                                    value="14">14
+                                            </option>
+                                            <option {{if eq 15 .Row.TableLineItemV2.Priority}}selected{{end}}
+                                                    value="15">15
+                                            </option>
+                                            <option {{if eq 16 .Row.TableLineItemV2.Priority}}selected{{end}}
+                                                    value="16">16
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                {{/*Priority*/}}
+                                {{if eq .Row.TableLineItemV2.IsLock 2}}
+                                    <fieldset id="fieldSetStatus">
+                                        <div class="row my-4">
+                                            <div class="d-flex align-items-center">
+                                                <label class="col-form-label form-label form-label-lg w-input-group">
+                                                    {{$DemandLang.Status}}
+                                                </label>
+                                                <div class="form-check form-switch mb-0 ps-0"
+                                                     style="cursor: not-allowed!important;">
+                                                    <input type="checkbox" data-toggle="toggle" class=""
+                                                           {{if eq 1 .Row.TableLineItemV2.Status }}checked{{end}}
+                                                           data-on="running" data-off="paused"
+                                                           data-onstyle="dominant btn-sm"
+                                                           data-offstyle="soft-secondary btn-sm"
+                                                           data-style="rounded-24"
+                                                           id="status" name="status">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                {{else}}
+                                    <div class="row my-4">
+                                        <div class="d-flex align-items-center">
+                                            <label class="col-form-label form-label form-label-lg w-input-group">
+                                                {{$DemandLang.Status}}
+                                            </label>
+                                            <div class="form-check form-switch mb-0 ps-0"
+                                                 style="cursor: not-allowed!important;">
+                                                <input type="checkbox" data-toggle="toggle" class=""
+                                                       {{if eq 1 .Row.TableLineItemV2.Status }}checked{{end}}
+                                                       data-on="running" data-off="paused"
+                                                       data-onstyle="dominant btn-sm"
+                                                       data-offstyle="soft-secondary btn-sm"
+                                                       data-style="rounded-24"
+                                                       id="status" name="status">
+                                            </div>
+                                        </div>
+                                    </div>
+                                {{end}}
+                                {{/*Status*/}}
+                            </div>
+                        </div>
+                    </div>
+                    {{/*Main Card*/}}
+
+                    <fieldset id="myFieldset">
+                        <div id="TargetingBox" class="card rounded-0 shadow-dark-80 border border-gray-50 mb-5">
+                            <div class="d-flex align-items-center bg-dominant px-4 toggle-collapse">
+                                <h5 class="card-header-title font-weight-semibold m-2">{{$DemandLang.Targeting}}</h5>
+                                <div class="ms-auto pe-md-2">
+                                    <div class="export-dropdown">
+                                        <a aria-controls="collapseTargetingBox" data-bs-target="#collapseTargetingBox"
+                                           data-bs-toggle="collapse"
+                                           aria-expanded="{{if (InArray "collapseTargetingBox" $.ListBoxCollapse false)}}false{{else}}true{{end}}"
+                                           class="btn btn-link px-3 {{if (InArray "collapseTargetingBox" $.ListBoxCollapse false)}}{{else}}collapsed{{end}}"
+                                           href="javascript:void(0);">
+                                            <svg class="ms-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 viewBox="0 0 13 13">
+                                                <rect data-name="Icons/Tabler/Chevron Down background" width="16"
+                                                      height="16" fill="none"></rect>
+                                                <path d="M.214.212a.738.738,0,0,1,.952-.07l.082.07L7.1,5.989a.716.716,0,0,1,.071.94L7.1,7.011l-5.85,5.778a.738.738,0,0,1-1.034,0,.716.716,0,0,1-.071-.94l.071-.081L5.547,6.5.214,1.233A.716.716,0,0,1,.143.293Z"
+                                                      transform="translate(13 3.25) rotate(90)" fill="#1e1e1e"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="collapseTargetingBox"
+                                 class="collapse {{if (InArray "collapseTargetingBox" $.ListBoxCollapse false)}}{{else}}show{{end}}"
+                                 data-bs-parent="#TargetingBox">
+                                <div class="card-body px-5 py-for-card">
+{{/*                                    <div class="row my-4">*/}}
+{{/*                                        <div class="d-flex align-items-center">*/}}
+{{/*                                            <label class="col-form-label form-label form-label-lg w-input-group">*/}}
+{{/*                                                {{$DemandLang.StartDate}}*/}}
+{{/*                                            </label>*/}}
+{{/*                                            <input type="text" class="form-control w-50-custom daterangepickers"*/}}
+{{/*                                                   placeholder="Immediately"*/}}
+{{/*                                                   disabled*/}}
+{{/*                                                   id="start_date" name="start_date"*/}}
+{{/*                                                   {{if .Row.TableLineItemV2.StartDate.Valid}}value="{{.StartDate}}"{{end}}>*/}}
+{{/*                                            <span class="form-text ms-2 w-auto invalid-feedback"></span>*/}}
+{{/*                                        </div>*/}}
+{{/*                                    </div>*/}}
+{{/*                                    */}}{{/*Start Date*/}}
+
+{{/*                                    <div class="row my-4">*/}}
+{{/*                                        <div class="d-flex align-items-center">*/}}
+{{/*                                            <label class="col-form-label form-label form-label-lg w-input-group">*/}}
+{{/*                                                {{$DemandLang.EndDate}}*/}}
+{{/*                                            </label>*/}}
+{{/*                                            <input type="text" class="form-control w-50-custom daterangepickers"*/}}
+{{/*                                                   placeholder="Unlimited"*/}}
+{{/*                                                   disabled*/}}
+{{/*                                                   id="end_date" name="end_date"*/}}
+{{/*                                                   {{if .Row.TableLineItemV2.EndDate.Valid}}value="{{.EndDate}}"{{end}}>*/}}
+{{/*                                            <span class="form-text ms-2 w-auto invalid-feedback"></span>*/}}
+{{/*                                        </div>*/}}
+{{/*                                    </div>*/}}
+{{/*                                    */}}{{/*End Date*/}}
+
+                                    <div class="row my-4">
+                                        <input type="hidden" id="id-line-item-v2" value="{{.Row.TableLineItemV2.Id}}"
+                                               name="id"/>
+                                        <div class="d-flex">
+                                            <label class="col-form-label form-label form-label-lg w-input-group">
+                                                {{$DemandLang.Target}}
+                                            </label>
+                                            <div class="col-sm-8">
+                                                <div id="target"
+                                                     class="accordion muze-collapes border border-bottom-0 border-gray-50">
+
+                                                    {{template "line-item-v2/view/target.domain" .}}
+                                                    {{/*Target Domains*/}}
+
+                                                    {{template "line-item-v2/view/target.format" .}}
+                                                    {{/*Target Format*/}}
+
+                                                    {{template "line-item-v2/view/target.size" .}}
+                                                    {{/*Target Size*/}}
+
+                                                    {{template "line-item-v2/view/target.adtag" .}}
+                                                    {{/*Target Ad Tag*/}}
+
+                                                    {{template "line-item-v2/view/target.geo" .}}
+                                                    {{/*Target Geo*/}}
+
+                                                    {{template "line-item-v2/view/target.device" .}}
+                                                    {{/*Target Device*/}}
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{/*Target*/}}
+                                </div>
+                            </div>
+                        </div>
+                        {{/*Targeting Card*/}}
+                    </fieldset>
+
+                    <div id="SettingBox"
+                         class="card rounded-0 shadow-dark-80 border border-gray-50 mb-5 box_type_google_hide {{if eq .Row.TableLineItemV2.ServerType.Int 2}}d-none{{end}}">
+                        <div class="d-flex align-items-center bg-dominant px-4 toggle-collapse">
+                            <h5 class="card-header-title font-weight-semibold m-2">{{$DemandLang.DemandPartners}}</h5>
+                            <div class="ms-auto pe-md-2">
+                                <div class="export-dropdown">
+                                    <a aria-controls="collapseSettingBox" data-bs-target="#collapseSettingBox"
+                                       data-bs-toggle="collapse"
+                                       aria-expanded="{{if (InArray "collapseSettingBox" $.ListBoxCollapse false)}}false{{else}}true{{end}}"
+                                       class="btn btn-link px-3 {{if (InArray "collapseSettingBox" $.ListBoxCollapse false)}}{{else}}collapsed{{end}}"
+                                       href="javascript:void(0);">
+                                        <svg class="ms-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                             viewBox="0 0 13 13">
+                                            <rect data-name="Icons/Tabler/Chevron Down background" width="16"
+                                                  height="16" fill="none"></rect>
+                                            <path d="M.214.212a.738.738,0,0,1,.952-.07l.082.07L7.1,5.989a.716.716,0,0,1,.071.94L7.1,7.011l-5.85,5.778a.738.738,0,0,1-1.034,0,.716.716,0,0,1-.071-.94l.071-.081L5.547,6.5.214,1.233A.716.716,0,0,1,.143.293Z"
+                                                  transform="translate(13 3.25) rotate(90)" fill="#1e1e1e"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="collapseSettingBox"
+                             class="collapse {{if (InArray "collapseSettingBox" $.ListBoxCollapse false)}}{{else}}show{{end}}"
+                             data-bs-parent="#SettingBox">
+                            <div class="card-body px-5 py-for-card">
+
+                                {{/*                                <div class="row my-4" id="select_bidder_box">*/}}
+                                {{/*                                    <div class="d-flex align-items-center">*/}}
+                                {{/*                                        <label class="col-form-label form-label form-label-lg w-input-group">*/}}
+                                {{/*                                            {{$DemandLang.SelectBidder}}*/}}
+                                {{/*                                        </label>*/}}
+                                {{/*                                        <select id="select-bidder" class="form-select select2 w-50-custom"*/}}
+                                {{/*                                                data-placeholder="{{$DemandLang.SelectBidderPlaceholder}}"*/}}
+                                {{/*                                                style="text-transform: capitalize">*/}}
+                                {{/*                                            <option></option>*/}}
+                                {{/*                                            {{range .Bidders}}*/}}
+                                {{/*                                                <option value="{{.TableBidder.Id}}">{{.TableBidder.BidderCode}}</option>*/}}
+                                {{/*                                            {{end}}*/}}
+                                {{/*                                        </select>*/}}
+                                {{/*                                        <span class="form-text ms-2 w-auto invalid-feedback"></span>*/}}
+                                {{/*                                    </div>*/}}
+                                {{/*                                </div>*/}}
+                                {{/*Select Bidder*/}}
+
+                                <div id="bidder-params">
+                                    {{if .BidderParams}}
+                                        {{range $i, $v := .BidderParams}}
+                                            <div class="box-c" id="bidder_{{$v.BidderId}}_{{$v.BidderIndex}}">
+                                                <hr class="mt-5 hr_custom bg-gray-400">
+                                                <div class="bidder-box" data-id="{{$v.BidderId}}"
+                                                     data-name="{{$v.BidderName}}" data-index="{{$v.BidderIndex}}">
+                                                    <div class="row my-4">
+                                                        <div class="d-flex align-items-center bidder-name">
+                                                            <label class="col-form-label form-label form-label-lg w-input-group text-uppercase">
+                                                                {{$v.BidderName}}
+                                                            </label>
+                                                            <div class="d">
+                                                                <a class="btn p-1 ms-2 rm_c disabled"
+                                                                   data-id="{{$v.BidderId}}"
+                                                                   data-index="{{$v.BidderIndex}}">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="15"
+                                                                         height="15" fill="currentColor"
+                                                                         class="bi bi-x-lg" viewBox="0 0 16 16">
+                                                                        <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"></path>
+                                                                    </svg>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row my-4">
+                                                        <div class="d-flex">
+                                                            <label class="col-form-label form-label form-label-lg w-input-group"
+                                                                   for="type_{{$v.BidderType.Int}}_{{$v.BidderIndex}}">
+                                                                Type
+                                                            </label>
+                                                            <select disabled
+                                                                    id="type_{{$v.BidderId}}_{{$v.BidderIndex}}"
+                                                                    name="type"
+                                                                    data-id="{{$v.BidderId}}"
+                                                                    data-index="{{$v.BidderIndex}}"
+                                                                    data-name="{{$v.BidderName}}"
+                                                                    class="form-select w-50-custom type-bidder b-t-{{$v.BidderId}}">
+                                                                <option value="1"
+                                                                        {{if eq $v.BidderType.Int 1}}selected{{end}}>
+                                                                    Prebid Client
+                                                                </option>
+                                                                {{if ne $v.BidderTemplate 2}}
+                                                                    <option value="2"
+                                                                            {{if eq $v.BidderType.Int 2}}selected{{end}}>
+                                                                        Prebid Server (S2S)
+                                                                    </option>
+                                                                {{end}}
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    {{/*Type*/}}
+
+                                                    <div class="list_param">
+                                                        {{range $v.BidderParams}}
+                                                            <div class="row my-4 box-param">
+                                                                <div class="d-flex align-items-center">
+                                                                    <label class="col-form-label form-label form-label-lg w-input-group"
+                                                                           for="{{$v.BidderId}}-{{.Param.Name}}-{{$v.BidderIndex}}"
+                                                                           style="text-transform: capitalize">
+                                                                        {{.Param.Name}}
+                                                                    </label>
+                                                                    {{if eq .Param.Type "boolean"}}
+                                                                        <select id="{{$v.BidderId}}-{{.Param.Name}}-{{$v.BidderIndex}}"
+                                                                                disabled
+                                                                                class="form-select w-50-custom param_value"
+                                                                                data-type="{{.Param.Type}}"
+                                                                                data-name="{{.Param.Name}}">
+                                                                            <option value="true"
+                                                                                    {{if eq .Param.Value "true"}}selected{{end}}>
+                                                                                true
+                                                                            </option>
+                                                                            <option value="false"
+                                                                                    {{if eq .Param.Value "false"}}selected{{end}}>
+                                                                                false
+                                                                            </option>
+                                                                        </select>
+                                                                    {{else}}
+                                                                        <input type="{{if eq .Param.Type "int"}}number{{else}}text{{end}}"
+                                                                               class="form-control w-50-custom param_value"
+                                                                               id="{{$v.BidderId}}-{{.Param.Name}}-{{$v.BidderIndex}}"
+                                                                               value="{{.Param.Value}}"
+                                                                               placeholder="{{.Param.Type}}"
+                                                                               data-type="{{.Param.Type}}"
+                                                                               data-name="{{.Param.Name}}" disabled>
+                                                                    {{end}}
+                                                                    {{if ne .IsRequired true}}
+                                                                        <div class="ms-2 ps-0 d-flex align-items-center">
+                                                                            <button type="button" disabled
+                                                                                    class="btn btn-outline-danger btn-sm px-2 rounded-2 btn-remove-param d-none">
+                                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                     width="16" height="16"
+                                                                                     fill="currentColor"
+                                                                                     class="bi bi-trash"
+                                                                                     viewBox="0 0 16 16">
+                                                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
+                                                                                    <path fill-rule="evenodd"
+                                                                                          d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>
+                                                                                </svg>
+                                                                            </button>
+                                                                        </div>
+                                                                    {{end}}
+                                                                    <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                                                                </div>
+                                                            </div>
+                                                        {{end}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {{end}}
+                                    {{end}}
+                                </div>
+                                {{/*Bidder Info*/}}
+
+                                <div class="row my-4 d-none">
+                                    <div class="d-flex align-items-center">
+                                        <label class="col-form-label form-label form-label-lg w-input-group">
+                                            Rate
+                                        </label>
+                                        <input type="text" class="form-control w-50-custom" disabled
+                                               id="rate" name="rate" value="{{.Row.TableLineItemV2.Rate}}">
+                                        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                                    </div>
+                                </div>
+                                {{/*Rate*/}}
+
+                                <div class="row my-4 d-none">
+                                    <div class="d-flex align-items-center">
+                                        <label class="col-form-label form-label form-label-lg w-input-group">
+                                            Vast URL
+                                        </label>
+                                        <input type="text" class="form-control w-50-custom" disabled
+                                               id="vast_url" name="vast_url"
+                                               value="{{.Row.TableLineItemV2.VastUrl}}">
+                                        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                                    </div>
+                                </div>
+                                {{/*Vast URL*/}}
+
+                                <div class="row my-4 d-none">
+                                    <div class="d-flex">
+                                        <label class="col-form-label form-label form-label-lg w-input-group"
+                                               for="ad_tag">
+                                            Ad Tag
+                                        </label>
+                                        <textarea type="text" class="form-control w-50-custom" disabled
+                                                  id="ad_tag"
+                                                  name="ad_tag">{{.Row.TableLineItemV2.AdTag}}</textarea>
+                                        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                                    </div>
+                                </div>
+                                {{/*Ad Tag*/}}
+
+                            </div>
+                        </div>
+                    </div>
+                    {{/*SETTINGS Card*/}}
+
+                    <div id="AdsenseAdSlotBox"
+                         class="card rounded-0 shadow-dark-80 border border-gray-50 mb-5 box-adsense-ad-slot {{if ne .AccountGoogleSelected.TableBidder.AccountType 1}}d-none{{end}}">
+                        <div class="d-flex align-items-center bg-dominant px-4 toggle-collapse">
+                            <h5 class="card-header-title font-weight-semibold m-2">{{$DemandLang.AdsenseAdSlot}}</h5>
+                            <div class="ms-auto pe-md-2">
+                                <div class="export-dropdown">
+                                    <a aria-controls="collapseAdsenseAdSlotBox"
+                                       data-bs-target="#collapseAdsenseAdSlotBox"
+                                       data-bs-toggle="collapse"
+                                       aria-expanded="{{if (InArray "collapseAdsenseAdSlotBox" $.ListBoxCollapse false)}}false{{else}}true{{end}}"
+                                       class="btn btn-link px-3 {{if (InArray "collapseAdsenseAdSlotBox" $.ListBoxCollapse false)}}{{else}}collapsed{{end}}"
+                                       href="javascript:void(0);">
+                                        <svg class="ms-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                             viewBox="0 0 13 13">
+                                            <rect data-name="Icons/Tabler/Chevron Down background" width="16"
+                                                  height="16" fill="none"></rect>
+                                            <path d="M.214.212a.738.738,0,0,1,.952-.07l.082.07L7.1,5.989a.716.716,0,0,1,.071.94L7.1,7.011l-5.85,5.778a.738.738,0,0,1-1.034,0,.716.716,0,0,1-.071-.94l.071-.081L5.547,6.5.214,1.233A.716.716,0,0,1,.143.293Z"
+                                                  transform="translate(13 3.25) rotate(90)" fill="#1e1e1e"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="collapseAdsenseAdSlotBox"
+                             class="collapse {{if (InArray "collapseAdsenseAdSlotBox" $.ListBoxCollapse false)}}{{else}}show{{end}}"
+                             data-bs-parent="#AdsenseAdSlotBox">
+                            <div class="card-body px-5 py-for-card">
+                                <div class="row my-4" id="select_adsense_ad_slot_box">
+                                    <div class="d-flex align-items-center">
+                                        <label class="col-form-label form-label form-label-lg w-input-group">
+                                            {{$DemandLang.Size}}
+                                        </label>
+                                        <div class="box-select2 w-50-custom">
+                                            <select id="select-adsense-ad-slot-size" class="form-select select2"
+                                                    disabled
+                                                    data-item-label="{{$DemandLang.SelectAdsenseAdSlot}}"
+                                                    data-item-placeholder="{{$DemandLang.ItemAdsenseAdSlotPlaceholder}}"
+                                                    data-placeholder="{{$DemandLang.SelectAdsenseAdSlotPlaceholder}}">
+                                                <option></option>
+
+                                                {{range .Sizes}}
+                                                    <option id="size-{{.TableAdSize.Name}}"
+                                                            {{if (InArray .TableAdSize.Name $.ListSizeSelected false)}}disabled{{end}}
+                                                            value="{{.TableAdSize.Name}}">{{.TableAdSize.Name}}</option>
+                                                {{end}}
+                                            </select>
+                                        </div>
+                                        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                                    </div>
+                                </div>
+
+                                <div id="adsense_ad_slot_item">
+                                    {{range .LineItemAdsenseAdSlots}}
+                                        <div class="box-c">
+                                            <hr class="mt-5 hr_custom bg-gray-400">
+                                            <div class="bidder-box">
+                                                <div class="row my-4">
+                                                    <div class="d-flex align-items-center bidder-name">
+                                                        <label class="col-form-label form-label form-label-lg w-input-group text-uppercase">
+                                                            {{.LineItemAdsenseAdSlot.Size}}
+                                                        </label>
+                                                        <div class="d">
+                                                            <a class="btn p-1 ms-2 rm_c remove-ad-slot disabled"
+                                                               data-size="{{.LineItemAdsenseAdSlot.Size}}">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="15"
+                                                                     height="15" fill="currentColor" class="bi bi-x-lg"
+                                                                     viewBox="0 0 16 16">
+                                                                    <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"></path>
+                                                                </svg>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row my-4">
+                                                    <div class="d-flex align-items-center">
+                                                        <label class="col-form-label form-label form-label-lg w-input-group">
+                                                            {{$DemandLang.SelectAdsenseAdSlot}}
+                                                        </label>
+                                                        <input id="adsense-ad-slot-{{.LineItemAdsenseAdSlot.Size}}"
+                                                               disabled
+                                                               type="number"
+                                                               class="form-control w-50-custom param_value"
+                                                               placeholder="{{$DemandLang.ItemAdsenseAdSlotPlaceholder}}"
+                                                               data-size="{{.LineItemAdsenseAdSlot.Size}}"
+                                                               value="{{.LineItemAdsenseAdSlot.AdsenseAdSlotId}}">
+                                                        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {{end}}
+                                </div>
+                                {{/*End Select Adsense Ad Slot Row*/}}
+
+                            </div>
+                        </div>
+                    </div>
+                    {{/*Adsense Ad Slot Card*/}}
+
+                    {{if eq .Row.TableLineItemV2.IsLock 1}}
+                        <div class="row">
+                            <div class="col-sm-12 text-lg-end">
+                                <button type="submit"
+                                        class="btn btn-dominant btn-lg submit">{{$DemandLang.Button}}</button>
+                            </div>
+                        </div>
+                    {{end}}
+                    {{/*Button*/}}
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+{{/*Form Infomation*/}}
+<script>
+    var myFieldset = document.getElementById("myFieldset");
+    myFieldset.disabled = true;
+    var fieldSetStatus = document.getElementById("fieldSetStatus");
+    fieldSetStatus.disabled = true;
+</script>
+<style>
+    .hr_custom {
+        border-color: #e2e6e9 !important;
+        color: #a7a7a7;
+        margin: 0 -50px 0 -50px;
+    }
+
+    .rm_c {
+        float: right;
+        margin-right: 24px;
+    }
+
+    .d {
+        position: absolute;
+        right: 5px;
+        width: 10px;
+    }
+
+    .form-select:disabled {
+        background-color: #e9ecef;
+    }
+</style>

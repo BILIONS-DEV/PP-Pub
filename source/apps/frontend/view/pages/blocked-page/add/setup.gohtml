@@ -1,0 +1,118 @@
+{{- /*gotype: source/apps/frontend/controller.AssignBlockedPageAdd*/ -}}
+
+<div class="pp15">
+    <div class="pp5">Name</div>
+</div>
+<div class="pp7">
+    <div class="pp-9">
+        <input class="pp-10 form-control" type="text" id="name" name="name" value="">
+        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+    </div>
+</div>
+
+<div class="pp15">
+    <div class="pp5">Blocked Page</div>
+</div>
+<div class="pp7">
+    <div class="pp-9">
+        <div class="box-upload-csv" id="box-upload-csv">
+            <input type='file' title="Choose a csv please" id="upload_csv"
+                   name="upload_csv" class="form-control d-none"
+                   aria-describedby="csv_url" aria-label="Upload" accept=".csv">
+            <div class="w-100 d-flex flex-row form-control border-0 p-0">
+                <label class="me-2 p-2 d-flex align-items-center justify-content-center border-gray-300 bg-gray-200" style="width: 18%"
+                       for="upload_csv"><i class="fa fa-upload me-2"></i>Import</label>
+                <input id="csv_file" class="border-0 form-control bg-white d-none"
+                       style="width: 80%"
+                       name="csv_file" value="/*.csv" accept=".csv" readonly>
+                <input id="input-page" class="p-0 border-0 border-bottom bg-white" style="width: 80%" data-no-submit="true"
+                       type="text" placeholder="Upload from file .csv or input page1, page2, ... press enter">
+            </div>
+        </div>
+        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+    </div>
+</div>
+<div class="d-flex">
+    <a class="btn btn-clear-target ms-auto remove_all d-none">
+        Clear
+    </a>
+</div>
+<div class="box-page-selected mb-4" style="overflow-y: auto; max-height: 200px">
+</div>
+
+{{/*<div id="MainBox" class="card rounded-0 shadow-dark-80 border border-gray-50 mb-5">*/}}
+{{/*    <div class="d-flex align-items-center bg-dominant px-4">*/}}
+{{/*        <h5 class="card-header-title font-weight-semibold m-2">Main</h5>*/}}
+{{/*    </div>*/}}
+{{/*    <div id="collapseMainBox" class="collapse show" data-bs-parent="#MainBox">*/}}
+{{/*        <div class="card-body px-5 py-for-card">*/}}
+{{/*            <div class="row my-4">*/}}
+{{/*                <div class="d-flex align-items-center">*/}}
+{{/*                    <label class="col-form-label form-label form-label-lg w-input-group"*/}}
+{{/*                           for="name">*/}}
+{{/*                        Name*/}}
+{{/*                        <span class="required-label">*</span>*/}}
+{{/*                    </label>*/}}
+{{/*                    <input type="text" class="form-control w-50-custom"*/}}
+{{/*                           placeholder=""*/}}
+{{/*                           id="name" name="name">*/}}
+{{/*                    <span class="form-text ms-2 w-auto invalid-feedback"></span>*/}}
+{{/*                </div>*/}}
+{{/*            </div>*/}}
+{{/*            */}}{{/*Restriction Name*/}}
+
+{{/*            <div class="row my-4">*/}}
+{{/*                <div class="d-flex align-items-center">*/}}
+{{/*                    <label class="col-form-label form-label form-label-lg w-input-group"*/}}
+{{/*                           for="name">*/}}
+{{/*                        Import CSV*/}}
+{{/*                        <span class="required-label">*</span>*/}}
+{{/*                    </label>*/}}
+{{/*                    <div class="box-upload-csv w-50-custom" id="box-upload-csv">*/}}
+{{/*                        <input type='file' title="Choose a csv please" id="upload_csv"*/}}
+{{/*                               name="upload_csv" class="w-50-custom form-control d-none"*/}}
+{{/*                               aria-describedby="csv_url" aria-label="Upload" accept=".csv">*/}}
+{{/*                        <div class="w-100 d-flex flex-row form-control border-0 p-0">*/}}
+{{/*                            <label class="me-2 p-2 d-flex align-items-center justify-content-center border-gray-300 bg-gray-200" style="width: 18%"*/}}
+{{/*                                   for="upload_csv"><i class="fa fa-upload me-2"></i>Import</label>*/}}
+{{/*                            <input id="csv_file" class="border-0 form-control bg-white d-none"*/}}
+{{/*                                   style="width: 80%"*/}}
+{{/*                                   name="csv_file" value="/*.csv" accept=".csv" readonly>*/}}
+{{/*                            <input id="input-page" class="p-0 border-0 border-bottom bg-white" style="width: 80%" data-no-submit="true"*/}}
+{{/*                                   type="text" placeholder="Upload from file .csv or input page1, page2, ... press enter">*/}}
+{{/*                        </div>*/}}
+{{/*                    </div>*/}}
+{{/*                    <span class="form-text ms-2 w-auto invalid-feedback"></span>*/}}
+{{/*                </div>*/}}
+{{/*            </div>*/}}
+{{/*            */}}{{/*Import*/}}
+
+{{/*            <div class="row my-4">*/}}
+{{/*                <div class="d-flex">*/}}
+{{/*                    <label class="col-form-label form-label form-label-lg w-input-group"*/}}
+{{/*                           for="pages">*/}}
+{{/*                        Blocked Page*/}}
+{{/*                        <span class="required-label">*</span>*/}}
+{{/*                    </label>*/}}
+
+{{/*                    <div class="box-page w-100">*/}}
+{{/*                        <div class="d-flex">*/}}
+{{/*                            <a class="btn btn-clear-target ms-auto remove_all">*/}}
+{{/*                                Clear*/}}
+{{/*                            </a>*/}}
+{{/*                        </div>*/}}
+{{/*                        <div class="box-target-selected box-page-selected">*/}}
+
+{{/*                        </div>*/}}
+{{/*                    </div>*/}}
+{{/*                    */}}{{/*Right Box Domain*/}}
+{{/*                    <span class="form-text ms-2 w-auto invalid-feedback"></span>*/}}
+{{/*                </div>*/}}
+{{/*            </div>*/}}
+{{/*            */}}{{/*Import*/}}
+
+
+{{/*        </div>*/}}
+{{/*    </div>*/}}
+{{/*</div>*/}}
+{{/*Main Card*/}}

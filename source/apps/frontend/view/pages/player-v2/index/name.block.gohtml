@@ -1,0 +1,12 @@
+{{- /*gotype: source/apps/frontend/model.TemplateRecord*/ -}}
+{{if eq .TableTemplate.IsDefault 1}}
+    <div class="template-item-default" >
+        <div class="text-truncate" data-bs-toggle="tooltip" title="Template default"
+             style="max-width:800px">{{.TableTemplate.Name}} - {{.IsDefault}}</div>
+    </div>
+{{else}}
+    <div class="template-item">
+        <div class="text-truncate" title="{{.TableTemplate.Name}}"
+             style="max-width:800px">{{.TableTemplate.Name}}</div>
+    </div>
+{{end}}

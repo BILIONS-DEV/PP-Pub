@@ -1,0 +1,86 @@
+{{- /*gotype: source/apps/frontend/controller.AssignInventory*/ -}}
+{{template "supply/index/block.submit" .}}
+
+{{/*Header*/}}
+{{template "supply/index/inc.header" .}}
+
+{{/*Main*/}}
+<div class="pubpower-main pb-3 height-main">
+    <div class="container-fluid px-0">
+        <div class="row">
+            <div class="col-12 mb-4">
+                <div class="card">
+                    <div class="align-items-center p-0 pb-4 col-md-12 ">
+                        <div class="ms-auto col-md-12 filter p-0">
+                            {{template "supply/index/inc.filter" .}}
+                        </div>
+                    </div>
+                    <div class="table-responsive" style="height:65vh;">
+                        <table id="tableInventories" class="table table-nowrap table-list w-100">
+                            <thead>
+                            <tr>
+                                <th class="fw-bold" data-obj-field="name">
+                                    Supply
+                                </th>
+                                <th class="fw-bold" data-obj-field="type">
+                                    Type
+                                </th>
+                                <th class="fw-bold" data-obj-field="status">
+                                    Status
+                                </th>
+                                <th class="fw-bold" data-obj-field="sync_ads_txt">
+                                    Ads.txt
+                                </th>
+                                {{/*                                <th style="max-width:80px;width:80px;" class="fw-bold" data-obj-field="live">*/}}
+                                {{/*                                    Website Live*/}}
+                                {{/*                                </th>*/}}
+                                <th class="fw-bold" data-orderable="false" data-obj-field="action" style="max-width:130px">
+                                    Action
+                                </th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* The Close Button */
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
+
+<style>
+    /*.bs-placeholder .filter-option-inner-inner::first-letter {*/
+    /*    !*color: #222222 !important;*!*/
+    /*    !*color: #fff;*!*/
+    /*}*/
+
+    /*.btn.dropdown-toggle.border-0 .filter-option-inner-inner:first-line {*/
+    /*    background-color: #0a75e3;*/
+    /*    border-radius: 50%;*/
+    /*    color: #fff;*/
+    /*    font-size: 10px;*/
+    /*    height: 17px;*/
+    /*    left: 16px;*/
+    /*    line-height: 17px;*/
+    /*    !*position: absolute;*!*/
+    /*    width: 17px;*/
+    /*    !*margin-right: 8px;*!*/
+    /*    padding: 2px 7px;*/
+    /*    !*color: red;*!*/
+    /*}*/
+</style>

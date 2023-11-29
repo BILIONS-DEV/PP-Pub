@@ -1,0 +1,58 @@
+{{- /*gotype: source/apps/frontend/controller.AssignPayment*/ -}}
+{{$Payment := .Schema.LANG.Pages.Payment}}
+{{template "payment/index/inc.header" .}}
+<div class="pubpower-main pb-3 height-main">
+    <div class="container-fluid px-0">
+        <div class="row">
+            <div class="col-12 mb-4">
+                <div class="card">
+                    <div class="align-items-center p-0 pb-4 col-md-12">
+                        <div class="ms-auto col-md-12 filter">
+                            {{template "payment/index/inc.filter" .}}
+                        </div>
+                    </div>
+                    <div class="table-responsive" style="height:65vh">
+                        <table id="tableResponse" class="table table-nowrap table-list w-100 dataTable no-footer">
+                            <thead>
+                            <tr>
+                                <th style="max-width:200px"><strong>Period</strong></th>
+                                <th><strong>Amount</strong></th>
+                                <th><strong>Info</strong></th>
+                                <th style="max-width:150px"><strong>Status</strong></th>
+{{/*                                <th style="max-width:150px"><strong></strong></th>*/}}
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Invoice -->
+<div class="modal fade" id="preview-invoice" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-body pb-0"></div>
+            <div class="modal-footer border-top-0 pr-4">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                {{/*                <button type="button" class="btn btn-primary">Export</button>*/}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal preview PDF -->
+<div class="modal fade" id="InvoicePDFModal" tabindex="-1" aria-labelledby="invoiceModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-body" style="min-height: 600px">
+                --
+            </div>
+            <div class="modal-footer justify-content-start">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

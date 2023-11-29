@@ -1,0 +1,46 @@
+{{- /*gotype: source/apps/frontend/controller.AssignHistoryIndex*/ -}}
+<form id="formFilterHistory" class="g-3" onsubmit="return false">
+    <div class="row">
+        <div class="col-sm-9 form-inline filter-selectpicker">
+            <div class="form-inline">
+                <div class="form-group-sm pe-3 py-2 d-flex flex-column">
+                    <select id="object_page" name="object_page"
+{{/*                            title="All"*/}}
+                            class="selectpicker select-picker-filter form-control border-0 show-menu-arrow"
+                            data-style="border-0" aria-hidden="true" title="All"
+                            data-live-search="false" data-actions-box="false" tabindex="-1"
+                            data-selected-text-format="count > 1">
+                        <option value="">All</option>
+                        {{range $i, $page := .Pages}}
+                            <option value="{{$page}}" {{if eq $page $.Params.ObjectPage}}selected{{end}}>{{$page}}</option>
+                        {{end}}
+                    </select>
+                </div>
+            </div>
+            {{/*Filter object_page*/}}
+
+            <div class="form-inline filter_objectId d-none">
+                <div class="form-group-sm pe-3 py-2 d-flex flex-column">
+                    <select id="object_id" name="object_id" title="All"
+                            class="selectpicker select-picker-filter form-control border-0 show-menu-arrow"
+                            data-style="border-0" aria-hidden="true"
+                            data-live-search="false" data-actions-box="false" tabindex="-1"
+                            data-selected-text-format="count > 1">
+                        <option value="1" {{if (InArray "1" .Params.ObjectId false)}}selected{{end}}>ON</option>
+                        <option value="2" {{if (InArray "2" .Params.ObjectId false)}}selected{{end}}>OFF</option>
+                    </select>
+                </div>
+            </div>
+            {{/*Filter object_id*/}}
+        </div>
+        <div class="col-sm-3">
+            <div class="mt-2 p-0 d-flex align-items-center">
+                <input value="{{.Params.QuerySearch}}" name="search" class="form-control me-2" placeholder=""/>
+                <button class="btn btn-outline-secondary btn-sm submit">Run</button>
+            </div>
+        </div>
+        {{/*        <input type="hidden" name="start" value="{{.Params.Start}}">*/}}
+        {{/*        <input type="hidden" name="length" value="{{.Params.Length}}">*/}}
+        <input type="hidden" id="page" name="page" value="{{.Params.Page}}">
+    </div>
+</form>

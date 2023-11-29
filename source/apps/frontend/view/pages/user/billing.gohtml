@@ -1,0 +1,240 @@
+{{- /*gotype: source/apps/frontend/controller.AssignUserBilling*/ -}}
+{{$UserLang := .Schema.LANG.Pages.User}}
+<div class="px-5 py-3 border-bottom border-gray-200">
+    <div class="container-fluid px-0">
+        <div class="row align-items-center">
+            <div class="col">
+                <h1 class="h3 mb-0">{{$UserLang.TopBilling}}</h1>
+            </div>
+        </div>
+    </div>
+</div>
+{{/*End Header*/}}
+
+<div class="px-5 pt-5 pb-3 height-main">
+    <div class="container-fluid px-0">
+        <div class="row">
+            <div class="col-12">
+                <form id="submitBilling">
+                    <input name="id" id="id" hidden value="{{.Row.TableUserBilling.Id}}"/>
+                    <input name="user_id" id="user_id" hidden value="{{.Row.TableUserBilling.UserId}}"/>
+                    <div id="MainBox" class="card rounded-0 shadow-dark-80 border border-gray-50 mb-5">
+                        <div class="d-flex align-items-center bg-dominant px-4">
+                            <h5 class="card-header-title font-weight-semibold m-2">{{$UserLang.MainBilling}}</h5>
+                        </div>
+                        <div id="collapseMainBox" class="collapse show" data-bs-parent="#MainBox">
+                            <div class="card-body px-5 py-for-card">
+                                <div class="row my-4">
+                                    <div class="d-flex align-items-center">
+                                        <label class="col-form-label form-label form-label-lg w-input-group"
+                                               for="method">
+                                            {{$UserLang.Method}}
+                                            <span class="required-label">*</span>
+                                        </label>
+                                        <div class="w-50-custom">
+                                            <select id="method" name="method"
+                                                    class="form-select form-control input-full select2"
+                                                    data-placeholder="Select your payment method">
+                                                <option {{if eq .Row.TableUserBilling.Method "bank"}}selected{{end}}
+                                                        value="bank">Bank
+                                                </option>
+{{/*                                                <option {{if eq .Row.TableUserBilling.Method "paypal"}}selected{{end}}*/}}
+{{/*                                                        value="paypal">Paypal*/}}
+{{/*                                                </option>*/}}
+                                                <option {{if eq .Row.TableUserBilling.Method "payoneer"}}selected{{end}}
+                                                        value="payoneer">Payoneer
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{/*Method*/}}
+                                <div id="method_bank"
+                                     {{if ne .Row.TableUserBilling.Method "bank"}}class="d-none"{{end}}>
+                                    <div class="row my-4">
+                                        <div class="d-flex align-items-center">
+                                            <label class="col-form-label form-label form-label-lg w-input-group"></label>
+                                            <div class="w-50-custom">
+                                                <div class="alert alert-warning mx-auto w-70 border" role="alert">
+                                                    <p class="fw-normal">
+                                                        Minimum Payment Threshold: <strong>1,500 USD</strong>
+                                                    </p>
+                                                    <hr>
+                                                    <p class="mb-0 fw-normal">Please choose other payment methods if
+                                                        your revenue
+                                                        has not reached $1500 for the best support.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{/*alert*/}}
+
+                                    <div class="row my-4">
+                                        <div class="d-flex">
+                                            <label class="col-form-label form-label form-label-lg w-input-group"
+                                                   for="beneficiary_name">
+                                                {{$UserLang.BeneficiaryName}}
+                                                <span class="required-label">*</span>
+                                            </label>
+                                            <input id="beneficiary_name" name="beneficiary_name"
+                                                   class="form-control w-50-custom"
+                                                   value="{{.Row.TableUserBilling.BeneficiaryName}}"/>
+                                            <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                                        </div>
+                                    </div>
+                                    {{/*Beneficiary Name */}}
+
+                                    <div class="row my-4">
+                                        <div class="d-flex">
+                                            <label class="col-form-label form-label form-label-lg w-input-group"
+                                                   for="bank_name">
+                                                {{$UserLang.BankName}}
+                                                <span class="required-label">*</span>
+                                            </label>
+                                            <input id="bank_name" name="bank_name"
+                                                   class="form-control w-50-custom"
+                                                   value="{{.Row.TableUserBilling.BankName}}"/>
+                                            <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                                        </div>
+                                    </div>
+                                    {{/*Bank Name*/}}
+
+                                    <div class="row my-4">
+                                        <div class="d-flex">
+                                            <label class="col-form-label form-label form-label-lg w-input-group"
+                                                   for="bank_address">
+                                                {{$UserLang.BankAddress}}
+                                                <span class="required-label">*</span>
+                                            </label>
+                                            <input id="bank_address" name="bank_address"
+                                                   class="form-control w-50-custom"
+                                                   value="{{.Row.TableUserBilling.BankAddress}}"/>
+                                            <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                                        </div>
+                                    </div>
+                                    {{/*Bank Address*/}}
+
+                                    <div class="row my-4">
+                                        <div class="d-flex">
+                                            <label class="col-form-label form-label form-label-lg w-input-group"
+                                                   for="bank_account_number">
+                                                {{$UserLang.BankAccountNumber}}
+                                                <span class="required-label">*</span>
+                                            </label>
+                                            <input id="bank_account_number" name="bank_account_number"
+                                                   class="form-control w-50-custom"
+                                                   value="{{.Row.TableUserBilling.BankAccountNumber}}"/>
+                                            <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                                        </div>
+                                    </div>
+                                    {{/*Bank Account Number */}}
+
+                                    <div class="row my-4">
+                                        <div class="d-flex">
+                                            <label class="col-form-label form-label form-label-lg w-input-group"
+                                                   for="bank_routing_number">
+                                                {{$UserLang.BankRoutingNumber}}
+                                            </label>
+                                            <input id="bank_routing_number" name="bank_routing_number"
+                                                   class="form-control w-50-custom"
+                                                   value="{{.Row.TableUserBilling.BankRoutingNumber}}"/>
+                                            <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                                        </div>
+                                    </div>
+                                    {{/*Bank Routing Number */}}
+
+                                    <div class="row my-4">
+                                        <div class="d-flex">
+                                            <label class="col-form-label form-label form-label-lg w-input-group"
+                                                   for="bank_iban_number">
+                                                {{$UserLang.BankIbanNumber}}
+                                            </label>
+                                            <input id="bank_iban_number" name="bank_iban_number"
+                                                   class="form-control w-50-custom"
+                                                   value="{{.Row.TableUserBilling.BankIbanNumber}}"/>
+                                            <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                                        </div>
+                                    </div>
+                                    {{/*Bank Iban Number*/}}
+
+                                    <div class="row my-4">
+                                        <div class="d-flex">
+                                            <label class="col-form-label form-label form-label-lg w-input-group"
+                                                   for="swift_code">
+                                                {{$UserLang.SwiftCode}}
+                                            </label>
+                                            <input id="swift_code" name="swift_code"
+                                                   class="form-control w-50-custom"
+                                                   value="{{.Row.TableUserBilling.SwiftCode}}"/>
+                                            <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                                        </div>
+                                    </div>
+                                    {{/*Swift Code*/}}
+
+                                    <div class="row my-4">
+                                        <div class="d-flex">
+                                            <label class="col-form-label form-label form-label-lg w-input-group"
+                                                   for="ifsc_code">
+                                                {{$UserLang.IFSCCode}}
+                                            </label>
+                                            <input id="ifsc_code" name="ifsc_code"
+                                                   class="form-control w-50-custom"
+                                                   value="{{.Row.TableUserBilling.IFSCCode}}"/>
+                                            <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                                        </div>
+                                    </div>
+                                    {{/*IFSC Code*/}}
+                                </div>
+
+{{/*                                <div id="method_paypal"*/}}
+{{/*                                     {{if ne .Row.TableUserBilling.Method "paypal"}}class="d-none"{{end}}>*/}}
+{{/*                                    <div class="row my-4">*/}}
+{{/*                                        <div class="d-flex">*/}}
+{{/*                                            <label class="col-form-label form-label form-label-lg w-input-group"*/}}
+{{/*                                                   for="paypal_email">*/}}
+{{/*                                                {{$UserLang.PaypalEmail}}*/}}
+{{/*                                                <span class="required-label">*</span>*/}}
+{{/*                                            </label>*/}}
+{{/*                                            <input id="paypal_email" name="paypal_email"*/}}
+{{/*                                                   class="form-control w-50-custom"*/}}
+{{/*                                                   value="{{.Row.TableUserBilling.PaypalEmail}}"/>*/}}
+{{/*                                            <span class="form-text ms-2 w-auto invalid-feedback"></span>*/}}
+{{/*                                        </div>*/}}
+{{/*                                    </div>*/}}
+{{/*                                    */}}{{/*Paypal Email */}}
+{{/*                                </div>*/}}
+
+                                <div id="method_payoneer"
+                                     {{if ne .Row.TableUserBilling.Method "payoneer"}}class="d-none"{{end}}>
+                                    <div class="row my-4">
+                                        <div class="d-flex">
+                                            <label class="col-form-label form-label form-label-lg w-input-group"
+                                                   for="payoneer_email">
+                                                {{$UserLang.PayOneerEmail}}
+                                                <span class="required-label">*</span>
+                                            </label>
+                                            <input id="payoneer_email" name="payoneer_email"
+                                                   class="form-control w-50-custom"
+                                                   value="{{.Row.TableUserBilling.PayOneerEmail}}"/>
+                                            <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                                        </div>
+                                    </div>
+                                    {{/*Payoneer Email*/}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/*Main Card*/}}
+
+                    <div class="row">
+                        <div class="col-sm-12 text-lg-end">
+                            <button type="submit" class="btn dm4 btn-lg submit">{{$UserLang.Button}}</button>
+                        </div>
+                    </div>
+                    {{/* Button*/}}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{{/*Form Infomation*/}}

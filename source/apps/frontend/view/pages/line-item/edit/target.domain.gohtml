@@ -1,0 +1,68 @@
+{{- /*gotype: source/apps/frontend/controller.AssignBidderEdit*/ -}}
+{{$DemandLang := .Schema.LANG.Pages.LineItem}}
+<div class="dm21" style="margin: 0 20px;margin-top: 20px;" data-toggle="collapse" href="#collapseDomains" aria-controls="collapseDomains" role="button" aria-expanded="false">
+    <div class="dm13">
+        <a href="#" class="">{{$DemandLang.Domains}}</a>
+    </div>
+    <div class="dm15">
+        <div class="dm22">
+            <span id="text_for_domain">Choose at least one domain</span>
+        </div>
+    </div>
+    <div class="dm23" role="button">
+        <button type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16" role="button">
+                <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"></path>
+            </svg>
+        </button>
+    </div>
+</div>
+<div class="collapse" id="collapseDomains" data-parent=".accordion">
+    <div class="dm16 block_domain">
+        <div class="pp7" style="margin: 0;">
+            <span style="width: 32px;height: 32px;background: #EEEEEE;border: 1px solid #ccc;border-right: 0;border-radius: 2px 0 0 2px;display: flex;align-items: center;justify-content: center;">
+                <img src="https://apps.valueimpression.com/assets/svg/icons/search@16.svg" alt="Search">
+            </span>
+            <input style="width: 100%;" class="pp10" type="text" placeholder="Search Domain" id="search_inventory">
+            <a href="javascript:void(0)" class="remove_all_domain">Clear</a>
+        </div>
+        <div class="dm17">
+            <div class="dm18 box-target" id="list_inventory">
+                {{$len3 := len .Inventories}}
+                <div class="d-flex flex-row align-items-center px-md-2 box_empty_domain {{if ne $len3 0}}d-none{{end}}" style="height: 25px;">
+                    <div class="col p-0">
+                        <h6 class="m-0 font-weight-semibold fs-12 text-center">No data</h6>
+                    </div>
+                </div>
+                {{range .Inventories}}
+                    <div class="dm20 target-item {{if eq .TableInventory.Status.Int 3}}text-muted{{end}}" {{if (InArray .TableInventory.Id $.InventoryOfBidder false)}}hidden{{end}}
+                         id="{{.TableInventory.Id}}" {{if eq .TableInventory.Status.Int 3}}data-bs-toggle="tooltip" data-bs-placement="right"
+                    title="Domain already used for another identity profile" {{end}}>
+                        <span>{{.TableInventory.Name}}</span>
+                        <button class="add_inventory" data-id="{{.TableInventory.Id}}" name="{{.TableInventory.Name}}" type="button"
+                                {{if eq .TableInventory.Status.Int 3}}disabled data-status="false" {{else}}data-status="true"{{end}}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                {{end}}
+            </div>
+            <div class="dm19 box-target-selected box_inventory">
+                {{range .InventoriesIncluded}}
+                    <div class="dm20 target-item item_selected" id="{{.TableInventory.Id}}">
+                        <span>{{.TableInventory.Name}}</span>
+                        <button class="remove_inventory" id="{{.TableInventory.Id}}" name="{{.TableInventory.Name}}" type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 16 16">
+                                <path d="M0 8a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                {{end}}
+            </div>
+            <input id="is_more_inventory" value="{{.IsMoreInventory}}" hidden/>
+            <input id="last_page_domain" value="{{.InventoryLastPage}}" hidden/>
+            <input id="pageInventory" value="1" hidden/>
+        </div>
+    </div>
+</div>

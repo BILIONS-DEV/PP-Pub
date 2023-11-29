@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <rect x="11.851" y="9.703" width="175.844" height="90.297" style="fill: rgb(255, 255, 255); stroke-width: 3px; stroke: rgb(6, 73, 131);"/>
+  <rect x="11.851" y="111.925" width="83.471" height="76.498" style="fill: rgb(255, 255, 255); stroke-width: 3px; stroke: rgb(6, 73, 131);"/>
+  <rect x="104.224" y="111.925" width="83.471" height="76.498" style="fill: rgb(255, 255, 255); stroke-width: 3px; stroke: rgb(6, 73, 131);"/>
+  <text style="fill: rgb(6, 73, 131); font-family: Arial, sans-serif; font-size: 30px; font-weight: 700; stroke-dashoffset: -5px; white-space: pre;" x="43.315" y="62.671">Content</text>
+  <rect x="21.738" y="18.705" class="st2" width="153.974" height="5.975" style="fill: rgb(0, 113, 188); opacity: 0.9;"/>
+  <rect x="21.738" y="32.575" class="st2" width="153.974" height="5.975" style="fill: rgb(0, 113, 188); opacity: 0.9;"/>
+  <rect x="21.738" y="66.073" class="st2" width="153.974" height="5.975" style="fill: rgb(0, 113, 188); opacity: 0.9;"/>
+  <rect x="21.738" y="80.613" class="st2" width="105.795" height="5.975" style="fill: rgb(0, 113, 188); opacity: 0.9;"/>
+  <rect x="21.738" y="50.186" class="st2" width="16.143" height="5.975" style="fill: rgb(0, 113, 188); opacity: 0.9;"/>
+  <rect x="159.569" y="50.186" class="st2" width="16.143" height="5.975" style="fill: rgb(0, 113, 188); opacity: 0.9;"/>
+  <text style="fill: rgb(6, 73, 131); font-family: Arial, sans-serif; font-size: 30px; font-weight: 700; stroke-dashoffset: -5px; white-space: pre;" x="32.573" y="160.271">Ad</text>
+  <text style="fill: rgb(6, 73, 131); font-family: Arial, sans-serif; font-size: 30px; font-weight: 700; stroke-dashoffset: -5px; white-space: pre;" x="127.815" y="160.271">Ad</text>
+</svg>

@@ -1,0 +1,54 @@
+{{- /*gotype: source/apps/backend/setting.assign*/ -}}
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#sidebarVideo" data-bs-toggle="collapse" role="button"
+       aria-expanded="{{if IsActiveSidebarWithGroup .Uri .SidebarSetup.VideoGroup}}true{{end}}"
+       aria-controls="sidebarAuthentication">
+        <div class="menu-icon">
+            <wui-icon name="play" size="s" class="wui-icon wui-icon--play -size-s hydrated"
+                      innerhtml="<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 24 24&quot; id=&quot;ds-icon-dashboard-play&quot;><path d=&quot;M20.11 10.34l-12-8A2 2 0 0 0 5 4v16a2 2 0 0 0 3.11 1.66l12-8a2 2 0 0 0 0-3.32z&quot;/></svg>">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="ds-icon-dashboard-play">
+                    <path
+                            d="M20.11 10.34l-12-8A2 2 0 0 0 5 4v16a2 2 0 0 0 3.11 1.66l12-8a2 2 0 0 0 0-3.32z">
+                    </path>
+                </svg>
+            </wui-icon>
+        </div>
+        <span class="ms-3">Studio</span>
+    </a>
+    <div class="collapse collapse-box {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.VideoGroup}}show{{end}}"
+         id="sidebarVideo" data-bs-parent="#sidebarParent">
+        <ul class="nav nav-sm flex-column" id="sidebarVideoSubmenu">
+            <li class="nav-item">
+                <a href="/player/template"
+                   class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.Template}}active{{end}}">
+                    Template
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/channels"
+                   class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.Channels}}active{{end}}">
+                    Channels
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/content"
+                   class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.Content}}active{{end}}">
+                    Content
+                </a>
+            </li>
+{{/*            <li class="nav-item">*/}}
+{{/*                <a href="/quiz"*/}}
+{{/*                   class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.Quiz}}active{{end}}">*/}}
+{{/*                    Quiz*/}}
+{{/*                </a>*/}}
+{{/*            </li>*/}}
+            <li class="nav-item">
+                <a href="/playlist"
+                   class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.Playlist}}active{{end}}">
+                    Playlist
+                </a>
+            </li>
+        </ul>
+    </div>
+</li>
+{{/*Video*/}}

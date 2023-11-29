@@ -1,0 +1,66 @@
+.card-table th {
+  padding: 5px 10px;
+  font-size: 11px;
+}
+
+table.dataTable > thead .sorting:before, table.dataTable > thead .sorting:after, table.dataTable > thead .sorting_asc:before, table.dataTable > thead .sorting_asc:after, table.dataTable > thead .sorting_desc:before, table.dataTable > thead .sorting_desc:after, table.dataTable > thead .sorting_asc_disabled:before, table.dataTable > thead .sorting_asc_disabled:after, table.dataTable > thead .sorting_desc_disabled:before, table.dataTable > thead .sorting_desc_disabled:after {
+  bottom: 0.5em;
+}
+
+.card-table td {
+  padding: 5px 10px;
+  font-size: 13px;
+}
+
+.thu-header {
+  height: 50px;
+  padding: 5px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.thu-logo {
+  flex: 1;
+  padding-left: 5px;
+}
+
+.thu-logo img {
+  width: 120px
+}
+
+.thu-menu {
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  color: #666;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.main-content {
+  margin-left: 0;
+}
+
+.pt-5 {
+  padding: 10px 20px !important;
+}
+
+table.dataTable tbody tr.selected {
+  background-color: #f0f8ff !important;
+}
+
+a.nav-link.active {
+  color: #0a58ca;
+}
+
+.thu-menu .dropdown-menu {
+  width: fit-content !important;
+  min-width: 140px !important;
+  position: absolute;
+  inset: -5px auto auto 0px;
+  margin: 0px;
+  transform: translate(0px, 36px);
+}

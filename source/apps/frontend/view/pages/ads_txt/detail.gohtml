@@ -1,0 +1,224 @@
+{{- /*gotype: source/apps/frontend/controller.AssignAdsTxt*/ -}}
+{{$AdsTxtLang := .Schema.LANG.Pages.AdsTxt}}
+{{template "ads_txt/detail/inc.header" .}}
+{{/*End Header*/}}
+<script>let did = {{.Domain.Id}}</script>
+<div class="px-5">
+    <div class="container-fluid px-0">
+        <div class="row">
+            <div class="col-12">
+
+                <div class="py-4">
+                    <h5 class="alert-heading fs-5 font-weight-semibold">{{$AdsTxtLang.Setup1}}</h5>
+                    <p class="fw-normal alert bg-gray-50">
+                        {{$AdsTxtLang.Content1}}
+                    </p>
+                    <div id="resultLoadMissingLine">
+                        {{if ne .AdsTxtMissingLineSyncError ""}}
+                            <p class="text-danger">
+                                <strong>Note: </strong>Please double check your ads.txt link. We cannot access it.
+                            </p>
+                        {{end}}
+                        <div class="d-flex align-items-center">
+                            <div class="w-100 border border-gray-300" >
+                                <div class="d-flex dropdown export-dropdown float-end">
+                                    <button role="button" id="CopyAdsTxt" data-bs-toggle="dropdown"
+                                            aria-expanded="false" class="btn btn-sm btn-warning rounded-0">
+                                        <span>Copy </span>
+                                        <svg class="ms-2" xmlns="http://www.w3.org/2000/svg" width="13" height="13"
+                                             viewBox="0 0 13 13">
+                                            <rect data-name="Icons/Tabler/Chevron Down background" width="13"
+                                                  height="13" fill="none"/>
+                                            <path d="M.214.212a.738.738,0,0,1,.952-.07l.082.07L7.1,5.989a.716.716,0,0,1,.071.94L7.1,7.011l-5.85,5.778a.738.738,0,0,1-1.034,0,.716.716,0,0,1-.071-.94l.071-.081L5.547,6.5.214,1.233A.716.716,0,0,1,.143.293Z"
+                                                  transform="translate(13 3.25) rotate(90)" fill="#495057"/>
+                                        </svg>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="CopyAdsTxt">
+                                        <li>
+                                            <a class="dropdown-item copy-line" data-type="entire" href="#">
+                                                <span>Entire line</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item copy-line" data-type="missing" href="#">
+                                                <span>Missing line</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                {{range $index, $item := .AdsTxtMissingLines}}
+                                    <div class="d-flex align-items-center">
+                                        <div class="bg-gray-300 d-flex align-items-center px-3 py-1" style="width: 100px;">
+                                            {{if .Status}}
+                                                <button class="btn btn-sm btn-icon btn-success circle circle-sm"
+                                                        disabled>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                                                         fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                                                        <path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"></path>
+                                                    </svg>
+                                                </button>
+                                            {{else}}
+                                                <button class="btn btn-sm btn-icon btn-danger circle circle-sm"
+                                                        disabled>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                                                         fill="currentColor"
+                                                         class="bi bi-x-lg" viewBox="0 0 16 16">
+                                                        <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>
+                                                    </svg>
+                                                </button>
+                                            {{end}}
+                                            <span class="ms-4 fw-normal">{{IncIndex $index}}</span>
+                                        </div>
+                                        <span class="ms-3 fw-normal ads-line{{if not .Status}} ads-line-missing{{end}}">{{.Text}}</span>
+                                    </div>
+                                {{end}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-100 p-3 border border-gray-300 border-top-0">
+                        <div class="d-flex align-items-center">
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-sm btn-icon btn-success circle circle-sm" disabled>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                                         fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                                        <path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"></path>
+                                    </svg>
+                                </button>
+                                <span class="ms-2">In sync line items</span>
+                            </div>
+                            <div class="d-flex align-items-center ms-4">
+                                <button class="btn btn-sm btn-icon btn-danger circle circle-sm" disabled>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
+                                         class="bi bi-x-lg" viewBox="0 0 16 16">
+                                        <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>
+                                    </svg>
+                                </button>
+                                <span class="ms-2">Missing line items</span>
+                            </div>
+                            <div class="ms-auto">
+                                {{if .Domain.TableInventory.LastScanAdsTxt.Valid}}
+                                    <small>
+                                        Last scanned:
+                                        <span id="lastScanAds">{{.Domain.TableInventory.LastScanAdsTxt.Value.Format "2006-01-02 at 15:04:05"}}</span>
+                                    </small>
+                                {{end}}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                {{/*Step 1*/}}
+
+                <div class="py-4">
+                    <h5 class="alert-heading fs-5 font-weight-semibold">{{$AdsTxtLang.Setup2}}</h5>
+                    <p class="fw-normal alert bg-gray-50">
+                        {{$AdsTxtLang.Content2}}
+                    </p>
+                    <form id="SaveAdsTxt" method="POST" action="">
+                        <textarea class="form-control" name="ads_txt">{{.Domain.TableInventory.AdsTxtCustom}}</textarea>
+                        <button class="btn btn-dominant ms-auto d-flex mt-3 submit"
+                                id="saveAdsTxtButton">{{$AdsTxtLang.Save}}</button>
+                    </form>
+                </div>
+                {{/*Step 2*/}}
+
+                <div class="py-4">
+                    <h5 class="alert-heading fs-5 font-weight-semibold">{{$AdsTxtLang.Setup3}}</h5>
+                    <p class="fw-normal alert bg-gray-50">
+                        {{$AdsTxtLang.Content3}}
+                    </p>
+
+                    <div class="mb-4">
+                        <p>{{$AdsTxtLang.RedirectUrl}}</p>
+                        <input class="form-control" value="https://ads-txt.vlitag.com/{{.Domain.Uuid}}/ads.txt"/>
+                    </div>
+
+                    <div>
+                        <p class="fw-bold">{{$AdsTxtLang.Different}}</p>
+                        <div class="mb-3">
+                            <p class="mb-1">1/ .htaccess file redirect</p>
+                            <div class="bg-gray-50 p-3">
+                                <code>
+                                    <span>Redirect 301 /ads.txt</span>
+                                    https://ads-txt.vlitag.com/{{.Domain.Uuid}}/ads.txt
+                                </code>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <p class="mb-1">2/ Nginx redirect</p>
+                            <div class="bg-gray-50 p-3">
+                                <code>
+                                    server {<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;location ~ /ads.txt {<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 301
+                                    https://ads-txt.vlitag.com/{{.Domain.Uuid}}/ads.txt;<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                                    }
+                                </code>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <p class="mb-1">3/ PHP redirect (place into index.php file if your source code is CMS)</p>
+                            <div class="bg-gray-50 p-3">
+                                <code>
+                                    function getRequestUri() {<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$request_uri =
+                                    str_replace($_SERVER['SCRIPT_NAME'], "",
+                                    $_SERVER['REQUEST_URI']);<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (isset($_SERVER['REDIRECT_QUERY_STRING'])
+                                    &amp;&amp;
+                                    $_SERVER['REDIRECT_QUERY_STRING']) {<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$request_uri
+                                    = str_replace("?" .
+                                    $_SERVER['REDIRECT_QUERY_STRING'], "", $_SERVER['REQUEST_URI']);<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} elseif (isset($_SERVER['QUERY_STRING']) &amp;&amp;
+                                    $_SERVER['QUERY_STRING']) {<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$request_uri
+                                    = str_replace("?" . $_SERVER['QUERY_STRING'], "",
+                                    $_SERVER['REQUEST_URI']);<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return $request_uri;<br>
+                                    }<br><br>
+                                    if (getRequestUri() == "/ads.txt") {<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; header('Location:
+                                    https://ads-txt.vlitag.com/{{.Domain.Uuid}}/ads.txt');<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; exit;<br>
+                                    };<br>
+                                </code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/*Step 3*/}}
+
+                <div class="py-4">
+                    <h5 class="alert-heading fs-5 font-weight-semibold">{{$AdsTxtLang.Setup4}}</h5>
+                    <form id="scanAds" method="POST">
+                        <div class="alert bg-gray-50 d-flex align-items-center">
+                        <span class="fw-normal">
+                            {{$AdsTxtLang.Content4}}
+                        </span>
+                            <input type="hidden" id="did" name="did" value="{{.Domain.Id}}"/>
+                            <a class="btn btn-warning btn-push-line-item ms-auto submit"
+                                    id="scanAdsButton">{{$AdsTxtLang.ButtonCheck}}
+                            </a>
+                        </div>
+                    </form>
+                </div>
+                {{/*Step 4*/}}
+
+            </div>
+        </div>
+    </div>
+</div>
+{{/*Form Infomation*/}}
+<style>
+    .circle-sm {
+        width: 1rem !important;
+        min-width: 1rem !important;
+        height: 1rem !important;
+        font-size: 1rem !important;
+        padding: 3px !important;
+    }
+</style>

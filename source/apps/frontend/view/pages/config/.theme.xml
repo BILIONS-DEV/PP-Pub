@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theme name="muze">
+    <page path="/config">
+        <!-- Import CSS -->
+        <css link="/assets/plugins/select2/dist/css/select2.min.css"/>
+        <css link="/assets/plugins/select2/dist/css/select2-bootstrap.min.css"/>
+        <css link="/assets/plugins/bootstrap-toggle/css/bootstrap-toggle.min.css"/>
+        <css link="/assets/plugins/datatables/datatables.min.css"/>
+        <!-- Import JS -->
+        <js link="/assets/plugins/select2/dist/js/select2.full.js"/>
+        <js link="/assets/plugins/bootstrap-toggle/js/bootstrap-toggle.min.js"/>
+        <js link="/assets/plugins/datatables/datatables.min.js"/>
+        <jsOnBottom link="/assets/config/index.js"/>
+    </page>
+</theme>

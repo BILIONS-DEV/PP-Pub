@@ -1,0 +1,7 @@
+{{- /*gotype: source/apps/frontend/model.AdSizeRecord*/ -}}
+
+{{if ne .TableAdSize.Id 0}}
+    <span>{{.TableAdSize.Name}}</span>
+{{else}}
+    <span>1x1</span>
+{{end}}

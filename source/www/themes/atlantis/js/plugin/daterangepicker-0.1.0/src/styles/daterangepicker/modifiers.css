@@ -1,0 +1,67 @@
+.daterangepicker.opened {
+  display: inline-flex;
+}
+.daterangepicker.expanded .calendar {
+  display: block;
+}
+.daterangepicker.hide-periods .periods {
+  display: none;
+}
+.daterangepicker.hide-periods .calendar .calendar-title {
+  display: none;
+}
+.daterangepicker.standalone {
+  position: static;
+}
+.daterangepicker.standalone .custom-range-buttons {
+  display: none;
+}
+.daterangepicker.hide-weekdays .weekdays {
+  display: none;
+}
+.daterangepicker.single {
+  flex-direction: column;
+}
+.daterangepicker.single .ranges,
+.daterangepicker.single .custom-range-inputs,
+.daterangepicker.single .custom-range-buttons,
+.daterangepicker.single .calendar .calendar-title {
+  display: none;
+}
+.daterangepicker.single .controls {
+  display: flex;
+  justify-content: center;
+}
+.daterangepicker.single .controls .periods {
+  margin-bottom: 0;
+}
+.daterangepicker.single .calendar .calendar-header {
+  margin-left: 0;
+  margin-right: 0;
+}
+.daterangepicker.single .calendar .calendar-table {
+  border: none;
+  padding: 0;
+}
+.daterangepicker.single.hide-periods .controls {
+  display: none;
+}
+.daterangepicker.month-period .table-col {
+  font-size: 1.25em;
+}
+.daterangepicker.year-period .table-col {
+  font-size: 1.25em;
+}
+.daterangepicker.quarter-period .table-col {
+  flex-direction: column;
+  font-size: 2em;
+}
+.daterangepicker.quarter-period .table-col .months {
+  font-size: 0.5em;
+  opacity: 0.75;
+}
+.daterangepicker.orientation-left:not(.single) .controls {
+  order: 2;
+}
+
+/*# sourceMappingURL=modifiers.css.map */

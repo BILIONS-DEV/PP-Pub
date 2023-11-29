@@ -1,0 +1,13 @@
+{{- /*gotype: source/apps/frontend/model.PlaylistRecord*/ -}}
+{{if eq .TablePlaylist.IsDefault 1}}
+    <div class="playlist-item-default">
+        <span data-bs-toggle="tooltip" title="Playlist default">
+            {{.TablePlaylist.Name}}
+        </span>
+    </div>
+{{else}}
+    <div class="playlist-item">
+        <div class="text-truncate" title="{{.TablePlaylist.Name}}"
+             style="max-width:350px">{{.TablePlaylist.Name}}</div>
+    </div>
+{{end}}

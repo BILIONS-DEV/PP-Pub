@@ -1,0 +1,11 @@
+{{- /*gotype: source/apps/frontend/model.TemplateRecord*/ -}}
+
+{{/*{{if eq .TableTemplate.Type 2}}*/}}
+{{/*    <span>Instream</span>*/}}
+{{/*{{else if eq .TableTemplate.Type 3}}*/}}
+{{/*    <span>Outstream</span>*/}}
+{{/*{{else}}*/}}
+{{/*    <span>Pin Zone</span>*/}}
+{{/*{{end}}*/}}
+
+<span>{{.TableTemplate.Type.StringV2}}</span>

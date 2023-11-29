@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theme name="muze">
+    <page path="/support">
+        <!-- Import CSS -->
+        <css link="/assets/plugins/bootstrap431/css/bootstrap.min.css"/>
+        <cssOnBottom link="/assets/support/index.min.css"/>
+<!--        <cssOnBottom link="/assets/support/portal_print.min.css"/>-->
+<!--        <cssOnBottom link="/assets/support/falcon_portal_utils.min.css"/>-->
+<!--        <cssOnBottom link="/assets/support/theme.min.css"/>-->
+
+        <!-- Import JS -->
+        <js link="/assets/js/popper.min.js"/>
+        <js link="/assets/plugins/bootstrap431/js/bootstrap.min.js"/>
+        <js link="/assets/plugins/sweetalert/sweetalert.min.js"/>
+        <jsOnBottom link="/assets/support/index.js"/>
+    </page>
+    <page path="/support/product-description">
+        <!-- Import CSS -->
+        <css link="/assets/plugins/bootstrap431/css/bootstrap.min.css"/>
+        <cssOnBottom link="/assets/support/index.min.css"/>
+<!--        <cssOnBottom link="/assets/support/portal_print.min.css"/>-->
+<!--        <cssOnBottom link="/assets/support/falcon_portal_utils.min.css"/>-->
+<!--        <cssOnBottom link="/assets/support/theme.min.css"/>-->
+
+        <!-- Import JS -->
+        <js link="/assets/js/popper.min.js"/>
+        <js link="/assets/plugins/bootstrap431/js/bootstrap.min.js"/>
+        <js link="/assets/plugins/sweetalert/sweetalert.min.js"/>
+        <jsOnBottom link="/assets/support/index.js"/>
+    </page>
+    <page path="/support/tickets/new">
+        <!-- Import CSS -->
+        <css link="/assets/plugins/bootstrap431/css/bootstrap.min.css"/>
+        <css link="/assets/plugins/summernote-0.8.18-dist/summernote-bs4.min.css"/>
+        <cssOnBottom link="/assets/support/index.min.css"/>
+<!--        <cssOnBottom link="/assets/support/portal_print.min.css"/>-->
+<!--        <cssOnBottom link="/assets/support/falcon_portal_utils.min.css"/>-->
+<!--        <cssOnBottom link="/assets/support/theme.min.css"/>-->
+
+        <!-- Import JS -->
+        <js link="/assets/js/popper.min.js"/>
+        <js link="/assets/plugins/bootstrap431/js/bootstrap.min.js"/>
+        <js link="/assets/plugins/sweetalert/sweetalert.min.js"/>
+        <js link="/assets/plugins/summernote-0.8.18-dist/summernote-bs4.min.js"/>
+        <jsOnBottom link="/assets/support/index.js"/>
+    </page>
+
+</theme>

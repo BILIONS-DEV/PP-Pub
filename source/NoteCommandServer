@@ -1,0 +1,25 @@
+
+//Note lệnh nhanh để build và restart service
+
+alias gofe="cd /home/assyrian/go/selfserve/source/apps/frontend"
+alias rfe="go build . && spv restart frontend"
+alias gobe="cd /home/assyrian/go/selfserve/source/apps/backend"
+alias rbe="go build . && spv restart backend"
+alias gojs="cd /home/assyrian/go/selfserve/source/apps/service"
+alias rjs="go build . && spv restart service"
+alias gospv="cd /home/assyrian/supervisor.d"
+
+VD: Restart backend thì chỉ cần gõ
+- gobe
+- rbe
+
+// Check log suppervior dùng lệnh tail
+ VD: tail -n 20 /var/log/auth.log
+- backend: tail -n 20 /home/assyrian/supervisor.d/log/backend.log
+- frontend: tail -n 20 /home/assyrian/supervisor.d/log/frontend.log
+- push_line_item: tail -n 20 /home/assyrian/supervisor.d/log/push_line_item.log
+- service: tail -n 20 /home/apd/supervisor.d/log/service.log
+- render_cache: tail -n 20 /home/assyrian/supervisor.d/log/render_cache.log
+- upload: tail -n 20 /home/assyrian/supervisor.d/log/upload.log
+- push_gam_google: tail -n 20 /home/assyrian/supervisor.d/log/push_gam_google.log
+- push_gam_prebid: tail -n 20 /home/assyrian/supervisor.d/log/push_gam_prebid.log

@@ -1,0 +1,93 @@
+{{- /*gotype: source/apps/frontend/controller.AssignAbTestingEdit*/ -}}
+{{$Lang := .Schema.LANG.Pages.AbTesting}}
+<div class="dm10">
+    <div class="dm8">
+        <div class="dm9">Setup</div>
+    </div>
+
+    <div class="pp7 test_type_client_server d-none">
+        <span class="pp-11 h-32">{{$Lang.Bidder}}</span>
+        <div class="end-selectpicker pp-9">
+            <select id="select_bidder" name="select_bidder" class="form-control selectpicker"
+                    title="{{$Lang.SelectABidder}}"
+                    data-live-search="true" data-size="7">
+                {{range .Bidders}}
+                    <option value="{{.TableBidder.Id}}"
+                            {{if eq .TableBidder.Id $.Row.TableAbTesting.BidderId}}selected{{end}}>{{if eq .TableBidder.BidderTemplateId 1}}{{.TableBidder.DisplayName}}{{else}}{{.TableBidder.BidderCode}}{{end}}</option>
+                {{end}}
+            </select>
+            <span class="form-text ms-2 w-auto invalid-feedback"></span>
+        </div>
+    </div>
+    <div class="pp7 test_type_user_id_module d-none">
+        <span class="pp-11 h-32">{{$Lang.UserIdModule}}</span>
+        <div class="end-selectpicker pp-9">
+            <select id="select_user_id_module" name="select_user_id_module" class="form-control selectpicker"
+                    title="{{$Lang.SelectAUserIdModule}}"
+                    data-live-search="true" data-size="7">
+                {{range .UserIdModule}}
+                    <option value="{{.TableModuleUserId.Id}}"
+                            {{if eq .TableModuleUserId.Id $.Row.TableAbTesting.UserIdModuleId}}selected{{end}}>{{.TableModuleUserId.Name}}</option>
+                {{end}}
+            </select>
+            <span class="form-text ms-2 w-auto invalid-feedback"></span>
+        </div>
+    </div>
+
+    <div class="test_type_auction_timeout test_type_client_server test_type_user_id_module d-none">
+        <div class="mt-4">
+            <div class="pp5 text-white">{{$Lang.TestGroupSize}}</div>
+        </div>
+        <div class="pp7">
+            <div id="box_fetch_margin_percent">
+                <div class="btn-group btn-group-custom" role="group">
+                    <input type="radio" class="btn-check btn-group-radio" name="test_group_size" id="test_group_size_1"
+                           value="1" {{if eq .Row.TableAbTesting.TestGroupSize 1}}checked{{end}}>
+                    <label class="btn pp-12 btn-outline-warning text-black m-0 rounded-left rounded-2 "
+                           for="test_group_size_1" style="border-left: 1px solid #aab4c8;">1%</label>
+                    <input type="radio" class="btn-check btn-group-radio" name="test_group_size" id="test_group_size_2"
+                           value="2" {{if eq .Row.TableAbTesting.TestGroupSize 2}}checked{{end}}>
+                    <label class="btn pp-12 btn-outline-warning text-black m-0" for="test_group_size_2">5%</label>
+                    <input type="radio" class="btn-check btn-group-radio" name="test_group_size" id="test_group_size_3"
+                           value="3" {{if eq .Row.TableAbTesting.TestGroupSize 3}}checked{{end}}>
+                    <label class="btn pp-12 btn-outline-warning text-black m-0" for="test_group_size_3">10%</label>
+                    <input type="radio" class="btn-check btn-group-radio" name="test_group_size" id="test_group_size_4"
+                           value="4" {{if eq .Row.TableAbTesting.TestGroupSize 4}}checked{{end}}>
+                    <label class="btn pp-12 btn-outline-warning text-black m-0" for="test_group_size_4">25%</label>
+                    <input type="radio" class="btn-check btn-group-radio" name="test_group_size" id="test_group_size_5"
+                           value="5" {{if eq .Row.TableAbTesting.TestGroupSize 5}}checked{{end}}>
+                    <label class="btn pp-12 btn-outline-warning text-black m-0" for="test_group_size_5">50%</label>
+                </div>
+                <div class="pp8"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="pp7 test_type_dynamic_hard_price_floor d-none">
+        <span class="pp-11 h-32">{{$Lang.DynamicPriceFloor}}</span>
+        <div class="end-selectpicker pp-9">
+            <div class="box-selectpicker">
+                <select id="dynamic_floor_price" name="dynamic_floor_price" class="form-control selectpicker" title="Select a dynamic floor"
+                        data-live-search="true" data-size="7">
+                    {{range .Floors}}
+                        {{if eq .TableFloor.FloorType 1}}
+                            <option value="{{.TableFloor.Id}}"
+                                    {{if eq .TableFloor.Id $.Row.TableAbTesting.DynamicFloorPrice}}selected{{end}}>{{.TableFloor.Name}}</option>
+                        {{end}}
+                    {{end}}
+                </select>
+            </div>
+            <span class="form-text ms-2 w-auto invalid-feedback"></span>
+        </div>
+    </div>
+
+    <div class="pp7 test_type_dynamic_hard_price_floor d-none">
+        <span class="pp-11 h-32">{{$Lang.HardPriceFloor}}</span>
+        <div class="pp-9">
+            <input style="border-left: 0;border-radius: 0 2px 2px 0;" type="text" name="hard_price_floor"
+                   class="pp-10 form-control form-control" id="hard_price_floor" placeholder="$"
+                   value="{{.Row.TableAbTesting.HardPriceFloor}}">
+            <span class="form-text ms-2 w-auto invalid-feedback"></span>
+        </div>
+    </div>
+</div>

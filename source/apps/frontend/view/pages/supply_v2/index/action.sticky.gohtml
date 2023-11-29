@@ -1,0 +1,14 @@
+{{- /*gotype: source/apps/frontend/model.StickyBannerRecord*/ -}}
+<div class="btn-group mt-2">
+    <a href="/sticky/edit?id={{.TableStickyBanner.Id}}&inventoryId={{.TableStickyBanner.InventoryId}}&tab=5" class="btn btn-outline-success btn-sm btn-flat" data-toggle="tooltip" title=""
+       data-original-title="Edit">
+        <i class="fas fa-edit"></i>
+        Edit
+    </a>
+    <a href="javascript:void(0);" data-id="{{.TableStickyBanner.Id}}" class="remove btn btn-outline-danger btn-sm btn-flat"
+       data-toggle="tooltip"
+       title="" data-original-title="Remove">
+        <i class="fas fa-trash"></i>
+        Remove
+    </a>
+</div>

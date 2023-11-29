@@ -1,0 +1,78 @@
+{{- /*gotype: source/apps/frontend/controller.AssignFloorEdit*/ -}}
+{{$Lang := .Schema.LANG.Pages.Floor}}
+<div class="pp15">
+    <div class="pp5">{{$Lang.Name}}</div>
+</div>
+<div class="pp7">
+    <div class="pp-9">
+        <input class="pp-10 form-control" type="text" id="name" name="name" value="{{.Row.TableFloor.Name}}">
+        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+    </div>
+</div>
+<div class="pp15">
+    <div class="pp5"> {{$Lang.Description}}</div>
+</div>
+<div class="pp7">
+    <textarea class="pp17" spellcheck="false" id="description"
+              name="description">{{.Row.TableFloor.Description}}</textarea>
+    <span class="form-text ms-2 w-auto invalid-feedback"></span>
+</div>
+<div class="pp15">
+    <div class="pp5">{{$Lang.Priority}}</div>
+</div>
+<div class="pp7 cus-selectpicker pp-9">
+    <select id="priority" name="priority" class="form-control selectpicker">
+        <option value="1" {{if eq .Row.TableFloor.Priority 1}}selected{{end}}>1 (highest)</option>
+        <option value="2" {{if eq .Row.TableFloor.Priority 2}}selected{{end}}>2</option>
+        <option value="3" {{if eq .Row.TableFloor.Priority 3}}selected{{end}}>3</option>
+        <option value="4" {{if eq .Row.TableFloor.Priority 4}}selected{{end}}>4</option>
+        <option value="5" {{if eq .Row.TableFloor.Priority 5}}selected{{end}}>5</option>
+        <option value="6" {{if eq .Row.TableFloor.Priority 6}}selected{{end}}>6</option>
+        <option value="7" {{if eq .Row.TableFloor.Priority 7}}selected{{end}}>7</option>
+        <option value="8" {{if eq .Row.TableFloor.Priority 8}}selected{{end}}>8</option>
+        <option value="9" {{if eq .Row.TableFloor.Priority 9}}selected{{end}}>9</option>
+        <option value="10" {{if eq .Row.TableFloor.Priority 10}}selected{{end}}>10</option>
+        <option value="11" {{if eq .Row.TableFloor.Priority 11}}selected{{end}}>11</option>
+        <option value="12" {{if eq .Row.TableFloor.Priority 12}}selected{{end}}>12</option>
+        <option value="13" {{if eq .Row.TableFloor.Priority 13}}selected{{end}}>13</option>
+        <option value="14" {{if eq .Row.TableFloor.Priority 14}}selected{{end}}>14</option>
+        <option value="15" {{if eq .Row.TableFloor.Priority 15}}selected{{end}}>15</option>
+        <option value="16" {{if eq .Row.TableFloor.Priority 16}}selected{{end}}>16 (lowest)</option>
+    </select> <span class="form-text ms-2 w-auto invalid-feedback"></span>
+</div>
+<div class="pp15">
+    <div class="pp5">Status</div>
+</div>
+<div class="pp7">
+    <label class="switch"> <input type="checkbox" id="status" name="status"
+                                  {{if eq .Row.TableFloor.Status 1}}checked{{end}}> <span class="slider round"></span>
+    </label>
+</div>
+
+<div class="pp15">
+    <div class="pp5">{{$Lang.FloorType}}</div>
+</div>
+<div class="pp7">
+    <div class="cus-selectpicker pp-9">
+        <select id="floor_type" name="floor_type" class="form-control selectpicker" title="Floor Type" data-size="7" disabled>
+{{/*            <option value="1" {{if eq .Row.TableFloor.FloorType 1}}selected{{end}}>Dynamic Price Floor</option>*/}}
+            <option value="2" {{if eq .Row.TableFloor.FloorType 2}}selected{{end}}>Hard Price Floor</option>
+        </select>
+        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+    </div>
+</div>
+<div class="box-floor-value">
+    <div class="pp15">
+        <div class="pp5">{{$Lang.FloorValue}}</div>
+    </div>
+    <div class="pp7">
+        <input id="floor_value" style="border-top-right-radius: 0;border-bottom-right-radius: 0;"
+               class="pp10 w-100 form-control" name="floor_value" type="text" value="{{.Row.TableFloor.FloorValue}}">
+        <span class="floating_on_desktop pp11"
+              style="border-radius: 0 2px 2px 0;max-width: 70px;min-width: 70px;">$</span>
+    </div>
+    <span class="form-text ms-2 w-auto invalid-feedback"></span>
+</div>
+<div class="pp1">
+    <b>Note:</b> Min Floor: Banner: $0.01, Video: $0.1
+</div>

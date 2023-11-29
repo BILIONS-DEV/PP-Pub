@@ -1,0 +1,56 @@
+{{- /*gotype: source/apps/frontend/controller.AssignGam*/ -}}
+<div class="box-push-line-item alert bg-gray-50 my-5 py-4 shadow-none" role="alert">
+    <h5 class="alert-heading fs-5 font-weight-semibold">4. {{.Schema.LANG.Pages.GAM.Step.Step4.Title}}</h5>
+    <div class="row">
+        <div class="col">
+            <p class="fw-normal">{{.Schema.LANG.Pages.GAM.Step.Step4.Description}}</p>
+        </div>
+        <div class="col-auto buttonPushLineItem">
+            <button class="btn btn-primary btn-push-line-item">
+                Push Line Item
+            </button>
+        </div>
+    </div>
+    <div class="table-responsive mt-2 mb-0">
+        <table class="table table-nowrap overflow-hidden">
+            <thead>
+            <tr>
+                <th class="fw-bold w-25">Network ID</th>
+                <th class="fw-bold">Network Name</th>
+                <th class="fw-bold text-end">Line Item Status</th>
+            </tr>
+            </thead>
+            <tbody class="list networkPushLineItem">
+            {{range .Networks}}
+                {{if and (eq .TableGamNetwork.Status 2) (eq .TableGamNetwork.ApiAccess 1)}}
+                    <tr data-id="{{.TableGamNetwork.Id}}" data-status-push="{{.TableGamNetwork.PushLineItem}}">
+                        <td class="fw-normal">{{.TableGamNetwork.NetworkId}}</td>
+                        <td class="fw-normal">{{.TableGamNetwork.NetworkName}}</td>
+                        <td class="fw-normal">
+                            <span class="fs-12 float-end notify-push-line-item">
+                                {{if eq .TableGamNetwork.PushLineItem 3}}
+                                    <span>
+                                        In Process
+                                    </span>
+                                {{else if eq .TableGamNetwork.PushLineItem 2}}
+                                    <span class="text-danger">
+                                        Unachievable
+                                    </span>
+                                {{else if eq .TableGamNetwork.PushLineItem 1}}
+                                    <span class="text-success">
+                                        Pushed
+                                    </span>
+                                {{else}}
+                                    <span>
+                                        Not been pushed ever
+                                    </span>
+                                {{end}}
+                            </span>
+                        </td>
+                    </tr>
+                {{end}}
+            {{end}}
+            </tbody>
+        </table>
+    </div>
+</div>

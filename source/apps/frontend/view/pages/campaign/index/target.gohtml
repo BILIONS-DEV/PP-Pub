@@ -1,0 +1,124 @@
+{{ if .AllTarget }}
+    <div style='height: 30px; text-align: center; margin: 9px auto;'>All target...</div>
+{{ else }}
+    {{if .Audience.Category.Include}}
+        <ul class='list-group' style='min-width: 200px'>
+            <li class='list-group-item item-tooltip item-parent '>
+                <span class='ms-3 '>Category</span>
+            </li>
+            {{ range $i, $param := .Audience.Category.Include}}
+                <li class='list-group-item item-tooltip item-child'>
+                    <span class='ms-3'>
+                        <svg enable-background='new 0 0 24 24' height='14' width='14' viewBox='0 0 24 24' xml:space='preserve'><path fill='#2DC214' clip-rule='evenodd' d='M21.652,3.211c-0.293-0.295-0.77-0.295-1.061,0L9.41,14.34  c-0.293,0.297-0.771,0.297-1.062,0L3.449,9.351C3.304,9.203,3.114,9.13,2.923,9.129C2.73,9.128,2.534,9.201,2.387,9.351  l-2.165,1.946C0.078,11.445,0,11.63,0,11.823c0,0.194,0.078,0.397,0.223,0.544l4.94,5.184c0.292,0.296,0.771,0.776,1.062,1.07  l2.124,2.141c0.292,0.293,0.769,0.293,1.062,0l14.366-14.34c0.293-0.294,0.293-0.777,0-1.071L21.652,3.211z' fill-rule='evenodd'></path></svg>
+                        <span class='ml-1'>{{$param}}</span>
+                    </span>
+                </li>
+            {{end}}
+        </ul>
+    {{end}}
+    {{if .Audience.Category.Exclude}}
+        <ul class='list-group' style='min-width: 200px'>
+            <li class='list-group-item item-tooltip item-parent '>
+                <span class='ms-3 '>Category</span>
+            </li>
+            {{ range $i, $param := .Audience.Category.Include}}
+                <li class='list-group-item item-tooltip item-child'>
+                    <span class='ms-3'>
+                        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' width='14px' height='14px'><path fill='#f00' stroke='#c74343' stroke-miterlimit='10' d='M20,1C9.507,1,1,9.507,1,20s8.507,19,19,19s19-8.507,19-19	S30.493,1,20,1z M6,20c0-7.732,6.268-14,14-14c2.963,0,5.706,0.926,7.968,2.496L8.496,27.968C6.926,25.706,6,22.963,6,20z M20,34	c-2.963,0-5.706-0.926-7.968-2.496l19.472-19.472C33.074,14.294,34,17.037,34,20C34,27.732,27.732,34,20,34z'></path></svg>
+                        <span class='ml-1'>{{$param}}</span>
+                    </span>
+                </li>
+            {{end}}
+        </ul>
+    {{end}}
+    {{if .Audience.Locations.Include}}
+        <ul class='list-group' style='min-width: 200px'>
+            <li class='list-group-item item-tooltip item-parent '>
+                <span class='ms-3 '>Locations</span>
+            </li>
+            {{ range $i, $param := .Audience.Locations.Include}}
+                <li class='list-group-item item-tooltip item-child'>
+                    <span class='ms-3'>
+                        <svg enable-background='new 0 0 24 24' height='14' width='14' viewBox='0 0 24 24' xml:space='preserve'><path fill='#2DC214' clip-rule='evenodd' d='M21.652,3.211c-0.293-0.295-0.77-0.295-1.061,0L9.41,14.34  c-0.293,0.297-0.771,0.297-1.062,0L3.449,9.351C3.304,9.203,3.114,9.13,2.923,9.129C2.73,9.128,2.534,9.201,2.387,9.351  l-2.165,1.946C0.078,11.445,0,11.63,0,11.823c0,0.194,0.078,0.397,0.223,0.544l4.94,5.184c0.292,0.296,0.771,0.776,1.062,1.07  l2.124,2.141c0.292,0.293,0.769,0.293,1.062,0l14.366-14.34c0.293-0.294,0.293-0.777,0-1.071L21.652,3.211z' fill-rule='evenodd'></path></svg>
+                        <span class='ml-1'>{{$param}}</span>
+                    </span>
+                </li>
+            {{end}}
+        </ul>
+    {{end}}
+    {{if .Audience.Locations.Exclude}}
+        <ul class='list-group' style='min-width: 200px'>
+            <li class='list-group-item item-tooltip item-parent '>
+                <span class='ms-3 '>Locations</span>
+            </li>
+            {{ range $i, $param := .Audience.Locations.Include}}
+                <li class='list-group-item item-tooltip item-child'>
+                    <span class='ms-3'>
+                        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' width='14px' height='14px'><path fill='#f00' stroke='#c74343' stroke-miterlimit='10' d='M20,1C9.507,1,1,9.507,1,20s8.507,19,19,19s19-8.507,19-19	S30.493,1,20,1z M6,20c0-7.732,6.268-14,14-14c2.963,0,5.706,0.926,7.968,2.496L8.496,27.968C6.926,25.706,6,22.963,6,20z M20,34	c-2.963,0-5.706-0.926-7.968-2.496l19.472-19.472C33.074,14.294,34,17.037,34,20C34,27.732,27.732,34,20,34z'></path></svg>
+                        <span class='ml-1'>{{$param}}</span>
+                    </span>
+                </li>
+            {{end}}
+        </ul>
+    {{end}}
+    {{if .Audience.Device.Include}}
+        <ul class='list-group' style='min-width: 200px'>
+            <li class='list-group-item item-tooltip item-parent '>
+                <span class='ms-3 '>Device</span>
+            </li>
+            {{ range $i, $param := .Audience.Device.Include}}
+                <li class='list-group-item item-tooltip item-child'>
+                    <span class='ms-3'>
+                        <svg enable-background='new 0 0 24 24' height='14' width='14' viewBox='0 0 24 24' xml:space='preserve'><path fill='#2DC214' clip-rule='evenodd' d='M21.652,3.211c-0.293-0.295-0.77-0.295-1.061,0L9.41,14.34  c-0.293,0.297-0.771,0.297-1.062,0L3.449,9.351C3.304,9.203,3.114,9.13,2.923,9.129C2.73,9.128,2.534,9.201,2.387,9.351  l-2.165,1.946C0.078,11.445,0,11.63,0,11.823c0,0.194,0.078,0.397,0.223,0.544l4.94,5.184c0.292,0.296,0.771,0.776,1.062,1.07  l2.124,2.141c0.292,0.293,0.769,0.293,1.062,0l14.366-14.34c0.293-0.294,0.293-0.777,0-1.071L21.652,3.211z' fill-rule='evenodd'></path></svg>
+                        <span class='ml-1'>{{$param}}</span>
+                    </span>
+                </li>
+            {{end}}
+        </ul>
+    {{end}}
+    {{if .Audience.Device.Exclude}}
+        <ul class='list-group' style='min-width: 200px'>
+            <li class='list-group-item item-tooltip item-parent '>
+                <span class='ms-3 '>Device</span>
+            </li>
+            {{ range $i, $param := .Audience.Device.Include}}
+                <li class='list-group-item item-tooltip item-child'>
+                    <span class='ms-3'>
+                        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' width='14px' height='14px'><path fill='#f00' stroke='#c74343' stroke-miterlimit='10' d='M20,1C9.507,1,1,9.507,1,20s8.507,19,19,19s19-8.507,19-19	S30.493,1,20,1z M6,20c0-7.732,6.268-14,14-14c2.963,0,5.706,0.926,7.968,2.496L8.496,27.968C6.926,25.706,6,22.963,6,20z M20,34	c-2.963,0-5.706-0.926-7.968-2.496l19.472-19.472C33.074,14.294,34,17.037,34,20C34,27.732,27.732,34,20,34z'></path></svg>
+                        <span class='ml-1'>{{$param}}</span>
+                    </span>
+                </li>
+            {{end}}
+        </ul>
+    {{end}}
+    {{if .Audience.Languages.Include}}
+        <ul class='list-group' style='min-width: 200px'>
+            <li class='list-group-item item-tooltip item-parent '>
+                <span class='ms-3 '>Languages</span>
+            </li>
+            {{ range $i, $param := .Audience.Languages.Include}}
+                <li class='list-group-item item-tooltip item-child'>
+                    <span class='ms-3'>
+                        <svg enable-background='new 0 0 24 24' height='14' width='14' viewBox='0 0 24 24' xml:space='preserve'><path fill='#2DC214' clip-rule='evenodd' d='M21.652,3.211c-0.293-0.295-0.77-0.295-1.061,0L9.41,14.34  c-0.293,0.297-0.771,0.297-1.062,0L3.449,9.351C3.304,9.203,3.114,9.13,2.923,9.129C2.73,9.128,2.534,9.201,2.387,9.351  l-2.165,1.946C0.078,11.445,0,11.63,0,11.823c0,0.194,0.078,0.397,0.223,0.544l4.94,5.184c0.292,0.296,0.771,0.776,1.062,1.07  l2.124,2.141c0.292,0.293,0.769,0.293,1.062,0l14.366-14.34c0.293-0.294,0.293-0.777,0-1.071L21.652,3.211z' fill-rule='evenodd'></path></svg>
+                        <span class='ml-1'>{{$param}}</span>
+                    </span>
+                </li>
+            {{end}}
+        </ul>
+    {{end}}
+    {{if .Audience.Languages.Exclude}}
+        <ul class='list-group' style='min-width: 200px'>
+            <li class='list-group-item item-tooltip item-parent '>
+                <span class='ms-3 '>Languages</span>
+            </li>
+            {{ range $i, $param := .Audience.Languages.Include}}
+                <li class='list-group-item item-tooltip item-child'>
+                    <span class='ms-3'>
+                        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' width='14px' height='14px'><path fill='#f00' stroke='#c74343' stroke-miterlimit='10' d='M20,1C9.507,1,1,9.507,1,20s8.507,19,19,19s19-8.507,19-19	S30.493,1,20,1z M6,20c0-7.732,6.268-14,14-14c2.963,0,5.706,0.926,7.968,2.496L8.496,27.968C6.926,25.706,6,22.963,6,20z M20,34	c-2.963,0-5.706-0.926-7.968-2.496l19.472-19.472C33.074,14.294,34,17.037,34,20C34,27.732,27.732,34,20,34z'></path></svg>
+                        <span class='ml-1'>{{$param}}</span>
+                    </span>
+                </li>
+            {{end}}
+        </ul>
+    {{end}}
+{{ end }}

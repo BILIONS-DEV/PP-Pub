@@ -1,0 +1,8 @@
+{{- /*gotype: source/apps/fe/controller.ruleDatatable*/ -}}
+{{if eq .Type "blocked-page"}}
+    <span class="text-capitalize">Blocked Page</span>
+{{else if eq .Type "blocking"}}
+    <span class="text-capitalize">Ad Quality</span>
+{{else}}
+    <span class="text-capitalize">{{.Type}}</span>
+{{end}}

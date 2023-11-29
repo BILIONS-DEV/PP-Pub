@@ -1,0 +1,14 @@
+{{- /*gotype: source/apps/frontend/controller.AssignAdsTxt*/ -}}
+{{$AdsTxt := .Schema.LANG.Pages.AdsTxt}}
+<div class="px-5 py-3 border-bottom border-gray-200 after-header">
+    <div class="container-fluid px-0">
+        <div class="row align-items-center">
+            <div class="col">
+                <a href="/ads_txt">
+                    <span class="text-uppercase tiny text-gray-600 Montserrat-font font-weight-semibold">{{$AdsTxt.TitleDetail}}</span>
+                </a>
+                <h1 class="h5 mb-0">{{.Domain.Name}}</h1>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,106 @@
+{{- /*gotype: source/apps/frontend/controller.AssignLoadHistory*/ -}}
+<div class="modal-header border-0 pb-0 align-items-start px-4">
+    <h5 class="modal-title" id="exampleModalLabel">History: {{.Title}} {{if ne .Host ""}}({{.Host}}){{end}}</h5>
+    <button type="button" class="btn btn-icon p-0" data-bs-dismiss="modal" aria-label="Close">
+        <svg data-name="icons/tabler/close" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+            <rect data-name="Icons/Tabler/Close background" width="16" height="16" fill="none"></rect>
+            <path d="M.82.1l.058.05L6,5.272,11.122.151A.514.514,0,0,1,11.9.82l-.05.058L6.728,6l5.122,5.122a.514.514,0,0,1-.67.777l-.058-.05L6,6.728.878,11.849A.514.514,0,0,1,.1,11.18l.05-.058L5.272,6,.151.878A.514.514,0,0,1,.75.057Z" transform="translate(2 2)" fill="#1e1e1e"></path>
+        </svg>
+    </button>
+</div>
+<div class="modal-body p-4 pb-0">
+    <div class="header-history">
+        <div class="header-h">
+            <span class="pr-2">Show</span> <span class="">
+                <label class="" for="is_default"> </label>
+                <div class="form-check form-check-inline form-check-rounded">
+                    <label for="Everything">
+                        Everything
+                    </label>
+                    <input class="form-check-input loadType" type="radio" value="Everything" name="loadType" id="Everything">
+                </div>
+            </span> <span class="">
+                <label class="" for="is_default"> </label>
+                <div class="form-check form-check-inline form-check-rounded">
+                    <label for="ChangesOnly">
+                        Changes only
+                    </label>
+                    <input class="form-check-input loadType" type="radio" value="ChangesOnly" name="loadType" checked id="ChangesOnly">
+                </div>
+            </span>
+        </div>
+    </div>
+    <div class="table-responsive border" style="max-height: 500px">
+        <table class="table table-hover mb-0 table-history">
+            <thead>
+            <tr>
+                <th scope="col" style=" min-width: 300px;">Field</th>
+                <th scope="col"></th>
+                <th scope="col" style="min-width: 120px;">Previous state</th>
+                <th scope="col">Current state</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {{range .Histories}}
+                {{$Row := .Row}}
+                <tr class="item-{{$Row.Id}} title-item">
+                    {{/*                    <td colspan="4">Changed on 8/24/2016 11:00 AM GMT+7</td>*/}}
+                    <td colspan="4"><b>{{.Row.Title}} on {{.CreateTime}}</b></td>
+                </tr>
+                {{range .Compare}}
+                    <tr class="value-item {{if eq .Action "none"}}everything{{end}} value-{{$Row.Id}}" data-id="{{$Row.Id}}">
+                        <td class="text-nowrap">{{.Text}}</td>
+                        <td>
+                            {{if eq .Action "add"}}
+                                <span data-bs-toggle="tooltip" data-bs-placement="left" title="Add">
+                                     <i class="fa fa-plus-circle text-success " aria-hidden="true"></i>
+                                </span>
+                            {{else if eq .Action "update" }}
+                                <span data-bs-toggle="tooltip" data-bs-placement="left" title="Update">
+                                     <i class="fa fa-refresh" aria-hidden="true"></i>
+                                </span>
+                            {{else if eq .Action "delete" }}
+                                <span data-bs-toggle="tooltip" data-bs-placement="left" title="Delete">
+                                     <i class="fa fa-minus-circle text-danger" aria-hidden="true"></i>
+                                </span>
+                            {{else}}
+                                <i class="fa fa-circle-o" aria-hidden="true" style="opacity: 0.3;"></i>
+                            {{end}}
+                        </td>
+                        <td>
+                            {{if eq .OldData "" }}
+                                <span class="opacity-50">N/A</span>
+                            {{else}}
+                                {{.OldData}}
+                            {{end}}
+                        </td>
+                        <td>
+                            {{if eq .NewData "" }}
+                                <span class="opacity-50">N/A</span>
+                            {{else}}
+                                {{.NewData}}
+                            {{end}}
+                        </td>
+                    </tr>
+                {{end}}
+            {{end}}
+            </tbody>
+        </table>
+    </div>
+    <div class="footer-history">
+        <div class="footer-h text-end">
+            Showing: {{.Total}} changes of {{.Total}}
+        </div>
+    </div>
+</div>
+<div class="modal-footer border-top-0">
+    <button type="button" class="btn px-2" data-bs-dismiss="modal">
+        <span class="px-1 text-primary">CLOSE</span>
+    </button>
+</div>
+<style>
+    tr {
+        border-bottom: 1px solid #e9e9e9;
+    }
+</style>

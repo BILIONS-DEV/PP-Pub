@@ -1,0 +1,51 @@
+package main
+
+import (
+	"example_druid/druid"
+	"fmt"
+	"time"
+)
+
+type Response struct {
+	Time             time.Time `json:"__time" druid:"time123"`
+	Channel          string    `json:"channel" druid:"channel123"`
+	CityName         string    `json:"cityName"`
+	Comment          string    `json:"comment"`
+	EXPR4            string    `json:"EXPR$4"`
+	CountryIsoCode   string    `json:"countryIsoCode"`
+	CountryName      string    `json:"countryName"`
+	DiffURL          string    `json:"diffUrl"`
+	Flags            string    `json:"flags"`
+	IsAnonymous      string    `json:"isAnonymous"`
+	IsMinor          string    `json:"isMinor"`
+	IsNew            string    `json:"isNew"`
+	IsRobot          string    `json:"isRobot"`
+	IsUnpatrolled    string    `json:"isUnpatrolled"`
+	MetroCode        string    `json:"metroCode"`
+	Namespace        string    `json:"namespace"`
+	Page             string    `json:"page"`
+	RegionIsoCode    string    `json:"regionIsoCode"`
+	RegionName       string    `json:"regionName"`
+	SumAdded         int       `json:"sum_added"`
+	SumCommentLength int       `json:"sum_commentLength"`
+	SumDeleted       int       `json:"sum_deleted"`
+	SumDelta         int       `json:"sum_delta"`
+	SumDeltaBucket   int       `json:"sum_deltaBucket"`
+	EXPR24           string    `json:"EXPR$24"`
+}
+
+func main() {
+	var res []Response
+	client := druid.NewClient("http://66.206.12.106:8888")
+	sql := druid.Sql{
+		Query:        "SELECT * FROM wikipedia LIMIT 10",
+		Header:       false,
+		Context:      nil,
+		Parameters:   nil,
+	}
+
+	client.Sql(sql).Find(&res)
+	//druid.Bbb(&res)
+	fmt.Println(res)
+	//_ = c.Visit("h ttp://66.206.12.106:8888")
+}

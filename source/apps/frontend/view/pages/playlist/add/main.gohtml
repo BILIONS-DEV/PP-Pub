@@ -1,0 +1,38 @@
+{{- /*gotype: source/apps/frontend/controller.AssignPlaylistAdd*/ -}}
+{{$Lang := .Schema.LANG.Pages.Playlist}}
+<div class="pp15">
+    <div class="pp5">{{$Lang.Name}}</div>
+</div>
+<div class="pp7">
+    <div class="pp-9">
+        <input class="pp-10" type="text" id="name" name="name" value="">
+        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+    </div>
+</div>
+<div class="pp15">
+    <div class="pp5"> {{$Lang.Description}}</div>
+</div>
+<div class="pp7">
+    <textarea class="pp17" spellcheck="false" id="description" name="description">  </textarea>
+    <span class="form-text ms-2 w-auto invalid-feedback"></span>
+</div>
+<div class="pp15">
+    <div class="pp5">Ordering Method</div>
+</div>
+<div class=" cus-selectpicker pp-9">
+    <select id="ordering_method" name="ordering_method" class="form-control selectpicker">
+        <option value="random">Random</option>
+        <option value="most_view">Most viewed</option>
+        <option value="newest_first">Newest first</option>
+        <option value="oldest_first">Oldest first</option>
+    </select> <span class="form-text ms-2 w-auto invalid-feedback"></span>
+</div>
+<div class="pp15">
+    <div class="pp5">Videos Limit</div>
+</div>
+<div class="pp7">
+    <div class="pp-9">
+        <input class="pp-10" type="number" id="videos_limit" name="videos_limit" value="10">
+        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+    </div>
+</div>

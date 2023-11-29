@@ -1,0 +1,10 @@
+{{- /*gotype: source/apps/backend/model.PaymentInvoiceRecord*/ -}}
+{{if eq .TablePaymentInvoice.Status 1}}
+    {{if ne .TablePaymentInvoice.Statement ""}}
+        <a href="javascript:void(0)" class="text-capitalize py-2 header-btn load-pdf" data-pdf="{{.TablePaymentInvoice.Statement}}" data-bs-toggle="modal" data-bs-target="#InvoicePDFModal">Show Statement</a>
+    {{end}}
+{{else}}
+    {{if ne .TablePaymentInvoice.Pdf ""}}
+        <a href="javascript:void(0)" class="text-capitalize py-2 header-btn load-pdf" data-pdf="{{.TablePaymentInvoice.Pdf}}" data-bs-toggle="modal" data-bs-target="#InvoicePDFModal">Show Invoice</a>
+    {{end}}
+{{end}}

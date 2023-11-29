@@ -1,0 +1,58 @@
+{{- /*gotype: source/apps/frontend/config/assign.Schema*/ -}}
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#sidebarSetup" aria-controls="sidebarSetup" role="button"
+       data-bs-toggle="collapse"
+       aria-expanded="{{if IsActiveSidebarWithGroup .Uri .SidebarSetup.SetupGroup}}true{{end}}">
+        <div class="menu-icon">
+            <wui-icon name="recommendations" size="s"
+                      class="wui-icon wui-icon--recommendations -size-s hydrated"
+                      innerhtml="<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 24 24&quot; id=&quot;ds-icon-dashboard-recommendations&quot;><rect width=&quot;5.5&quot; height=&quot;5.5&quot; x=&quot;2&quot; y=&quot;5.63&quot; rx=&quot;1&quot; ry=&quot;1&quot;/><rect width=&quot;5.5&quot; height=&quot;5.5&quot; x=&quot;9.25&quot; y=&quot;5.63&quot; rx=&quot;1&quot; ry=&quot;1&quot;/><rect width=&quot;5.5&quot; height=&quot;5.5&quot; x=&quot;2&quot; y=&quot;12.88&quot; rx=&quot;1&quot; ry=&quot;1&quot;/><rect width=&quot;5.5&quot; height=&quot;5.5&quot; x=&quot;9.37&quot; y=&quot;12.88&quot; rx=&quot;1&quot; ry=&quot;1&quot;/><rect width=&quot;5.5&quot; height=&quot;5.5&quot; x=&quot;16.5&quot; y=&quot;5.63&quot; rx=&quot;1&quot; ry=&quot;1&quot;/><rect width=&quot;5.5&quot; height=&quot;5.5&quot; x=&quot;16.5&quot; y=&quot;12.88&quot; rx=&quot;1&quot; ry=&quot;1&quot;/></svg>">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                     id="ds-icon-dashboard-recommendations">
+                    <rect width="5.5" height="5.5" x="2" y="5.63" rx="1" ry="1"></rect>
+                    <rect width="5.5" height="5.5" x="9.25" y="5.63" rx="1" ry="1"></rect>
+                    <rect width="5.5" height="5.5" x="2" y="12.88" rx="1" ry="1"></rect>
+                    <rect width="5.5" height="5.5" x="9.37" y="12.88" rx="1" ry="1"></rect>
+                    <rect width="5.5" height="5.5" x="16.5" y="5.63" rx="1" ry="1"></rect>
+                    <rect width="5.5" height="5.5" x="16.5" y="12.88" rx="1" ry="1"></rect>
+                </svg>
+            </wui-icon>
+        </div>
+        <span class="ms-3">Setup</span> </a>
+    <div class="collapse collapse-box {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.SetupGroup}}show{{end}}"
+         id="sidebarSetup" data-bs-parent="#sidebarParent">
+        <ul class="nav nav-sm flex-column" id="sidebarSetupSubmenu">
+            <li class="nav-item">
+                <a href="/supply"
+                   class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.Inventory}}active{{end}}"> Supply </a>
+            </li>
+            <li class="nav-item">
+                <a href="/line-item"
+                   class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.Demand }}active{{end}}"> Demand </a>
+            </li>
+            <li class="nav-item">
+                <a href="/identity"
+                   class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.Identity }}active{{end}}"> Identity </a>
+            </li>
+            <li class="nav-item">
+                <a href="/rule"
+                   class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.Rule}}active{{end}}"> Rule </a>
+            </li>
+            <li class="nav-item">
+                <a href="/gam"
+                   class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.Gam}}active{{end}}"> GAM </a>
+            </li>
+            <li class="nav-item">
+                <a href="/ab-testing"
+                   class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.AbTesting}}active{{end}}"> A/B Test </a>
+            </li>
+            {{/*                        <li class="nav-item">*/}}
+            {{/*                            <a href="/blocking"*/}}
+            {{/*                               class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.Blocking}}active{{end}}">*/}}
+            {{/*                                Ad Quality*/}}
+            {{/*                            </a>*/}}
+            {{/*                        </li>*/}}
+        </ul>
+    </div>
+</li>
+{{/*Setup*/}}

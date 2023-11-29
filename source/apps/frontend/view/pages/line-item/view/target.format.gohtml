@@ -1,0 +1,143 @@
+{{- /*gotype: source/apps/frontend/controller.AssignBidderEdit*/ -}}
+{{$DemandLang := .Schema.LANG.Pages.LineItem}}
+<div class="card px-4">
+    <div class="card-header p-0" id="AdFormats">
+        <h5 class="mb-0 d-grid">
+            <button class="btn btn-light btn-block text-start p-3 rounded-0 fs-6 btn-collapse collapsed"
+                    type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseAdFormats"
+                    aria-expanded="false"
+                    aria-controls="collapseAdFormats">
+                <div class="row w-100">
+                    <div class="col-6">{{$DemandLang.Format}}</div>
+                    <div class="col-auto align-items-center d-flex text-notify-target">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             width="16"
+                             height="16" fill="currentColor"
+                             class="bi bi-check-lg text-blue-600 me-2"
+                             viewBox="0 0 16 16">
+                            <path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/>
+                        </svg>
+                        <span class="fs-6 fw-normal"
+                              id="text_for_format"
+                              style="font-size: 0.85rem !important;">
+                            {{$DemandLang.AllFormat}}
+                        </span>
+                    </div>
+                </div>
+            </button>
+        </h5>
+    </div>
+    <div id="collapseAdFormats" class="collapse"
+         aria-labelledby="AdFormats"
+         data-bs-parent="#target">
+        <div class="card-body card-target lh-lg pt-3 px-0">
+            <div class="row">
+                <div class="col-lg-6 col-xxl-6">
+                    <div class="row mb-3 header-target">
+                        <div class="col-md-12">
+                            <div class="d-flex search-left border border-gray-300 rounded-2">
+                                <img src="/assets/svg/icons/search@16.svg"
+                                     alt="Search" class="ps-2">
+                                <input type="search"
+                                       class="form-control border-0 pe-0 input-search-target"
+                                       placeholder="{{$DemandLang.SearchAdFormat}}"
+                                       id="search_ad_format">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="list_ad_format" class="box-target">
+                        {{$len4 := len .AdFormats}}
+                        <div class="list-group list-group-flush my-n3 pt-3 box_empty_format"
+                             {{if ne $len4 0}}hidden{{end}} >
+                            <div class="list-group-item">
+                                <div id="load_empty_ad_format" class="d-flex flex-row align-items-center px-md-2">
+                                    <div class="col p-0 text-center">
+                                        <h6 class="m-0 font-weight-semibold fs-12">
+                                            No data available
+                                        </h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{range .AdFormats}}
+                            <div class="target-item border-bottom border-gray-50 ms-2 me-3"
+                                 id="{{.TableAdType.Id}}"
+                                 {{if (InArray .TableAdType.Id $.AdFormatOfBidder false)}}hidden{{end}}>
+                                <div class="list-group list-group-flush my-n3">
+                                    <div class="list-group-item">
+                                        <div class="d-flex flex-row align-items-center">
+                                            <div class="col p-0">
+                                                <span>{{.TableAdType.Name}}</span>
+                                            </div>
+                                            <div class="col-auto">
+                                                <button class="btn d-flex align-items-center btn-outline-secondary btn-icon rounded-circle p-0 add_format"
+                                                        data-id="{{.TableAdType.Id}}" name="{{.TableAdType.Name}}"
+                                                        type="button">
+                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                         width="12"
+                                                         height="12"
+                                                         fill="currentColor"
+                                                         class="bi bi-plus-lg"
+                                                         viewBox="0 0 16 16">
+                                                        <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {{end}}
+                    </div>
+                </div>
+                {{/*Left Box Format*/}}
+                <div class="col-lg-6 col-xxl-6 block_format">
+                    <div class="row mb-3 header-target">
+                        <div class="col-md-12">
+                            <div class="d-flex">
+                                <a class="btn btn-clear-target ms-auto remove_all_format">
+                                    {{$DemandLang.Clear}}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-target-selected box_ad_format">
+                        {{range .AdFormatsIncluded}}
+                            <div class="target-item border-bottom border-gray-300 ms-2 me-3 item_selected"
+                                 id="{{.TableAdType.Id}}">
+                                <div class="list-group list-group-flush my-n3">
+                                    <div class="list-group-item">
+                                        <div class="d-flex flex-row align-items-center">
+                                            <div class="col p-0">
+                                                <span>{{.TableAdType.Name}}</span>
+                                            </div>
+                                            <div class="col-auto">
+                                                <button type="button"
+                                                        id="{{.TableAdType.Id}}"
+                                                        name="{{.TableAdType.Name}}"
+                                                        class="btn d-flex align-items-center btn-outline-danger btn-icon rounded-circle p-0 remove_adFormat">
+                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                         width="12"
+                                                         height="12"
+                                                         fill="currentColor"
+                                                         class="bi bi-dash-lg"
+                                                         viewBox="0 0 16 16">
+                                                        <path d="M0 8a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z"></path>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {{end}}
+                    </div>
+                </div>
+                {{/*Right Box Format*/}}
+                <input hidden value="{{.IsMoreAdFormat}}" id="is_more_adformat"/>
+                <input hidden value="{{.FormatLastPage}}" id="last_page_format"/>
+            </div>
+        </div>
+    </div>
+</div>

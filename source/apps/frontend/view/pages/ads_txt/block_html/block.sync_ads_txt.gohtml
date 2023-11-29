@@ -1,0 +1,18 @@
+{{- /*gotype: source/apps/frontend/model.AdsTxtRecord*/ -}}
+{{/*{{if eq .TableInventory.SyncAdsTxt 1}}*/}}
+{{/*    <span c>{{.TableInventory.SyncAdsTxt.String}}</span>*/}}
+{{/*{{else if eq .TableInventory.SyncAdsTxt 2}}*/}}
+{{/*    <span>{{.TableInventory.SyncAdsTxt.String}}</span>*/}}
+{{/*{{else}}*/}}
+{{/*    <span>{{.TableInventory.SyncAdsTxt.String}}</span>*/}}
+{{/*{{end}}*/}}
+
+{{if eq .TableInventory.SyncAdsTxt 1}}
+    <span>{{.TableInventory.SyncAdsTxt.String}}</span>
+{{else if eq .TableInventory.SyncAdsTxt 2}}
+    <span>{{.TableInventory.SyncAdsTxt.String}}</span>
+{{else if eq .TableInventory.SyncAdsTxt 3}}
+    <span>{{.TableInventory.SyncAdsTxt.String}}</span>
+{{else}}
+    <span>Not scanned yet</span>
+{{end}}

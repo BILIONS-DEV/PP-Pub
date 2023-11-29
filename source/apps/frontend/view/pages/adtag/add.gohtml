@@ -1,0 +1,786 @@
+{{- /*gotype: source/apps/frontend/controller.AssignAdTagAdd*/ -}}
+{{$LangAdTag := .Schema.LANG.Pages.AdTag}}
+
+<style>
+.pp10.form-control{
+    width: 100%;
+}
+</style>
+<form id="AddAdTag" data-url="/adtag/add" onsubmit="return false">
+    <div class="sidebar-contents">
+        <input hidden value="{{.InventoryId}}" name="inventory_id"/>
+        <div class="sidebar-content">
+            <h3>{{$LangAdTag.Name}}</h3>
+            <div class="sidebar-content-1">
+                <div class="pp-9">
+                    <input type="url" id="name" name="name" class="form-control"
+                           placeholder="{{$LangAdTag.NamePlaceholder}}">
+                    <span class="form-text w-auto invalid-feedback"></span>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar-content">
+            <h3>{{$LangAdTag.AdType}}</h3>
+            <div class="sidebar-content-1 cus-selectpicker box-selectpicker pp-9">
+                <select id="ad_tag_type" name="ad_tag_type" class="form-control selectpicker">
+                    {{range .AdTypes}}
+                        <option value="{{.TableAdType.Id}}">{{.TableAdType.Name}}</option>
+                    {{end}}
+                </select>
+            </div>
+            <span class="form-text w-auto invalid-feedback"></span>
+        </div>
+        <div class="sidebar-content">
+            <h3>{{$LangAdTag.Status}}</h3>
+            <div class="pp7">
+                <label class="switch"> <input type="checkbox" id="status" name="status" checked>
+                    <span class="slider round"></span> </label>
+                <div class="pp8"></div>
+            </div>
+
+            <div class="box_shift_content d-none">
+                <div class="pp15">
+                    <div class="pp5"><h3 class="m-0">Shift Content</h3></div>
+                    <span class="pp16 mt-0" type="button" tabindex="0" data-bs-toggle="popover"
+                          data-bs-content="This setting will allow/not allow the sticky ad to shift the content of website when it appear"
+                          data-original-title="" title=""
+                          data-bs-original-title="">
+                        <svg viewBox="64 64 896 896" data-icon="question-circle" width="1em" height="1em"
+                             fill="currentColor" type="button" tabindex="0">
+                            <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
+                            <path d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"></path>
+                        </svg>
+                    </span>
+                </div>
+                <div class="pp7">
+                    <label class="switch">
+                        <input type="checkbox" id="shift_content" name="shift_content">
+                        <span class="slider round"></span> </label>
+                    <div class="pp8"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar-content ad_refresh">
+            <h3>Ad Refresh</h3>
+            <div class="sidebar-content-1 cus-selectpicker box-selectpicker pp-9">
+            <select id="ad_refresh" name="ad_refresh" class="form-control selectpicker">
+                    <option value="domain_configuration">Domain Configuration</option>
+                    <option value="individual_tag_configuration">Individual Tag Configuration</option>
+            </select>
+            </div>
+            {{/*Ad Refresh*/}}
+
+            <div class="individual_tag_configuration mt-4 d-none">
+                <h3>Ad Refresh Time</h3>
+               <div class="pp-9">
+                    <div class="pp7">
+                        <input style="border-top-right-radius: 0;border-bottom-right-radius: 0;" class="pp10 form-control" type="number" placeholder="30" id="ad_refresh_time" name="ad_refresh_time" min="1">
+                        <span class="pp11">seconds</span>
+                    </div>
+                    <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                </div>
+            </div>
+            {{/*Ad Refresh Time*/}}
+        
+        </div>
+
+        <div id="ConfigDisplayBox" class="box-config" data-adtype="1">
+            <div class="sidebar-content {{if eq .InventoryConfig.TableInventoryConfig.GamAutoCreate 1}}d-none{{end}}"
+                 id="gam_ad_display">
+                <h3>{{$LangAdTag.GAMAdUnit}}
+                    <span class="pp16" type="button" tabindex="0" data-bs-toggle="popover"
+                          data-bs-content="{{$LangAdTag.GAMAdUnitDesc}}">
+                    <svg viewBox="64 64 896 896" data-icon="question-circle" width="1em" height="1em"
+                         fill="currentColor" type="button" tabindex="0">
+                        <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
+                        <path d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"></path>
+                    </svg>
+                </span>
+                </h3>
+
+                <div class="sidebar-content-1">
+                    <div class="pp-9">
+                        <input id="gam_display" name="gam_display" type="text"
+                               placeholder="{{$LangAdTag.GAMAdUnitPlaceholder}}"
+                               {{if eq .DisabledGam true}}disabled{{end}} autocomplete="off"/>
+                        <span class="form-text w-auto invalid-feedback"></span>
+                    </div>
+                </div>
+            </div>
+            {{/*GAM Ad Unit*/}}
+
+            <div class="sidebar-content">
+                <h3>Ad Size</h3>
+                <div class="sidebar-content-1 cus-selectpicker box-selectpicker pp-9">
+                    <select id="ad_size" name="ad_size" data-live-search="true"
+                            class="form-select form-control selectpicker" data-size="12">
+                        <option value="1">Fixed</option>
+                        <option value="2">Responsive</option>
+                    </select>
+                </div>
+                <span class="form-text w-auto invalid-feedback"></span>
+            </div>
+            {{/*Ad Size*/}}
+
+            <div class="sidebar-content ad_size_responsive d-none">
+                <h3>Responsive Type</h3>
+                <div class="sidebar-content-1 cus-selectpicker box-selectpicker pp-9">
+                    <select id="responsive_type" name="responsive_type" data-live-search="true" data-size="12"
+                            class="form-control selectpicker">
+                        <option value="1">Horizontal</option>
+                        <option value="2">Square</option>
+                        <option value="3">Vertical</option>
+                    </select>
+                </div>
+                <span class="form-text w-auto invalid-feedback"></span>
+            </div>
+            {{/*Responsive Type*/}}
+
+            <div class="sidebar-content ad_size_fixed">
+                <h3>{{$LangAdTag.PrimaryAdSize}}</h3>
+                <div class="sidebar-content-1 cus-selectpicker box-selectpicker pp-9">
+                    <select id="primary_ad_size" name="primary_ad_size" class="form-control selectpicker"
+                            title="{{$LangAdTag.PrimaryAdSizePlaceholder}}" data-live-search="true" data-size="6">
+                        {{if .AdSizes}}
+                            {{range .AdSizes}}
+                                <option value="{{.TableAdSize.Id}}">
+                                    {{.TableAdSize.Name}}
+                                </option>
+                            {{end}}
+                        {{end}}
+                    </select>
+                </div>
+                <span class="form-text w-auto invalid-feedback"></span>
+            </div>
+            {{/*Primary Ad Size*/}}
+
+            <div class="sidebar-content ad_size_fixed">
+                <h3>{{$LangAdTag.AdditionalAdSize}}</h3>
+                <div class="sidebar-content-1 cus-selectpicker box-selectpicker pp-9">
+                    <select id="additional_ad_size" name="additional_ad_size" class="form-control  selectpicker"
+                            disabled
+                            multiple="multiple" data-live-search="true" data-size="6" data-actions-box="true"
+                            data-selected-text-format="count > 5"
+                            title="{{$LangAdTag.AdditionalAdSizePlaceholder}}"> </select>
+                </div>
+            </div>
+            {{/*Additional Ad Sizes*/}}
+
+            <div class="sidebar-content">
+                <h3>Sticky 4k</h3>
+                <div class="pp7">
+                    <label class="switch">
+                        <input type="checkbox" class="sticky4k" id="sticky4k" name="sticky4k" checked>
+                        <span class="slider round"></span>
+                    </label>
+                    <div class="pp8"></div>
+                </div>
+            </div>
+            {{/*Sticky 4k*/}}
+
+            <div class="sidebar-content">
+                <h3>{{$LangAdTag.Passback}}</h3>
+                <textarea id="pass_back" name="pass_back" style="margin: 20px 0;" class="pp17" spellcheck="false" placeholder="{{$LangAdTag.PassbackPlaceholder}}"></textarea>
+                <span class="form-text w-auto invalid-feedback"></span>
+            </div>
+            {{/*Passback*/}}
+        </div>
+        <div id="ConfigInStreamBox" data-adtype="2" class="box-config" hidden>
+            <div class="sidebar-content">
+                <h3>Renderer</h3>
+                <div class="sidebar-content-1 cus-selectpicker box-selectpicker pp-9">
+                    <select id="renderer_instream" name="renderer_instream" class="form-control  selectpicker">
+                        <option value="1" selected>Valueimpression Player</option>
+                        <option value="3">JWPlayer</option>
+                        <option value="4">VideoJS</option>
+                        <option value="5">FlowPlayer</option>
+                        <option value="2">Other</option>
+                        <option value="6">Overlay Ad</option>
+                    </select>
+                </div>
+                <span class="form-text w-auto invalid-feedback"></span>
+            </div>
+            {{/*Renderer*/}}
+            <div class="sidebar-content {{if eq .InventoryConfig.TableInventoryConfig.GamAutoCreate 1}}d-none{{end}}"
+                 id="gam_ad_instream">
+                <h3>{{$LangAdTag.GAMAdUnit}}
+                    <span class="pp16" type="button" tabindex="0" data-bs-toggle="popover"
+                          data-bs-content="{{$LangAdTag.GAMAdUnitDesc}}">
+                        <svg viewBox="64 64 896 896" data-icon="question-circle" width="1em" height="1em"
+                             fill="currentColor" type="button" tabindex="0">
+                            <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
+                            <path d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"></path>
+                        </svg>
+                    </span>
+                </h3>
+
+                <div class="sidebar-content-1">
+                    <div class="pp-9">
+                        <input id="gam_instream" name="gam_instream" type="text"
+                               placeholder="{{$LangAdTag.GAMAdUnitPlaceholder}}"
+                               {{if eq .DisabledGam true}}disabled{{end}} autocomplete="off">
+                        <span class="form-text w-auto invalid-feedback"></span>
+                    </div>
+                </div>
+            </div>
+            {{/*GAM Ad Unit*/}}
+            {{/*            <div id="otherplayer" style="display:none">*/}}
+            {{/*            <div class="sidebar-content d-none">*/}}
+            {{/*                <h3>Output</h3>*/}}
+            {{/*                <div class="sidebar-content-1 cus-selectpicker pp-9">*/}}
+            {{/*                    <select class="form-control selectpicker" id="output" name="output">*/}}
+            {{/*                        <option>VAST</option>*/}}
+            {{/*                        <option>VPAID</option>*/}}
+            {{/*                    </select>*/}}
+            {{/*                </div>*/}}
+            {{/*                <span class="form-text w-auto invalid-feedback"></span>*/}}
+            {{/*            </div>*/}}
+            {{/*Output*/}}
+            <div class="sidebar-content">
+                <h3>Template
+                    <span class="pp16" type="button" tabindex="0" data-bs-toggle="popover" data-bs-html="true"
+                          data-bs-content="Template is required. <a href='/player/template/add' target='_blank'>Click here</a> to add new template">
+                        <svg viewBox="64 64 896 896" data-icon="question-circle" width="1em" height="1em"
+                             fill="currentColor" type="button" tabindex="0">
+                            <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
+                            <path d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"></path>
+                        </svg>
+                    </span>
+                </h3>
+                <div class="sidebar-content-1 cus-selectpicker box-selectpicker pp-9">
+                    <select id="template" name="template" class="form-control selectpicker" data-live-search="true">
+                        {{range .Templates}}
+                            {{if eq .TableTemplate.Type 2}}
+                                <option value="{{.TableTemplate.Id}}">{{.TableTemplate.Name}}</option>
+                            {{end}}
+                        {{end}}
+                    </select>
+                </div>
+                <span class="form-text w-auto invalid-feedback"></span>
+            </div>
+            {{/*Template*/}}
+
+            <div class="sidebar-content renderer_instream_overlay_ad d-none">
+                <h3>Request Banner Type</h3>
+                <div class="pp7">
+                    <label class="switch">
+                        <input type="checkbox" id="banner_ad" name="banner_ad" checked>
+                        <span class="slider round"></span>
+                    </label>
+                    <div class="pp8"></div>
+                </div>
+            </div>
+            {{/*Request Banner Type*/}}
+
+            <div class="sidebar-content renderer_instream_overlay_ad d-none">
+                <h3>Request Video Type</h3>
+                <div class="pp7">
+                    <label class="switch">
+                        <input type="checkbox" id="video_ad" name="video_ad" checked>
+                        <span class="slider round"></span>
+                    </label>
+                    <div class="pp8"></div>
+                </div>
+            </div>
+            {{/*Request Video Type*/}}
+
+            <div class="sidebar-content">
+                <h3>Content Source</h3>
+                <div class="sidebar-content-1 cus-selectpicker box-selectpicker pp-9">
+                    <select id="content_source" name="content_source" class="form-control input-full selectpicker">
+                        <option value="1" selected>Playlist</option>
+                        {{/*                            <option>Instream</option>*/}}
+                        {{/*                            <option>Outstream</option>*/}}
+                        {{/*                            <option>Sticky Banner</option>*/}}
+                    </select>
+                </div>
+                <span class="form-text w-auto invalid-feedback"></span>
+            </div>
+            {{/*Content Source*/}}
+            <div class="sidebar-content content_source_sub" data-content_source="1" hidden>
+                <h3>Playlist
+                    <span class="pp16" type="button" tabindex="0" data-bs-toggle="popover" data-bs-html="true"
+                          data-bs-content="Playlist is required. <a href='/playlist/add' target='_blank'>Click here</a> to add new playlist">
+                        <svg viewBox="64 64 896 896" data-icon="question-circle" width="1em" height="1em"
+                             fill="currentColor" type="button" tabindex="0">
+                            <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
+                            <path d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"></path>
+                        </svg>
+                    </span>
+                </h3>
+                <div class="sidebar-content-1 cus-selectpicker box-selectpicker pp-9">
+                    <select id="playlist" name="playlist" class="form-control selectpicker" title="Select a playlist">
+                        {{range .Playlists}}
+                            <option value="{{.TablePlaylist.Id}}">{{.TablePlaylist.Name}}</option>
+                        {{end}}
+                    </select> <span class="form-text w-auto invalid-feedback"></span>
+                </div>
+                <span class="form-text w-auto invalid-feedback"></span>
+            </div>
+            {{/*Playlist*/}}
+            <div class="sidebar-content content_source_sub" data-content_source="2" hidden>
+                <h3>Feed</h3>
+                <div class="sidebar-content-1 ">
+                    <div class="pp-9">
+                        <input type="url" class="form-control" id="feed" name="feed" placeholder="Feed URL"
+                               autocomplete="off">
+                        <span class="form-text w-auto invalid-feedback"></span>
+                    </div>
+                </div>
+            </div>
+            {{/*Feed*/}}
+        </div>
+        <div id="ConfigOutStreamPcBox" data-adtype="3" class="box-config " hidden>
+            <div class="sidebar-content">
+                <h3>Renderer</h3>
+                <div class="sidebar-content-1 cus-selectpicker box-selectpicker pp-9">
+                    <select id="renderer_outstream" name="renderer_outstream" class="form-control selectpicker">
+                        <option value="1" selected>Valueimpression Player</option>
+                        <option value="3">JWPlayer</option>
+                        <option value="4">VideoJS</option>
+                        <option value="5">FlowPlayer</option>
+                        <option value="2">Other</option>
+                    </select>
+                </div>
+                <span class="form-text w-auto invalid-feedback"></span>
+            </div>
+            {{/*Renderer*/}}
+            <div class="sidebar-content">
+                <h3>Template
+                    <span class="pp16" type="button" tabindex="0" data-bs-toggle="popover" data-bs-html="true"
+                          data-bs-content="Template is required. <a href='/player/template/add' target='_blank'>Click here</a> to add new template">
+                        <svg viewBox="64 64 896 896" data-icon="question-circle" width="1em" height="1em"
+                             fill="currentColor" type="button" tabindex="0">
+                            <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
+                            <path d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"></path>
+                        </svg>
+                    </span>
+                </h3>
+                <div class="sidebar-content-1 cus-selectpicker box-selectpicker pp-9" id="box_template_outstream">
+                    <select id="template_outstream" name="template_outstream" class="form-control selectpicker">
+                        {{range .Templates}}
+                            {{if eq .TableTemplate.Type 3}}
+                                <option value="{{.TableTemplate.Id}}">{{.TableTemplate.Name}}</option>
+                            {{end}}
+                        {{end}}
+                    </select>
+                </div>
+                <span class="form-text w-auto invalid-feedback"></span>
+            </div>
+            {{/*Template*/}}
+            <div class="sidebar-content">
+                <h3>Passback Type</h3>
+                <div class="sidebar-content-1 cus-selectpicker box-selectpicker pp-9">
+                    <select id="passback_type_outstream" name="passback_type_outstream"
+                            class="form-control selectpicker">
+                        <option value="1">Inline Tag</option>
+                        <option value="2">Custom Passback</option>
+                    </select>
+                </div>
+                <span class="form-text w-auto invalid-feedback"></span>
+            </div>
+            {{/*Passback Type*/}}
+            <div class="sidebar-content collapsePassbackType">
+                <h3>Inline Tag</h3>
+                <div class="sidebar-content-1 cus-selectpicker box-selectpicker pp-9">
+                    <select id="inline_tag_outstream" name="inline_tag_outstream" class="form-control selectpicker">
+                        {{range .AdTagDisplay}}
+                            <option value="{{.TableInventoryAdTag.Id}}">{{.TableInventoryAdTag.Name}}</option>
+                        {{end}}
+                    </select>
+                </div>
+                <span class="form-text w-auto invalid-feedback"></span>
+            </div>
+            {{/*Passback Type*/}}
+            <div class="sidebar-content collapsePassbackType d-none">
+                <h3>Custom Passback</h3>
+                <textarea id="pass_back_outstream" name="pass_back_outstream" style="margin: 20px 0;" class="pp17" spellcheck="false" placeholder="Custom Passback"></textarea>
+            </div>
+            {{/*Custom Passback*/}}
+        </div>
+
+        <div id="ConfigPinZoneBox" data-adtype="4" class="box-config" hidden>
+            <div class="sidebar-content">
+                <h3>Template
+                    <span class="pp16" type="button" tabindex="0" data-bs-toggle="popover" data-bs-html="true"
+                          data-bs-content="Template is required. <a href='/player/template/add' target='_blank'>Click here</a> to add new template">
+                        <svg viewBox="64 64 896 896" data-icon="question-circle" width="1em" height="1em"
+                             fill="currentColor" type="button" tabindex="0">
+                            <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
+                            <path d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"></path>
+                        </svg>
+                    </span>
+                </h3>
+                <div class="sidebar-content-1 cus-selectpicker box-selectpicker pp-9" id="box_template_articles">
+                    <select id="template_articles" name="template_articles" class="form-control selectpicker">
+                        {{range .Templates}}
+                            {{if eq .TableTemplate.Type 4}}
+                                <option value="{{.TableTemplate.Id}}">{{.TableTemplate.Name}}</option>
+                            {{end}}
+                        {{end}}
+                    </select>
+                </div>
+                <span class="form-text w-auto invalid-feedback"></span>
+            </div>
+            {{/*Template*/}}
+
+            <div class="sidebar-content">
+                <h3>Content Source</h3>
+                <div class="sidebar-content-1 cus-selectpicker box-selectpicker pp-9">
+                    <select id="content_source_articles" name="content_source_articles"
+                            class="form-control selectpicker" title="Select Content Source">
+                        <option value="4" selected>Auto</option>
+                        <option value="2">Custom</option>
+                    </select>
+                </div>
+                <span class="form-text w-auto invalid-feedback"></span>
+            </div>
+            {{/*Content Source*/}}
+
+            <div class="sidebar-content content_source_articles_sub" data-content_source_articles="2">
+                <h3>Feed</h3>
+                <input type="url" class="form-control" id="feed_articles" name="feed_articles" placeholder="Feed URL"
+                       autocomplete="off">
+                <span class="form-text w-auto invalid-feedback"></span>
+            </div>
+            {{/*Feed*/}}
+        </div>
+
+        <div id="ConfigStickyBannerBox" data-adtype="5" class="box-config" hidden>
+            <div class="w-100 border-1 border-bottom"></div>
+            <div class="d-flex my-3">
+                <h6 class="mr-auto" style="font-weight: 600!important;">DESKTOP</h6>
+
+                <div class="ml-auto">
+                    <label class="switch">
+                        <input type="checkbox" id="enable_sticky_desktop" name="enable_sticky_desktop" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="sidebar-content {{if eq .InventoryConfig.TableInventoryConfig.GamAutoCreate 1}}d-none{{end}}"
+                 id="gam_ad_display">
+                <h3>{{$LangAdTag.GAMAdUnit}}
+                    <span class="pp16" type="button" tabindex="0" data-bs-toggle="popover" data-bs-html="true"
+                          data-bs-content="{{$LangAdTag.GAMAdUnitDesc}}">
+                        <svg viewBox="64 64 896 896" data-icon="question-circle" width="1em" height="1em"
+                             fill="currentColor" type="button" tabindex="0">
+                            <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
+                            <path d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"></path>
+                        </svg>
+                    </span>
+                </h3>
+                <div class="sidebar-content-1">
+                    <div class="pp-9">
+                        <input id="gam_sticky" name="gam_sticky" type="text"
+                               placeholder="{{$LangAdTag.GAMAdUnitPlaceholder}}"
+                               {{if eq .DisabledGam true}}disabled{{end}} autocomplete="off">
+                        <span class="form-text w-auto invalid-feedback"></span>
+                    </div>
+                </div>
+            </div>
+            {{/*GAM Ad Unit*/}}
+
+            <div class="sidebar-content">
+                <h3>Position</h3>
+                <div class="sidebar-content-1 cus-selectpicker box-selectpicker pp-9">
+                    <select id="position_sticky" name="position_sticky" class="form-control selectpicker sticky_desktop">
+                        <option value="1">Bottom Center</option>
+{{/*                        <option value="2">Bottom Left</option>*/}}
+{{/*                        <option value="3">Bottom Right</option>*/}}
+                        {{/* <option value="4">Top</option>
+                        <option value="5">Bottom</option> */}}
+                        <option value="6">Top Center</option>
+                    </select>
+                </div>
+                <span class="form-text w-auto invalid-feedback"></span>
+            </div>
+            {{/*Position*/}}
+
+            <div class="sidebar-content">
+                <h3>Ad Size</h3>
+                <div class="sidebar-content-1 cus-selectpicker pp-9 box-selectpicker">
+                    <select id="size_sticky" name="size_sticky" data-live-search="true"
+                            multiple="multiple"
+                            class="form-control selectpicker sticky_desktop" data-live-search="true" title="Select Ad Size"
+                            data-size="10">
+                        {{range .AdSizeSticky}}
+                            <option selected value="{{.TableAdSize.Id}}">{{.TableAdSize.Name}}</option>
+                        {{end}}
+                    </select>
+                </div>
+                <span class="form-text w-auto invalid-feedback"></span>
+            </div>
+            {{/*Size Desktop*/}}
+            {{/* <div class="sidebar-content">
+                <h3>{{$LangAdTag.AdditionalAdSize}}</h3>
+                <div class="sidebar-content-1 cus-selectpicker box-selectpicker pp-9">
+                    <select id="additional_ad_size_desktop_stick" name="additional_ad_size_desktop_stick"
+                            class="form-control selectpicker sticky_desktop" disabled
+                            multiple="multiple" data-live-search="true" data-size="8" data-actions-box="true"
+                            data-selected-text-format="count > 5"
+                            title="{{$LangAdTag.AdditionalAdSizePlaceholder}}"> </select>
+                </div>
+            </div> */}}
+            {{/*Additional Ad Sizes*/}}
+
+            <div class="sidebar-content p-0">
+                <h3>{{$LangAdTag.Passback}}</h3>
+                <textarea id="pass_back_sticky" name="pass_back_sticky" style="margin: 20px 0;" class="pp17 sticky_desktop" spellcheck="false" placeholder="{{$LangAdTag.PassbackPlaceholder}}"></textarea>
+                <span class="form-text w-auto invalid-feedback"></span>
+            </div>
+            {{/*Passback*/}}
+
+            <div class="sidebar-content">
+                <h3>Close Button</h3>
+                <div class="pp7">
+                    <label class="switch">
+                        <input type="checkbox" class="sticky_desktop" id="close_button_sticky" name="close_button_sticky" checked>
+                        <span class="slider round"></span>
+                    </label>
+                    <div class="pp8"></div>
+                </div>
+            </div>
+            {{/*Close Button*/}}
+
+            <div class="w-100 border-1 border-bottom"></div>
+            <div class="d-flex my-3">
+                <h6 class="mr-auto" style="font-weight: 600!important;">MOBILE</h6>
+
+                <div class="ml-auto">
+                    <label class="switch">
+                        <input type="checkbox" id="enable_sticky_mobile" name="enable_sticky_mobile" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+             <div class="sidebar-content">
+                <h3>Position</h3>
+                <div class="sidebar-content-1 cus-selectpicker box-selectpicker pp-9">
+                    <select id="position_sticky_mobile" name="position_sticky_mobile" class="form-control selectpicker sticky_mobile">
+                        <option value="4">Top</option>
+                        <option value="5">Bottom</option>
+                    </select>
+                </div>
+                <span class="form-text w-auto invalid-feedback"></span>
+            </div>
+            {{/*Position*/}}
+
+            <div class="sidebar-content">
+                <h3>Ad Size</h3>
+                <div class="sidebar-content-1 cus-selectpicker pp-9 box-selectpicker">
+                    <select id="size_sticky_mobile" name="size_sticky_mobile" data-live-search="true"
+                            multiple="multiple"
+                            class="form-control selectpicker sticky_mobile" data-live-search="true" title="Select Ad Size"
+                            data-size="10">
+                        {{range .AdSizeStickyMobile}}
+                            <option selected value="{{.TableAdSize.Id}}">{{.TableAdSize.Name}}</option>
+                        {{end}}
+                    </select>
+                </div>
+                <span class="form-text w-auto invalid-feedback"></span>
+            </div>
+            {{/*Size Mobile*/}}
+
+            {{/* <div class="sidebar-content">
+                <h3>{{$LangAdTag.AdditionalAdSize}}</h3>
+                <div class="sidebar-content-1 cus-selectpicker box-selectpicker pp-9">
+                    <select id="additional_ad_size_mobile_stick" name="additional_ad_size_mobile_stick"
+                            class="form-control selectpicker sticky_mobile" disabled
+                            multiple="multiple" data-live-search="true" data-size="8" data-actions-box="true"
+                            data-selected-text-format="count > 5"
+                            title="{{$LangAdTag.AdditionalAdSizePlaceholder}}"> </select>
+                </div>
+            </div> */}}
+            {{/*Additional Ad Sizes*/}}
+
+           
+
+             <div class="sidebar-content p-0">
+                <h3>{{$LangAdTag.Passback}}</h3>
+                <textarea id="pass_back_sticky_mobile" name="pass_back_sticky_mobile" style="margin: 20px 0;" class="pp17 sticky_mobile" spellcheck="false" placeholder="{{$LangAdTag.PassbackPlaceholder}}"></textarea>
+                <span class="form-text w-auto invalid-feedback"></span>
+            </div>
+            {{/*Passback mobile*/}}
+
+            <div class="sidebar-content">
+                <h3>Close Button</h3>
+                <div class="pp7">
+                    <label class="switch">
+                        <input type="checkbox" id="close_button_sticky_mobile" checked
+                               class="sticky_mobile"
+                               name="close_button_sticky_mobile">
+                        <span class="slider round"></span> </label>
+                    <div class="pp8"></div>
+                </div>
+            </div>
+            {{/*Close Button*/}}
+        </div>
+
+        <div id="ConfigInterstitialBox" data-adtype="6" class="box-config " hidden></div>
+
+        <div id="ConfigPlayZoneBox" data-adtype="7" class="box-config" hidden>
+            <div class="sidebar-content">
+                <h3>Content Type</h3>
+                <div class="sidebar-content-1 cus-selectpicker box-selectpicker pp-9">
+                    <select id="content_type" name="content_type" class="form-control selectpicker"
+                            title="Select Content Source">
+                        <option value="1" selected>Related</option>
+                        <option value="2">Quiz</option>
+                        {{/*<option value="3">Quiz 2</option>*/}}
+                    </select>
+                </div>
+                <span class="form-text w-auto invalid-feedback"></span>
+            </div>
+            {{/*Content Type*/}}
+
+            {{/*            <div class="sidebar-content">*/}}
+            {{/*                <h3>Template</h3>*/}}
+            {{/*                <div class="sidebar-content-1 cus-selectpicker box-selectpicker pp-9">*/}}
+            {{/*                    <select id="template_play_zone" name="template_play_zone" class="form-control selectpicker">*/}}
+            {{/*                        <option value="1" class="content_type_related">Template 1</option>*/}}
+            {{/*                        <option value="2" class="content_type_related">Template 2</option>*/}}
+            {{/*                        <option value="3" class="content_type_related content_type_quiz">Template 3</option>*/}}
+            {{/*                        <option value="4" class="content_type_related">Template 4</option>*/}}
+            {{/*                    </select>*/}}
+            {{/*                </div>*/}}
+            {{/*                <span class="form-text w-auto invalid-feedback"></span>*/}}
+            {{/*            </div>*/}}
+            {{/*            */}}{{/*Template*/}}
+
+            <div class="sidebar-content box-template-playzone">
+                <h3>Template</h3>
+                <div style="position: relative;margin: 20px 0;" class="border-2">
+                    <div id="slider-container" class="slider1">
+                        <input type="hidden" id="template_play_zone" name="template_play_zone" value="1">
+                        <div class="content_type_related slide selected d-flex align-items-center justify-content-center" data-value="1">
+                            <img style="height: 95%!important;" src="/assets/img/template_playzone_related_1_1.svg">
+                        </div>
+                        <div class="content_type_related slide d-flex align-items-center justify-content-center" data-value="2">
+                            <img style="height: 95%!important;" src="/assets/img/template_playzone_related_1_2.svg">
+                        </div>
+                        <div class="content_type_related slide d-flex align-items-center justify-content-center" data-value="3">
+                            <img style="height: 95%!important;" src="/assets/img/template_playzone_related_2.svg">
+                        </div>
+                        <div class="content_type_related slide d-flex align-items-center justify-content-center" data-value="4">
+                            <img style="height: 95%!important;" src="/assets/img/template_playzone_related_3.svg">
+                        </div>
+                        <div class="content_type_quiz slide d-none d-flex align-items-center justify-content-center" data-value="3">
+                            <img style="height: 95%!important;" src="/assets/img/template_playzone_quiz.svg">
+                        </div>
+                        <div onclick="prev()" class="control-prev-btn">
+                            <div class="slide-left"></div>
+                        </div>
+                        <div onclick="next()" class="control-next-btn">
+                            <div class="slide-right"></div>
+                        </div>
+                    </div>
+                    <div class="overlay"></div>
+                </div>
+            </div>
+            {{/*Template*/}}
+
+            {{/*            <div class="sidebar-content">*/}}
+            {{/*                <h3>Content Source</h3>*/}}
+            {{/*                <div class="sidebar-content-1 cus-selectpicker box-selectpicker pp-9">*/}}
+            {{/*                    <select id="content_source_play_zone" name="content_source_play_zone"*/}}
+            {{/*                            class="form-control selectpicker" title="Select Content Source">*/}}
+            {{/*                        <option value="4" selected>Auto</option>*/}}
+            {{/*                    </select>*/}}
+            {{/*                </div>*/}}
+            {{/*                <span class="form-text w-auto invalid-feedback"></span>*/}}
+            {{/*            </div>*/}}
+            {{/*Content Source*/}}
+
+            <div class="content_type_related sidebar-content">
+                <h3>Main Title</h3>
+                <input type="text" class="form-control" id="main_title" name="main_title" placeholder="Main title">
+                <span class="form-text w-auto invalid-feedback"></span>
+            </div>
+            {{/*Main Title*/}}
+
+            <div class="sidebar-content">
+                <h3>{{$LangAdTag.Passback}}</h3>
+                <textarea id="pass_back_play_zone" name="pass_back_play_zone" style="margin: 20px 0;" class="pp17" spellcheck="false" placeholder="{{$LangAdTag.PassbackPlaceholder}}"></textarea>
+                <span class="form-text w-auto invalid-feedback"></span>
+            </div>
+            {{/*Passback*/}}
+
+            <div class="content_type_related sidebar-content">
+                <h3>Color</h3>
+                <div class="pp7">
+                    <div class="pt97">Background Color:</div>
+                    <input type="color" class="input-color" value="#000000"
+                           style="width: 32px;height: 32px;background: #000000;border: 1px solid #aab4c8;border-right: 0;border-radius: 2px 0 0 2px;cursor: pointer">
+                    <input style="border-radius: 0 2px 2px 0;" class="pp10 w-100 input-color form-control "
+                           id="background_color" name="background_color" type="text" value="#000000">
+                    <span class="form-text w-auto invalid-feedback"></span>
+                </div>
+                <div class="pp7">
+                    <div class="pt97">Title Color:</div>
+                    <input type="color" class="input-color" value="#000000"
+                           style="width: 32px;height: 32px;background: #000000;border: 1px solid #aab4c8;border-right: 0;border-radius: 2px 0 0 2px;cursor: pointer">
+                    <input style="border-radius: 0 2px 2px 0;" class="pp10 w-100 input-color form-control "
+                           id="title_color" name="title_color" type="text" value="#000000">
+                    <span class="form-text w-auto invalid-feedback"></span>
+                </div>
+            </div>
+            {{/*Color*/}}
+        </div>
+        <div id="ConfigNativeBox" data-adtype="8" class="box-config" hidden>
+            <div class="sidebar-content">
+                <h3>Template
+                    <span class="pp16" type="button" tabindex="0" data-bs-toggle="popover" data-bs-html="true"
+                          data-bs-content="Template is required. <a href='/player/template/add' target='_blank'>Click here</a> to add new template">
+                        <svg viewBox="64 64 896 896" data-icon="question-circle" width="1em" height="1em"
+                             fill="currentColor" type="button" tabindex="0">
+                            <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
+                            <path d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"></path>
+                        </svg>
+                    </span>
+                </h3>
+                <div class="sidebar-content-1 cus-selectpicker box-selectpicker pp-9" id="box_template_articles">
+                    <select id="template_native" name="template_native" class="form-control selectpicker">
+                        {{range .Templates}}
+                            {{if eq .TableTemplate.Type 8}}
+                                <option value="{{.TableTemplate.Id}}">{{.TableTemplate.Name}}</option>
+                            {{end}}
+                        {{end}}
+                    </select>
+                </div>
+                <span class="form-text w-auto invalid-feedback"></span>
+            </div>
+            {{/*Template*/}}
+        </div>
+    </div>
+    <div class="sidebar-footer">
+        <div class="at1">
+            <button class="at3 btn-close-sidebar">Cancel</button>
+            <button class="at2 submit-adtag">Submit</button>
+        </div>
+    </div>
+</form>
+<script>
+    $(".selectpicker").selectpicker()
+    $("[data-bs-toggle=popover]").popover({html: true});
+    function prev() {
+        document.getElementById('slider-container').scrollLeft -= 150;
+    }
+    function next() {
+        document.getElementById('slider-container').scrollLeft += 150;
+    }
+</script>
+
+<style>
+    input::-webkit-color-swatch {
+        border: none;
+    }
+    .slider1 {
+        height: 170px!important;
+        background: rgb(250 250 250 / 75%);
+    }
+    .slide img {
+        width: 200px !important;
+    }
+</style>

@@ -1,0 +1,6 @@
+{{- /*gotype: source/apps/frontend/model.BidderRecord*/ -}}
+{{if eq .TableBidder.Status 1}}
+    <span class="text-capitalize p-2">ON</span>
+{{else}}
+    <span class="text-capitalize text-gray-600 py-2">OFF</span>
+{{end}}

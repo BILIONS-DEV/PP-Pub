@@ -1,0 +1,73 @@
+{{- /*gotype: source/apps/frontend/controller.AssignChannels*/ -}}
+{{template "channels/index/inc.header" .}}
+{{/*End Header*/}}
+
+<div class="cn1 height-main">
+
+    {{if .Rows}}
+        {{range .Rows}}
+            <div class="cn2">
+                <div class="cn3">
+                    <h3>{{.Channel.TableChannels.Name}}</h3>
+                    <a href="/channels/edit?id={{.Channel.TableChannels.Id}}">Edit</a>
+                </div>
+                <div class="cn4 pr-0">
+                    <div class="cn5">
+                        <div class="cn8">
+                            <label>Duration: </label>
+                            <span>{{.Duration}}s</span>
+                        </div>
+                        <div class="cn8">
+                            <label>Category: </label>
+                            <span title="{{.Category}}">{{.Category}}</span>
+                        </div>
+                        <div class="cn8">
+                            <label>Language: </label> <span title="{{.Language}}">{{.Language}}</span>
+                        </div>
+                        <div class="cn8">
+                            <label>Count: </label> <span>{{.Count}} Videos</span>
+                        </div>
+                        <div class="cn8">
+                            <label>Views: </label> <span>{{.Views}}</span>
+                        </div>
+                    </div>
+                    <div class="cn6">
+                        <a href="/content/add/video?f_channels={{.Channel.TableChannels.Id}}" class="cn9">
+                            <span class="mb-1">
+                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="94.49px" height="94.49px" viewBox="0 0 94.49 94.49" style="width: 12px;fill: #475470;height: 12px;" xml:space="preserve">
+                                    <g>
+                                    <path d="M92.49,35.284H59.206V2c0-1.104-0.896-2-2-2H37.284c-1.104,0-2,0.896-2,2v33.284H2c-1.104,0-2,0.896-2,2v19.922
+                                            c0,1.104,0.896,2,2,2h33.284V92.49c0,1.104,0.896,2,2,2h19.922c1.104,0,2-0.896,2-2V59.206H92.49c1.104,0,2-0.896,2-2V37.284
+                                            C94.49,36.18,93.596,35.284,92.49,35.284z"></path>
+                                    </g>
+                                </svg>
+                            </span> <span style="color: #2f3542!important;font-weight: 400">Add Video</span> </a>
+                        {{range .Videos}}
+                            <div class="cn7 video-item">
+                                <img class="preview-video" src="https://ul.pubpowerplatform.io{{.TableContent.Thumb}}" data-id="{{.TableContent.Id}}" data-url="{{.TableContent.VideoUrl}}">
+                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 485.74 485.74" style="enable-background:new 0 0 485.74 485.74;" xml:space="preserve">
+                                    <g>
+                                        <path d="M242.872,0C108.732,0,0.004,108.736,0.004,242.864c0,134.14,108.728,242.876,242.868,242.876
+                                            c134.136,0,242.864-108.736,242.864-242.876C485.736,108.736,377.008,0,242.872,0z M338.412,263.94l-134.36,92.732
+                                            c-16.776,11.588-30.584,4.248-30.584-16.316V145.38c0-20.556,13.808-27.9,30.584-16.312l134.32,92.732
+                                            C355.136,233.384,355.176,252.348,338.412,263.94z"></path>
+                                    </g>
+                                </svg>
+                                <div class="link_video_{{.TableContent.Id}} modal_cus" id="{{.TableContent.Id}}" style="display: none">
+                                    <div class="modal-content-cus">
+                                        <span class="close">&times;</span> <span>Video Preview</span>
+                                        <video id="video_{{.TableContent.Id}}" class="w-100" controls>
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                        {{end}}
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        {{end}}
+    {{end}}
+    <div class="cn2"></div>
+    <div class="clear"></div>
+</div>

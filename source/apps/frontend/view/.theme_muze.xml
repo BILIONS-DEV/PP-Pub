@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Dữ liệu ở file này sẽ được append lên đầu tất cả các trang-->
+<theme name="muze" reload="true">
+    <page path="{{allPage}}">
+        <!-- Muze Plugins CSS -->
+        <!--        <css link="/assets/vendor/simplebar/dist/simplebar.min.css" rel="stylesheet" media="all" inline="false"/>-->
+        <!-- Muze Theme CSS -->
+        <cssOnBottom link="/assets/css/theme.min.css" rel="stylesheet" media="all" inline="false"/>
+        <cssOnBottom link="/assets/css/syncfusion.min.css" rel="stylesheet" media="all" inline="false"/>
+<!--        <cssOnBottom link="/assets/css/style.css" rel="stylesheet" media="all" inline="false" module="false"/>-->
+        <cssOnBottom link="/assets/css/style_fe.css" rel="stylesheet" media="all" inline="false" module="false"/>
+        <cssOnBottom link="/assets/css/style_dev.css" rel="stylesheet" media="all" inline="false" module="false"/>
+        <cssOnBottom link="/assets/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" media="all"/>
+
+        <!-- Muze Javascript Plugins -->
+        <js link="/assets/js/jquery-3.6.0.min.js"/>
+        <js link="/assets/plugins/bootstrap5.1.3/js/bootstrap.bundle.min.js"/>
+        <!--        <js link="/assets/plugins/bootstrap5.1.3/js/bootstrap.min.js"/>-->
+        <!--        <js link="/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"/>-->
+        <js link="/assets/plugins/bootstrap-notify/bootstrap-notify.min.js"/>
+        <js link="/assets/plugins/sweetalert/sweetalert.min.js"/>
+        <!--        <js link="/assets/vendor/lodash/lodash.min.js"/>-->
+        <!--        <js link="/assets/vendor/simplebar/dist/simplebar.min.js"/>-->
+        <!--        <jsOnBottom link="/assets/js/functions.min.js" module="true" defer="false"/>-->
+        <jsOnBottom link="/assets/js/functions.js" module="false" defer="false"/>
+        <jsOnBottom link="/assets/js/theme-custom.js"/>
+        <!--        <jsOnTop link="jsOnTopDefault.js" async="false" defer="true" module="false"/>-->
+        <!--        <jsOnBottom link="jsOnBottomDefault.js" async="false" defer="true" module="false"/>-->
+    </page>
+</theme>

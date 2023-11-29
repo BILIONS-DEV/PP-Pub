@@ -1,0 +1,54 @@
+{{- /*gotype: source/apps/frontend/controller.AssignBlockingAdd*/ -}}
+{{$Lang := .Schema.LANG.Pages.Blocking}}
+<div class="pp15">
+    <div class="pp5">{{$Lang.Name}}</div>
+</div>
+<div class="pp7">
+    <div class="pp-9">
+        <input class="pp-10 form-control" type="text" id="restriction_name" name="restriction_name" value="">
+        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+    </div>
+</div>
+<div class="pp15">
+    <div class="pp5">{{$Lang.Inventory}}</div>
+</div>
+<div class="cus-selectpicker pp-9">
+    <select id="inventories" name="inventories" class="form-control selectpicker"
+            multiple="multiple" data-live-search="true" data-size="6" data-actions-box="true"
+            data-selected-text-format="count > 5"
+            title="{{$Lang.AllInventory}}">
+        {{range .Inventories}}
+            <option value="{{.TableInventory.Id}}">{{.TableInventory.Name}}</option>
+        {{end}}
+    </select>
+    <span class="form-text ms-2 w-auto invalid-feedback"></span>
+</div>
+
+<div class="pp15">
+    <div class="pp5">{{$Lang.AdvertiserDomain}}</div>
+</div>
+<div class="pp7">
+    <div class="pp-9">
+        <input type="text" id="textarea-add-custom"
+               class="pp-10 form-control textarea-add-custom"
+               placeholder="example: domain1, domain2, domain3,... press enter">
+        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+    </div>
+</div>
+<div class="box-list-domain mb-4" style="overflow-y: auto; max-height: 200px">
+</div>
+    
+    
+<div class="pp15">
+    <div class="pp5">Creative</div>
+</div>
+<div class="pp7">
+    <div class="pp-9">
+        <input type="text" id="textarea-add-creative"
+               class="pp-10 form-control textarea-add-creative"
+               placeholder="example: creativeID1, creativeID1, creativeID1,... press enter">
+    </div>
+    <span class="form-text ms-2 w-auto invalid-feedback"></span>
+</div>
+<div class="box-list-creative mb-4" style="overflow-y: auto; max-height: 200px">
+</div>

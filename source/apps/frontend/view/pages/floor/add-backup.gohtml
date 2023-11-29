@@ -1,0 +1,431 @@
+<div class="px-5 py-2 border-bottom border-gray-200">
+    <div class="container-fluid px-0">
+        <div class="row align-items-center">
+            <div class="col">
+                <span class="text-uppercase tiny text-gray-600 Montserrat-font font-weight-semibold">RULE</span>
+                <h1 class="h2 mb-0">Add Rule</h1>
+            </div>
+        </div>
+    </div>
+</div>
+{{/*End Header*/}}
+
+<div class="p-lg-5 p-4">
+    <div class="container-fluid px-0">
+        <div class="row">
+            <form id="submitRule">
+                <div class="col-12 mb-3 mb-xl-4">
+
+                    <div class="card rounded-12 shadow-dark-80 border border-gray-50 mb-5">
+                        <div class="p-3 border-bottom border-gray-200">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h5 class="card-header-title font-weight-semibold my-2">Rule Information</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body py-4">
+                            <div class="row mb-4">
+                                <label for="name"
+                                       class="col-sm-2 col-form-label form-label form-label-lg text-lg-end">Name</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control form-control-lg" value=""
+                                           id="name" name="name">
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <label for="description"
+                                       class="col-sm-2 col-form-label form-label form-label-lg text-lg-end">Description</label>
+                                <div class="col-sm-8">
+                                <textarea class="form-control form-control-lg"
+                                          id="description"
+                                          name="description"></textarea>
+
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                            <div class="row mb-4 align-items-center">
+                                <label for="status"
+                                       class="col-sm-2 col-form-label form-label form-label-lg text-lg-end">Status</label>
+                                <div class="col-sm-8">
+                                    <input type="checkbox" checked data-toggle="toggle" data-style="rounded-24"
+                                           data-offstyle="secondary" data-onstyle="info"
+                                           id="status" name="status">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/*Rule Information Card*/}}
+
+                    <div class="card rounded-12 shadow-dark-80 border border-gray-50">
+                        <div class="p-3 border-bottom border-gray-200">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h5 class="card-header-title font-weight-semibold my-2">Targeting</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body py-4">
+                            <div class="row mb-4">
+                                <label for="floor_value"
+                                       class="col-sm-2 col-form-label form-label form-label-lg text-lg-end">Floor
+                                    Value</label>
+                                <div class="col-sm-8">
+                                    <input type="number" class="form-control form-control-lg" value=""
+                                           id="floor_value" name="floor_value">
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <label for=""
+                                       class="col-sm-2 col-form-label form-label form-label-lg text-lg-end">Priority</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control form-control-lg form-select form-select-lg select2"
+                                            name="priority">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <label for="target"
+                                       class="col-sm-2 col-form-label form-label form-label-lg text-lg-end mb-2">Target</label>
+                                <div class="col-sm-8">
+                                    <div class="accordion muze-collapes shadow-dark-80 border border-gray-50"
+                                         id="pricingboxes">
+                                        <div class="card px-4">
+                                            <div class="card-header p-0" id="pricingOne">
+                                                <h5 class="mb-0 d-grid">
+                                                    <button class="btn btn-light btn-block text-start p-3 rounded-0 fs-6 collapsed"
+                                                            type="button" data-bs-toggle="collapse"
+                                                            data-bs-target="#collapseOne" aria-expanded="false"
+                                                            aria-controls="collapseOne">
+                                                        <div class="row w-100">
+                                                            <div class="col-6">Select Inventory</div>
+                                                            <div class="col-auto align-items-center d-flex">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                     height="16" fill="currentColor"
+                                                                     class="bi bi-check-lg text-blue-600 me-2"
+                                                                     viewBox="0 0 16 16">
+                                                                    <path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/>
+                                                                </svg>
+                                                                <span class="fs-6 fw-normal"
+                                                                      style="font-size: 0.85rem !important;">
+                                                                all inventory
+                                                            </span>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                </h5>
+                                            </div>
+                                            <div id="collapseOne" class="collapse" aria-labelledby="pricingOne"
+                                                 data-bs-parent="#pricingboxes" style="">
+                                                <div class="card-body lh-lg pt-3 px-0">
+                                                    <div class="row">
+                                                        <div class="col-md-4 pb-3">
+                                                            <div id="DataTables_Table_0_filter"
+                                                                 class="dataTables_filter d-flex flex-row">
+                                                                <input id="search_inventory" type="search"
+                                                                       class="form-control form-control-sm"
+                                                                       placeholder="Search Inventory"
+                                                                       aria-controls="DataTables_Table_0">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <input hidden value="{{.IsMoreInventory}}"
+                                                               id="is_more_inventory"/>
+                                                        <input hidden value="1" id="pageInventory"/>
+                                                        <div class="col-lg-6 col-xxl-6" id="list_inventory"
+                                                             style="display: block;overflow-y: scroll;overflow-x: auto;height: 255px;">
+                                                            {{range .Inventories}}
+                                                                <div class="border border-gray-50" id="{{.Id}}">
+                                                                    <div class="list-group list-group-flush my-n3">
+                                                                        <div class="list-group-item px-3 px-md-4">
+                                                                            <div class="row align-items-center px-md-2">
+                                                                                <div class="col p-0">
+                                                                                    <h6 class="mb-1 font-weight-semibold fs-12">
+                                                                                        {{.Name}}
+                                                                                    </h6>
+                                                                                </div>
+                                                                                <div class="col-auto">
+                                                                                    <button type="button"
+                                                                                            id="add_inventory"
+                                                                                            data-id="{{.Id}}"
+                                                                                            name="{{.Name}}"
+                                                                                            class="btn btn-secondary">
+                                                                                        +
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            {{end}}
+                                                        </div>
+                                                        <div class="col-lg-6 col-xxl-6 box_inventory"
+                                                             style="display: block;overflow-y: scroll;overflow-x: auto;height: 255px;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card px-4">
+                                            <div class="card-header p-0" id="pricingTwo">
+                                                <h5 class="mb-0 d-grid">
+                                                    <button class="btn btn-light btn-block text-start p-3 rounded-0 fs-6 collapsed"
+                                                            type="button" data-bs-toggle="collapse"
+                                                            data-bs-target="#collapseTwo" aria-expanded="false"
+                                                            aria-controls="collapseTwo">
+                                                        <div class="row w-100">
+                                                            <div class="col-6">Select Ad Tag</div>
+                                                            <div class="col-auto align-items-center d-flex">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                     height="16" fill="currentColor"
+                                                                     class="bi bi-check-lg text-blue-600 me-2"
+                                                                     viewBox="0 0 16 16">
+                                                                    <path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/>
+                                                                </svg>
+                                                                <span class="fs-6 fw-normal"
+                                                                      style="font-size: 0.85rem !important;">all ad tag</span>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                </h5>
+                                            </div>
+                                            <div id="collapseTwo" class="collapse" aria-labelledby="pricingTwo"
+                                                 data-bs-parent="#pricingboxes" style="">
+                                                <div class="card-body lh-lg pt-0 px-0">
+                                                    <div class="card-body lh-lg pt-3 px-0">
+                                                        <div class="row">
+                                                            <div class="col-md-4 pb-3">
+                                                                <div id="DataTables_Table_0_filter"
+                                                                     class="dataTables_filter d-flex flex-row">
+                                                                    <input id="search_ad_tag" type="search"
+                                                                           class="form-control form-control-sm"
+                                                                           placeholder="Search Ad Tag"
+                                                                           aria-controls="DataTables_Table_0">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <input hidden value="{{.IsMoreTag}}" id="is_more_tag"/>
+                                                            <div class="col-lg-6 col-xxl-6" id="list_ad_tag"
+                                                                 style="display: block;overflow-y: scroll;overflow-x: auto;height: 255px;">
+                                                                {{range .AdTags}}
+                                                                    <div class="border border-gray-50" id="{{.Id}}">
+                                                                        <div class="list-group list-group-flush my-n3">
+                                                                            <div class="list-group-item px-3 px-md-4">
+                                                                                <div class="row align-items-center px-md-2">
+                                                                                    <div class="col p-0">
+                                                                                        <h6 class="mb-1 font-weight-semibold fs-12">
+                                                                                            {{.Name}}
+                                                                                        </h6>
+                                                                                    </div>
+                                                                                    <div class="col-auto">
+                                                                                        <button type="button"
+                                                                                                id="add_tag"
+                                                                                                data-id="{{.Id}}"
+                                                                                                name="{{.Name}}"
+                                                                                                class="btn btn-secondary">
+                                                                                            +
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                {{end}}
+                                                            </div>
+                                                            <div class="col-lg-6 col-xxl-6 box_ad_tag"
+                                                                 style="display: block;overflow-y: scroll;overflow-x: auto;height: 255px;">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card px-4">
+                                            <div class="card-header p-0" id="pricingThree">
+                                                <h5 class="mb-0 d-grid">
+                                                    <button class="btn btn-light btn-block text-start p-3 rounded-0 fs-6 collapsed"
+                                                            type="button" data-bs-toggle="collapse"
+                                                            data-bs-target="#collapseThree" aria-expanded="false"
+                                                            aria-controls="collapseThree">
+                                                        <div class="row w-100">
+                                                            <div class="col-6"> Select Ad Format</div>
+                                                            <div class="col-auto align-items-center d-flex">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                     height="16" fill="currentColor"
+                                                                     class="bi bi-check-lg text-blue-600 me-2"
+                                                                     viewBox="0 0 16 16">
+                                                                    <path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/>
+                                                                </svg>
+                                                                <span class="fs-6 fw-normal"
+                                                                      style="font-size: 0.85rem !important;">all ad format</span>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                </h5>
+                                            </div>
+                                            <div id="collapseThree" class="collapse" aria-labelledby="pricingThree"
+                                                 data-bs-parent="#pricingboxes" style="">
+                                                <div class="card-body lh-lg pt-0 px-0">
+                                                    <div class="card-body lh-lg pt-3 px-0">
+                                                        <div class="row">
+                                                            <div class="col-md-4 pb-3">
+                                                                <div id="DataTables_Table_0_filter"
+                                                                     class="dataTables_filter d-flex flex-row">
+                                                                    <input id="search_ad_format" type="search"
+                                                                           class="form-control form-control-sm"
+                                                                           placeholder="Search Ad Format"
+                                                                           aria-controls="DataTables_Table_0">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <input hidden value="{{.IsMoreAdFormat}}"
+                                                                   id="is_more_adformat"/>
+                                                            <div class="col-lg-6 col-xxl-6" id="list_ad_format"
+                                                                 style="display: block;overflow-y: scroll;overflow-x: auto;height: 255px;">
+                                                                {{range .AdFormats}}
+                                                                    <div class="border border-gray-50" id="{{.Id}}">
+                                                                        <div class="list-group list-group-flush my-n3">
+                                                                            <div class="list-group-item px-3 px-md-4">
+                                                                                <div class="row align-items-center px-md-2">
+                                                                                    <div class="col p-0">
+                                                                                        <h6 class="mb-1 font-weight-semibold fs-12">
+                                                                                            {{.Name}}
+                                                                                        </h6>
+                                                                                    </div>
+                                                                                    <div class="col-auto">
+                                                                                        <button type="button"
+                                                                                                id="add_adFormat"
+                                                                                                data-id="{{.Id}}"
+                                                                                                name="{{.Name}}"
+                                                                                                class="btn btn-secondary">
+                                                                                            +
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                {{end}}
+                                                            </div>
+                                                            <div class="col-lg-6 col-xxl-6 box_ad_format"
+                                                                 style="display: block;overflow-y: scroll;overflow-x: auto;height: 255px;">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card px-4">
+                                            <div class="card-header p-0" id="pricingFour">
+                                                <h5 class="mb-0 d-grid">
+                                                    <button class="btn btn-light btn-block text-start p-3 rounded-0 fs-6 collapsed"
+                                                            type="button" data-bs-toggle="collapse"
+                                                            data-bs-target="#collapseFour" aria-expanded="false"
+                                                            aria-controls="collapseFour">
+                                                        <div class="row w-100">
+                                                            <div class="col-6">Select Ad Size</div>
+                                                            <div class="col-auto align-items-center d-flex">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                     height="16" fill="currentColor"
+                                                                     class="bi bi-check-lg text-blue-600 me-2"
+                                                                     viewBox="0 0 16 16">
+                                                                    <path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/>
+                                                                </svg>
+                                                                <span class="fs-6 fw-normal"
+                                                                      style="font-size: 0.85rem !important;">all ad size</span>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                </h5>
+                                            </div>
+                                            <div id="collapseFour" class="collapse" aria-labelledby="pricingFour"
+                                                 data-bs-parent="#pricingboxes" style="">
+                                                <div class="card-body lh-lg pt-0 px-0">
+                                                    <div class="row">
+                                                        <div class="col-md-4 pb-3">
+                                                            <div id="DataTables_Table_0_filter"
+                                                                 class="dataTables_filter d-flex flex-row">
+                                                                <input id="search_ad_size" type="search"
+                                                                       class="form-control form-control-sm"
+                                                                       placeholder="Search Ad Size"
+                                                                       aria-controls="DataTables_Table_0">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <input hidden value="{{.IsMoreAdSize}}" id="is_more_adsize"/>
+                                                        <div class="col-lg-6 col-xxl-6" id="list_ad_size"
+                                                             style="display: block;overflow-y: scroll;overflow-x: auto;height: 255px;">
+                                                            {{range .AdSizes}}
+                                                                <div class="border border-gray-50" id="{{.Id}}">
+                                                                    <div class="list-group list-group-flush my-n3">
+                                                                        <div class="list-group-item px-3 px-md-4">
+                                                                            <div class="row align-items-center px-md-2">
+                                                                                <div class="col p-0">
+                                                                                    <h6 class="mb-1 font-weight-semibold fs-12">
+                                                                                        {{.Name}}
+                                                                                    </h6>
+                                                                                </div>
+                                                                                <div class="col-auto">
+                                                                                    <button type="button"
+                                                                                            id="add_adSize"
+                                                                                            data-id="{{.Id}}"
+                                                                                            name="{{.Name}}"
+                                                                                            class="btn btn-secondary">
+                                                                                        +
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            {{end}}
+                                                        </div>
+                                                        <div class="col-lg-6 col-xxl-6 box_ad_size"
+                                                             style="display: block;overflow-y: scroll;overflow-x: auto;height: 255px;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/*Rule Targeting*/}}
+
+                    <div class="my-3 row">
+                        <div class="col-sm-12 pt-4 text-lg-end">
+                            <button type="submit" class="btn btn-warning btn-xl submit">Submit</button>
+                        </div>
+                    </div>
+                    {{/* Button*/}}
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{{/*Form Infomation*/}}

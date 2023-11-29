@@ -1,0 +1,8 @@
+{{- /*gotype: source/apps/frontend/model.InventoryRecord*/ -}}
+{{if eq .Status 1}}
+    <span >Approved</span>
+{{else if eq .Status 2}}
+    <span >Pending</span>
+{{else if eq .Status 3}}
+    <span >Rejected</span>
+{{end}}

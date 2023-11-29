@@ -1,0 +1,30 @@
+{{template "ads_txt/index/inc.header" .}}
+{{/*End Header*/}}
+
+<div class="pubpower-main pb-3 height-main">
+    <div class="container-fluid px-0">
+        <div class="row">
+            <div class="col-12 mb-4">
+                <div class="card">
+                    <div class="align-items-center p-0 pb-4 col-md-12">
+                        <div class="ms-auto col-md-12 filter p-0">
+                            {{template "ads_txt/index/inc.filter" .}}
+                        </div>
+                    </div>
+                    <div class="table-responsive" style="height:65vh">
+                        <table id="tableAdsTxt" class="table table-nowrap table-list w-100 dataTable no-footer">
+                            <thead>
+                            <tr>
+                                <th><strong>Url</strong></th>
+                                <th><strong>Ads.txt Status</strong></th>
+                                <th data-orderable="false"><strong>Action</strong></th>
+                                <th style="max-width:130px"><strong>Last Scanned</strong></th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

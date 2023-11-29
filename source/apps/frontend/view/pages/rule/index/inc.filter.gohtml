@@ -1,0 +1,48 @@
+{{- /*gotype: source/apps/frontend/controller.AssignRuleIndex*/ -}}
+<form id="formFilterUser" class="g-3"
+      data-table-id="tableRules" data-url="/rule">
+    <div class="row">
+        <div class="col-sm-9 form-inline">
+
+            <div class="form-group-sm pe-5 py-2 d-flex flex-column">
+                <span class="fs-label-filter">Type</span>
+                <select id="status" name="f_type" title="All"
+                        class="selectpicker select-picker-filter form-control border-0 show-menu-arrow"
+                        multiple="multiple"
+                        data-style="border-0"
+                        data-live-search="false" data-actions-box="false" tabindex="-1"
+                        aria-hidden="true"
+                        data-selected-text-format="count > 1">
+                    <option value="floor" {{if (InArray "floor" .Params.Type false)}}selected{{end}}>
+                        Floor Rule
+                    </option>
+                    <option value="blocking" {{if (InArray "blocking" .Params.Type false)}}selected{{end}}>
+                        Ad Quality
+                    </option>
+                    <option value="blocked-page" {{if (InArray "blocked-page" .Params.Type false)}}selected{{end}}>
+                        Blocked Page
+                    </option>
+                </select>
+            </div>
+            {{/*Filter Type*/}}
+        </div>
+        {{/*  end .col-sm-9 .form-inline */}}
+
+        <div class="col-sm-3">
+            <div class="mt-2 p-0 d-flex align-items-center">
+                <input value="{{.Params.QuerySearch}}" name="f_q" class="form-control me-2"
+                       placeholder="Search..."/>
+                <button type="button" data-text-loading="Loading..." class="btn btn-outline-secondary btn-sm submit">
+                    {{.LANG.Run}}
+                </button>
+            </div>
+        </div>
+        {{/*  end .col-sm-3 */}}
+
+        <input type="hidden" name="start" value="{{.Params.Start}}">
+        <input type="hidden" name="length" value="{{.Params.Length}}">
+        <input type="hidden" name="order_column" value="{{.Params.OrderColumn}}">
+        <input type="hidden" name="order_dir" value="{{.Params.OrderDir}}">
+    </div>
+    {{/* end .row */}}
+</form>

@@ -1,0 +1,24 @@
+{{- /*gotype: source/apps/frontend/controller.AssignIdentityAdd*/ -}}
+{{$Lang := .Schema.LANG.Pages.Identity}}
+<div class="dm10">
+    <div class="dm8">
+        <div class="dm9">User Id Modules</div>
+        <div class="dm12">
+            <a href="javascript:void(0)" class="add-module">+ Add New Module</a>
+        </div>
+    </div>
+    <div class="dm8 box-select-module">
+        <div class="pp7 w-100">
+            <div class="bor0-selectpicker pp-9">
+                <select id="select-module" class="form-control selectpicker icon-placeholder-search" title="Select a module" data-live-search="true" data-size="7" data-live-search-placeholder="Search Domain">
+                    {{range .ModuleUserId}}
+                        <option value="{{.TableModuleUserId.Id}}">{{.TableModuleUserId.Name}}</option>
+                    {{end}}
+                </select> <span class="form-text ms-2 w-auto invalid-feedback"></span>
+            </div>
+        </div>
+    </div>
+    <div id="module-params">
+
+    </div>
+</div>

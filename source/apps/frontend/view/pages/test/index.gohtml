@@ -1,0 +1,38 @@
+{{- /*gotype: source/apps/frontend/controller.AssignTest*/ -}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{.Title}}</title>
+    {{/*    <link href="//cdn.syncfusion.com/ej2/ej2-base/styles/material.css" rel="stylesheet"/>*/}}
+    {{/*    <link href="//cdn.syncfusion.com/ej2/ej2-inputs/styles/material.css" rel="stylesheet"/>*/}}
+    {{/*    <link href="//cdn.syncfusion.com/ej2/ej2-dropdowns/styles/material.css" rel="stylesheet"/>*/}}
+    {{/*    <link href="//cdn.syncfusion.com/ej2/ej2-buttons/styles/material.css" rel="stylesheet"/>*/}}
+</head>
+<body>
+<div id='loader'>LOADING....</div>
+<div id='container' style="margin:0 auto; width:250px;">
+    <form method="POST" id="testForm">
+
+        <select class="sfSelectWithCheckbox" name="select1" data-hello="hihi">
+            <option value="value1">value1</option>
+            <option value="value2">value2</option>
+            <option value="value3">value3</option>
+            <option value="value4">value4</option>
+            <option value="value5">value5</option>
+        </select>
+
+        <select class="sfSelectWithCheckbox" name="select2">
+            <option value="value1">value1</option>
+            <option value="value2">value2</option>
+            <option value="value3">value3</option>
+            <option value="value4">value4</option>
+            <option value="value5">value5</option>
+        </select>
+        <button class="btn btn-danger submit" type="button">Submit</button>
+    </form>
+</div>
+<script src="/assets/js/jquery-3.6.0.min.js?v=c9d7e4a8-d2c5-4fc3-b496-e5612e46f284"></script>
+<script src="/assets/test/index.js?v={{.Now}}"></script>
+</body>
+</html>

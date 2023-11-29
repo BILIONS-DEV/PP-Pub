@@ -1,0 +1,65 @@
+package payload
+
+import "source/core/technology/mysql"
+
+type AdTagAdd struct {
+	Id                           int64                    `form:"column:id" json:"id"`
+	Name                         string                   `form:"column:name" json:"name"`
+	UserId                       int64                    `form:"column:user_id" json:"user_id"`
+	InventoryId                  int64                    `form:"column:inventory_id" json:"inventory_id"`
+	GamDisplay                   string                   `form:"column:gam_display" json:"gam_display"`
+	GamInStream                  string                   `form:"column:gam_instream" json:"gam_instream"`
+	Type                         mysql.TYPEAdType         `form:"column:ad_tag_type" json:"ad_tag_type"`
+	PassBack                     string                   `form:"column:pass_back" json:"pass_back"`
+	PassBackTypeOutStream        mysql.TYPEPassBackType   `form:"column:passback_type_outstream" json:"passback_type_outstream"`
+	InlineTagOutStream           int64                    `form:"column:inline_tag_outstream" json:"inline_tag_outstream"`
+	PassBackOutStream            string                   `form:"column:pass_back_outstream" json:"pass_back_outstream"`
+	Status                       mysql.TypeStatusAdTag    `form:"column:status" json:"status"`
+	AdSize                       mysql.TYPEAdSize         `form:"column:ad_size" json:"ad_size"`
+	ResponsiveType               mysql.TYPEResponsiveType `form:"column:responsive_type" json:"responsive_type"`
+	PrimaryAdSize                int64                    `form:"column:primary_ad_size" json:"primary_ad_size"`
+	AdditionalAdSize             []int64                  `form:"column:additional_ad_size" json:"additional_ad_size"`
+	SizeOnMobile                 int64                    `form:"column:size_on_mobile" json:"size_on_mobile"`
+	AdditionalAdSizeMobile       []int64                  `form:"column:additional_ad_size_mobile" json:"additional_ad_size_mobile"`
+	PassBackMobile               string                   `form:"column:pass_back_mobile" json:"pass_back_mobile"`
+	TemplateId                   int64                    `form:"column:template" json:"template"`
+	TemplateOutStream            int64                    `form:"column:template_outstream" json:"template_outstream"`
+	TemplateArticles             int64                    `form:"column:template_articles" json:"template_articles"`
+	ContentSource                mysql.TypeContentSource  `form:"column:content_source" json:"content_source"`
+	ContentSourceArticles        mysql.TypeContentSource  `form:"column:content_source_articles" json:"content_source_articles"`
+	PlaylistId                   int64                    `form:"column:playlist" json:"playlist"`
+	FeedUrl                      string                   `form:"column:feed" json:"feed"`
+	FeedArticles                 string                   `form:"column:feed_articles" json:"feed_articles"`
+	BidOutStream                 mysql.TypeOnOff          `form:"column:bid_out_stream" json:"bid_out_stream"`
+	GamSticky                    string                   `form:"column:gam_sticky" json:"gam_sticky"`
+	SizeSticky                   int64                    `form:"size_sticky" json:"size_sticky"`
+	SizeStickyMobile             int64                    `form:"size_sticky_mobile" json:"size_sticky_mobile"`
+	PositionSticky               mysql.TypePositionSticky `form:"position_sticky" json:"position_sticky"`
+	PositionStickyMobile         mysql.TypePositionSticky `form:"position_sticky_mobile" json:"position_sticky_mobile"`
+	CloseButtonSticky            int                      `form:"close_button_sticky" json:"close_button_sticky"`
+	CloseButtonStickyMobile      mysql.TYPEOnOff          `form:"close_button_sticky_mobile" json:"close_button_sticky_mobile"`
+	AdditionalAdSizeDesktopStick []int64                  `form:"additional_ad_size_desktop_stick" json:"additional_ad_size_desktop_stick"`
+	AdditionalAdSizeMobileStick  []int64                  `form:"additional_ad_size_mobile_stick" json:"additional_ad_size_mobile_stick"`
+	RendererInstream             mysql.TYPERenderer       `form:"column:renderer_instream" json:"renderer_instream"`
+	RendererOutStream            mysql.TYPERenderer       `form:"column:renderer_outstream" json:"renderer_outstream"`
+	FrequencyCaps                int                      `form:"column:frequency_caps" json:"frequency_caps"`
+	ContentType                  mysql.TYPEContentType    `form:"column:content_type" json:"content_type"`
+	MainTitle                    string                   `form:"column:main_title" json:"main_title"`
+	BackgroundColor              string                   `form:"column:background_color" json:"background_color"`
+	TitleColor                   string                   `form:"column:title_color" json:"title_color"`
+	TotalAds                     int64                    `form:"column:total_ads" json:"total_ads"`
+	PassBackPlayZone             string                   `form:"column:pass_back_play_zone" json:"pass_back_play_zone"`
+	TemplatePlayZone             int64                    `form:"column:template_play_zone" json:"template_play_zone"`
+	ContentSourcePlayZone        mysql.TypeContentSource  `form:"column:content_source_play_zone" json:"content_source_play_zone"`
+	ShiftContent                 mysql.TYPEOnOff          `form:"column:shift_content" json:"shift_content"`
+	EnableStickyDesktop          mysql.TYPEOnOff          `form:"enable_sticky_desktop" json:"enable_sticky_desktop"`
+	EnableStickyMobile           mysql.TYPEOnOff          `form:"enable_sticky_mobile" json:"enable_sticky_mobile"`
+	BannerAD                     mysql.TYPEOnOff          `form:"column:banner_ad" json:"banner_ad"`
+	VideoAD                      mysql.TYPEOnOff          `form:"column:video_ad" json:"video_ad"`
+	TemplateNative               int64                    `form:"column:template_native" json:"template_native"`
+	PassBackSticky               string                   `form:"column:pass_back_sticky" json:"pass_back_sticky"`
+	PassBackStickyMobile         string                   `form:"column:pass_back_sticky_mobile" json:"pass_back_sticky_mobile"`
+	AdRefresh                    mysql.TYPEAdRefresh      `form:"column:ad_refresh" json:"ad_refresh"`
+	AdRefreshTime                int64                    `form:"column:ad_refresh_time" json:"ad_refresh_time"`
+	Sticky4k                     string                   `form:"sticky4k" json:"sticky4k"`
+}

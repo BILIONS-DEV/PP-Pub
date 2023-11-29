@@ -1,0 +1,59 @@
+{{- /*gotype: source/apps/frontend/controller.AssignBidderEdit*/ -}}
+{{$DemandLang := .Schema.LANG.Pages.LineItem}}
+<div class="pp15">
+    <div class="pp5">{{$DemandLang.LineItemName}}</div>
+</div>
+<div class="pp7">
+    <div class="pp-9">
+        <input class="pp-10 form-control" type="text" id="name" name="name" value="{{.Row.TableLineItemV2.Name}}"/>
+        <input type="hidden" id="id-line-item" value="{{.Row.TableLineItemV2.Id}}" name="id">
+        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+    </div>
+</div>
+<div class="pp15">
+    <div class="pp5"> {{$DemandLang.Description}}</div>
+</div>
+<div class="pp7">
+    <textarea class="pp17 " spellcheck="false" id="description" name="description">{{.Row.TableLineItemV2.Description}}</textarea>
+    <span class="form-text ms-2 w-auto invalid-feedback"></span>
+</div>
+<div class="pp15">
+    <div class="pp5">{{$DemandLang.Type}}</div>
+</div>
+<div class=" cus-selectpicker pp-9">
+    <select id="server_type" name="server_type" class="form-control selectpicker" disabled>
+        <option value="1" {{if eq .Row.TableLineItemV2.ServerType.Int 1}}selected{{end}}>Prebid</option>
+        <option value="2" {{if eq .Row.TableLineItemV2.ServerType.Int 2}}selected{{end}}>Google</option>
+    </select> <span class="form-text ms-2 w-auto invalid-feedback"></span>
+</div>
+<div class="pp15">
+    <div class="pp5">{{$DemandLang.Priority}}</div>
+</div>
+<div class="pp7 cus-selectpicker pp-9">
+    <select id="priority" name="priority" class="form-control selectpicker" data-size="7">
+        <option value="1" {{if eq 1 .Row.TableLineItemV2.Priority}}selected{{end}}>1 (highest)</option>
+        <option value="2" {{if eq 2 .Row.TableLineItemV2.Priority}}selected{{end}}>2</option>
+        <option value="3" {{if eq 3 .Row.TableLineItemV2.Priority}}selected{{end}}>3</option>
+        <option value="4" {{if eq 4 .Row.TableLineItemV2.Priority}}selected{{end}}>4</option>
+        <option value="5" {{if eq 5 .Row.TableLineItemV2.Priority}}selected{{end}}>5</option>
+        <option value="6" {{if eq 6 .Row.TableLineItemV2.Priority}}selected{{end}}>6</option>
+        <option value="7" {{if eq 7 .Row.TableLineItemV2.Priority}}selected{{end}}>7</option>
+        <option value="8" {{if eq 8 .Row.TableLineItemV2.Priority}}selected{{end}}>8</option>
+        <option value="9" {{if eq 9 .Row.TableLineItemV2.Priority}}selected{{end}}>9</option>
+        <option value="10" {{if eq 10 .Row.TableLineItemV2.Priority}}selected{{end}}>10</option>
+        <option value="11" {{if eq 11 .Row.TableLineItemV2.Priority}}selected{{end}}>11</option>
+        <option value="12" {{if eq 12 .Row.TableLineItemV2.Priority}}selected{{end}}>12</option>
+        <option value="13" {{if eq 13 .Row.TableLineItemV2.Priority}}selected{{end}}>13</option>
+        <option value="14" {{if eq 14 .Row.TableLineItemV2.Priority}}selected{{end}}>14</option>
+        <option value="15" {{if eq 15 .Row.TableLineItemV2.Priority}}selected{{end}}>15</option>
+        <option value="16" {{if eq 16 .Row.TableLineItemV2.Priority}}selected{{end}}>16 (lowest)</option>
+    </select> <span class="form-text ms-2 w-auto invalid-feedback"></span>
+</div>
+<div class="pp15">
+    <div class="pp5">Status</div>
+</div>
+<div class="pp7">
+    <label class="switch">
+        <input type="checkbox" id="status" name="status" {{if eq 1 .Row.TableLineItemV2.Status }}checked{{end}}/>
+        <span class="slider round"></span> </label>
+</div>

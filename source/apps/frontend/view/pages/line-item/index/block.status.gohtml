@@ -1,0 +1,6 @@
+{{- /*gotype: source/apps/frontend/model.LineItemRecord*/ -}}
+{{if eq .TableLineItem.Status 1}}
+    <span >{{.TableLineItem.Status.StringRunPause}}</span>
+{{else if eq .TableLineItem.Status 2}}
+    <span>{{.TableLineItem.Status.StringRunPause}}</span>
+{{end}}

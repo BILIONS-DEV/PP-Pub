@@ -1,0 +1,24 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Header>
+        <ResponseHeader xmlns="https://www.google.com/apis/ads/publisher/v202105">
+            <requestId>b5
+                c78ce2f3058e752510b23372308848
+            </requestId>
+            <responseTime>275</responseTime>
+        </ResponseHeader>
+    </soap:Header>
+    <soap:Body>
+        <getAllNetworksResponse xmlns="https://www.google.com/apis/ads/publisher/v202105">
+            <rval>
+                <id>606035</id>
+                <displayName>X8</displayName>
+                <networkCode>325081995</networkCode>
+                <propertyCode>ca-pub-1562474510237471</propertyCode>
+                <timeZone>Asia/Ho_Chi_Minh</timeZone>
+                <currencyCode>VND</currencyCode>
+                <effectiveRootAdUnitId>324082115</effectiveRootAdUnitId>
+                <isTest>false</isTest>
+            </rval>
+        </getAllNetworksResponse>
+    </soap:Body>
+</soap:Envelope>

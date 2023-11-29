@@ -1,0 +1,33 @@
+{{- /*gotype: source/apps/frontend/controller.BuildScript*/ -}}
+{{if eq .TagDesktop.AdTag.TableInventoryAdTag.Type 1}}{{if eq .IsShowStyle true}}<style>
+        /{{""}}* Fixed Heigh for CLS - Cumulative Layout Shift */
+        @media only screen and (min-width: 992px) {
+            #div-vi-{{$.TimeStamp}} {
+                width: {{.TagDesktop.Size.Width}}px !important;
+                height: {{.TagDesktop.Size.Height}}px !important;
+            }
+        }
+    </style>
+    {{end}}<div id="div-vi-{{$.TimeStamp}}"
+         style="width: {{.TagMobile.Size.Width}}px;height: {{.TagMobile.Size.Height}}px;{{if eq .PlaceHolder 1}}border: 1px solid {{.BorderColor}};margin: 0 auto;display: flex;justify-content: center;align-items: center;font-weight: bold;color: {{.TextColor}};{{end}}">{{if eq .PlaceHolder 1}}<span>{{.PlaceHolderText}}</span>{{end}}</div>
+    <script type="text/javascript">
+        (vitag.Init = window.vitag.Init || []).push(function () {
+            if (viAPItag.mobileDetect()) {
+                document.getElementById("div-vi-{{$.TimeStamp}}").innerHTML = '<div class="adsbyvli" style="width:{{.TagMobile.Size.Width}}px;height:{{.TagMobile.Size.Height}}px;display:inline-block;" data-ad-slot="{{.TagMobile.Slot}}"></div>';
+                viAPItag.display("{{.TagMobile.Slot}}");
+            } else {
+                document.getElementById("div-vi-{{$.TimeStamp}}").innerHTML = '<div class="adsbyvli" style="width:{{.TagDesktop.Size.Width}}px;height:{{.TagDesktop.Size.Height}}px;display:inline-block;" data-ad-slot="{{.TagDesktop.Slot}}"></div>';
+                viAPItag.display("{{.TagDesktop.Slot}}");
+            }
+        })
+    </script>
+{{else if eq .TagDesktop.AdTag.TableInventoryAdTag.Type 5}}<script type="text/javascript">
+        (vitag.Init = window.vitag.Init || []).push(function () {
+            if (viAPItag.mobileDetect()) {
+                viAPItag.initStickyBanner("{{.TagMobile.Slot}}")
+            } else {
+                viAPItag.initStickyBanner("{{.TagDesktop.Slot}}");
+            }
+        })
+    </script>
+{{end}}

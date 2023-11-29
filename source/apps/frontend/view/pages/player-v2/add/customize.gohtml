@@ -1,0 +1,238 @@
+{{- /*gotype: source/apps/frontend/controller.AssignPlayerAdd*/ -}}
+{{$lang := .Schema.LANG.Pages.Template}}
+
+<div class="customize-default video-template-element">
+    <div class="pt1" style="border-top: 0;">
+        <div class="pp15">
+            <div class="pp5">Display Options</div>
+        </div>
+        <div class="pp7">
+            <div>
+                <div id="show-main-title">
+                    <input id="show_main_title" name="main_title" type="checkbox" checked>
+                    <label class="light-font-label" for="show_main_title">Show main title</label>
+                </div>
+
+                {{/* <div id="show-sub-title" class="d-none">
+                    <input id="show_sub_title" name="sub_title" class="disabled" type="checkbox" checked>
+                    <label class="light-font-label disabled" for="show_sub_title">Show sub title</label>
+                </div>
+
+                <div id="show-action-button" class="d-none">
+                    <input id="show_action_button" name="action_button" class="disabled" type="checkbox" checked>
+                    <label class="light-font-label disabled" for="show_action_button">Show action button</label>
+                </div> */}}
+
+                <div id="show-content-title">
+                    <input id="show_content_title" name="title_enable" type="checkbox" checked>
+                    <label class="light-font-label" for="show_content_title">Show content title</label>
+                </div>
+
+                <div class="box-show-content-desc" id="show-content-description">
+                    <input id="show_content_description" name="description_enable" type="checkbox" checked>
+                    <label class="light-font-label" for="show_content_description">Show content description</label>
+                </div>
+
+                <div id="show-controls">
+                    <input id="show_controls" name="show_controls" type="checkbox" checked>
+                    <label class="light-font-label" for="show_controls">Show controls</label>
+                </div>
+
+            </div>
+        </div>
+        <div class="pp15">
+            <div class="pt2">Main Title Text</div>
+        </div>
+        <div class="pp7">
+            <div class="pp-9">
+                <input id="main_title_text" name="main_title_text" class="pp-10 form-control" type="text" value="FEATURED VIDEOS">
+                <span class="form-text ms-1 w-auto invalid-feedback"></span>
+            </div>
+        </div>
+        {{/* <div class="pp15 sub-title-text">
+            <div class="pt2">Sub Title Text</div>
+        </div>
+        <div class="pp7 sub-title-text">
+            <div class="pp-9">
+                <input id="sub_title_text" name="sub_title_text" class="pp-10 form-control" type="text" value="by Valueimpression">
+                <span class="form-text ms-1 w-auto invalid-feedback"></span>
+            </div>
+        </div> */}}
+        {{/* <div class="pp15 action-button-text d-none">
+            <div class="pt2">Action Button Text</div>
+        </div>
+        <div class="pp7 action-button-text disabled" disabled>
+            <div class="pp-9">
+                <input id="action_button_text" name="action_button_text" class="pp-10 form-control d-none" type="text" value="READ MORE">
+                <span class="form-text ms-1 w-auto invalid-feedback"></span>
+            </div>
+        </div> */}}
+    </div>
+    <div class="pt1">
+        <div class="pp15">
+            <div class="pp5">Color</div>
+        </div>
+        {{/* <div class="pp7 box-theme-color">
+            <div class="pt97">Theme:</div>
+            <input type="color" class="input-color" value="#000000" style="width: 32px;height: 32px;background: #000000;border: 1px solid #aab4c8;border-right: 0;border-radius: 2px 0 0 2px;cursor: pointer">
+            <input style="border-radius: 0 2px 2px 0;" class="pp10 w-100 input-color form-control " id="theme_color" name="theme_color" type="text" value="#000000">
+        </div> */}}
+        <div class="pp7 box-controls-color">
+            <div class="pt97">Controls:</div>
+            <input type="color" class="input-color" value="#0B7EF4" style="width: 32px;height: 32px;background: #EEEEEE;border: 1px solid #aab4c8;border-right: 0;border-radius: 2px 0 0 2px;cursor: pointer">
+            <input style="border-radius: 0 2px 2px 0;" class="pp10 w-100 input-color form-control " id="control_color" name="control_color" type="text" value="#0B7EF4">
+        </div>
+        <div class="pp7 box-background-color">
+            <div class="pt97">Background:</div>
+            <input type="color" class="input-color" value="#FFFFFF" style="width: 32px;height: 32px;background: #FFFFFF;border: 1px solid #aab4c8;border-right: 0;border-radius: 2px 0 0 2px;cursor: pointer">
+            <input style="border-radius: 0 2px 2px 0;" class="pp10 w-100 input-color form-control " id="background_color" name="background_color" type="text" value="#FFFFFF">
+        </div>
+        {{/* <div class="pp7 box-main-title-background-color">
+            <div class="pt97">Main Title Background:</div>
+            <input type="color" class="input-color" value="#000000" style="width: 32px;height: 32px;background: #000000;border: 1px solid #aab4c8;border-right: 0;border-radius: 2px 0 0 2px;cursor: pointer">
+            <input style="border-radius: 0 2px 2px 0;" class="pp10 w-100 input-color form-control " id="main_title_background_color" name="main_title_background_color" type="text" value="#000000">
+        </div> */}}
+        {{/* <div class="pp7 box-main-title-color">
+            <div class="pt97">Main Title:</div>
+            <input type="color" class="input-color" value="#FFFFFF" style="width: 32px;height: 32px;background: #FFFFFF;border: 1px solid #aab4c8;border-right: 0;border-radius: 2px 0 0 2px;cursor: pointer">
+            <input style="border-radius: 0 2px 2px 0;" class="pp10 w-100 input-color form-control " id="main_title_color" name="main_title_color" type="text" value="#FFFFFF">
+        </div> */}}
+        <div class="pp7 box-title-color">
+            <div class="pt97">Title:</div>
+            <input type="color" class="input-color" value="#000000" style="width: 32px;height: 32px;background: #000000;border: 1px solid #aab4c8;border-right: 0;border-radius: 2px 0 0 2px;cursor: pointer">
+            <input style="border-radius: 0 2px 2px 0;" class="pp10 w-100 input-color form-control " id="title_color" name="title_color" type="text" value="#000000">
+        </div>
+        {{/* <div class="pp7 box-title-background-color">
+            <div class="pt97">Title Background:</div>
+            <input type="color" class="input-color" value="#FFFFFF" style="width: 32px;height: 32px;background: #FFFFFF;border: 1px solid #aab4c8;border-right: 0;border-radius: 2px 0 0 2px;cursor: pointer">
+            <input style="border-radius: 0 2px 2px 0;" class="pp10 w-100 input-color form-control " id="title_background_color" name="title_background_color" type="text" value="#FFFFFF">
+        </div> */}}
+        {{/* <div class="pp7 box-title-hover-background-color">
+            <div class="pt97">Title Hover Background:</div>
+            <input type="color" class="input-color" value="#FFFFFF" style="width: 32px;height: 32px;background: #FFFFFF;border: 1px solid #aab4c8;border-right: 0;border-radius: 2px 0 0 2px;cursor: pointer">
+            <input style="border-radius: 0 2px 2px 0;" class="pp10 w-100 input-color form-control " id="title_hover_background_color" name="title_hover_background_color" type="text" value="#FFFFFF">
+        </div> */}}
+        {{/* <div class="pp7 box-action-button-color">
+            <div class="pt97">Action Button:</div>
+            <input type="color" class="input-color" value="#FFFFFF" style="width: 32px;height: 32px;background: #FFFFFF;border: 1px solid #aab4c8;border-right: 0;border-radius: 2px 0 0 2px;cursor: pointer">
+            <input style="border-radius: 0 2px 2px 0;" class="pp10 w-100 input-color form-control " id="action_button_color" name="action_button_color" type="text" value="#FFFFFF">
+        </div> */}}
+        <div class="pp7 box-description-color">
+            <div class="pt97">Description:</div>
+            <input type="color" class="input-color" value="#EEEEEE" style="width: 32px;height: 32px;background: #EEEEEE;border: 1px solid #aab4c8;border-right: 0;border-radius: 2px 0 0 2px;cursor: pointer">
+            <input style="border-radius: 0 2px 2px 0;" class="pp10 w-100 input-color form-control " id="description_color" name="description_color" type="text" value="#EEEEEE">
+        </div>
+    </div>
+    <div class="pt1" id="customize-controls">
+        <div class="pp15">
+            <div class="pp5">Controls</div>
+        </div>
+        <div class="pp7">
+            <div>
+                <div>
+                    <input id="fullscreen_button" name="fullscreen_button" class="controls" type="checkbox" checked>
+                    <label class="light-font-label" for="fullscreen_button">Fullscreen Button</label>
+                </div>
+                <div>
+                    <input id="next_prev_arrows" name="next_prev_arrows_button" class="controls" type="checkbox" checked>
+                    <label class="light-font-label" for="next_prev_arrows">Next / Prev Arrows</label>
+                </div>
+                <div>
+                    <input id="next_prev_10_sec" name="next_prev_time" class="controls" type="checkbox" checked>
+                    <label class="light-font-label" for="next_prev_10_sec">Next / Prev 10 sec</label>
+                </div>
+                <div>
+                    <input id="video_config" name="video_config" class="controls" type="checkbox" checked>
+                    <label class="light-font-label" for="video_config">Video Config</label>
+                </div>
+                <div>
+                    <input id="show_view_likes" name="show_stats" class="controls" type="checkbox" checked>
+                    <label class="light-font-label" for="show_view_likes">Show Views/Likes</label>
+                </div>
+                <div>
+                    <input id="share_button" name="share_button" class="controls" type="checkbox" checked>
+                    <label class="light-font-label" for="share_button">Share Button</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pt1">
+        <div class="pp15">
+            <div class="pp5">Logo</div>
+        </div>
+        <div class="pp7">
+            <div>
+                <input type="hidden" name="custom_logo" value="1">
+                <div>
+                    <input id="pubpower_logo" name="pubpower_logo" class="logo-config" type="checkbox" checked>
+                    <label class="light-font-label logo-config" for="pubpower_logo">Valueimpression Logo</label>
+                </div>
+                <div>
+                    <input id="powered_by_pubpower" name="powered_by" class="logo-config" type="checkbox" checked>
+                    <label class="light-font-label" for="powered_by_pubpower">Powered by Valueimpression</label>
+                </div>
+                <div>
+                    <input id="show_logo" name="enable_logo" class="logo-config" type="checkbox" checked>
+                    <label class="light-font-label logo-config" for="show_logo">Custom Logo</label>
+                </div>
+            </div>
+        </div>
+        <div class="pp7">
+            <p style="font-size: 13px;">Recommended dimensions: We recommend logos at least 45px high, square logos is the most suitable.</p>
+        </div>
+        <div class="pp15">
+            <div class="pt2">Select Logo</div>
+        </div>
+        <div class="pp7">
+            <div class="pt99 d-flex justify-content-center">
+                <img id="preview-logo" src="" style="height: 92px">
+                <input type="file" class="d-none" name="link" id="logo" value="">
+            </div>
+        </div>
+        <div class="pp7">
+            <a class="pt98 btn-add-logo logo-config">ADD</a>
+        </div>
+        <div class="pp15">
+            <div class="pt2">URL</div>
+        </div>
+        <div class="pp7">
+            <div class="pp-9">
+                <input id="click_through" name="click_through" class="pp-10 form-control logo-config" type="text"
+                       placeholder="https://pubpowe.io">
+                <span class="form-text ms-1 w-auto invalid-feedback"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="customize-native native-template-element">
+    <div class="pt1" style="border-top: 0;">
+        <div class="pp15">
+            <div class="pp5">Color</div>
+        </div>
+        <div class="pp7">
+            <div class="pt97">Title</div>
+            <input type="color" class="input-color" value="#000000" style="width: 32px;height: 32px;background: #000000;border: 1px solid #aab4c8;border-right: 0;border-radius: 2px 0 0 2px;cursor: pointer">
+            <input style="border-radius: 0 2px 2px 0;" class="pp10 w-100 input-color form-control" id="native_title_color" type="text" value="#000000">
+        </div>
+        <div class="pp7">
+            <div class="pt97">Advertiser name</div>
+            <input type="color" class="input-color" value="#999999" style="width: 32px;height: 32px;background: #999999;border: 1px solid #aab4c8;border-right: 0;border-radius: 2px 0 0 2px;cursor: pointer">
+            <input style="border-radius: 0 2px 2px 0;" class="pp10 w-100 input-color form-control" id="native_advertiser_name" type="text" value="#999999">
+        </div>
+        <div class="pp7">
+            <div class="pt97">CTA Button</div>
+            <input type="color" class="input-color" value="#4a90e2" style="width: 32px;height: 32px;background: #4a90e2;border: 1px solid #aab4c8;border-right: 0;border-radius: 2px 0 0 2px;cursor: pointer">
+            <input style="border-radius: 0 2px 2px 0;" class="pp10 w-100 input-color form-control" id="native_cta_button" type="text" value="#4a90e2">
+        </div>
+        <div class="pp7">
+            <div class="pt97">Background</div>
+            <input type="color" class="input-color" value="#FFFFFF" style="width: 32px;height: 32px;background: #FFFFFF;border: 1px solid #aab4c8;border-right: 0;border-radius: 2px 0 0 2px;cursor: pointer">
+            <input style="border-radius: 0 2px 2px 0;" class="pp10 w-100 input-color form-control" id="native_background" type="text" value="#FFFFFF">
+        </div>
+    </div>
+</div>
+<style>
+    input::-webkit-color-swatch {
+        border: none;
+    }
+</style>

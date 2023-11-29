@@ -1,0 +1,75 @@
+{{- /*gotype: source/apps/frontend/controller.AssignIdentityEdit*/ -}}
+{{$Lang := .Schema.LANG.Pages.Identity}}
+
+{{template "identity/edit/inc.header" .}}
+{{/*End Header*/}}
+
+
+<div class="it-1 height-main">
+    <form id="submitIdentity" class="w-100">
+        <input type="hidden" name="id" value="{{.Row.TableIdentity.Id}}">
+        <div class="d-flex h-100">
+            <div class="it-2 p-0 identity-tab">
+                <ul class="nav nav-tabs nav-tabs-md nav-tabs-line position-relative pp-2">
+                    <li class="nav-item">
+                        <div id="tab-setup" class="nav-link pp-3 pp-4 active" data-tab="1" data-bs-toggle="tab" data-bs-target="#nav-setup" type="button" role="tab" aria-controls="nav-setup">
+                            <div class="dm2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
+                                    <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div class="dm1">Setup</div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div id="tab-target" class="nav-link pp-3" data-tab="2" data-bs-toggle="tab" data-bs-target="#nav-target" type="button" role="tab" aria-controls="nav-target">
+                            <div class="dm2">
+                                <svg style="width: 24px;height: 24px;margin-top: -3px;margin-left: -4px;" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                    <g id="🔍-Product-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <g id="ic_fluent_my_location_24_regular" fill="currentColor" fill-rule="nonzero">
+                                            <path d="M12,2 C12.3796958,2 12.693491,2.28215388 12.7431534,2.64822944 L12.75,2.75 L12.7490685,4.53770881 L12.7490685,4.53770881 C16.292814,4.88757432 19.1124257,7.70718602 19.4632195,11.2525316 L19.5,11.25 L21.25,11.25 C21.6642136,11.25 22,11.5857864 22,12 C22,12.3796958 21.7178461,12.693491 21.3517706,12.7431534 L21.25,12.75 L19.4616558,12.7490368 L19.4616558,12.7490368 C19.1124257,16.292814 16.292814,19.1124257 12.7474684,19.4632195 L12.75,19.5 L12.75,21.25 C12.75,21.6642136 12.4142136,22 12,22 C11.6203042,22 11.306509,21.7178461 11.2568466,21.3517706 L11.25,21.25 L11.2509632,19.4616558 L11.2509632,19.4616558 C7.70718602,19.1124257 4.88757432,16.292814 4.53678051,12.7474684 L4.5,12.75 L2.75,12.75 C2.33578644,12.75 2,12.4142136 2,12 C2,11.6203042 2.28215388,11.306509 2.64822944,11.2568466 L2.75,11.25 L4.53770881,11.2509315 L4.53770881,11.2509315 C4.88757432,7.70718602 7.70718602,4.88757432 11.2525316,4.53678051 L11.25,4.5 L11.25,2.75 C11.25,2.33578644 11.5857864,2 12,2 Z M12,6 C8.6862915,6 6,8.6862915 6,12 C6,15.3137085 8.6862915,18 12,18 C15.3137085,18 18,15.3137085 18,12 C18,8.6862915 15.3137085,6 12,6 Z M12,8 C14.209139,8 16,9.790861 16,12 C16,14.209139 14.209139,16 12,16 C9.790861,16 8,14.209139 8,12 C8,9.790861 9.790861,8 12,8 Z" id="🎨-Color"></path>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="dm1">Targeting</div>
+                        </div>
+                    </li>
+                    <div style="flex: 1;border-bottom: 1px solid #aab4c8; height: 65px;"></div>
+                </ul>
+
+                <div class="tab-content" id="nav-tabContent">
+
+                    <div class="tab-pane fade active show" id="nav-setup" role="tabpanel" aria-labelledby="nav-setup-tab">
+                        <div style="padding:20px">
+                            {{template "identity/edit/setup" .}}
+                        </div>
+                    </div>
+                    {{/*Setup*/}}
+
+                    <div class="tab-pane fade" id="nav-target" role="tabpanel" aria-labelledby="nav-target-tab">
+                        <div class="accordion" id="target">
+
+                            {{template "identity/edit/target.domain" .}}
+                            {{/*Target Domains*/}}
+
+                        </div>
+                    </div>
+                    {{/*Target*/}}
+                </div>
+            </div>
+            <div class="it-9 p-0">
+                <div class="dm5">
+                    <div class="dm6">
+                        <a class="dm3 " href="/identity">Close</a>
+                        <a class="dm4 submit" href="javascript:void(0)">Save</a>
+                    </div>
+                </div>
+                <div class="dm7" id="tab-module">
+                    {{template "identity/edit/user_id_module" .}}
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

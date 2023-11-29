@@ -1,0 +1,204 @@
+{{- /*gotype: source/apps/frontend/controller.CopyTag*/ -}}
+<div class="it4">
+    <div class="it7">
+        <h3>Header JS</h3>
+    </div>
+    <div class="it10">
+        <p>Place the below script inside the <span style="color: #0b7ef4;">&lt;head&gt;&lt;/head&gt;</span> of the page
+        </p>
+    </div>
+    <div class="it11">
+        <div class="it12 cus-selectpicker">
+            <label>Js Load Type</label>
+            <select class="form-control selectpicker js-load-type">
+                <option value="asynchronous">Asynchronous</option>
+                <option value="normal">Normal</option>
+            </select>
+        </div>
+        <div class="it13 js-type-asynchronous">
+            <label>Code Snippet</label>
+            <input type="text" class="it5" id="pw_11441" readonly="readonly" onclick="this.select();" style="max-height: 32px" value='<script type="text/javascript" src="//cdn.vlitag.com/w/{{.Inventory.TableInventory.Uuid}}.js" async defer></script><script>var vitag = vitag || {};vitag.gdprShowConsentToolButton = false;</script>'>
+        </div>
+        <div class="it13 js-type-normal d-none">
+            <label>Code Snippet</label>
+            <input type="text" class="it5" id="pw_11441" readonly="readonly" onclick="this.select();" style="max-height: 32px" value='<script type="text/javascript" src="//cdn.vlitag.com/w/{{.Inventory.TableInventory.Uuid}}.js"></script><script>var vitag = vitag || {};vitag.gdprShowConsentToolButton = false;</script>'>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div class="it4 border-bottom-0">
+
+    <div class="it7">
+        <h3>Place the tag code below at where you want the ad display</h3>
+        <div class="it12 cus-selectpicker m-0">
+            <select class="form-control selectpicker select-ad-size">
+                <option value="all" selected>All</option>
+                <option value="fixed">Ad Size Fixed</option>
+                <option value="responsive">Ad Size Responsive</option>
+            </select>
+        </div>
+    </div>
+
+    <table class="supply-list ad-size-all">
+        <thead>
+        <tr>
+            <th>Tag Name</th>
+            <th>Code Snippet</th>
+            <th style="min-width: 65px">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{if not .ListAdTagDisplay}}
+            <tr>
+                <td colspan="3">
+                    <p class="text-danger">Sorry, we couldn't find any data. Please initialize your ad tag</p>
+                </td>
+            </tr>
+        {{else}}
+            {{range .ListAdTagDisplay}}
+                {{if eq .AdTag.TableInventoryAdTag.AdSize 1}}
+                    <tr>
+                        <td>
+                            <div class="d-flex justify-content-between h-100">
+                                <span>{{.AdTag.TableInventoryAdTag.Name}}</span> <span class="text-primary" title="size">{{.Size.TableAdSize.Width}}x{{.Size.TableAdSize.Height}}</span>        
+                            </div>
+                        </td>
+                        <td>
+                            <input type="text" class="it5" id="pw_{{.AdTag.TableInventoryAdTag.Id}}" value='<div class="adsbyvli" {{if eq .AdTag.TableInventoryAdTag.AdSize 1}}style="width:{{.Size.TableAdSize.Width}}px;height:{{.Size.TableAdSize.Height}}px;display:inline-block;"{{else if eq .AdTag.TableInventoryAdTag.AdSize 2}}{{if eq .AdTag.TableInventoryAdTag.ResponsiveType 1}}style="display: inline-block; min-height: 50px;"{{else if eq .AdTag.TableInventoryAdTag.ResponsiveType 2}}style="display: inline-block; min-height: 250px;"{{else if eq .AdTag.TableInventoryAdTag.ResponsiveType 3}}style="display: inline-block; min-height: 600px;"{{end}}{{end}} data-ad-slot="pw_{{.AdTag.TableInventoryAdTag.Id}}"></div> <script type="text/javascript">(vitag.Init = window.vitag.Init || []).push(function () { viAPItag.display("pw_{{.AdTag.TableInventoryAdTag.Id}}") })</script>' readonly="readonly" onclick="this.select();">
+                        </td>
+                        <td class="it8">
+                            <a class="it6 copy-adtag text-black" data-id="{{.AdTag.TableInventoryAdTag.Id}}" href="javascript:void(0)" for="pw_{{.AdTag.TableInventoryAdTag.Id}}">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="ds-icon-dashboard-copy">
+                                    <path d="M19.75 8.69h-2.37V6.31a2 2 0 0 0-2-2H4.25a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2.37v2.38a2 2 0 0 0 2 2h11.13a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2zm-15.5 4.62v-7h11.13v2.38H8.62a2 2 0 0 0-2 2v2.62zm15.5 4.38H8.62v-7h11.13z">
+                                    </path>
+                                </svg>
+                            </a>
+                        </td>
+                    </tr>
+                {{else if eq .AdTag.TableInventoryAdTag.AdSize 2}}
+                    <tr>
+                        <td>
+                            <div class="d-flex justify-content-between h-100">
+                                <span>{{.AdTag.TableInventoryAdTag.Name}}</span> <span class="text-primary" title="size">{{.AdTag.TableInventoryAdTag.ResponsiveType.String}}</span>
+                            </div>
+                        </td>
+                        <td>
+                            <input type="text" class="it5" id="pw_{{.AdTag.TableInventoryAdTag.Id}}" value='<div class="adsbyvli" data-ad-slot="pw_{{.AdTag.TableInventoryAdTag.Id}}"></div> <script type="text/javascript">(vitag.Init = window.vitag.Init || []).push(function () { viAPItag.display("pw_{{.AdTag.TableInventoryAdTag.Id}}") })</script>' readonly="readonly" onclick="this.select();">
+                        </td>
+                        <td class="it8">
+                            <a class="it6 copy-adtag text-black" data-id="{{.AdTag.TableInventoryAdTag.Id}}" href="javascript:void(0)" for="pw_{{.AdTag.TableInventoryAdTag.Id}}">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="ds-icon-dashboard-copy">
+                                    <path d="M19.75 8.69h-2.37V6.31a2 2 0 0 0-2-2H4.25a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2.37v2.38a2 2 0 0 0 2 2h11.13a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2zm-15.5 4.62v-7h11.13v2.38H8.62a2 2 0 0 0-2 2v2.62zm15.5 4.38H8.62v-7h11.13z">
+                                    </path>
+                                </svg>
+                            </a>
+                        </td>
+                    </tr>
+                {{end}}
+            {{end}}
+        {{end}}
+        </tbody>
+    </table>
+    
+    <table class="supply-list ad-size-fixed d-none">
+        <thead>
+        <tr>
+            <th>Tag Name</th>
+            <th>Code Snippet</th>
+            <th style="min-width: 65px">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{if not .ListAdTagDisplay}}
+            <tr>
+                <td colspan="3">
+                    <p class="text-danger">Sorry, we couldn't find any data. Please initialize your ad tag</p>
+                </td>
+            </tr>
+        {{else}}
+            {{$fixed := false}}
+            {{range .ListAdTagDisplay}}
+                {{if eq .AdTag.TableInventoryAdTag.AdSize 1}}
+                    {{$fixed = true}}
+                    <tr>
+                        <td>
+                            <div class="d-flex justify-content-between h-100">
+                                <span>{{.AdTag.TableInventoryAdTag.Name}}</span> <span class="text-primary" title="size">{{.Size.TableAdSize.Width}}x{{.Size.TableAdSize.Height}}</span>
+                            </div>
+                        </td>
+                        <td>
+                            <input type="text" class="it5" id="pw_{{.AdTag.TableInventoryAdTag.Id}}" value='<div class="adsbyvli" {{if eq .AdTag.TableInventoryAdTag.AdSize 1}}style="width:{{.Size.TableAdSize.Width}}px;height:{{.Size.TableAdSize.Height}}px;display:inline-block;"{{else if eq .AdTag.TableInventoryAdTag.AdSize 2}}{{if eq .AdTag.TableInventoryAdTag.ResponsiveType 1}}style="display: inline-block; min-height: 50px;"{{else if eq .AdTag.TableInventoryAdTag.ResponsiveType 2}}style="display: inline-block; min-height: 250px;"{{else if eq .AdTag.TableInventoryAdTag.ResponsiveType 3}}style="display: inline-block; min-height: 600px;"{{end}}{{end}} data-ad-slot="pw_{{.AdTag.TableInventoryAdTag.Id}}"></div> <script type="text/javascript">(vitag.Init = window.vitag.Init || []).push(function () { viAPItag.display("pw_{{.AdTag.TableInventoryAdTag.Id}}") })</script>' readonly="readonly" onclick="this.select();">
+                        </td>
+                        <td class="it8">
+                            <a class="it6 copy-adtag text-black" data-id="{{.AdTag.TableInventoryAdTag.Id}}" href="javascript:void(0)" for="pw_{{.AdTag.TableInventoryAdTag.Id}}">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="ds-icon-dashboard-copy">
+                                    <path d="M19.75 8.69h-2.37V6.31a2 2 0 0 0-2-2H4.25a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2.37v2.38a2 2 0 0 0 2 2h11.13a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2zm-15.5 4.62v-7h11.13v2.38H8.62a2 2 0 0 0-2 2v2.62zm15.5 4.38H8.62v-7h11.13z">
+                                    </path>
+                                </svg>
+                            </a>
+                        </td>
+                    </tr>
+                {{end}}
+            {{end}}
+            {{if eq $fixed false}}
+                <tr>
+                    <td colspan="3">
+                        <p class="text-danger">Sorry, we couldn't find any data. Please initialize your ad tag</p>
+                    </td>
+                </tr>
+            {{end}}
+        {{end}}
+        </tbody>
+    </table>
+
+    <table class="supply-list ad-size-responsive d-none">
+        <thead>
+        <tr>
+            <th>Tag Name</th>
+            <th>Code Snippet</th>
+            <th style="min-width: 65px">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{if not .ListAdTagDisplay}}
+            <tr>
+                <td colspan="3">
+                    <p class="text-danger">Sorry, we couldn't find any data. Please initialize your ad tag</p>
+                </td>
+            </tr>
+        {{else}}
+            {{$responsive := false}}
+            {{range .ListAdTagDisplay}}
+                {{if eq .AdTag.TableInventoryAdTag.AdSize 2}}
+                    {{$responsive = true}}
+                    <tr>
+                        <td>
+                            <div class="d-flex justify-content-between h-100">
+                                <span>{{.AdTag.TableInventoryAdTag.Name}}</span> <span class="text-primary" title="size">{{.AdTag.TableInventoryAdTag.ResponsiveType.String}}</span>
+                            </div>
+                        </td>
+                        <td>
+                            <input type="text" class="it5" id="pw_{{.AdTag.TableInventoryAdTag.Id}}" value='<div class="adsbyvli" data-ad-slot="pw_{{.AdTag.TableInventoryAdTag.Id}}"></div> <script type="text/javascript">(vitag.Init = window.vitag.Init || []).push(function () { viAPItag.display("pw_{{.AdTag.TableInventoryAdTag.Id}}") })</script>' readonly="readonly" onclick="this.select();">
+                        </td>
+                        <td class="it8">
+                            <a class="it6 copy-adtag text-black" data-id="{{.AdTag.TableInventoryAdTag.Id}}" href="javascript:void(0)" for="pw_{{.AdTag.TableInventoryAdTag.Id}}">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="ds-icon-dashboard-copy">
+                                    <path d="M19.75 8.69h-2.37V6.31a2 2 0 0 0-2-2H4.25a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2.37v2.38a2 2 0 0 0 2 2h11.13a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2zm-15.5 4.62v-7h11.13v2.38H8.62a2 2 0 0 0-2 2v2.62zm15.5 4.38H8.62v-7h11.13z">
+                                    </path>
+                                </svg>
+                            </a>
+                        </td>
+                    </tr>
+                {{end}}
+            {{end}}
+            {{if eq $responsive false}}
+                <tr>
+                    <td colspan="3">
+                        <p class="text-danger">Sorry, we couldn't find any data. Please initialize your ad tag</p>
+                    </td>
+                </tr>
+            {{end}}
+        {{end}}
+        </tbody>
+    </table>
+</div>

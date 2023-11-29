@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theme name="muze-login">
+    <page path="/login">
+        <!-- Import CSS -->
+        <css link="/assets/css/theme.min.css"/>
+        <!-- Import JS -->
+        <js link="/assets/js/jquery-3.6.0.min.js"/>
+<!--        <js link="/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"/>-->
+        <js link="/assets/plugins/bootstrap5.1.3/js/bootstrap.bundle.min.js"/>
+        <js link="/assets/plugins/bootstrap-notify/bootstrap-notify.min.js"/>
+        <js link="/assets/plugins/sweetalert/sweetalert.min.js"/>
+        <js link="/assets/js/functions.js"/>
+        <js link="/assets/user/login.js"/>
+    </page>
+    <page path="/register">
+        <!-- Import CSS -->
+        <css link="/assets/css/theme.min.css"/>
+        <!-- Import JS -->
+        <js link="/assets/js/jquery-3.6.0.min.js"/>
+<!--        <js link="/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"/>-->
+        <js link="/assets/plugins/bootstrap5.1.3/js/bootstrap.bundle.min.js"/>
+        <js link="/assets/plugins/bootstrap-notify/bootstrap-notify.min.js"/>
+        <js link="/assets/plugins/sweetalert/sweetalert.min.js"/>
+        <js link="/assets/js/functions.js"/>
+        <js link="/assets/user/register.js"/>
+    </page>
+</theme>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="300 300 200 200" xmlns="http://www.w3.org/2000/svg">
+  <rect x="364.259" y="376.454" width="70.783" height="47.386" style="fill: rgb(255, 255, 255); stroke-width: 3px; stroke: rgb(6, 73, 131);"/>
+  <rect x="308.764" y="376.454" width="48.394" height="47.386" style="fill: rgb(255, 255, 255); stroke-width: 3px; stroke: rgb(6, 73, 131);"/>
+  <rect x="442.855" y="376.454" width="48.394" height="47.386" style="fill: rgb(255, 255, 255); stroke-width: 3px; stroke: rgb(6, 73, 131);"/>
+  <text style="fill: rgb(6, 73, 131); font-family: Arial, sans-serif; font-size: 18px; font-weight: 700; stroke-dashoffset: -5px; white-space: pre;" x="320.438" y="405.947">Ad</text>
+  <text style="fill: rgb(6, 73, 131); font-family: Arial, sans-serif; font-size: 18px; font-weight: 700; stroke-dashoffset: -5px; white-space: pre;" x="455.956" y="405.947">Ad</text>
+  <text style="fill: rgb(6, 73, 131); font-family: Arial, sans-serif; font-size: 12px; font-weight: 700; stroke-dashoffset: -5px; white-space: pre;" x="377.166" y="403.627">Content</text>
+  <rect x="369.411" y="381.939" class="st2" width="60.426" height="3.644" style="fill: rgb(0, 113, 188); opacity: 0.9;"/>
+  <rect x="369.411" y="389.106" class="st2" width="60.426" height="3.644" style="fill: rgb(0, 113, 188); opacity: 0.9;"/>
+  <rect x="369.411" y="406.142" class="st2" width="60.426" height="3.644" style="fill: rgb(0, 113, 188); opacity: 0.9;"/>
+  <rect x="369.411" y="413.723" class="st2" width="60.426" height="3.644" style="fill: rgb(0, 113, 188); opacity: 0.9;"/>
+  <rect x="369.411" y="397.907" class="st2" width="6.299" height="3.644" style="fill: rgb(0, 113, 188); opacity: 0.9;"/>
+  <rect x="423.538" y="397.907" class="st2" width="6.299" height="3.644" style="fill: rgb(0, 113, 188); opacity: 0.9;"/>
+  <rect x="308.764" y="315.887" width="182.485" height="6.922" style="fill: rgb(229, 229, 229); stroke: rgb(229, 229, 229);"/>
+  <rect x="308.764" y="337.118" width="182.485" height="6.922" style="fill: rgb(229, 229, 229); stroke: rgb(229, 229, 229);"/>
+  <rect x="308.764" y="356.696" width="182.485" height="6.922" style="fill: rgb(229, 229, 229); stroke: rgb(229, 229, 229);"/>
+  <rect x="308.764" y="437.76" width="182.485" height="6.922" style="fill: rgb(229, 229, 229); stroke: rgb(229, 229, 229);"/>
+  <rect x="308.764" y="456.234" width="182.485" height="6.922" style="fill: rgb(229, 229, 229); stroke: rgb(229, 229, 229);"/>
+  <rect x="308.764" y="475.321" width="105.28" height="6.922" style="fill: rgb(229, 229, 229); stroke: rgb(229, 229, 229);"/>
+</svg>

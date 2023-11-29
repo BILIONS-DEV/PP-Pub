@@ -1,0 +1,23 @@
+{{$length := len .}}
+{{if eq $length 0}}
+    <div class="d-flex flex-row align-items-center px-md-2" style="height: 25px">
+        <div class="col p-0">
+            <h6 class="m-0 font-weight-semibold fs-12 text-center">
+                No data
+            </h6>
+        </div>
+    </div>
+{{else}}
+    {{range $row := .}}
+        <div class="dm20 target-item {{if eq $row.Status.Int 3}}text-muted{{end}}" id="{{$row.Id}}" {{if eq $row.Status.Int 3}}data-bs-toggle="tooltip" data-bs-placement="right"
+             title="Domain already used for another identity profile" {{end}}>
+            <span>{{$row.Name}}</span>
+            <button class="add_inventory" data-id="{{$row.Id}}" name="{{$row.Name}}" type="button"
+                    {{if eq $row.Status.Int 3}}disabled data-status="false" {{else}}data-status="true"{{end}}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                    <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"></path>
+                </svg>
+            </button>
+        </div>
+    {{end}}
+{{end}}

@@ -1,0 +1,37 @@
+{{$len := len .List}}
+{{if gt $len 0}}
+    <div class="pt-2 pb-2" id="clCountry{{.Id}}">
+        {{range .List}}
+            <smail style="display: block">•{{.}}</smail>
+        {{end}}
+    </div>
+    <script>
+        $('#clCountry{{.Id}}').collapser({
+            mode: 'words',
+            speed: 'slow',
+            truncate: 150,
+            ellipsis: ' ... ',
+            controlBtn: '',
+
+            showText: 'Show more',
+            hideText: 'Hide',
+            showClass: 'show-class',
+            hideClass: 'hide-class',
+
+            atStart: 'hide',
+            blockTarget: 'next',
+            blockEffect: 'fade',
+
+            lockHide: false,
+            changeText: false,
+
+            beforeShow: null,
+            afterShow: null,
+            beforeHide: null,
+            afterHide: null
+        });
+    </script>
+{{else}}
+    <span class="text-muted text-center" style="display: flow-root">--</span>
+{{end}}
+

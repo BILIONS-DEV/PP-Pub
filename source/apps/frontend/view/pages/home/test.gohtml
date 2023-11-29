@@ -1,0 +1,47 @@
+{{define "content1"}}
+    this is content 1
+{{end}}
+
+<h1>This content test</h1>
+<div class="p-5">
+
+
+    <div id='loader'>LOADING....</div>
+    <div id='container' style="margin:0 auto; width:250px;">
+        <br>
+        <!--element which is going to render the MultiSelect-->
+        <input type="text" tabindex="1" id='select'/>
+
+        <ul>
+            <li><input type="checkbox" id="checkbox1" /></li>
+            <li><input type="checkbox" id="checkbox2" /></li>
+        </ul>
+
+    </div>
+
+
+    <select id="selectElement">
+        <optgroup label="Beans">
+            <option value="1">Chickpea</option>
+            <option value="2">Green bean</option>
+            <option value="3">Horse gram</option>
+        </optgroup>
+        <optgroup label="Leafy and Salad">
+            <option value="4" selected="selected">Cabbage</option>
+            <option value="5">Spinach</option>
+            <option value="6">Wheat grass</option>
+        </optgroup>
+
+    </select>
+
+
+</div>
+<p>
+    {{block "content2" .}}
+        clgt nhi
+        hahaha
+    {{end}}
+</p>
+
+<h3>{{template "content2"}}</h3>
+<h3>{{template "content1"}}</h3>

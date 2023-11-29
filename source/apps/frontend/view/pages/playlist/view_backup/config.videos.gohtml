@@ -1,0 +1,135 @@
+{{- /*gotype: source/apps/frontend/controller.AssignPlaylistEdit*/ -}}
+{{$Playlist := .Schema.LANG.Pages.Playlist}}
+<div class="card px-4 box_type_google_hide">
+    <div class="card-header p-0" id="Videos">
+        <h5 class="mb-0 d-grid">
+            <button class="btn btn-light btn-block text-start p-3 rounded-0 fs-6 btn-collapse collapsed"
+                    type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseVideos"
+                    aria-expanded="false"
+                    aria-controls="collapseVideos">
+                <div class="row w-100">
+                    <div class="col-6">{{$Playlist.Videos}}</div>
+                    <div class="col-auto align-items-center d-flex text-notify-target">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             width="16"
+                             height="16" fill="currentColor"
+                             class="bi bi-check-lg text-blue-600 me-2"
+                             viewBox="0 0 16 16">
+                            <path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/>
+                        </svg>
+                        {{/*                        <span class="fs-6 fw-normal" style="font-size: 0.85rem !important;" id="text_for_size">{{$Playlist.AllSizes}}</span>*/}}
+                        <span class="fs-6 fw-normal" style="font-size: 0.85rem !important;" id="text_for_videos">all videos</span>
+                    </div>
+                </div>
+            </button>
+        </h5>
+    </div>
+    <div id="collapseVideos" class="collapse" aria-labelledby="Videos"
+         data-bs-parent="#channels_videos">
+        <div class="card-body card-target lh-lg pt-3 px-0">
+            <div class="row">
+                <div class="col-lg-6 col-xxl-6">
+                    <div class="row mb-3 header-target">
+                        <div class="col-md-12">
+                            <div class="d-flex search-left border border-gray-300 rounded-2">
+                                <img src="/assets/svg/icons/search@16.svg" alt="Search" class="ps-2">
+                                <input type="search" class="form-control border-0 pe-0 input-search-target" placeholder="all videos" id="search_videos">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="total_video" class="d-flex flex-row align-items-center px-md-2" style="height: 25px">
+                        <div class="col p-0 text-center">
+                            <span class="m-0 fs-12" style="color: #858c92!important;">Showing
+                                <span class="number-v">0</span> out off
+                                <span class="total-v">0</span> results</span>
+                        </div>
+                    </div>
+                    <div class="list-group list-group-flush my-n3 box_empty_video d-none">
+                        <div class="list-group-item">
+                            <div id="load_empty_ad_tag" class="d-flex flex-row align-items-center px-md-2">
+                                <div class="col p-0 text-center">
+                                    <h6 class="m-0 font-weight-semibold fs-12">No data available</h6></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="list_videos" class="box-target">
+
+                        {{/*                        {{range .Videos}}*/}}
+{{/*                            <div class="target-item border-bottom border-gray-50 ms-2 me-3" id="{{.TableContent.Id}}" {{if (InArray .TableContent.Id $.VideosOfPlaylist false)}}hidden{{end}}>*/}}
+{{/*                                <div class="list-group list-group-flush my-n3">*/}}
+{{/*                                    <div class="list-group-item">*/}}
+{{/*                                        <div class="d-flex flex-row align-items-center">*/}}
+{{/*                                            <div class="col p-0">*/}}
+{{/*                                                <span>{{.TableContent.Title}}</span>*/}}
+{{/*                                            </div>*/}}
+{{/*                                            <div class="col-auto">*/}}
+{{/*                                                <button type="button" data-id="{{.TableContent.Id}}" name="{{.TableContent.Title}}"*/}}
+{{/*                                                        class="btn d-flex align-items-center btn-outline-secondary btn-icon rounded-circle p-0 add_videos">*/}}
+{{/*                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">*/}}
+{{/*                                                        <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>*/}}
+{{/*                                                    </svg>*/}}
+{{/*                                                </button>*/}}
+{{/*                                            </div>*/}}
+{{/*                                        </div>*/}}
+{{/*                                    </div>*/}}
+{{/*                                </div>*/}}
+                        {{/*                            </div>*/}}
+                        {{/*                        {{end}}*/}}
+                    </div>
+                </div>
+                {{/*Left Box Videos*/}}
+                <div class="col-lg-6 col-xxl-6 block_videos">
+                    <div class="row mb-3 header-target">
+                        <div class="col-md-6">
+                            <div class="d-flex cursor-not-allowed">
+                                <div class="btn-group mr-auto cursor-not-allowed">
+                                    <input type="radio" class="btn-check type_videos" name="type_videos" value="1" id="option_videos1" {{if ne .TypeCategory 2}}checked{{end}}>
+                                    <label class="btn btn-outline-warning text-black disabled" for="option_videos1">Include</label>
+                                    <input type="radio" class="btn-check type_videos" name="type_videos" value="2" id="option_videos2" {{if eq .TypeVideos 2}}checked{{end}}>
+                                    <label class="btn btn-outline-warning text-black disabled" for="option_videos2">Exclude</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex cursor-not-allowed">
+                                <a class="btn btn-clear-target ms-auto remove_all_videos disabled">
+                                    {{$Playlist.Clear}}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-target-selected box_videos">
+                        {{range .Videos}}
+                            {{if (InArray .TableContent.Id $.VideosOfPlaylist true)}}
+                                <div class="target-item border-bottom border-gray-50 ms-2 me-3 item_selected" id="{{.TableContent.Id}}">
+                                    <div class="list-group list-group-flush my-n3">
+                                        <div class="list-group-item">
+                                            <div class="d-flex flex-row align-items-center">
+                                                <div class="col p-0">
+                                                    <span>{{.TableContent.Title}}</span>
+                                                </div>
+                                                <div class="col-auto cursor-not-allowed">
+                                                    <button type="button" id="{{.TableContent.Id}}" name="{{.TableContent.Title}}"
+                                                            class="btn d-flex align-items-center btn-outline-danger btn-icon rounded-circle p-0 remove_videos disabled">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 16 16">
+                                                            <path d="M0 8a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z"></path>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {{end}}
+                        {{end}}
+                    </div>
+                </div>
+                {{/*Right Box Videos*/}}
+                {{/*                <input hidden value="true" id="is_more_videos"/>*/}}
+                {{/*                <input hidden value="{{.IsMoreTag}}" id="is_more_videos"/>*/}}
+                {{/*                <input hidden value="{{.TagLastPage}}" id="last_page_videos"/>*/}}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+{{/*<img src="{{.MediaUrl}}" alt="" width="100">*/}}
+{{ if eq .AdType "native" }}
+    <div style="width:300px">
+        <div class="adsbypocpoc" data-ad-slot='preview' data-width="300" data-height="250"></div>
+        <script type="text/javascript">
+            (ppocTag.Init = window.ppocTag.Init || []).push(function () {
+                ppocAPITag.previewAd({
+                    "headline": "{{.HeadLine}}",
+                    "media": "{{.MediaUrl}}",
+                    "mediaType": "{{.MediaType}}",
+                    "thumbnail": "{{.Thumbnail}}",
+                    "clickUrl": "{{.ClickURL}}",
+                    "siteName": "{{.SiteName}}",
+                    "description": "{{.Description}}",
+                    "callToAction": "{{.CTA}}",
+                }, {
+                    "adSlot": "preview",
+                    "adType": "native",
+                    "size": "300x250"
+                });
+            })
+        </script>
+    </div>
+{{ else if eq .AdType "banner" }}
+    <div style="width:{{.Width}}px">
+        <div class="adsbypocpoc" data-ad-slot='preview' data-width="{{.Width}}" data-height="{{.Height}}"></div>
+        <script type="text/javascript">
+            (ppocTag.Init = window.ppocTag.Init || []).push(function () {
+                ppocAPITag.previewAd({
+                    "headline": "{{.HeadLine}}",
+                    "media": "{{.MediaUrl}}",
+                    "clickUrl": "{{.ClickURL}}",
+                }, {
+                    "adSlot": "preview",
+                    "adType": "banner",
+                    "size": "{{.Width}}x{{.Height}}"
+                });
+            })
+        </script>
+    </div>
+{{ end }}
+

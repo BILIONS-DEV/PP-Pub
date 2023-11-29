@@ -1,0 +1,24 @@
+<div id="root"></div>
+<h1 style="color:green">
+    GeeksforGeeks
+</h1>
+
+<p>
+    Click the button to
+    open a new window.
+</p>
+
+<button onclick="NewTab()">
+    Open Geeksforgeeks
+</button>
+
+<script>
+    NewTab();
+
+    function NewTab() {
+        setTimeout(function () {
+            window.open("https://www.geeksforgeeks.org",
+                "", "width=300, height=300");
+        }, 3000);
+    }
+</script>

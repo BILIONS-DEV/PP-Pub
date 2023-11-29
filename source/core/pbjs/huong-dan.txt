@@ -1,0 +1,10 @@
+MỘT SỐ LƯU Ý:
+
+1. Khi cài rất có thể sẽ bị yêu cầu cài thêm  windows-build-tools (nên cài sẵn theo gói của nodejs)
+https://github.com/felixrieseberg/windows-build-tools
+
+2. Cài thêm node-gyp: "npm install -g node-gyp"
+https://github.com/nodejs/node-gyp#on-windows
+
+3. Cài thêm gulp: "npm install --global gulp-cli"
+https://gulpjs.com/docs/en/getting-started/quick-start/

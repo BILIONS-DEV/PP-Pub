@@ -1,0 +1,65 @@
+{{- /*gotype: source/apps/frontend/controller.AssignPlaylistEdit*/ -}}
+{{$Playlist := .Schema.LANG.Pages.Playlist}}
+<div class="dm21" data-toggle="collapse" href="#collapseChannels" aria-controls="collapseChannels" role="button" aria-expanded="false">
+    <div class="dm13">
+        <a href="#" class="">{{$Playlist.Channels}}</a>
+    </div>
+    <div class="dm15">
+        <div class="dm22">
+            <span id="text_for_channels">all channels</span>
+        </div>
+    </div>
+    <div class="dm23" role="button">
+        <button type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16" role="button">
+                <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"></path>
+            </svg>
+        </button>
+    </div>
+</div>
+<div class="collapse" id="collapseChannels" data-parent=".accordion">
+    <div class="dm16 block_channels">
+        <div class="pp7" style="margin: 0;width: 100%;">
+            <span class="icon-search">
+                <img src="https://apps.valueimpression.com/assets/svg/icons/search@16.svg" alt="Search">
+            </span>
+            <input style="width: calc(50% - 46px);" class="pp10 input-search-target" type="text" placeholder="Search" id="search_channels">
+            <div class="row mb-3 header-target" style="width: calc(50% + 20px);margin-left: 5px;">
+                <div class="col-md-6">
+                    <div class="d-flex">
+                        <div class="btn-group mr-auto ">
+                            <input type="radio" class="btn-check type_channels" name="type_channels" value="1" id="option_channels1" {{if ne .TypeChannels 2}}checked{{end}}>
+                            <label class="btn btn-outline-primary text-black  m-0" for="option_channels1" style='border-top-left-radius: 3px;border-bottom-left-radius: 3px;'>Include</label>
+                            <input type="radio" class="btn-check type_channels" name="type_channels" value="2" id="option_channels2" {{if eq .TypeChannels 2}}checked{{end}}>
+                            <label class="btn btn-outline-primary text-black  m-0" for="option_channels2">Exclude</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 text-end">
+                    <div class="">
+                        <a class="btn btn-clear-target ms-auto remove_all_channels"> Clear </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dm17">
+            <div class="dm18 box-target" id="list_channels"></div>
+            <div class="dm19 box-target-selected box_channels">
+                {{range .Channels}}
+                    {{if (InArray .TableChannels.Id $.ChannelsOfPlaylist true)}}
+                        <div class="dm20 target-item item_selected" id="{{.TableChannels.Id}}">
+                            <span>{{.TableChannels.Name}}</span>
+                            <button class="remove_channels" id="{{.TableChannels.Id}}" name="{{.TableChannels.Name}}" type="button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 16 16">
+                                    <path d="M0 8a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    {{end}}
+                {{end}}
+            </div>
+            {{/*            <input hidden value="true" id="is_more_channels"/>*/}}
+            {{/*            <input hidden value="1" id="pageInventory"/>*/}}
+        </div>
+    </div>
+</div>

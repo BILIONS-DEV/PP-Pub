@@ -1,0 +1,61 @@
+{{- /*gotype: source/apps/frontend/controller.AssignBlockedPageEdit*/ -}}
+
+<div class="pp15">
+    <div class="pp5">Name</div>
+</div>
+<div class="pp7">
+    <div class="pp-9">
+        <input class="pp-10 form-control" type="text" id="name" name="name" value="{{.Row.TableRule.Name}}">
+        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+    </div>
+</div>
+
+<div class="pp15">
+    <div class="pp5">Blocked Page</div>
+</div>
+<div class="pp7">
+    <div class="pp-9">
+        <div class="box-upload-csv" id="box-upload-csv">
+            <input type='file' title="Choose a csv please" id="upload_csv"
+                   name="upload_csv" class="form-control d-none"
+                   aria-describedby="csv_url" aria-label="Upload" accept=".csv">
+            <div class="w-100 d-flex flex-row form-control border-0 p-0">
+                <label class="me-2 p-2 d-flex align-items-center justify-content-center border-gray-300 bg-gray-200"
+                       style="width: 18%"
+                       for="upload_csv"><i class="fa fa-upload me-2"></i>Import</label>
+                <input id="csv_file" class="border-0 form-control bg-white d-none"
+                       style="width: 80%"
+                       name="csv_file" value="/*.csv" accept=".csv" readonly>
+                <input id="input-page" class="p-0 border-0 border-bottom bg-white" style="width: 80%"
+                       data-no-submit="true"
+                       type="text" placeholder="Upload from file .csv or input page1, page2, ... press enter">
+            </div>
+            <span class="form-text ms-2 w-auto invalid-feedback"></span>
+        </div>
+    </div>
+</div>
+{{ $lengthPage := len .Row.TableRule.BlockedPages }}
+<div class="d-flex">
+    <a class="btn btn-clear-target ms-auto remove_all {{if eq $lengthPage 0}}d-none{{end}}">
+        Clear
+    </a>
+</div>
+<div class="box-page-selected mb-4" style="overflow-y: auto; max-height: 200px">
+    {{range .Row.TableRule.BlockedPages}}
+        <div class="d-flex flex-row align-items-center p-2 border-bottom target-item item_selected">
+            <div class="col p-0" style="width: 97%">
+                <span class="m-0" style="overflow-wrap: break-word;font-size: 14px">{{.Page}}</span>
+            </div>
+            <div class="col-auto px-0">
+                <button type="button" data-name="{{.Page}}" style="width: 16px; height: 16px"
+                        class="btn d-flex align-items-center btn-outline-danger btn-icon rounded-circle p-0 btn-remove">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
+                         class="bi bi-dash-lg"
+                         viewBox="0 0 16 16">
+                        <path d="M0 8a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    {{end}}
+</div>

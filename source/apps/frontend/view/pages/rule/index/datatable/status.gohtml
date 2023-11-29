@@ -1,0 +1,8 @@
+{{- /*gotype: source/apps/fe/controller.ruleDatatable*/ -}}
+{{if eq .Status 1}}
+    <span class="text-capitalize">On</span>
+{{else if eq .Status 2}}
+    <span class="text-capitalize">Off</span>
+{{else}}
+    <span class="text-capitalize">{{.Status}}</span>
+{{end}}

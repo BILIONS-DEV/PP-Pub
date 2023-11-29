@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theme name="muze">
+    <page path="/playlist/include">
+        <!-- Import CSS -->
+        <css link="/assets/plugins/bootstrap431/css/bootstrap.min.css" rel="stylesheet" media="all"/>
+        <css link="/assets/plugins/bootstrap-toggle/css/bootstrap-toggle.min.css"/>
+        <css link="/assets/plugins/datatables/datatables.min.css"/>
+        <css link="/assets/plugins/bootstrap-select-1.13.18/css/bootstrap-select.min.css" rel="stylesheet" media="all"/>
+
+        <!-- Import JS -->
+<!--        <js link="/assets/plugins/select2/dist/js/select2.full.min.js"/>-->
+<!--        <js link="/assets/plugins/select2/dist/js/select2.multi-checkboxes.js"/>-->
+        <js link="/assets/js/popper.min.js"/>
+        <js link="/assets/plugins/bootstrap431/js/bootstrap.min.js"/>
+        <js link="/assets/plugins/bootstrap-toggle/js/bootstrap-toggle.min.js"/>
+        <js link="/assets/plugins/bootstrap-select-1.13.18/js/bootstrap-select.min.js"/>
+        <js link="/assets/plugins/datatables/datatables.min.js"/>
+        <js link="/assets/plugins/jquery-collapser/dist/jquery.collapser.min.js"/>
+    </page>
+    <page path="/playlist" includePath="/playlist/include">
+        <jsOnBottom link="/assets/playlist/index.js"/>
+    </page>
+    <page path="/playlist/add" includePath="/playlist/include">
+        <jsOnBottom link="/assets/playlist/add.js" defer="true"/>
+    </page>
+    <page path="/playlist/edit" includePath="/playlist/include">
+        <jsOnBottom link="/assets/playlist/edit.js"/>
+    </page>
+    <page path="/playlist/view" includePath="/playlist/include">
+        <jsOnBottom link="/assets/playlist/view.js"/>
+    </page>
+
+</theme>

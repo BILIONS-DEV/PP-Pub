@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theme name="muze">
+    <page path="/adtag/default">
+        <!-- Import CSS -->
+        <css link="/assets/plugins/bootstrap-toggle/css/bootstrap-toggle.min.css" rel="stylesheet" media="all"/>
+        <css link="/assets/plugins/select2/dist/css/select2.min.css" rel="stylesheet" media="all" inline="false"/>
+        <css link="/assets/plugins/select2/dist/css/select2-bootstrap.min.css"/>
+        <css link="/assets/plugins/daterangepicker/daterangepicker.css" rel="stylesheet" media="all"/>
+        <css link="/assets/plugins/datatables/datatables.min.css" rel="stylesheet" media="all"/>
+        <!-- Import JS -->
+        <js link="/assets/plugins/bootstrap-toggle/js/bootstrap-toggle.min.js"/>
+        <js link="/assets/plugins/select2/dist/js/select2.full.js"/>
+        <js link="/assets/plugins/daterangepicker/moment.min.js"/>
+        <js link="/assets/plugins/daterangepicker/daterangepicker.js"/>
+        <js link="/assets/plugins/datatables/datatables.min.js"/>
+    </page>
+    <page path="/adtag/add" includePath="/adtag/default">
+        <jsOnBottom link="/assets/adtag/add.js"/>
+    </page>
+    <page path="/adtag/edit" includePath="/adtag/default">
+        <jsOnBottom link="/assets/adtag/edit.js"/>
+    </page>
+</theme>

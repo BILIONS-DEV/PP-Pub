@@ -1,0 +1,91 @@
+{{- /*gotype: source/apps/frontend/controller.AssignIdentityEdit*/ -}}
+{{$Lang := .Schema.LANG.Pages.Identity}}
+<div class="pp15">
+    <div class="pp5">{{$Lang.Name}}</div>
+</div>
+<div class="pp7">
+    <div class="pp-9">
+        <input class="pp-10 form-control" type="text" id="name" name="name" value="{{.Row.TableIdentity.Name}}">
+        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+    </div>
+</div>
+<div class="pp15">
+    <div class="pp5"> {{$Lang.Description}}</div>
+</div>
+<div class="pp7">
+    <textarea class="pp17" spellcheck="false" id="description" name="description">{{.Row.TableIdentity.Description}}</textarea>
+    <span class="form-text ms-2 w-auto invalid-feedback"></span>
+</div>
+<div>
+    <div class="pp15">
+        <div class="pp5">{{$Lang.SyncDelay}}</div>
+        <span class="pp16" type="button" tabindex="0" data-bs-toggle="popover"
+              data-bs-content="{{$Lang.SyncDelayDesc}}" data-original-title="" title="" data-bs-original-title="">
+            <svg viewBox="64 64 896 896" data-icon="question-circle" width="1em" height="1em" fill="currentColor"
+                 type="button" tabindex="0">
+            <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
+            <path d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"></path>
+            </svg>
+        </span>
+    </div>
+    <div class="pp7">
+        <input style="border-top-right-radius: 0;border-bottom-right-radius: 0;" class="pp10 w-100 form-control" type="number" id="sync_delay" name="sync_delay" value="{{.Row.TableIdentity.SyncDelay}}">
+        <span class="pp11" style="border-radius: 0 2px 2px 0;max-width: 70px;min-width: 70px;">ms</span>
+    </div>
+    <span class="form-text ms-2 w-auto invalid-feedback"></span>
+</div>
+<div>
+    <div class="pp15">
+        <div class="pp5">{{$Lang.AuctionDelay}}</div>
+        <span class="pp16" type="button" tabindex="0" data-bs-toggle="popover"
+              data-bs-content="{{$Lang.AuctionDelayDesc}}" data-original-title="" title="" data-bs-original-title="">
+            <svg viewBox="64 64 896 896" data-icon="question-circle" width="1em" height="1em" fill="currentColor"
+                 type="button" tabindex="0">
+            <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
+            <path d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"></path>
+            </svg>
+        </span>
+    </div>
+    <div class="pp7">
+        <input style="border-top-right-radius: 0;border-bottom-right-radius: 0;" class="pp10 w-100 form-control" type="number" id="auction_delay" name="auction_delay" value="{{.Row.TableIdentity.AuctionDelay}}">
+        <span class="pp11" style="border-radius: 0 2px 2px 0;max-width: 70px;min-width: 70px;">ms</span>
+    </div>
+    <span class="form-text ms-2 w-auto invalid-feedback"></span>
+</div>
+<div class="pp15">
+    <div class="pp5">{{$Lang.Priority}}</div>
+    <span class="pp16" type="button" tabindex="0" data-bs-toggle="popover"
+          data-bs-content="{{$Lang.PriorityDesc}}" data-original-title="" title="" data-bs-original-title="">
+            <svg viewBox="64 64 896 896" data-icon="question-circle" width="1em" height="1em" fill="currentColor"
+                 type="button" tabindex="0">
+            <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
+            <path d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"></path>
+            </svg>
+        </span>
+</div>
+<div class="pp7 cus-selectpicker pp-9">
+    <select id="priority" name="priority" class="form-control selectpicker" disabled>
+        <option value="1" {{if eq 1 .Row.TableIdentity.Priority}}selected{{end}}>1 (highest)</option>
+        <option value="2" {{if eq 2 .Row.TableIdentity.Priority}}selected{{end}}>2</option>
+        <option value="3" {{if eq 3 .Row.TableIdentity.Priority}}selected{{end}}>3</option>
+        <option value="4" {{if eq 4 .Row.TableIdentity.Priority}}selected{{end}}>4</option>
+        <option value="5" {{if eq 5 .Row.TableIdentity.Priority}}selected{{end}}>5</option>
+        <option value="6" {{if eq 6 .Row.TableIdentity.Priority}}selected{{end}}>6</option>
+        <option value="7" {{if eq 7 .Row.TableIdentity.Priority}}selected{{end}}>7</option>
+        <option value="8" {{if eq 8 .Row.TableIdentity.Priority}}selected{{end}}>8</option>
+        <option value="9" {{if eq 9 .Row.TableIdentity.Priority}}selected{{end}}>9</option>
+        <option value="10" {{if eq 10 .Row.TableIdentity.Priority}}selected{{end}}>10</option>
+        <option value="11" {{if eq 11 .Row.TableIdentity.Priority}}selected{{end}}>11</option>
+        <option value="12" {{if eq 12 .Row.TableIdentity.Priority}}selected{{end}}>12</option>
+        <option value="13" {{if eq 13 .Row.TableIdentity.Priority}}selected{{end}}>13</option>
+        <option value="14" {{if eq 14 .Row.TableIdentity.Priority}}selected{{end}}>14</option>
+        <option value="15" {{if eq 15 .Row.TableIdentity.Priority}}selected{{end}}>15</option>
+        <option value="16" {{if eq 16 .Row.TableIdentity.Priority}}selected{{end}}>16 (lowest)</option>
+    </select> <span class="form-text ms-2 w-auto invalid-feedback"></span>
+</div>
+<div class="pp15">
+    <div class="pp5">Status</div>
+</div>
+<div class="pp7">
+    <label class="switch"> <input type="checkbox" id="status" name="status" checked> <span class="slider round"></span> </label>
+</div>

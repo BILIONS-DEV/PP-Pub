@@ -1,0 +1,20 @@
+p, admin, /*, (GET)|(POST)
+
+p, guest, /login, (GET)|(POST)
+p, guest, /register, (GET)|(POST)
+
+p, sale, /payment, (GET)|(POST)
+p, sale, /payment/*, (GET)|(POST)
+
+p, member, /inventory, (GET)|(POST)
+p, member, /inventory/*, (GET)|(POST)
+p, member, /adtag, (GET)|(POST)
+p, member, /gam, (GET)|(POST)
+p, member, /gam?tab=*&id=*, (GET)|(POST)
+
+p, accountant, /payment*, (GET)|(POST)
+p, accountant, /report, (GET)|(POST)
+
+g, admin, member
+g, sale, member
+g, sale, guest

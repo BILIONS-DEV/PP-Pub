@@ -1,0 +1,361 @@
+<!-- Modal -->
+<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen modal-dialog-scrollable">
+        <div class="modal-content rounded-0">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Setup Ad Tag</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body bg-gray-100">
+
+                <div class="px-3 px-xxl-5 py-3 py-lg-4" id="basicInfoBoxes">
+                    <div class="card rounded-12 shadow-dark-80 border border-gray-50">
+                        <div class="container-fluid px-0">
+                            <div class="d-flex align-items-center px-3 px-md-4 py-3 border-bottom border-gray-200">
+                                <h3 class="card-header-title my-2 ps-md-3 font-weight-semibold">Basic Information</h3>
+                                <div class="ms-auto pe-md-2" id="basicInfo">
+                                    <div class="export-dropdown">
+                                        <a href="#" role="button" class="btn btn-lg ms-1 px-3"
+                                           data-bs-toggle="collapse" data-bs-target="#collapseBasicInfo"
+                                           aria-expanded="false"
+                                           aria-controls="collapseBasicInfo">
+                                            <svg class="ms-4" xmlns="http://www.w3.org/2000/svg" width="14"
+                                                 height="7.875"
+                                                 viewBox="0 0 14 7.875">
+                                                <path d="M.231.228A.8.8,0,0,1,1.256.152l.088.075,6.3,6.222a.771.771,0,0,1,.076,1.013l-.076.087-6.3,6.222a.794.794,0,0,1-1.114,0,.771.771,0,0,1-.076-1.013l.076-.087L5.973,7,.231,1.328A.771.771,0,0,1,.154.315Z"
+                                                      transform="translate(14) rotate(90)" fill="#1e1e1e"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="collapseBasicInfo" aria-labelledby="basicInfo"
+                             data-bs-parent="#basicInfoBoxes"
+                             class="container-fluid px-0 collapse">
+                            <div class="col-xl-12 col-xxl-12 my-xxl-3 p-5">
+                                <form id="SetupAdTagInfo">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-4 mb-md-5">
+                                                <label class="form-label form-label-lg" for="name">
+                                                    Ad Tag Name
+                                                    <sup class="text-danger lead">*</sup>
+                                                </label>
+                                                <input type="text" id="name" name="name"
+                                                       placeholder="Ad tag name"
+                                                       class="form-control form-control-lg">
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                        </div>
+                                        {{/* End Ad Tag Name*/}}
+
+                                        <div class="col-md-6">
+                                            <div class="mb-4 mb-md-5">
+                                                <label class="form-label form-label-lg" for="floor_price">
+                                                    Floor Price
+                                                    <sup class="text-danger lead">*</sup>
+                                                </label>
+                                                <input type="text" id="floor_price" name="floor_price"
+                                                       placeholder="Floor Price"
+                                                       class="form-control form-control-lg">
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                        </div>
+                                        {{/* End Floor Price*/}}
+
+                                        <div class="col-md-6">
+                                            <div class="mb-4 mb-md-5">
+                                                <label class="form-label form-label-lg"
+                                                       for="ad_tag_type">Type</label>
+                                                <select id="ad_tag_type" name="ad_tag_type"
+                                                        class="form-select form-select-lg"
+                                                        data-placeholder="Ad tag type">
+                                                    <option value="1">Display</option>
+                                                    <option value="2">In Stream</option>
+                                                    <option value="3">Out Stream</option>
+                                                    <option value="4">Video Discovery</option>
+                                                    <option value="5">Smart Banner</option>
+                                                </select>
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                        </div>
+                                        {{/* End Ad Type*/}}
+
+                                        <div class="col-md-6">
+                                            <div class="mb-4 mb-md-5">
+                                                <label class="form-label form-label-lg"
+                                                       for="ad_tag_size">Size</label>
+                                                <select id="ad_tag_size" name="ad_tag_size"
+                                                        class="form-select form-select-lg"
+                                                        data-placeholder="Ad tag type">
+                                                    <option value="1">300x250</option>
+                                                    <option value="2">300x600</option>
+                                                    <option value="3">728x90</option>
+                                                </select>
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                        </div>
+                                        {{/* End Ad Size*/}}
+
+                                        <div class="col-md-12">
+                                            <div class="mb-4 mb-md-5">
+                                                <label class="form-label form-label-lg" for="gam">
+                                                    GAM
+                                                    <sup class="text-danger lead">*</sup>
+                                                </label>
+                                                <input type="text" id="gam" name="gam"
+                                                       placeholder="GAM Ad Unit"
+                                                       class="form-control form-control-lg">
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                        </div>
+                                        {{/* End Ad Tag Name*/}}
+
+                                        <div class="col-md-12">
+                                            <div class="mb-4 mb-md-5">
+                                                <label class="form-label form-label-lg" for="pass_back">Pass
+                                                    Back</label>
+                                                <textarea class="form-control form-control-lg" id="pass_back"
+                                                          name="pass_back"
+                                                          placeholder="Your Pass Back"
+                                                          rows="4"></textarea>
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                        </div>
+                                        {{/* End Ads.Txt*/}}
+                                    </div>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-md-7">
+                                            <div class="form-check mt-md-4 mb-4">
+                                                <input class="form-check-input" id="status" name="status" value="1"
+                                                       type="checkbox"
+                                                       checked="">
+                                                <label class="form-check-label" for="status">Publish Ad Tag</label>
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="text-end">
+                                                <button type="button" class="btn btn-xl btn-warning submit">Submit
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="px-3 px-xxl-5 py-3 py-lg-4">
+                    <div class="col-xl-12 col-xxl-12">
+                        <div class="card rounded-12 shadow-dark-80 border border-gray-50">
+                            <div class="d-flex align-items-center px-3 px-md-4 py-3 border-bottom border-gray-200">
+                                <div class="col">
+                                    <h4 class="card-header-title my-2 ps-md-3 font-weight-semibold">Bidder Config</h4>
+                                </div>
+                                <div class="col-auto">
+                                    <select name="select_bidder" class="form-select select2"
+                                            data-placeholder="Select Bidder" data-dropdown-auto-width="true"
+                                            data-width="auto">
+                                        <option></option>
+                                        <optgroup label="List For Domain">
+                                            <option value="1">Appnexus</option>
+                                            <option value="2">Pubmatic</option>
+                                        </optgroup>
+                                    </select>
+                                    {{/*                                    <div class="dropdown export-dropdown my-1 me-md-3">*/}}
+                                    {{/*                                        <a href="#" role="button" id="UserOverview" data-bs-toggle="dropdown"*/}}
+                                    {{/*                                           aria-expanded="false"*/}}
+                                    {{/*                                           class="btn btn-outline-dark border-gray-600 text-gray-600"><span>Add Bidder</span>*/}}
+                                    {{/*                                            <svg class="ms-2" xmlns="http://www.w3.org/2000/svg" width="13" height="13"*/}}
+                                    {{/*                                                 viewBox="0 0 13 13">*/}}
+                                    {{/*                                                <rect data-name="Icons/Tabler/Chevron Down background" width="13"*/}}
+                                    {{/*                                                      height="13" fill="none"></rect>*/}}
+                                    {{/*                                                <path d="M.214.212a.738.738,0,0,1,.952-.07l.082.07L7.1,5.989a.716.716,0,0,1,.071.94L7.1,7.011l-5.85,5.778a.738.738,0,0,1-1.034,0,.716.716,0,0,1-.071-.94l.071-.081L5.547,6.5.214,1.233A.716.716,0,0,1,.143.293Z"*/}}
+                                    {{/*                                                      transform="translate(13 3.25) rotate(90)" fill="#6c757d"></path>*/}}
+                                    {{/*                                            </svg>*/}}
+                                    {{/*                                        </a>*/}}
+                                    {{/*                                        <ul class="dropdown-menu dropdown-menu-end rounded-0 pt-0"*/}}
+                                    {{/*                                            aria-labelledby="UserOverview">*/}}
+                                    {{/*                                            <li class="dropdown-item active">*/}}
+                                    {{/*                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"*/}}
+                                    {{/*                                                     fill="currentColor" class="bi bi-globe2" viewBox="0 0 16 16">*/}}
+                                    {{/*                                                    <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855-.143.268-.276.56-.395.872.705.157 1.472.257 2.282.287V1.077zM4.249 3.539c.142-.384.304-.744.481-1.078a6.7 6.7 0 0 1 .597-.933A7.01 7.01 0 0 0 3.051 3.05c.362.184.763.349 1.198.49zM3.509 7.5c.036-1.07.188-2.087.436-3.008a9.124 9.124 0 0 1-1.565-.667A6.964 6.964 0 0 0 1.018 7.5h2.49zm1.4-2.741a12.344 12.344 0 0 0-.4 2.741H7.5V5.091c-.91-.03-1.783-.145-2.591-.332zM8.5 5.09V7.5h2.99a12.342 12.342 0 0 0-.399-2.741c-.808.187-1.681.301-2.591.332zM4.51 8.5c.035.987.176 1.914.399 2.741A13.612 13.612 0 0 1 7.5 10.91V8.5H4.51zm3.99 0v2.409c.91.03 1.783.145 2.591.332.223-.827.364-1.754.4-2.741H8.5zm-3.282 3.696c.12.312.252.604.395.872.552 1.035 1.218 1.65 1.887 1.855V11.91c-.81.03-1.577.13-2.282.287zm.11 2.276a6.696 6.696 0 0 1-.598-.933 8.853 8.853 0 0 1-.481-1.079 8.38 8.38 0 0 0-1.198.49 7.01 7.01 0 0 0 2.276 1.522zm-1.383-2.964A13.36 13.36 0 0 1 3.508 8.5h-2.49a6.963 6.963 0 0 0 1.362 3.675c.47-.258.995-.482 1.565-.667zm6.728 2.964a7.009 7.009 0 0 0 2.275-1.521 8.376 8.376 0 0 0-1.197-.49 8.853 8.853 0 0 1-.481 1.078 6.688 6.688 0 0 1-.597.933zM8.5 11.909v3.014c.67-.204 1.335-.82 1.887-1.855.143-.268.276-.56.395-.872A12.63 12.63 0 0 0 8.5 11.91zm3.555-.401c.57.185 1.095.409 1.565.667A6.963 6.963 0 0 0 14.982 8.5h-2.49a13.36 13.36 0 0 1-.437 3.008zM14.982 7.5a6.963 6.963 0 0 0-1.362-3.675c-.47.258-.995.482-1.565.667.248.92.4 1.938.437 3.008h2.49zM11.27 2.461c.177.334.339.694.482 1.078a8.368 8.368 0 0 0 1.196-.49 7.01 7.01 0 0 0-2.275-1.52c.218.283.418.597.597.932zm-.488 1.343a7.765 7.765 0 0 0-.395-.872C9.835 1.897 9.17 1.282 8.5 1.077V4.09c.81-.03 1.577-.13 2.282-.287z"/>*/}}
+                                    {{/*                                                </svg>*/}}
+                                    {{/*                                                <span class="text-black-800 ms-2">List For Domain</span>*/}}
+                                    {{/*                                            </li>*/}}
+                                    {{/*                                            <li><a class="dropdown-item" href="#"><span>Appnexus</span></a></li>*/}}
+                                    {{/*                                            <li><a class="dropdown-item" href="#"><span>Pubmatic</span></a></li>*/}}
+                                    {{/*                                            <li><a class="dropdown-item" href="#"><span>Rubicon</span></a></li>*/}}
+                                    {{/*                                            <li class="dropdown-item active">*/}}
+                                    {{/*                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"*/}}
+                                    {{/*                                                     fill="currentColor" class="bi bi-aspect-ratio" viewBox="0 0 16 16">*/}}
+                                    {{/*                                                    <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h13A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5v-9zM1.5 3a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>*/}}
+                                    {{/*                                                    <path d="M2 4.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1H3v2.5a.5.5 0 0 1-1 0v-3zm12 7a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1 0-1H13V8.5a.5.5 0 0 1 1 0v3z"/>*/}}
+                                    {{/*                                                </svg>*/}}
+                                    {{/*                                                <span class="ms-2">List For Size</span>*/}}
+                                    {{/*                                            </li>*/}}
+                                    {{/*                                            <li><a class="dropdown-item" href="#"><span>33Across</span></a></li>*/}}
+                                    {{/*                                            <li><a class="dropdown-item" href="#"><span>152Media</span></a></li>*/}}
+                                    {{/*                                            <li>*/}}
+                                    {{/*                                                <hr class="dropdown-divider">*/}}
+                                    {{/*                                            </li>*/}}
+                                    {{/*                                            <li><a class="dropdown-item" href="#"><span>Appnexus</span></a></li>*/}}
+                                    {{/*                                            <li><a class="dropdown-item" href="#"><span>Pubmatic</span></a></li>*/}}
+                                    {{/*                                            <li><a class="dropdown-item" href="#"><span>Rubicon</span></a></li>*/}}
+                                    {{/*                                        </ul>*/}}
+                                    {{/*                                    </div>*/}}
+                                </div>
+                            </div>
+                            <div class="card-body p-5">
+
+                                <form id="SetupAdTagBidder">
+                                    <div class="row">
+
+                                        <div class="col-md-12">
+                                            <div class="mb-md-5 mb-4">
+                                                <div class="input-group input-group-lg mb-3">
+                                                    <button class="btn bg-teal-50 dropdown-toggle me-3" type="button"
+                                                            data-bs-toggle="dropdown"
+                                                            aria-expanded="false">ON
+                                                    </button>
+                                                    <ul id="GeoIpOption" class="dropdown-menu">
+                                                        <li data-value="1">
+                                                            <a class="dropdown-item" href="#1">ON</a>
+                                                        </li>
+                                                        <li data-value="2">
+                                                            <a class="dropdown-item" href="#2">OFF</a>
+                                                        </li>
+                                                    </ul>
+                                                    <span class="d-flex align-items-center" for="geo_ip_list">
+                                                        <strong>OftMedia</strong>
+                                                    </span>
+                                                </div>
+                                                <div class="row g-3 align-items-center">
+                                                    <div class="col">
+                                                        <input type="text" class="form-control form-control-lg"
+                                                               data-bs-toggle="tooltip" title="PlacmentId"
+                                                               data-bs-placement="top"
+                                                               value="21276023">
+                                                        <div class="invalid-feedback"></div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <input type="text" class="form-control form-control-lg"
+                                                               name="geo_ip_option" value="16682446">
+                                                        <div class="invalid-feedback"></div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <input type="text" class="form-control form-control-lg"
+                                                               name="geo_ip_option" value="16682446">
+                                                        <div class="invalid-feedback"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{/* End TEST*/}}
+
+
+                                        <div class="col-md-12">
+                                            <div class="mb-md-5 mb-4">
+                                                <label class="form-label form-label-lg" for="geo_ip_list">
+                                                    Oftmedia
+                                                </label>
+                                                <div class="input-group input-group-lg">
+                                                    <button class="btn btn-lg bg-teal-50 dropdown-toggle" type="button"
+                                                            data-bs-toggle="dropdown"
+                                                            aria-expanded="false">ON
+                                                    </button>
+                                                    <ul id="GeoIpOption" class="dropdown-menu">
+                                                        <li data-value="1">
+                                                            <a class="dropdown-item" href="#1">ON</a>
+                                                        </li>
+                                                        <li data-value="2">
+                                                            <a class="dropdown-item" href="#2">OFF</a>
+                                                        </li>
+                                                    </ul>
+                                                    <input type="text" class="form-control form-control-lg"
+                                                           name="geo_ip_option" value="16682446">
+                                                    <div class="invalid-feedback"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{/* End Oftmedia*/}}
+
+                                        <div class="col-md-12">
+                                            <div class="mb-md-5 mb-4">
+                                                <label class="form-label form-label-lg" for="geo_ip_list">
+                                                    AMX
+                                                </label>
+                                                <div class="input-group input-group-lg">
+                                                    <button class="btn btn-lg bg-teal-50 dropdown-toggle" type="button"
+                                                            data-bs-toggle="dropdown"
+                                                            aria-expanded="false">ON
+                                                    </button>
+                                                    <ul id="GeoIpOption" class="dropdown-menu">
+                                                        <li data-value="1">
+                                                            <a class="dropdown-item" href="#1">ON</a>
+                                                        </li>
+                                                        <li data-value="2">
+                                                            <a class="dropdown-item" href="#2">OFF</a>
+                                                        </li>
+                                                    </ul>
+                                                    <input type="text" class="form-control form-control-lg"
+                                                           name="geo_ip_option" value="dmFsdWVpbXByZXNzaW9uLmNvbQ">
+                                                    <div class="invalid-feedback"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{/* End AMX*/}}
+
+                                        <div class="col-md-12">
+                                            <div class="mb-md-5 mb-4">
+                                                <label class="form-label form-label-lg" for="geo_ip_list">
+                                                    Appnexus
+                                                </label>
+                                                <div class="input-group input-group-lg">
+                                                    <button class="btn btn-lg bg-gray-200 dropdown-toggle" type="button"
+                                                            data-bs-toggle="dropdown"
+                                                            aria-expanded="false">OFF
+                                                    </button>
+                                                    <ul id="GeoIpOption" class="dropdown-menu">
+                                                        <li data-value="1">
+                                                            <a class="dropdown-item" href="#1">ON</a>
+                                                        </li>
+                                                        <li data-value="2">
+                                                            <a class="dropdown-item" href="#2">OFF</a>
+                                                        </li>
+                                                    </ul>
+                                                    <input type="text" class="form-control form-control-lg"
+                                                           name="geo_ip_option" value="dmFsdWVpbXByZXNzaW9uLmNvbQ">
+                                                    <div class="invalid-feedback"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{/* End AMX*/}}
+
+                                    </div>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-md-12">
+                                            <div class="text-end">
+                                                <button type="button" class="btn btn-xl btn-warning submit">Submit
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,433 @@
+<div class="px-5 py-2 border-bottom border-gray-200">
+    <div class="container-fluid px-0">
+        <div class="row align-items-center">
+            <div class="col">
+                <span class="text-uppercase tiny text-gray-600 Montserrat-font font-weight-semibold">PLAYER</span>
+                <h1 class="h2 mb-0">Add Template</h1>
+            </div>
+        </div>
+    </div>
+</div>
+{{/*End Header*/}}
+
+
+<div class="p-lg-5 p-4">
+    <div class="container-fluid px-0">
+        <div class="row">
+            <div class="col-12 mb-3 mb-xl-4">
+
+                <div class="card rounded-12 shadow-dark-80 border border-gray-50 mb-5">
+                    <div class="p-3 border-bottom border-gray-200">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h5 class="card-header-title font-weight-semibold my-2">Preview</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body py-4">
+                        <p>Content preview</p>
+                    </div>
+                </div>
+                {{/*Preview Card*/}}
+
+                <div class="card rounded-12 shadow-dark-80 border border-gray-50 mb-5">
+                    <div class="p-3 px-4 border-bottom border-gray-200">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h5 class="card-header-title font-weight-semibold my-2">TEST</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body py-5">
+                        <div class="row">
+                            <div class="col-lg-auto"></div>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control form-control-lg" placeholder="Template name"
+                                       value=""
+                                       id="name" name="name">
+                            </div>
+                        </div>
+                        {{/*Name*/}}
+
+                        <div class="row">
+                            <div class="d-flex">
+                                <label class="col-form-label form-label form-label-lg " for="type"
+                                       style="width: 200px;">
+                                    Ad Type
+                                </label>
+                                <select id="type" name="type" class="form-select form-select-lg">
+                                    <option value="1">Video Discovery</option>
+                                </select>
+                            </div>
+                        </div>
+                        {{/*Type*/}}
+
+                    </div>
+                </div>
+                {{/*TEST Card*/}}
+
+                <div class="card rounded-12 shadow-dark-80 border border-gray-50 mb-5">
+                    <div class="p-3 px-4 border-bottom border-gray-200">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h5 class="card-header-title font-weight-semibold my-2">Main</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body py-5">
+                        <div class="row mb-4 px-3">
+                            <label class="col-lg-auto col-form-label form-label form-label-lg" for="name">
+                                Name</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control form-control-lg" placeholder="Template name"
+                                       value=""
+                                       id="name" name="name">
+                            </div>
+                        </div>
+                        {{/*Name*/}}
+
+                        <div class="row mb-4 px-3">
+                            <label class="col-lg-auto col-form-label form-label form-label-lg " for="type">
+                                Ad Type</label>
+                            <div class="col-lg-10">
+                                <select id="type" name="type" class="form-select form-select-lg">
+                                    <option value="1">Video Discovery</option>
+                                </select>
+                            </div>
+                        </div>
+                        {{/*Type*/}}
+
+                    </div>
+                </div>
+                {{/*Information Card*/}}
+
+                <div class="card rounded-12 shadow-dark-80 border border-gray-50 mb-3 mb-xl-5">
+                    <div class="p-3 px-4 border-bottom border-gray-200">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h5 class="card-header-title font-weight-semibold m-2">Appearance</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body py-5">
+
+                        <div class="row mb-2 px-3">
+                            <label class="col-lg-1 col-form-label form-label form-label-lg "
+                                   for="player_color">
+                                Player Color
+                            </label>
+                            <div class="col-lg-10 d-flex">
+                                <input type="color"
+                                       class="form-control form-control-lg form-control-color border-gray-300 border-end-0 rounded-0 rounded-start"
+                                       id="select_color" value="#563d7c" title="Choose your color">
+                                <input type="text"
+                                       class="form-control form-control-lg border-gray-300 border-start-0 rounded-0 rounded-end"
+                                       id="player_color" name="player_color"
+                                       value="#222222">
+                            </div>
+                        </div>
+                        {{/*Player Color*/}}
+
+                        <div class="px-3 mb-2">
+                            <div class="media py-2 py-md-4">
+                                <div class="media-body my-2 w-100">
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-1">
+                                            <span class="form-label form-label-lg">Related Video</span>
+                                            {{/*                                            <span class="d-block small text-gray-600 mt-1">Show or Hidden related video</span>*/}}
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="form-check form-switch mb-0  ps-0">
+                                                <input type="checkbox" checked data-toggle="toggle"
+                                                       data-on="show" data-off="hidden"
+                                                       data-onstyle="primary btn-sm" data-offstyle="secondary btn-sm"
+                                                       data-style="rounded-24"
+                                                       id="related_video" name="related_video">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{/*Related Video*/}}
+
+                        <div class="row mb-2 px-3">
+                            <label class="col-lg-1 col-form-label form-label form-label-lg "
+                                   for="player_layout">
+                                Player Layout</label>
+                            <div class="col-lg-10">
+                                <select id="player_layout" name="player_layout" class="form-select form-select-lg">
+                                    <option value="1">Related Right</option>
+                                    <option value="2">Related Bottom</option>
+                                    <option value="3">Slide</option>
+                                </select>
+                            </div>
+                        </div>
+                        {{/*Player Layout*/}}
+
+                        <div class="px-3">
+
+                            <div class="media border-bottom border-gray-200 py-2 py-md-4">
+                                <div class="media-body my-2 w-100">
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-1">
+                                            <span class="form-label form-label-lg">Sticky Player</span>
+                                            <sup class="ms-2" type="button"
+                                                 tabindex="0"
+                                                 data-bs-toggle="popover"
+                                                 data-bs-content="Sticky ads in the desired position">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                     fill="currentColor"
+                                                     class="bi bi-info-circle" viewBox="0 0 16 16">
+                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                                </svg>
+                                            </sup>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="form-check form-switch mb-0 ps-0">
+                                                <input type="checkbox" checked data-toggle="toggle"
+                                                       data-on="on" data-off="off"
+                                                       data-onstyle="primary btn-sm" data-offstyle="secondary btn-sm"
+                                                       data-style="rounded-24"
+                                                       id="sticky_player" name="sticky_player">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="sticky_player_setting" class="row mt-4 align-items-center">
+                                        <div class="col-lg-1"></div>
+                                        <div class="col-lg-auto col-md-12 d-flex align-items-center">
+                                            <span class="form-text me-2">Position</span>
+                                            <select class="form-select form-select-lg">
+                                                <option value="1">Bottom Right</option>
+                                                <option value="2">Bottom Left</option>
+                                                <option value="3">Top Right</option>
+                                                <option value="4">Top Right</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-auto col-md-12 d-flex align-items-center">
+                                            <input type="text" class="form-control form-control-lg"
+                                                   placeholder="Bottom Margin"
+                                                   id="sticky_margin_bottom" name="sticky_margin_bottom">
+                                            <span class="form-text ms-2">px</span>
+                                        </div>
+                                        <div class="col-lg-auto col-md-12 d-flex align-items-center">
+                                            <input type="text" class="form-control form-control-lg"
+                                                   placeholder="Right Margin"
+                                                   id="sticky_margin_right" name="sticky_margin_right">
+                                            <span class="form-text ms-2">px</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/*Sticky Player*/}}
+
+                            <div class="media border-bottom border-gray-200 py-2 py-md-4">
+                                <div class="media-body my-2 w-100">
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <span class="form-label form-label-lg">Enable Logo</span>
+                                            <sup class="ms-2" type="button"
+                                                 tabindex="0"
+                                                 data-bs-toggle="popover"
+                                                 data-bs-content="If set to ON, show a logo on the top right corner of the player.<br/>By enabling it and leaving the logo URL field empty, the default logo will appear">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                     fill="currentColor"
+                                                     class="bi bi-info-circle" viewBox="0 0 16 16">
+                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                                </svg>
+                                            </sup>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="form-check form-switch mb-0">
+                                                <input type="checkbox" checked data-toggle="toggle"
+                                                       data-on="on" data-off="off"
+                                                       data-onstyle="primary btn-sm" data-offstyle="secondary btn-sm"
+                                                       data-style="rounded-24"
+                                                       id="enable_logo" name="enable_logo">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/*Enable Logo*/}}
+
+                            <div class="media border-bottom border-gray-200 py-2 py-md-4">
+                                <div class="media-body my-2 w-100">
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <span class="form-label form-label-lg">Custom Logo</span>
+                                            <sup class="ms-2" type="button"
+                                                 tabindex="0"
+                                                 data-bs-toggle="popover"
+                                                 data-bs-content="<strong>Link</strong>: The link to the logo you would like to use instead of Apacdex's.We recommend using a png, with a transparent background<br/><br/><strong>ClickThrough</strong>: Link that will open when clicking on the logo">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                     fill="currentColor"
+                                                     class="bi bi-info-circle" viewBox="0 0 16 16">
+                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                                </svg>
+                                            </sup>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="form-check form-switch mb-0">
+                                                <input type="checkbox" checked data-toggle="toggle"
+                                                       data-on="on" data-off="off"
+                                                       data-onstyle="primary btn-sm" data-offstyle="secondary btn-sm"
+                                                       data-style="rounded-24"
+                                                       id="custom_logo" name="custom_logo">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="custom_logo_setting" class="row mt-4 align-items-center">
+                                        <div class="col-lg-auto col-md-12 d-flex align-items-center">
+                                            <div class="input-group">
+                                                <button class="btn btn-outline-secondary btn-lg fileUpload border-gray-300"
+                                                        type="button"
+                                                        id="button-addon1">Upload
+                                                    <input id="upload_logo" type="file" class="upload">
+                                                </button>
+                                                <input type="text" class="form-control form-control-lg"
+                                                       placeholder="Link"
+                                                       aria-label="Example text with button addon"
+                                                       aria-describedby="button-addon1"
+                                                       id="logo_url" name="logo_url">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-auto col-md-12 d-flex align-items-center">
+                                            <input type="text" class="form-control form-control-lg"
+                                                   placeholder="ClickThrough"
+                                                   id="logo_link_click_through" name="logo_link_click_through">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/*Custom Logo*/}}
+
+                            <div class="media border-bottom border-gray-200 py-2 py-md-4">
+                                <div class="media-body my-2 w-100">
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <span class="form-label form-label-lg">Player Size</span>
+                                            <sup class="ms-2" type="button"
+                                                 tabindex="0"
+                                                 data-bs-toggle="popover"
+                                                 data-bs-content="Ads automatically adjust their size to fit available ad spaces Responsive or Fixed">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                     fill="currentColor"
+                                                     class="bi bi-info-circle" viewBox="0 0 16 16">
+                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                                </svg>
+                                            </sup>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="form-check form-switch mb-0">
+                                                <input type="checkbox" checked data-toggle="toggle"
+                                                       data-on="responsive" data-off="fixed"
+                                                       data-onstyle="primary btn-sm" data-offstyle="secondary btn-sm"
+                                                       data-style="rounded-24"
+                                                       id="player_size" name="player_size">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-4" id="player_size_fixed">
+                                        <div class="col-lg-auto col-md-12 d-flex align-items-center">
+                                            <input type="text" class="form-control form-control-lg"
+                                                   placeholder="Width"
+                                                   id="player_size_width" name="player_size_width">
+                                            <span class="form-text ms-2">px</span>
+                                        </div>
+                                        <div class="col-lg-auto col-md-12 d-flex align-items-center">
+                                            <input type="text" class="form-control form-control-lg"
+                                                   placeholder="Height"
+                                                   id="player_size_height" name="player_size_height">
+                                            <span class="form-text ms-2">px</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/*Player Size*/}}
+
+                        </div>
+                    </div>
+                </div>
+                {{/*Appearance Card*/}}
+
+                <div class="card rounded-12 shadow-dark-80 border border-gray-50 mb-3 mb-xl-5">
+                    <div class="p-3 px-4 border-bottom border-gray-200">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h5 class="card-header-title font-weight-semibold m-2">Ad Config</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body py-5">
+                        <div class="row mb-4 px-3">
+                            <label class="col-lg-1 col-form-label form-label form-label-lg "
+                                   for="vast_retry">
+                                Vast Retry</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control form-control-lg"
+                                       placeholder="Vast retry"
+                                       id="vast_retry" name="vast_retry">
+                            </div>
+                        </div>
+                        {{/*Player Layout*/}}
+
+                        <div class="px-3">
+                            <div class="media border-bottom border-gray-200 py-2 py-md-4">
+                                <div class="media-body my-2 w-100">
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-1">
+                                            <span class="form-label form-label-lg">Auto Skip</span>
+                                            {{/*                                            <span class="d-block small text-gray-600 mt-1">Enable skip ad</span>*/}}
+                                        </div>
+                                        <div class="col-lg-10">
+                                            <div class="form-check form-switch mb-0 ps-0">
+                                                <input type="checkbox" checked data-toggle="toggle"
+                                                       data-on="on" data-off="off"
+                                                       data-onstyle="primary btn-sm" data-offstyle="secondary btn-sm"
+                                                       data-style="rounded-24"
+                                                       id="player_size" name="player_size">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-4" id="auto_skip_setting">
+                                        <div class="col-lg-1"></div>
+                                        <div class="col-lg-4 col-md-12 d-flex align-items-center">
+                                            <input type="text" class="form-control form-control-lg"
+                                                   placeholder="Time To Skip"
+                                                   id="time_to_skip" name="time_to_skip">
+                                            <span class="form-text ms-2">seconds</span>
+                                        </div>
+                                        <div class="col-lg-4 col-md-12 d-flex align-items-center">
+                                            <input type="text" class="form-control form-control-lg"
+                                                   placeholder="Show Auto Skip Buttons"
+                                                   id="show_auto_skip" name="show_auto_skip">
+                                            <span class="form-text ms-2">seconds</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/*Auto Skip*/}}
+                        </div>
+                        {{/*Setting*/}}
+                    </div>
+                </div>
+                {{/*Ads Config*/}}
+
+
+                <div class="my-3 row">
+                    <div class="col-sm-12 text-lg-end">
+                        <button type="submit" class="btn btn-warning btn-xl">Submit</button>
+                    </div>
+                </div>
+                {{/* Button*/}}
+
+            </div>
+        </div>
+    </div>
+</div>
+{{/*Form Infomation*/}}

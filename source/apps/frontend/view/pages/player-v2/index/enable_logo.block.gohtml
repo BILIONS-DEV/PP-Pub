@@ -1,0 +1,7 @@
+{{- /*gotype: source/apps/frontend/model.TemplateRecord*/ -}}
+
+{{if eq .TableTemplate.EnableLogo 1}}
+    <span class="badge bg-teal-50 text-gray-600 py-2">On</span>
+{{else}}
+    <span class="badge bg-gray-50 text-gray-600 py-2 py-2">Off</span>
+{{end}}

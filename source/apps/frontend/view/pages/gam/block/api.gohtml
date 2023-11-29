@@ -1,0 +1,7 @@
+{{- /*gotype: source/apps/frontend/model.GamNetworkRecord*/ -}}
+
+{{if or (eq .TableGamNetwork.ApiAccess 1) (eq .TableGamNetwork.ApiAccess 0)}}
+    <span class="">YES</span>
+{{else}}
+    <span class="">NO</span>
+{{end}}

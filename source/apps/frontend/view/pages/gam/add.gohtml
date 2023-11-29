@@ -1,0 +1,73 @@
+{{- /*gotype: source/apps/frontend/controller.AssignGam*/ -}}
+{{template "gam/add/inc.header"}}
+{{/*End Header*/}}
+
+<div class="px-5 pt-5 pb-3 height-main">
+    <div class="container-fluid px-0">
+        <div class="row">
+            <div class="col-12">
+                {{/*                <div class="text-center pt-2 pb-4">*/}}
+                {{/*                    <h2 class="h3">{{.Schema.LANG.Pages.GAM.Step.Headline}}</h2>*/}}
+                {{/*                </div>*/}}
+                <ul class="step-list mb-4">
+                    <li class="">
+                        <span class="circle circle-lg bg-gray-200">1</span>
+                        <h5 class="mb-0 mt-3 font-weight-semibold">{{.Schema.LANG.Pages.GAM.Step.Step1.Headline}}</h5>
+                    </li>
+                    <li class="">
+                        <span class="circle circle-lg bg-gray-200">2 </span>
+                        <h5 class="mb-0 mt-3 font-weight-semibold">{{.Schema.LANG.Pages.GAM.Step.Step2.Headline}}</h5>
+                    </li>
+                    <li class="">
+                        <span class="circle circle-lg bg-gray-200">3</span>
+                        <h5 class="mb-0 mt-3 font-weight-semibold">{{.Schema.LANG.Pages.GAM.Step.Step3.Headline}}</h5>
+                    </li>
+                    <li>
+                        <span class="circle circle-lg bg-gray-200">4</span>
+                        <h5 class="mb-0 mt-3 font-weight-semibold">{{.Schema.LANG.Pages.GAM.Step.Step4.Headline}}</h5>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-12">
+                <div class="alert bg-gray-50 my-5 py-4 shadow-none" role="alert">
+                    <h5 class="alert-heading fs-5 font-weight-semibold">1. {{.Schema.LANG.Pages.GAM.Step.Step1.Title}}</h5>
+                    <p class="fw-normal">{{.Schema.LANG.Pages.GAM.Step.Step1.Description}}</p>
+                    <hr>
+                    <a href="/gam/connect" class="btn btn-light">
+                        <img src="/assets/svg/icons/google@20.svg"/>
+                        <span class="ms-2">Sign In</span>
+                    </a>
+                </div>
+
+                <div class="alert bg-gray-50 my-5 py-4 shadow-none" role="alert">
+                    <h5 class="alert-heading fs-5 font-weight-semibold">2. {{.Schema.LANG.Pages.GAM.Step.Step2.Title}}</h5>
+                    <p class="fw-normal">{{.Schema.LANG.Pages.GAM.Step.Step2.Description}}</p>
+                </div>
+
+                <div class="alert bg-gray-50 my-5 py-4 shadow-none" role="alert">
+                    <h5 class="alert-heading fs-5 font-weight-semibold">3. {{.Schema.LANG.Pages.GAM.Step.Step3.Title}}</h5>
+                    <p class="fw-normal">{{.Schema.LANG.Pages.GAM.Step.Step3.Description}}</p>
+                </div>
+
+                <div class="alert bg-gray-50 my-5 py-4 shadow-none" role="alert">
+                    <h5 class="alert-heading fs-5 font-weight-semibold">4. {{.Schema.LANG.Pages.GAM.Step.Step4.Title}}</h5>
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="fw-normal">{{.Schema.LANG.Pages.GAM.Step.Step4.Description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{/*Form Infomation*/}}
+<style>
+    .height-main .container-fluid{
+        max-width: 1000px;
+    }
+    .alert.shadow-none{
+        border-radius: 3px;
+    }
+</style>

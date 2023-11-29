@@ -1,0 +1,28 @@
+{{- /*gotype: source/apps/frontend/config/assign.Schema*/ -}}
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#sidebarSales" aria-controls="sidebarSales" role="button"
+       data-bs-toggle="collapse"
+       aria-expanded="{{if IsActiveSidebarWithGroup .Uri .SidebarSetup.SalesGroup}}true{{end}}">
+        <div class="menu-icon">
+            <wui-icon name="recommendations" size="s"
+                      class="wui-icon wui-icon--recommendations -size-s hydrated"
+                      innerhtml="<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 24 24&quot; id=&quot;ds-icon-dashboard-recommendations&quot;><rect width=&quot;5.5&quot; height=&quot;5.5&quot; x=&quot;2&quot; y=&quot;5.63&quot; rx=&quot;1&quot; ry=&quot;1&quot;/><rect width=&quot;5.5&quot; height=&quot;5.5&quot; x=&quot;9.25&quot; y=&quot;5.63&quot; rx=&quot;1&quot; ry=&quot;1&quot;/><rect width=&quot;5.5&quot; height=&quot;5.5&quot; x=&quot;2&quot; y=&quot;12.88&quot; rx=&quot;1&quot; ry=&quot;1&quot;/><rect width=&quot;5.5&quot; height=&quot;5.5&quot; x=&quot;9.37&quot; y=&quot;12.88&quot; rx=&quot;1&quot; ry=&quot;1&quot;/><rect width=&quot;5.5&quot; height=&quot;5.5&quot; x=&quot;16.5&quot; y=&quot;5.63&quot; rx=&quot;1&quot; ry=&quot;1&quot;/><rect width=&quot;5.5&quot; height=&quot;5.5&quot; x=&quot;16.5&quot; y=&quot;12.88&quot; rx=&quot;1&quot; ry=&quot;1&quot;/></svg>">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" class="bi bi-cart-fill"><path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"></path></svg>
+            </wui-icon>
+        </div>
+        <span class="ms-3">Direct Sales</span> </a>
+    <div class="collapse collapse-box {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.SalesGroup}}show{{end}}"
+         id="sidebarSales" data-bs-parent="#sidebarParent">
+        <ul class="nav nav-sm flex-column" id="sidebarSalesSubmenu">
+            <li class="nav-item">
+                <a href="/report/sales"
+                   class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.SalesReport }}active{{end}}"> Report </a>
+            </li>
+            <li class="nav-item">
+                <a href="/campaigns"
+                   class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.Campaign}}active{{end}}"> Campaigns </a>
+            </li>
+        </ul>
+    </div>
+</li>
+{{/*Sales*/}}

@@ -1,0 +1,54 @@
+{{- /*gotype: source/apps/frontend/controller.AssignGam*/ -}}
+<div class="alert bg-gray-50 my-5 py-4 shadow-none" role="alert">
+    <h5 class="alert-heading fs-5 font-weight-semibold">3. {{.Schema.LANG.Pages.GAM.Step.Step3.Title}}</h5>
+    <div class="row">
+        <div class="col">
+            <p class="fw-normal">{{.Schema.LANG.Pages.GAM.Step.Step3.Description}}</p>
+        </div>
+        <div class="col-auto float-end">
+            <button class="btn btn-primary buttonCheckApi">
+                Check API Access
+            </button>
+        </div>
+    </div>
+    <div class="table-api-access table-responsive mt-4 mb-0 {{if eq .FirstSetup true}}d-none{{end}}">
+        <table class="table table-nowrap overflow-hidden">
+            <thead>
+            <tr>
+                <th class="fw-bold w-25">Network ID</th>
+                <th class="fw-bold">Network Name</th>
+                <th class="fw-bold text-end">API Access</th>
+            </tr>
+            </thead>
+            <tbody class="list api_access">
+            {{range .Networks}}
+                {{if and (eq .TableGamNetwork.Status 2) (ne .TableGamNetwork.ApiAccess 0) }}
+                    <tr>
+                        <td class="fw-normal">{{.TableGamNetwork.NetworkId}}</td>
+                        <td class="fw-normal">{{.TableGamNetwork.NetworkName}}</td>
+                        <td class="clear">
+                            {{if eq .TableGamNetwork.ApiAccess 1}}
+                                <button class="btn btn-sm btn-icon btn-success circle circle-sm float-end"
+                                        disabled>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                         fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                                        <path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/>
+                                    </svg>
+                                </button>
+                            {{else}}
+                                <button class="btn btn-sm btn-icon btn-danger circle circle-sm float-end"
+                                        disabled>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                         fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                        <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>
+                                    </svg>
+                                </button>
+                            {{end}}
+                        </td>
+                    </tr>
+                {{end}}
+            {{end}}
+            </tbody>
+        </table>
+    </div>
+</div>

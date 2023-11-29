@@ -1,0 +1,187 @@
+{{- /*gotype: source/apps/frontend/controllerv2.AssignQuizAdd*/ -}}
+{{$ContentLang := .Assign.LANG.Pages.Content}}
+<div class="pt1" style="border-top: 0;">
+    <div class="mt-3">
+        <a class="text-primary btn btn-lg btn-add-question">+ ADD QUESTION</a>
+    </div>
+    {{/*ADD QUESTION*/}}
+    <div class="list-questions">
+        <div class="box-c question-item" data-number="1" data-question="0">
+            <hr class="mt-3 hr_custom bg-gray-400" style="margin: 0 -20px 0 -50px !important;">
+            <div class="question-box">
+                <div class="d-flex align-items-center question">
+                    <label class="col-form-label form-label form-label-lg w-input-group text-uppercase lb-question"><span
+                                class="ms-3">QUESTION 1</span></label>
+                    <a class="btn p-1 ms-2 remove-question">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor"
+                             class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"></path>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="pp15">
+                    <div class="pt2">Question</div>
+                </div>
+                <div class="pp7">
+                    <div class="pp-9">
+                        <input class="pp-10 form-control text_question" type="text">
+                        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                    </div>
+                </div>
+                {{/*Question*/}}
+
+                <div class="pp15">
+                    <div class="pt2">Background</div>
+                </div>
+                <div class="pp7">
+                    <div class="box-upload-thumb w-100">
+                        <input type='file' id="upload_background" name="upload_background"
+                               class="d-none upload_background" title="Choose a background please"
+                               aria-describedby="thumb" aria-label="Upload" accept="image/*">
+                        <div class="d-flex" id="box-upload-thumb">
+                            <label class="pp-11 mb-0" for="upload_background"
+                                   style="max-width: 100px;min-width: 100px;border-right: 0;border-left: 1px solid #aab4c8;">Choose
+                                file</label>
+                            <input class="pp10 w-100 background" id="background" name="background" type="text" value=""
+                                   readonly
+                                   style="border-top-left-radius: 0;border-bottom-left-radius: 0;cursor: not-allowed;">
+                        </div>
+                        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                    </div>
+                </div>
+                <div class="pp7">
+                    <div class="preview-image-answer d-flex justify-content-center">
+                        <img class="show-background" src="" data-link="" style="height: 92px">
+                    </div>
+                    <span class="ms-2 text_answer"
+                          style="height: 92px;max-height: 92px; width: 100%;padding: 10px"></span>
+                </div>
+                {{/*Background*/}}
+
+                {{/*                <div class="pp15">*/}}
+                {{/*                    <div class="pt2">Correct</div>*/}}
+                {{/*                </div>*/}}
+                {{/*                <div class="pp7">*/}}
+                {{/*                    <div class="cus-selectpicker pp-9">*/}}
+                {{/*                        <select id="correct" class="form-control selectpicker correct">*/}}
+                {{/*                            <option value="1">Answer 1</option>*/}}
+                {{/*                            <option value="2">Answer 2</option>*/}}
+                {{/*                        </select>*/}}
+                {{/*                    </div>*/}}
+                {{/*                </div>*/}}
+                {{/*Correct*/}}
+
+                <div class="box-answer box-answer-quiz1">
+                    <div class="answer-item" data-answer="1">
+                        <div class="pp15">
+                            <div class="m-0 d-flex align-items-center justify-content-center"
+                                 style="height: 15px; width: 15px">
+                                <input class="m-0 answer-correct" type="checkbox" checked="checked" value=""
+                                       id="check_question_1_answer_1"
+                                       style="height: 15px; width: 15px;cursor: pointer;border-color: #ced4da;">
+                            </div>
+                            <label class="pt2 answer-name ms-2" for="check_question_1_answer_1">Answer 1</label>
+                        </div>
+                        <div class="pp7">
+                            <div class="w-100">
+                                <input style="border-right: 0;" type="text" class="pp-10 text_answer">
+                                <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                            </div>
+                            <a href="javascript:void(0)" class="dg1 btn-remove-answer" title="Remove Answer">
+                                <svg xmlns="http://www.w3.org/2000/svg" style="vertical-align: initial;" width="15"
+                                     height="15" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                    <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="answer-item" data-answer="2">
+                        <div class="pp15">
+                            <div class="m-0 d-flex align-items-center justify-content-center"
+                                 style="height: 15px; width: 15px">
+                                <input class="m-0 answer-correct" type="checkbox" value=""
+                                       id="check_question_1_answer_2"
+                                       style="height: 15px; width: 15px;cursor: pointer;border-color: #ced4da;">
+                            </div>
+                            <label class="pt2 answer-name ms-2" for="check_question_1_answer_2">Answer 2</label>
+                        </div>
+                        <div class="pp7">
+                            <div class="w-100">
+                                <input style="border-right: 0;" type="text" class="pp-10 text_answer">
+                                <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                            </div>
+                            <a href="javascript:void(0)" class="dg1 btn-remove-answer" title="Remove Answer">
+                                <svg xmlns="http://www.w3.org/2000/svg" style="vertical-align: initial;" width="15"
+                                     height="15" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                    <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="pp7 box-answer-quiz1">
+                    <a class="pt98 btn-add-answer-quiz1">Add Answer</a>
+                </div>
+                {{/*Answer*/}}
+
+                <div class="box-answer box-answer-quiz2">
+                    <div class="answer-item" data-answer="1">
+                        <div class="pp15">
+                            <div class="m-0 d-flex align-items-center justify-content-center"
+                                 style="height: 15px; width: 15px">
+                                <input class="answer-correct m-0" type="checkbox" checked="checked" value=""
+                                       id="check_answer_1" style="height: 15px; width: 15px">
+                            </div>
+                            <label class="pt2 answer-name ms-2" for="check_answer_1">Answer 1</label>
+                        </div>
+                        <div class="pp7">
+                            <div class="preview-image-answer d-flex justify-content-center">
+                                <img class="show-image-answer" src="" data-link="" style="height: 92px">
+                                <input type="file" class="d-none link logo" value="">
+                            </div>
+                            <textarea class="ms-2 text_answer" type="text"
+                                      style="height: 92px;max-height: 92px; width: 100%;padding: 10px"></textarea>
+                        </div>
+                        <div class="pp7">
+                            <a class="pt98 btn-add-logo logo-config">ADD</a>
+                        </div>
+                    </div>
+                    <div class="answer-item" data-answer="2">
+                        <div class="pp15">
+                            <div class="m-0 d-flex align-items-center justify-content-center"
+                                 style="height: 15px; width: 15px">
+                                <input class="answer-correct m-0" type="checkbox" value="" id="check_answer_2"
+                                       style="height: 15px; width: 15px">
+                            </div>
+                            <label class="pt2 answer-name ms-2" for="check_answer_2">Answer 2</label>
+                        </div>
+                        <div class="pp7" data-answer="2">
+                            <div class="preview-image-answer d-flex justify-content-center">
+                                <img class="show-image-answer" src="" data-link="" style="height: 92px">
+                                <input type="file" class="d-none link logo" value="">
+                            </div>
+                            <textarea class="ms-2 text_answer" type="text"
+                                      style="height: 92px;max-height: 92px; width: 100%;padding: 10px"></textarea>
+                        </div>
+                        <div class="pp7">
+                            <a class="pt98 btn-add-logo logo-config">ADD</a>
+                        </div>
+                    </div>
+                </div>
+                {{/*Answer*/}}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

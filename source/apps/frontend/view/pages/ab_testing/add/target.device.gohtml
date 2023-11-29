@@ -1,0 +1,36 @@
+{{- /*gotype: source/apps/frontend/controller.AssignAbTestingAdd*/ -}}
+{{$Lang := .Schema.LANG.Pages.LineItem}}
+<div class="dm21 test_type_auction_timeout d-none" data-toggle="collapse" href="#collapseDevice">
+    <div class="dm13">
+        <a href="#" class="">{{$Lang.Devices}}</a>
+    </div>
+    <div class="dm15">
+        <div class="dm22">
+            <span id="text_for_device">{{$Lang.AllDevices}}</span>
+        </div>
+    </div>
+    <div class="dm23">
+        <button type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"></path>
+            </svg>
+        </button>
+    </div>
+</div>
+<div class="collapse test_type_auction_timeout d-none" id="collapseDevice" data-parent=".accordion">
+    <div class="dm16 block_device">
+        <div class="pp7" style="margin: 0;">
+            <span style="width: 32px;height: 32px;background: #EEEEEE;border: 1px solid #ccc;border-right: 0;border-radius: 2px 0 0 2px;display: flex;align-items: center;justify-content: center;">
+                <img src="https://apps.valueimpression.com/assets/svg/icons/search@16.svg" alt="Search">
+            </span>
+            <input style="width: 100%;" class="pp10" type="text" placeholder="{{$Lang.SearchDevice}}" id="search_device">
+            <a href="#" class="remove_all_device">{{$Lang.Clear}}</a>
+        </div>
+        <div class="dm17">
+            <div class="dm18 box-target" id="list_device"></div>
+            <div class="dm19 box-target-selected box_device"></div>
+            <input hidden value="true" id="is_more_device"/>
+{{/*            <input hidden value="1" id="pageInventory"/>*/}}
+        </div>
+    </div>
+</div>

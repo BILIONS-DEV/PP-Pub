@@ -1,0 +1,24 @@
+p, admin, /*, (GET)|(POST)
+
+p, guest, /login, (GET)|(POST)
+p, guest, /register, (GET)|(POST)
+
+p, sale, /payment, (GET)|(POST)
+p, sale, /payment/*, (GET)|(POST)
+
+p, self-serve, /supply, (GET)|(POST)
+p, self-serve, /supply/*, (GET)|(POST)
+p, self-serve, /quiz/, (GET)|(POST)
+p, self-serve, /quiz/*, (GET)|(POST)
+p, self-serve, /adtag, (GET)|(POST)
+p, self-serve, /gam, (GET)|(POST)
+p, self-serve, /gam?tab=*&id=*, (GET)|(POST)
+
+p, accountant, /payment*, (GET)|(POST)
+p, accountant, /report, (GET)|(POST)
+
+p, self-serve, /testlogin, (GET)|(POST)
+
+g, admin, member
+g, sale, member
+g, sale, guest

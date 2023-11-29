@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theme name="muze">
+    <page path="/bidder">
+        <!-- Import CSS -->
+        <css link="/assets/plugins/bootstrap431/css/bootstrap.min.css"/>
+        <css link="/assets/plugins/bootstrap-toggle/css/bootstrap-toggle.min.css"/>
+        <css link="/assets/plugins/bootstrap-select/dist/css/bootstrap-select.min.css"/>
+        <css link="/assets/plugins/select2/dist/css/select2.min.css"/>
+        <css link="/assets/plugins/select2/dist/css/select2-bootstrap.min.css"/>
+        <css link="/assets/plugins/daterangepicker/daterangepicker.css"/>
+        <css link="/assets/plugins/datatables/datatables.min.css"/>
+        <!-- Import JS -->
+        <js link="/assets/plugins/bootstrap-toggle/js/bootstrap-toggle.min.js"/>
+        <js link="/assets/plugins/select2/dist/js/select2.full.js"/>
+        <js link="/assets/plugins/select2/dist/js/select2.multi-checkboxes.js"/>
+        <js link="/assets/plugins/bootstrap-select/dist/js/bootstrap-select.min.js"/>
+        <js link="/assets/plugins/daterangepicker/moment.min.js"/>
+        <js link="/assets/plugins/daterangepicker/daterangepicker.js"/>
+        <js link="/assets/plugins/datatables/datatables.min.js"/>
+        <jsOnBottom link="/assets/bidder/index.js"/>
+    </page>
+
+    <page path="/bidder/form">
+        <!-- Import CSS -->
+        <css link="/assets/plugins/bootstrap431/css/bootstrap.min.css" rel="stylesheet" media="all"/>
+        <css link="/assets/plugins/bootstrap-toggle/css/bootstrap-toggle.min.css" rel="stylesheet" media="all"/>
+        <!--        <css link="/assets/plugins/select2/dist/css/select2.min.css" rel="stylesheet" media="all" inline="false"/>-->
+        <!--        <css link="/assets/plugins/select2/dist/css/select2-bootstrap.min.css"/>-->
+        <css link="/assets/plugins/daterangepicker/daterangepicker.css" rel="stylesheet" media="all"/>
+        <css link="/assets/plugins/datatables/datatables.min.css" rel="stylesheet" media="all"/>
+        <css link="/assets/plugins/bootstrap-select-1.13.18/css/bootstrap-select.min.css" rel="stylesheet"/>
+        <!-- Import JS -->
+        <js link="/assets/js/popper.min.js"/>
+        <js link="/assets/plugins/bootstrap431/js/bootstrap.min.js"/>
+        <js link="/assets/plugins/bootstrap-toggle/js/bootstrap-toggle.min.js"/>
+        <!--        <js link="/assets/plugins/select2/dist/js/select2.full.js"/>-->
+        <js link="/assets/plugins/daterangepicker/moment.min.js"/>
+        <js link="/assets/plugins/daterangepicker/daterangepicker.js"/>
+        <js link="/assets/plugins/datatables/datatables.min.js"/>
+        <js link="/assets/plugins/bootstrap-select-1.13.18/js/bootstrap-select.min.js"/>
+    </page>
+
+    <page path="/bidder/add" includePath="/bidder/form">
+        <jsOnBottom link="/assets/bidder/add.js"/>
+    </page>
+    <page path="/bidder/edit" includePath="/bidder/form">
+        <jsOnBottom link="/assets/bidder/edit.js"/>
+    </page>
+    <page path="/bidder/view" includePath="/bidder/form">
+        <jsOnBottom link="/assets/bidder/view.js"/>
+    </page>
+
+</theme>

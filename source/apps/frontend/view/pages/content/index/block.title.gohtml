@@ -1,0 +1,27 @@
+{{- /*gotype: source/apps/frontend/model.ContentRecord*/ -}}
+{{if eq .TableContent.Type 1}}
+    <div class="d-flex link_video">
+        <span class="avatar avatar-sm rounded-circle d-flex align-items-center justify-content-center me-3">
+                <img src="{{.TableContent.Thumb}}">
+        </span>
+        <div class="d-block" style="line-height: 20px;">
+            <a id="open_video" style="cursor: pointer" data-id="{{.TableContent.Id}}"
+               data-url="{{.TableContent.VideoUrl}}"
+               class="d-block text-truncate"
+               title="{{.TableContent.Title}}">
+                {{.TableContent.Title}}
+            </a> <span class="d-block small text-muted mt-1 text-truncate">{{.TableContent.ContentDesc}}</span>
+        </div>
+    </div>
+    <div class="link_video_{{.TableContent.Id}} modal_cus" id="{{.TableContent.Id}}">
+        <div class="modal-content-cus">
+            <span class="close">&times;</span> <span>Video Preview</span>
+            <video id="video_{{.TableContent.Id}}" class="w-100" controls>
+            </video>
+        </div>
+    </div>
+{{else}}
+    <div class="quiz-info my-2">
+        {{.TableContent.Title}}
+    </div>
+{{end}}

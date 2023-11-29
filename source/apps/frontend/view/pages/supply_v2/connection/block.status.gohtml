@@ -1,0 +1,7 @@
+<div id="box_status_{{.BidderId}}">
+    {{if eq .Status 1}}
+        <span class="badge bg-success text-capitalize p-2">Live</span>
+    {{else if eq .Status 2}}
+        <span class="badge bg-ornage-150 text-capitalize text-orange-500 p-2">Waiting</span>
+    {{end}}
+</div>

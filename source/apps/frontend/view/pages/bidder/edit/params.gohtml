@@ -1,0 +1,42 @@
+{{- /*gotype: source/apps/frontend/controller.AssignSystemEdit*/ -}}
+{{$Lang := .Schema.LANG.Pages.Bidder}}
+<div class="dm10">
+    <div class="dm8">
+        <div class="dm9">{{$Lang.Params}}</div>
+    </div>
+    <div class="list_params">
+        {{if .Params}}
+            {{range $i, $param := .Params}}
+                <div class="pp7 box-param">
+                    <div class="start-selectpicker pp-11 p-0 border-right-0 w-100">
+                        <select class="form-control selectpicker param_value" title="Select a param" {{if $param.IsTemplate}}disabled{{end}}>
+                            {{if $param.IsTemplate}}
+                                <option value="{{$param.Name}}" data-type="{{$param.Type}}" selected>{{$param.Name}}</option>
+                            {{else}}
+                                {{range $.ParamsForBidder}}
+                                    <option value="{{$param.Name}}" data-type="{{$param.Type}}" {{if eq .TablePbBidderParam.Name $param.Name}}selected{{end}}>{{.TablePbBidderParam.Name}}</option>
+                                {{end}}
+                            {{end}}
+                        </select>
+                    </div>
+                    <a href="javascript:void(0)" class="dg1 btn-remove-param border-left-0 {{if $param.IsTemplate}}disabled{{end}}">
+                        <svg xmlns="http://www.w3.org/2000/svg" style="vertical-align: initial;" width="15" height="15"
+                             fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"></path>
+                        </svg>
+                    </a>
+                    <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                </div>
+            {{end}}
+        {{else}}
+            <div class="text-white m-2">No Param</div>
+        {{end}}
+    </div>
+
+    <div class="dm8 mt-2" style="min-height: auto;padding-bottom: 10px;">
+        <div class="dm9">&nbsp;</div>
+        <div class="dm12">
+            <a href="javascript:void(0)" class="btn-add-param">+ Add Param</a>
+        </div>
+    </div>
+</div>

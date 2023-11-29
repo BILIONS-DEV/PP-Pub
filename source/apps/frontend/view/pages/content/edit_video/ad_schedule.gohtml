@@ -1,0 +1,1342 @@
+{{- /*gotype: source/apps/frontend/controller.AssignContentEdit*/ -}}
+<div class="pp_ad_schedules_16">
+    <div class="pp_ad_schedules_5 w-100">
+        <div class="w-100 pp_ad_schedules_7">
+            <div class="pp_ad_schedules_8 box-config-adbreak" style="padding: 0px;">
+{{/*                <div class="pp_ad_schedules_17 pp_ad_schedules_8 w-100 my-2">*/}}
+{{/*                    <div class="pp_ad_schedules_18">*/}}
+{{/*                        <h3 class="pp_text_h3" style="margin-bottom: 8px;">Schedule ID</h3>*/}}
+{{/*                        <span style="margin-bottom: 8px;">Use the Schedule ID to reference the API and customize your ad experience.</span>*/}}
+{{/*                        <div type="block" class="wui-code-snippet -type-block hydrated mb-3">*/}}
+{{/*                            <div class="wui-code-snippet__content">*/}}
+{{/*                                <div class="content-uuid">{{.Row.TableContent.Uuid}}</div>*/}}
+{{/*                            </div>*/}}
+{{/*                            <div class="wui-code-snippet__button">*/}}
+{{/*                                <div class="wui-copy-to-clipboard-button">*/}}
+{{/*                                    <div class="wui-tooltip hydrated h-100">*/}}
+{{/*                                        <div class="wui-tooltip__target" tabindex="0">*/}}
+{{/*                                            <div class="copy-content-id btn-copy" title="Copy">*/}}
+{{/*                                                <div class="wui-icon wui-icon--dashboard_copy -size-s hydrated">*/}}
+{{/*                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"*/}}
+{{/*                                                         id="ds-icon-dashboard-copy">*/}}
+{{/*                                                        <path d="M19.75 8.69h-2.37V6.31a2 2 0 0 0-2-2H4.25a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2.37v2.38a2 2 0 0 0 2 2h11.13a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2Zm-15.5 4.62v-7h11.13v2.38H8.62a2 2 0 0 0-2 2v2.62Zm15.5 4.38H8.62v-7h11.13Z"></path>*/}}
+{{/*                                                    </svg>*/}}
+{{/*                                                </div>*/}}
+{{/*                                            </div>*/}}
+{{/*                                        </div>*/}}
+{{/*                                    </div>*/}}
+{{/*                                </div>*/}}
+{{/*                            </div>*/}}
+{{/*                        </div>*/}}
+{{/*                    </div>*/}}
+{{/*                </div>*/}}
+                {{/*Schedule Id*/}}
+
+                <div class="pp_ad_schedules_17 pp_ad_schedules_8 w-100 my-2">
+                    <div class="pp_ad_schedules_18">
+                        <h3 class="pp_text_h3" style="margin-bottom: 8px;">Configure Ad
+                            Breaks</h3>
+                        <span style="margin-bottom: 8px;">Select whether you want to add an ad schedule as a Auto or configure ad breaks manually.</span>
+                        <a href="https://developer.jwplayer.com/jwplayer/docs/jw8-player-configuration-reference#section-advertising"
+                           target="_blank" rel="noreferrer">Learn more</a>
+                        <div class="w-100 mb-0 pp_ad_schedules_7"
+                             style="margin-top: 20px; visibility: inherit;box-sizing: inherit;">
+                            <div class="pp_ad_schedules_19">
+                                <div class=" d-flex flex-row">
+                                    <div class="form-check mb-0"
+                                         style="margin-right: 24px;">
+                                        <input class="form-check-input pp_ad_schedules_radio"
+                                               type="radio" value="1"
+                                               name="config_ad_break"
+                                               id="radioConfigAdBreak1"
+                                               {{if eq .Row.TableContent.ConfigAdBreak 1}}checked{{end}}>
+                                        <label class="form-check-label"
+                                               for="radioConfigAdBreak1"
+                                               style="font-size: 15px;">
+                                            Manually
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-0"
+                                         style="margin-right: 24px;">
+                                        <input class="form-check-input pp_ad_schedules_radio"
+                                               type="radio" value="2"
+                                               name="config_ad_break"
+                                               id="radioConfigAdBreak2"
+                                               {{if eq .Row.TableContent.ConfigAdBreak 2}}checked{{end}}>
+                                        <label class="form-check-label"
+                                               for="radioConfigAdBreak2"
+                                               style="font-size: 15px;">
+                                            Auto
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/*Config Ad Breaks*/}}
+
+                <div class="w-100 add-break-manually {{if ne .Row.TableContent.ConfigAdBreak 1}}d-none{{end}}">
+                    {{if ne .AdBreakPreRoll.TableContentAdBreak.Id 0}}
+                        <div class="_breakItem_z87zl_75 pp_ad_schedules_7 -orientation-horizontal -align-center -wrap hydrated w-100 box-roll pre-roll-break"
+                             data-action="done">
+                            <div class="" style="padding: 20px;flex-wrap: nowrap;">
+                                <div class="box-step-roll _active_z87zl_147">
+                                    <div data-test="show-break-label"
+                                         class="_breakLabel_z87zl_137 pp_ad_schedules_7 -orientation-horizontal -align-center -justify-space-between -wrap hydrated">
+                                        <div>
+                                            <div data-test="show-break-label-text">Preroll</div>
+                                            <svg class="_stepper_iyx7e_16" width="40" height="6"
+                                                 fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <circle class="_active_iyx7e_28" cx="3" cy="3"
+                                                        r="3"
+                                                        data-test="show-preroll-step"></circle>
+                                                <circle cx="20" cy="3" r="3"
+                                                        data-test="show-midroll-step"></circle>
+                                                <circle cx="37" cy="3" r="3"
+                                                        data-test="show-postroll-step"></circle>
+                                                <path stroke-width="2" d="M8 3h7M25 3h7"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="_font_83r5j_16 _s_83r5j_23 _baselineShift_83r5j_42 text-adtag-url"
+                                   style="font-family: 'Open Sans',Arial,sans-serif; color: #475470;">
+                                </p>
+                                <div style="flex: 1 1 0%;"></div>
+                                <div class="wui-button -type-icon hydrated box-btn-add d-none">
+                                    <button type="button" class="btn-add-roll">
+                                        <div class="wui-icon wui-icon--dashboard_add -size-m hydrated">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                 viewBox="0 0 24 24"
+                                                 id="ds-icon-dashboard-add">
+                                                <path d="M20 10h-6V4a2 2 0 0 0-4 0v6H4a2 2 0 0 0 0 4h6v6a2 2 0 0 0 4 0v-6h6a2 2 0 0 0 0-4Z"></path>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                </div>
+                                <div class="pp_ad_schedules_7 -orientation-horizontal -gutter-s -wrap hydrated box-btn-edit d-none">
+                                    <div>
+                                        <div data-test="cancel-editing-state" type="tertiary"
+                                             class="wui-button -type-tertiary hydrated btn-cancel-roll">
+                                            <button type="button"><span>Cancel</span></button>
+                                        </div>
+                                        <div data-test="save-break" type="secondary"
+                                             class="wui-button -type-secondary -disabled hydrated btn-done-roll">
+                                            <button type="button" disabled=""><span>Done</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown wui-more-menu -type-icon hydrated box-btn-action">
+                                    <a class="dropdown-toggle wui-button -type-icon hydrated" type="button"
+                                       id="dropdownUserButton" data-toggle="dropdown"
+                                       aria-haspopup="true" aria-expanded="false" title="Email of publisher">
+                                        <div class="wui-icon wui-icon--dashboard_more -size-m hydrated">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                 viewBox="0 0 24 24"
+                                                 id="ds-icon-dashboard-more">
+                                                <path d="M6 12a2 2 0 1 1-2-2 2 2 0 0 1 2 2Zm6-2a2 2 0 1 0 2 2 2 2 0 0 0-2-2Zm8 0a2 2 0 1 0 2 2 2 2 0 0 0-2-2Z"></path>
+                                            </svg>
+                                        </div>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownUserButton">
+                                        <a class="dropdown-item text-danger btn-del-roll" type="button">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {{else}}
+                        <div class="_breakItem_z87zl_75 pp_ad_schedules_7 -orientation-horizontal -align-center -wrap hydrated w-100 box-roll pre-roll-break">
+                            <div class="" style="padding: 20px;flex-wrap: nowrap;">
+                                <div class="box-step-roll">
+                                    <div data-test="show-break-label"
+                                         class="_breakLabel_z87zl_137 pp_ad_schedules_7 -orientation-horizontal -align-center -justify-space-between -wrap hydrated">
+                                        <div>
+                                            <div data-test="show-break-label-text">Preroll</div>
+                                            <svg class="_stepper_iyx7e_16" width="40" height="6"
+                                                 fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <circle class="_inactive_iyx7e_22" cx="3" cy="3"
+                                                        r="3"
+                                                        data-test="show-preroll-step"></circle>
+                                                <circle cx="20" cy="3" r="3"
+                                                        data-test="show-midroll-step"></circle>
+                                                <circle cx="37" cy="3" r="3"
+                                                        data-test="show-postroll-step"></circle>
+                                                <path stroke-width="2" d="M8 3h7M25 3h7"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="_font_83r5j_16 _s_83r5j_23 _baselineShift_83r5j_42 text-adtag-url"
+                                   style="font-family: 'Open Sans',Arial,sans-serif; color: #475470;"></p>
+                                <div style="flex: 1 1 0%;"></div>
+                                <div class="wui-button -type-icon hydrated box-btn-add">
+                                    <button type="button" class="btn-add-roll">
+                                        <div class="wui-icon wui-icon--dashboard_add -size-m hydrated">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                 viewBox="0 0 24 24"
+                                                 id="ds-icon-dashboard-add">
+                                                <path d="M20 10h-6V4a2 2 0 0 0-4 0v6H4a2 2 0 0 0 0 4h6v6a2 2 0 0 0 4 0v-6h6a2 2 0 0 0 0-4Z"></path>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                </div>
+                                <div class="pp_ad_schedules_7 -orientation-horizontal -gutter-s -wrap hydrated box-btn-edit d-none">
+                                    <div>
+                                        <div data-test="cancel-editing-state" type="tertiary"
+                                             class="wui-button -type-tertiary hydrated btn-cancel-roll">
+                                            <button type="button"><span>Cancel</span></button>
+                                        </div>
+                                        <div data-test="save-break" type="secondary"
+                                             class="wui-button -type-secondary -disabled hydrated btn-done-roll">
+                                            <button type="button" disabled=""><span>Done</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown wui-more-menu -type-icon hydrated box-btn-action d-none">
+                                    <a class="dropdown-toggle wui-button -type-icon hydrated" type="button"
+                                       id="dropdownUserButton" data-toggle="dropdown"
+                                       aria-haspopup="true" aria-expanded="false" title="Email of publisher">
+                                        <div class="wui-icon wui-icon--dashboard_more -size-m hydrated">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                 viewBox="0 0 24 24"
+                                                 id="ds-icon-dashboard-more">
+                                                <path d="M6 12a2 2 0 1 1-2-2 2 2 0 0 1 2 2Zm6-2a2 2 0 1 0 2 2 2 2 0 0 0-2-2Zm8 0a2 2 0 1 0 2 2 2 2 0 0 0-2-2Z"></path>
+                                            </svg>
+                                        </div>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownUserButton">
+                                        <a class="dropdown-item text-danger btn-del-roll" type="button">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {{end}}
+                    {{/*Preroll Break*/}}
+
+
+                    {{if .AdBreakMidRoll}}
+                        {{range .AdBreakMidRoll}}
+                            <div class="_breakItem_z87zl_75 pp_ad_schedules_7 -orientation-horizontal -align-center -wrap hydrated w-100 box-roll mid-roll-break"
+                                 data-action="done">
+                                <div class="" style="padding: 20px;flex-wrap: nowrap;">
+                                    <div class="box-step-roll _active_z87zl_147">
+                                        <div data-test="show-break-label"
+                                             class="_breakLabel_z87zl_137 pp_ad_schedules_7 -orientation-horizontal -align-center -justify-space-between -wrap hydrated">
+                                            <div>
+                                                <div data-test="show-break-label-text">Midroll</div>
+                                                <svg class="_stepper_iyx7e_16" width="40" height="6"
+                                                     fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <circle cx="3" cy="3" r="3"
+                                                            data-test="show-preroll-step"></circle>
+                                                    <circle class="_active_iyx7e_28" cx="20" cy="3"
+                                                            r="3"
+                                                            data-test="show-midroll-step"></circle>
+                                                    <circle cx="37" cy="3" r="3"
+                                                            data-test="show-postroll-step"></circle>
+                                                    <path stroke-width="2" d="M8 3h7M25 3h7"></path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="_font_83r5j_16 _s_83r5j_23 _baselineShift_83r5j_42 text-adtag-url"
+                                       style="font-family: 'Open Sans',Arial,sans-serif; color: #475470;">
+                                        {{if eq .TableContentAdBreak.BreakMode 1}}
+                                            Seconds into video: {{.TableContentAdBreak.TimeAdBreak}}s
+                                        {{else if eq .TableContentAdBreak.BreakMode 2}}
+                                            Timecode: {{.TableContentAdBreak.TimeAdBreak}}
+                                        {{else if eq .TableContentAdBreak.BreakMode 3}}
+                                            % Of Video: {{.TableContentAdBreak.TimeAdBreak}}%
+                                        {{end}}
+                                    </p>
+                                    <div style="flex: 1 1 0%;"></div>
+                                    <div class="wui-button -type-icon hydrated box-btn-add d-none">
+                                        <button type="button" class="btn-add-roll">
+                                            <div class="wui-icon wui-icon--dashboard_add -size-m hydrated">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                     viewBox="0 0 24 24"
+                                                     id="ds-icon-dashboard-add">
+                                                    <path d="M20 10h-6V4a2 2 0 0 0-4 0v6H4a2 2 0 0 0 0 4h6v6a2 2 0 0 0 4 0v-6h6a2 2 0 0 0 0-4Z"></path>
+                                                </svg>
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <div class="pp_ad_schedules_7 -orientation-horizontal -gutter-s -wrap hydrated box-btn-edit d-none">
+                                        <div>
+                                            <div data-test="cancel-editing-state" type="tertiary"
+                                                 class="wui-button -type-tertiary hydrated btn-cancel-roll">
+                                                <button type="button"><span>Cancel</span></button>
+                                            </div>
+                                            <div data-test="save-break" type="secondary"
+                                                 class="wui-button -type-secondary -disabled hydrated btn-done-roll">
+                                                <button type="button" disabled=""><span>Done</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown wui-more-menu -type-icon hydrated box-btn-action">
+                                        <a class="dropdown-toggle wui-button -type-icon hydrated" type="button"
+                                           id="dropdownUserButton" data-toggle="dropdown"
+                                           aria-haspopup="true" aria-expanded="false" title="Email of publisher">
+                                            <div class="wui-icon wui-icon--dashboard_more -size-m hydrated">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                     viewBox="0 0 24 24"
+                                                     id="ds-icon-dashboard-more">
+                                                    <path d="M6 12a2 2 0 1 1-2-2 2 2 0 0 1 2 2Zm6-2a2 2 0 1 0 2 2 2 2 0 0 0-2-2Zm8 0a2 2 0 1 0 2 2 2 2 0 0 0-2-2Z"></path>
+                                                </svg>
+                                            </div>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownUserButton">
+                                            <a class="dropdown-item btn-edit-roll" type="button">Edit</a>
+                                            <a class="dropdown-item text-danger btn-del-roll" type="button">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="_breakConfig_z87zl_166 pp_ad_schedules_7 -orientation-vertical -gutter-s -wrap hydrated w-100 box-adtag-url d-none"
+                                 data-type-roll="{{.TableContentAdBreak.Type}}">
+                                <div style="padding: 12px 20px;">
+                                    <div class="pp_ad_schedules_7 -orientation-horizontal -justify-space-between -wrap hydrated">
+                                        <div style="padding: 12px 0px;">
+                                            <div class="pp_ad_schedules_7 -orientation-vertical -gutter-s -wrap hydrated">
+                                                <div>
+                                                    <h4>Break Timing</h4>
+                                                    <div class="_breakTiming_z87zl_175 pp_ad_schedules_7 -orientation-horizontal -gutter-s -wrap hydrated">
+                                                        <div>
+                                                            <div class="_numberInput_z87zl_124 wui-input -size-m -empty hydrated"
+                                                                 type="number">
+                                                                <div class="wui-input__box">
+                                                                    <input class="time_break" type="number"
+                                                                           autocomplete="off" min="0" required=""
+                                                                           value="{{.TableContentAdBreak.TimeAdBreak}}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="border border-gray-500 rounded-1 select-ad-schedules">
+                                                                <select name="break_mode"
+                                                                        class="break_mode selectpicker p-0 ">
+                                                                    <option value="1"
+                                                                            {{if eq .TableContentAdBreak.BreakMode 1}}selected{{end}}>
+                                                                        Seconds into Video
+                                                                    </option>
+                                                                    <option value="2"
+                                                                            {{if eq .TableContentAdBreak.BreakMode 2}}selected{{end}}>
+                                                                        Timecode
+                                                                    </option>
+                                                                    <option value="3"
+                                                                            {{if eq .TableContentAdBreak.BreakMode 3}}selected{{end}}>
+                                                                        % of Video
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {{end}}
+                        <div class="_breakItem_z87zl_75 pp_ad_schedules_7 -orientation-horizontal -align-center -wrap hydrated w-100 box-roll mid-roll-break">
+                            <div class="" style="padding: 20px;flex-wrap: nowrap;">
+                                <div class="box-step-roll">
+                                    <div data-test="show-break-label"
+                                         class="_breakLabel_z87zl_137 pp_ad_schedules_7 -orientation-horizontal -align-center -justify-space-between -wrap hydrated">
+                                        <div>
+                                            <div data-test="show-break-label-text">Midroll</div>
+                                            <svg class="_stepper_iyx7e_16" width="40" height="6"
+                                                 fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <circle cx="3" cy="3" r="3"
+                                                        data-test="show-preroll-step"></circle>
+                                                <circle class="_inactive_iyx7e_22" cx="20" cy="3"
+                                                        r="3"
+                                                        data-test="show-midroll-step"></circle>
+                                                <circle cx="37" cy="3" r="3"
+                                                        data-test="show-postroll-step"></circle>
+                                                <path stroke-width="2" d="M8 3h7M25 3h7"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="_font_83r5j_16 _s_83r5j_23 _baselineShift_83r5j_42 text-adtag-url"
+                                   style="font-family: 'Open Sans',Arial,sans-serif; color: #475470;"></p>
+                                <div style="flex: 1 1 0%;"></div>
+                                <div class="wui-button -type-icon hydrated box-btn-add">
+                                    <button type="button" class="btn-add-roll">
+                                        <div class="wui-icon wui-icon--dashboard_add -size-m hydrated">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                 viewBox="0 0 24 24"
+                                                 id="ds-icon-dashboard-add">
+                                                <path d="M20 10h-6V4a2 2 0 0 0-4 0v6H4a2 2 0 0 0 0 4h6v6a2 2 0 0 0 4 0v-6h6a2 2 0 0 0 0-4Z"></path>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                </div>
+                                <div class="pp_ad_schedules_7 -orientation-horizontal -gutter-s -wrap hydrated box-btn-edit d-none">
+                                    <div>
+                                        <div data-test="cancel-editing-state" type="tertiary"
+                                             class="wui-button -type-tertiary hydrated btn-cancel-roll">
+                                            <button type="button"><span>Cancel</span></button>
+                                        </div>
+                                        <div data-test="save-break" type="secondary"
+                                             class="wui-button -type-secondary -disabled hydrated btn-done-roll">
+                                            <button type="button" disabled=""><span>Done</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown wui-more-menu -type-icon hydrated box-btn-action d-none">
+                                    <a class="dropdown-toggle wui-button -type-icon hydrated" type="button"
+                                       id="dropdownUserButton" data-toggle="dropdown"
+                                       aria-haspopup="true" aria-expanded="false" title="Email of publisher">
+                                        <div class="wui-icon wui-icon--dashboard_more -size-m hydrated">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                 viewBox="0 0 24 24"
+                                                 id="ds-icon-dashboard-more">
+                                                <path d="M6 12a2 2 0 1 1-2-2 2 2 0 0 1 2 2Zm6-2a2 2 0 1 0 2 2 2 2 0 0 0-2-2Zm8 0a2 2 0 1 0 2 2 2 2 0 0 0-2-2Z"></path>
+                                            </svg>
+                                        </div>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownUserButton">
+                                        <a class="dropdown-item btn-edit-roll" type="button">Edit</a>
+                                        <a class="dropdown-item text-danger btn-del-roll" type="button">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {{else}}
+                        <div class="_breakItem_z87zl_75 pp_ad_schedules_7 -orientation-horizontal -align-center -wrap hydrated w-100 box-roll mid-roll-break">
+                            <div class="" style="padding: 20px;flex-wrap: nowrap;">
+                                <div class="box-step-roll">
+                                    <div data-test="show-break-label"
+                                         class="_breakLabel_z87zl_137 pp_ad_schedules_7 -orientation-horizontal -align-center -justify-space-between -wrap hydrated">
+                                        <div>
+                                            <div data-test="show-break-label-text">Midroll</div>
+                                            <svg class="_stepper_iyx7e_16" width="40" height="6"
+                                                 fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <circle cx="3" cy="3" r="3"
+                                                        data-test="show-preroll-step"></circle>
+                                                <circle class="_inactive_iyx7e_22" cx="20" cy="3"
+                                                        r="3"
+                                                        data-test="show-midroll-step"></circle>
+                                                <circle cx="37" cy="3" r="3"
+                                                        data-test="show-postroll-step"></circle>
+                                                <path stroke-width="2" d="M8 3h7M25 3h7"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="_font_83r5j_16 _s_83r5j_23 _baselineShift_83r5j_42 text-adtag-url"
+                                   style="font-family: 'Open Sans',Arial,sans-serif; color: #475470;"></p>
+                                <div style="flex: 1 1 0%;"></div>
+                                <div class="wui-button -type-icon hydrated box-btn-add">
+                                    <button type="button" class="btn-add-roll">
+                                        <div class="wui-icon wui-icon--dashboard_add -size-m hydrated">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                 viewBox="0 0 24 24"
+                                                 id="ds-icon-dashboard-add">
+                                                <path d="M20 10h-6V4a2 2 0 0 0-4 0v6H4a2 2 0 0 0 0 4h6v6a2 2 0 0 0 4 0v-6h6a2 2 0 0 0 0-4Z"></path>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                </div>
+                                <div class="pp_ad_schedules_7 -orientation-horizontal -gutter-s -wrap hydrated box-btn-edit d-none">
+                                    <div>
+                                        <div data-test="cancel-editing-state" type="tertiary"
+                                             class="wui-button -type-tertiary hydrated btn-cancel-roll">
+                                            <button type="button"><span>Cancel</span></button>
+                                        </div>
+                                        <div data-test="save-break" type="secondary"
+                                             class="wui-button -type-secondary -disabled hydrated btn-done-roll">
+                                            <button type="button" disabled=""><span>Done</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown wui-more-menu -type-icon hydrated box-btn-action d-none">
+                                    <a class="dropdown-toggle wui-button -type-icon hydrated" type="button"
+                                       id="dropdownUserButton" data-toggle="dropdown"
+                                       aria-haspopup="true" aria-expanded="false" title="Email of publisher">
+                                        <div class="wui-icon wui-icon--dashboard_more -size-m hydrated">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                 viewBox="0 0 24 24"
+                                                 id="ds-icon-dashboard-more">
+                                                <path d="M6 12a2 2 0 1 1-2-2 2 2 0 0 1 2 2Zm6-2a2 2 0 1 0 2 2 2 2 0 0 0-2-2Zm8 0a2 2 0 1 0 2 2 2 2 0 0 0-2-2Z"></path>
+                                            </svg>
+                                        </div>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownUserButton">
+                                        <a class="dropdown-item btn-edit-roll" type="button">Edit</a>
+                                        <a class="dropdown-item text-danger btn-del-roll" type="button">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {{end}}
+                    {{/*Midroll Break*/}}
+
+                    {{if ne .AdBreakPostRoll.TableContentAdBreak.Id 0}}
+                        <div class="_breakItem_z87zl_75 pp_ad_schedules_7 -orientation-horizontal -align-center -wrap hydrated w-100 box-roll post-roll-break"
+                             data-action="done">
+                            <div class="" style="padding: 20px;flex-wrap: nowrap;">
+                                <div class="box-step-roll _active_z87zl_147">
+                                    <div data-test="show-break-label"
+                                         class="_breakLabel_z87zl_137 pp_ad_schedules_7 -orientation-horizontal -align-center -justify-space-between -wrap hydrated">
+                                        <div>
+                                            <div data-test="show-break-label-text">Postroll</div>
+                                            <svg class="_stepper_iyx7e_16" width="40" height="6"
+                                                 fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <circle cx="3" cy="3" r="3"
+                                                        data-test="show-preroll-step"></circle>
+                                                <circle cx="20" cy="3" r="3"
+                                                        data-test="show-midroll-step"></circle>
+                                                <circle class="_active_iyx7e_28" cx="37" cy="3"
+                                                        r="3"
+                                                        data-test="show-postroll-step"></circle>
+                                                <path stroke-width="2" d="M8 3h7M25 3h7"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="_font_83r5j_16 _s_83r5j_23 _baselineShift_83r5j_42 text-adtag-url"
+                                   style="font-family: 'Open Sans',Arial,sans-serif; color: #475470;">
+                                </p>
+                                <div style="flex: 1 1 0%;"></div>
+                                <div class="wui-button -type-icon hydrated box-btn-add d-none">
+                                    <button type="button" class="btn-add-roll">
+                                        <div class="wui-icon wui-icon--dashboard_add -size-m hydrated">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                 viewBox="0 0 24 24"
+                                                 id="ds-icon-dashboard-add">
+                                                <path d="M20 10h-6V4a2 2 0 0 0-4 0v6H4a2 2 0 0 0 0 4h6v6a2 2 0 0 0 4 0v-6h6a2 2 0 0 0 0-4Z"></path>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                </div>
+                                <div class="pp_ad_schedules_7 -orientation-horizontal -gutter-s -wrap hydrated box-btn-edit d-none">
+                                    <div>
+                                        <div data-test="cancel-editing-state" type="tertiary"
+                                             class="wui-button -type-tertiary hydrated btn-cancel-roll">
+                                            <button type="button"><span>Cancel</span></button>
+                                        </div>
+                                        <div data-test="save-break" type="secondary"
+                                             class="wui-button -type-secondary -disabled hydrated btn-done-roll">
+                                            <button type="button" disabled=""><span>Done</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown wui-more-menu -type-icon hydrated box-btn-action">
+                                    <a class="dropdown-toggle wui-button -type-icon hydrated" type="button"
+                                       id="dropdownUserButton" data-toggle="dropdown"
+                                       aria-haspopup="true" aria-expanded="false" title="Email of publisher">
+                                        <div class="wui-icon wui-icon--dashboard_more -size-m hydrated">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                 viewBox="0 0 24 24"
+                                                 id="ds-icon-dashboard-more">
+                                                <path d="M6 12a2 2 0 1 1-2-2 2 2 0 0 1 2 2Zm6-2a2 2 0 1 0 2 2 2 2 0 0 0-2-2Zm8 0a2 2 0 1 0 2 2 2 2 0 0 0-2-2Z"></path>
+                                            </svg>
+                                        </div>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownUserButton">
+                                        <a class="dropdown-item text-danger btn-del-roll" type="button">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {{else}}
+                        <div class="_breakItem_z87zl_75 pp_ad_schedules_7 -orientation-horizontal -align-center -wrap hydrated w-100 box-roll post-roll-break">
+                            <div class="" style="padding: 20px;flex-wrap: nowrap;">
+                                <div class="box-step-roll">
+                                    <div data-test="show-break-label"
+                                         class="_breakLabel_z87zl_137 pp_ad_schedules_7 -orientation-horizontal -align-center -justify-space-between -wrap hydrated">
+                                        <div>
+                                            <div data-test="show-break-label-text">Postroll</div>
+                                            <svg class="_stepper_iyx7e_16" width="40" height="6"
+                                                 fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <circle cx="3" cy="3" r="3"
+                                                        data-test="show-preroll-step"></circle>
+                                                <circle cx="20" cy="3" r="3"
+                                                        data-test="show-midroll-step"></circle>
+                                                <circle class="_inactive_iyx7e_22" cx="37" cy="3"
+                                                        r="3"
+                                                        data-test="show-postroll-step"></circle>
+                                                <path stroke-width="2" d="M8 3h7M25 3h7"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="_font_83r5j_16 _s_83r5j_23 _baselineShift_83r5j_42 text-adtag-url"
+                                   style="font-family: 'Open Sans',Arial,sans-serif; color: #475470;"></p>
+                                <div style="flex: 1 1 0%;"></div>
+                                <div class="wui-button -type-icon hydrated box-btn-add">
+                                    <button type="button" class="btn-add-roll">
+                                        <div class="wui-icon wui-icon--dashboard_add -size-m hydrated">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                 viewBox="0 0 24 24"
+                                                 id="ds-icon-dashboard-add">
+                                                <path d="M20 10h-6V4a2 2 0 0 0-4 0v6H4a2 2 0 0 0 0 4h6v6a2 2 0 0 0 4 0v-6h6a2 2 0 0 0 0-4Z"></path>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                </div>
+                                <div class="pp_ad_schedules_7 -orientation-horizontal -gutter-s -wrap hydrated box-btn-edit d-none">
+                                    <div>
+                                        <div data-test="cancel-editing-state" type="tertiary"
+                                             class="wui-button -type-tertiary hydrated btn-cancel-roll">
+                                            <button type="button"><span>Cancel</span></button>
+                                        </div>
+                                        <div data-test="save-break" type="secondary"
+                                             class="wui-button -type-secondary -disabled hydrated btn-done-roll">
+                                            <button type="button" disabled=""><span>Done</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown wui-more-menu -type-icon hydrated box-btn-action d-none">
+                                    <a class="dropdown-toggle wui-button -type-icon hydrated" type="button"
+                                       id="dropdownUserButton" data-toggle="dropdown"
+                                       aria-haspopup="true" aria-expanded="false" title="Email of publisher">
+                                        <div class="wui-icon wui-icon--dashboard_more -size-m hydrated">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                 viewBox="0 0 24 24"
+                                                 id="ds-icon-dashboard-more">
+                                                <path d="M6 12a2 2 0 1 1-2-2 2 2 0 0 1 2 2Zm6-2a2 2 0 1 0 2 2 2 2 0 0 0-2-2Zm8 0a2 2 0 1 0 2 2 2 2 0 0 0-2-2Z"></path>
+                                            </svg>
+                                        </div>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownUserButton">
+                                        <a class="dropdown-item text-danger btn-del-roll" type="button">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {{end}}
+                    {{/*Preroll Break*/}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .pp_ad_schedules_7 {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        font-family: Open Sans, Arial, sans-serif !important;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: normal;
+        min-width: 0;
+        width: auto;
+    }
+
+    .pp_ad_schedules_8 {
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-self: stretch;
+        display: flex;
+        min-width: 0;
+        box-sizing: inherit;
+    }
+
+    .pp_ad_schedules_17 {
+        display: flex;
+        padding: 24px 24px 8px;
+        border-bottom: solid 1px #d8dde6;
+    }
+
+    .pp_ad_schedules_18 {
+        width: 100%;
+        align-items: flex-start;
+        flex-direction: column;
+        align-self: stretch;
+        display: flex;
+        min-width: 0;
+        box-sizing: inherit;
+    }
+
+    .pp_text_h3 {
+        margin-bottom: 8px;
+        box-sizing: inherit;
+        margin-top: -4px;
+        padding-top: 2.25px;
+        padding-bottom: 1.75px;
+        font-size: 15px;
+        line-height: 24px;
+        font-weight: 600;
+    }
+
+    .pp_ad_schedules_radio {
+        height: 16px;
+        margin-right: 16px !important;
+        width: 16px;
+        align-self: center;
+        -webkit-appearance: none;
+        appearance: none;
+        background-color: #fff;
+        border-color: #a0acc2;
+        border-radius: 50%;
+        border-style: solid;
+        border-width: 1px;
+        outline: none;
+        position: relative;
+        cursor: pointer;
+        box-sizing: inherit;
+
+    }
+
+    .pp_ad_schedules_19 {
+        flex-wrap: wrap;
+        align-items: center;
+        flex-direction: row;
+        align-self: stretch;
+        display: flex;
+        min-width: 0;
+        box-sizing: inherit;
+    }
+
+    .pp_ad_schedules_19 {
+        justify-content: space-between;
+        align-items: center;
+        height: 40px;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-self: stretch;
+        display: flex;
+        min-width: 0;
+        box-sizing: inherit;
+        margin: 0;
+        padding: 0;
+    }
+
+    .select-ad-schedules .dropdown-toggle {
+        padding-left: 8px;
+        padding-right: 8px;
+        height: 32px;
+    }
+
+    .select-ad-schedules .bootstrap-select .dropdown-toggle .filter-option {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .select-ad-schedules .filter-option-inner-inner {
+        font-family: Open Sans, Arial, sans-serif;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: normal;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .pp_ad_schedules_2 ._breaks_z87zl_41 ._label_z87zl_44 {
+        display: flex;
+        padding: 24px 24px 8px;
+        border-bottom: solid 1px #d8dde6;
+    }
+
+    .pp_ad_schedules_7.-align-center > div {
+        align-items: center;
+    }
+
+    .pp_ad_schedules_7.-orientation-horizontal > div {
+        flex-direction: row;
+    }
+
+    .pp_ad_schedules_7.-orientation-horizontal.-wrap > div {
+        flex-wrap: wrap;
+    }
+
+    .pp_ad_schedules_7.-justify-space-between > div {
+        justify-content: space-between;
+    }
+
+    .pp_ad_schedules_7 > div {
+        align-self: stretch;
+        display: flex;
+        min-width: 0;
+    }
+
+    ._breakLabel_z87zl_137 {
+        width: 132px;
+        height: 48px;
+        padding: 0 16px;
+        color: #475470;
+        font-weight: 600;
+        font-size: 13px;
+        border: 1px dashed #a0acc2;
+        border-radius: 3px;
+    }
+
+    ._breakLabel_z87zl_137 > div {
+        height: 100%;
+    }
+
+    .pp_ad_schedules_7 *, .pp_ad_schedules_7 :after, .pp_ad_schedules_7 :before {
+        box-sizing: inherit;
+    }
+
+    ._stepper_iyx7e_16 ._inactive_iyx7e_22 {
+        fill: #8797b2;
+    }
+
+    ._stepper_iyx7e_16 circle {
+        fill: #d8dde6;
+    }
+
+    ._stepper_iyx7e_16 path {
+        stroke: #d8dde6;
+    }
+
+    .wui-button.-type-icon:not(.-disabled) {
+        transition: background-color .2s ease, color .2s ease, opacity .2s ease;
+    }
+
+    .wui-button:not(.-type-text) {
+        font-size: 13px;
+    }
+
+    .wui-button.-type-icon, .wui-button.-type-icon:not(.-disabled) .wui-icon {
+        color: #2f3542;
+    }
+
+    .wui-button.-type-icon {
+        justify-content: center;
+        padding: 0 8px;
+        position: relative;
+        transition: opacity .2s ease;
+        width: 32px;
+    }
+
+    .wui-button {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        align-items: center;
+        background: none;
+        background-color: transparent;
+        border: none;
+        border-radius: 3px;
+        box-sizing: border-box;
+        color: inherit;
+        cursor: pointer;
+        display: inline-flex;
+        flex: none;
+        font-family: Open Sans, Arial, sans-serif;
+        font-weight: 400;
+        font-weight: inherit;
+        font-weight: 600;
+        height: 32px;
+        justify-content: center;
+        line-height: normal;
+        margin: 0;
+        max-width: 100%;
+        min-width: 0;
+        padding: 0 16px;
+        position: relative;
+        text-align: center;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        width: -moz-fit-content;
+        width: fit-content;
+    }
+
+    .wui-button.-type-icon > * {
+        z-index: 2;
+    }
+
+    .wui-button button {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        align-items: center;
+        background: none;
+        border: none;
+        box-sizing: border-box;
+        color: inherit;
+        cursor: pointer;
+        display: inline-flex;
+        font-family: Open Sans, Arial, sans-serif;
+        font-size: inherit;
+        font-weight: inherit;
+        height: 100%;
+        justify-content: center;
+        line-height: normal;
+        margin: 0;
+        padding: 0;
+        text-transform: inherit;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        width: 100%;
+    }
+
+    .wui-button.-type-icon .wui-icon {
+        height: 16px !important;
+        margin-right: 0;
+        width: 16px !important;
+    }
+
+    .wui-button button *, .wui-button button :after, .wui-button button :before {
+        box-sizing: inherit;
+    }
+
+    .wui-icon {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        box-sizing: border-box;
+        color: inherit;
+        display: inline-flex;
+        flex: none;
+        font-family: Open Sans, Arial, sans-serif;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 0 !important;
+    }
+
+    .wui-icon svg, .wui-icon svg * {
+        pointer-events: none;
+    }
+
+    .wui-icon svg {
+        fill: currentColor;
+        height: 100%;
+        width: 100%;
+    }
+
+    .pp_ad_schedules_16 ._breakItem_z87zl_75 > div {
+        flex-wrap: nowrap;
+    }
+
+    .pp_ad_schedules_16 ._breakItem_z87zl_75:not(:last-of-type) {
+        border-bottom: solid 1px #d8dde6;
+    }
+
+    .pp_ad_schedules_16 ._breakItem_z87zl_75 > div {
+        flex-wrap: nowrap;
+    }
+
+    .pp_ad_schedules_7.-orientation-vertical > div > :last-child {
+        margin-bottom: 0 !important;
+    }
+
+    .pp_ad_schedules_7.-orientation-horizontal.-gutter-s > div > * {
+        margin-left: 12px;
+        margin-top: 12px;
+    }
+
+    .wui-input.-size-m {
+        font-size: 13px;
+        height: 32px;
+    }
+
+    .wui-input {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        align-items: center;
+        box-sizing: border-box;
+        display: flex;
+        font-family: Open Sans, Arial, sans-serif;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: normal;
+        position: relative;
+        width: 100%;
+    }
+
+    .wui-input:not([disabled]) .wui-input__box:focus-within, .wui-input:not([disabled]) .wui-input__box:hover {
+        border-color: #0a75e3;
+        outline: none;
+    }
+
+    .pp_ad_schedules_16 .btn-light:hover {
+        border-color: #0a75e3;
+        outline: none;
+    }
+
+    .wui-input__box {
+        align-items: center;
+        background-color: #fff;
+        border: 1px solid #a0acc2;
+        border-radius: 3px;
+        display: inline-flex;
+        flex: 1;
+        height: 100%;
+        max-width: 100%;
+        min-width: 96px;
+        transition: border-color .25s ease;
+        width: auto;
+    }
+
+    .wui-input *, .wui-input :after, .wui-input :before {
+        box-sizing: inherit;
+    }
+
+    .wui-input > div > button, .wui-input > div > input, .wui-input > div > textarea {
+        background: none;
+        border: none;
+        box-shadow: none !important;
+        color: #2f3542;
+        flex: 1;
+        float: left;
+        font-family: Open Sans, Arial, sans-serif;
+        font-size: 13px;
+        font-weight: 400;
+        height: 100%;
+        margin: 0;
+        min-width: 0;
+        padding: 0 8px;
+        width: 100%;
+    }
+
+    ._deleteAction_z87zl_101 {
+        margin-top: 24px;
+    }
+
+    ._title_1r0v1_16 {
+        color: #e02929;
+    }
+
+    .pp_ad_schedules_7.-justify-space-between > div {
+        justify-content: space-between;
+    }
+
+    .pp_ad_schedules_7.-orientation-vertical > div {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .pp_ad_schedules_7.-orientation-horizontal.-gutter-m > div {
+        margin-left: -16px;
+        margin-top: -16px;
+    }
+
+    .pp_ad_schedules_7.-orientation-horizontal.-gutter-m > div > * {
+        margin-left: 16px;
+        margin-top: 16px;
+    }
+
+    .wui-button.-disabled {
+        cursor: not-allowed;
+        opacity: .3;
+    }
+
+    .wui-button.-type-secondary {
+        background-color: transparent;
+        border-color: #2f3542;
+        border-style: solid;
+        border-width: 1px;
+        color: #2f3542;
+        transition: background-color .2s ease, color .2s ease;
+    }
+
+    .hydrated {
+        visibility: inherit;
+    }
+
+    ._breakConfig_z87zl_166 {
+        background-color: #f9fafb;
+        border-bottom: solid 1px #d8dde6;
+    }
+
+    .pp_ad_schedules_7.-orientation-vertical.-gutter-s > div > * {
+        margin-bottom: 12px;
+    }
+
+    .wui-button.-type-tertiary {
+        transition: background-color .2s ease;
+    }
+
+    .wui-button.-type-tertiary .wui-icon {
+        margin-right: 6px;
+        max-height: 12px;
+        max-width: 12px;
+    }
+
+    .wui-icon.-size-m {
+        height: 24px;
+        width: 24px;
+    }
+
+    .wui-button.-type-tertiary:not(.-disabled):active {
+        background-color: #d8dde6;
+    }
+
+    .wui-button.-type-tertiary:not(.-disabled):hover {
+        background-color: #d8dde6;
+    }
+
+    .pp_ad_schedules_7.-orientation-horizontal.-gutter-s > div {
+        margin-left: -12px;
+        margin-top: -12px;
+    }
+
+    .pp_ad_schedules_font_text {
+        font-family: Open Sans, Arial, sans-serif;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    ._breakOptions_z87zl_180 .wui-input {
+        padding: 0 4px;
+    }
+
+    ._numberInput_z87zl_124, ._numberInput_z87zl_124 > div {
+        width: 100px;
+    }
+
+    ._breakConfig_z87zl_166 h4 {
+        margin: 0 0 8px;
+        padding: 0;
+        font-size: 11px;
+        line-height: 16px;
+        color: #8797b2;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    ._tagContainer_z87zl_192.pp_ad_schedules_7.-orientation-horizontal > div {
+        flex-wrap: nowrap;
+    }
+
+    ._tagContainer_z87zl_192:hover ._deleteButton_z87zl_192 {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .wui-button.-type-icon > * {
+        z-index: 2;
+    }
+
+    .wui-button button:hover {
+        color: inherit;
+    }
+
+    .wui-button.-type-icon:before {
+        border-radius: 50%;
+        bottom: 0;
+        content: "";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition: transform .3s cubic-bezier(.23, 1, .32, 1) 0ms, -webkit-transform .3s cubic-bezier(.23, 1, .32, 1) 0ms;
+        z-index: 1;
+    }
+
+    ._tagContainer_z87zl_192 ._deleteButton_z87zl_192 {
+        opacity: 0;
+        transition: opacity .35s ease;
+        pointer-events: none;
+    }
+
+    .wui-button.-type-icon:hover:before {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+
+    .wui-button.-type-icon:not(.-disabled):hover:before {
+        background-color: #e6e9ee;
+    }
+
+    .wui-button button[disabled] {
+        cursor: not-allowed;
+    }
+
+    .wui-button.disabled {
+        cursor: not-allowed;
+        opacity: .3;
+    }
+
+    ._editing_z87zl_152 ._breakLabel_z87zl_137 {
+        color: #2f3542;
+        background-color: #d8dde626;
+        border: 1px solid #2f3542;
+    }
+
+    ._active_z87zl_147 ._breakLabel_z87zl_137 {
+        color: #166c5d;
+        background-color: #ccf5eb;
+        border: 1px solid #166c5d;
+    }
+
+    .pp_ad_schedules_16 ._breakItem_z87zl_75 p {
+        font-size: 11px;
+        line-height: 16px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        max-height: 48px;
+        margin: 0 0 0 16px;
+        padding: 0;
+        color: #8797b2;
+        font-weight: 600;
+        text-align: left;
+        word-wrap: anywhere;
+    }
+
+    .wui-more-menu.-type-icon {
+        height: 36px;
+        width: 36px;
+    }
+
+    .wui-more-menu {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        box-sizing: border-box;
+        font-family: Open Sans, Arial, sans-serif;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: normal;
+        position: relative;
+        width: -webkit-min-content;
+        width: min-content;
+    }
+
+    .wui-more-menu.-type-icon .wui-button {
+        height: 36px !important;
+        width: 36px !important;
+    }
+
+    .wui-more-menu.-type-icon .wui-button .wui-icon {
+        height: 24px !important;
+        width: 24px !important;
+    }
+
+    .box-btn-action .dropdown-toggle::after {
+        display: none;
+    }
+
+    ._stepper_iyx7e_16 ._active_iyx7e_28 {
+        fill: #166c5d;
+    }
+
+    .pp_ad_schedules_16 .bootstrap-select {
+        width: 160px !important;
+    }
+
+    .wui-button.-type-secondary:not(.-disabled):active {
+        background-color: #262a35;
+        color: #ffffff;
+    }
+
+    .wui-button.-type-secondary:not(.-disabled):hover {
+        background-color: #2f3542;
+        color: #fff;
+    }
+    .wui-code-snippet.-type-block {
+        display: inline-flex;
+        height: 32px;
+        line-height: 16px;
+        max-width: -webkit-fit-content;
+        max-width: -moz-fit-content;
+        max-width: fit-content;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    .wui-code-snippet.-type-block, .wui-code-snippet.-type-multiline {
+        background-color: #2f3542;
+        border: 1px solid #00000000;
+        color: #fff;
+        font-weight: 600;
+    }
+    .wui-code-snippet {
+         -webkit-font-smoothing: antialiased;
+         -moz-osx-font-smoothing: grayscale;
+         border-radius: 3px;
+         box-sizing: border-box;
+         font-family: Open Sans,Arial,sans-serif;
+         font-family: Inconsolata,monospace;
+         font-size: 13px;
+         font-size: 15px;
+         font-weight: 400;
+         line-height: normal;
+         transition: background-color .2s ease;
+     }
+    .wui-code-snippet.-type-block .wui-code-snippet__content {
+        padding: 8px 12px;
+    }
+    .wui-code-snippet__content {
+        display: flex;
+        position: relative;
+    }
+    .wui-code-snippet *, .wui-code-snippet :after, .wui-code-snippet :before {
+        box-sizing: inherit;
+    }
+    .wui-code-snippet .wui-copy-to-clipboard-button {
+        height: 100%;
+    }
+    .wui-tooltip {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        box-sizing: border-box;
+        font-family: Open Sans,Arial,sans-serif;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: normal;
+        margin: 0;
+        max-width: -webkit-fit-content;
+        max-width: -moz-fit-content;
+        max-width: fit-content;
+    }
+    .wui-tooltip-label.-anim-close {
+        -webkit-animation: wui-anim-ug895oq-2 .25s ease;
+        animation: wui-anim-ug895oq-2 .25s ease;
+    }
+    .wui-tooltip-label {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        box-sizing: border-box;
+        display: none;
+        font-family: Open Sans,Arial,sans-serif;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: normal;
+        z-index: 40!important;
+    }
+    .wui-code-snippet.-type-block .wui-tooltip__target {
+        height: 100%;
+    }
+    .wui-tooltip__target {
+        display: inline-block;
+    }
+    .wui-tooltip *, .wui-tooltip :after, .wui-tooltip :before {
+        box-sizing: inherit;
+    }
+    .wui-code-snippet.-type-block .btn-copy {
+        background-color: #475470;
+        transition: color .2s ease,background-color .2s ease;
+    }
+    .wui-code-snippet .btn-copy {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        align-items: center;
+        background: none;
+        border: none;
+        box-sizing: border-box;
+        color: inherit;
+        color: #fff;
+        cursor: pointer;
+        display: inline-flex;
+        font-family: Open Sans,Arial,sans-serif;
+        font-weight: 400;
+        font-weight: inherit;
+        height: 100%;
+        justify-content: center;
+        line-height: normal;
+        margin: 0;
+        max-height: 32px;
+        padding: 0 12px;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+</style>

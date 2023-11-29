@@ -1,0 +1,11 @@
+{{- /*gotype: source/apps/frontend/[]model.ContentRecord*/ -}}
+{{range $i,$row := .}}
+    {{if eq $i 0}}
+        <span>{{$row.Title}}</span>
+    {{else if eq $i 4}}
+        <span>...</span>
+    {{else if gt $i 4}}
+    {{else}}
+        <span>, {{$row.Title}}</span>
+    {{end}}
+{{end}}

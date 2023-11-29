@@ -1,0 +1,222 @@
+{{- /*gotype: source/apps/frontend/controller.BidderParam*/ -}}
+
+<div class="dm11 box-c" id="bidder_{{.BidderId}}_{{.BidderIndex}}">
+    <div class="bidder-box" data-id="{{.BidderId}}" data-name="{{.BidderName}}" data-index="{{.BidderIndex}}">
+        <div class="pp15 position-relative">
+            <div class="pp5 text-capitalize">{{.BidderName}}</div>
+            <div class="d">
+                <a class="btn p-1 ms-2 rm_c" data-id="{{.BidderId}}" data-index="{{.BidderIndex}}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                        <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="pp7">
+            <span class="pp-11 h-32" for="type_{{.BidderId}}_{{.BidderIndex}}">Connection Type</span>
+            <div class="end-selectpicker pp-9">
+                <select id="type_{{.BidderId}}_{{.BidderIndex}}" name="type" data-id="{{.BidderId}}"
+                        data-index="{{.BidderIndex}}" data-name="{{.BidderName}}"
+                        class="form-control selectpicker type-bidder b-t-{{.BidderId}}">
+                    <option {{if eq .BidderType "1"}}disabled{{end}} value="1">Prebid Client</option>
+                    {{if ne .BidderTemplateId 2}}
+                        <option value="2" {{if eq .BidderType "1"}}selected{{end}}>Prebid Server (S2S)</option>
+                    {{end}}
+                </select>
+            </div>
+        </div>
+        <div class="list_param">
+            {{range $i, $param := .Params}}
+                <div class="pp7 box-param">
+                    <span class="pp-11 h-32">
+                        {{$param.TableBidderParams.Name}}{{if eq $param.TableBidderParams.IsRequired true}}*{{end}}
+                        {{if eq .BidderTemplateId 2}}
+                            <span class="ms-2" type="button" tabindex="0" data-bs-toggle="popover"
+                                  data-bs-content="<strong>PlacementId of Amazon:</strong><div class='ms-1 mt-2'>- Target video is require</div><div class='ms-1 mt-1'>- Target banner is blank</div>">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                </svg>
+                            </span>
+                        {{end}}
+                    </span>
+                    {{if eq $param.TableBidderParams.Type "boolean"}}
+                        {{if ne $param.TableBidderParams.IsRequired true}}
+                            <div class="center-selectpicker pp-9">
+                                <select id="{{$.BidderId}}-{{$param.TableBidderParams.Name}}-{{$.BidderIndex}}"
+                                        class="form-control selectpicker param_value"
+                                        data-type="{{$param.TableBidderParams.Type}}"
+                                        data-name="{{$param.TableBidderParams.Name}}">
+                                    <option value="true">true</option>
+                                    <option value="false">false</option>
+                                </select> <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                            </div>
+                            <a href="javascript:void(0)" class="dg1 btn-remove-param">
+                                <svg xmlns="http://www.w3.org/2000/svg" style="vertical-align: initial;" width="15" height="15" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                    <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"></path>
+                                </svg>
+                            </a>
+                        {{else}}
+                            <div class="end-selectpicker pp-9">
+                                <select id="{{$.BidderId}}-{{$param.TableBidderParams.Name}}-{{$.BidderIndex}}"
+                                        class="form-control selectpicker param_value"
+                                        data-type="{{$param.TableBidderParams.Type}}"
+                                        data-name="{{$param.TableBidderParams.Name}}">
+                                    <option value="true">true</option>
+                                    <option value="false">false</option>
+                                </select> <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                            </div>
+                        {{end}}
+                    {{else}}
+                        {{if ne $param.TableBidderParams.IsRequired true}}
+                            <div class="w-100">
+                                <input style="border-left: 0;border-radius: 0px;" type="{{if eq $param.TableBidderParams.Type "int"}}number{{else}}text{{end}}"
+                                       class="pp-10 param_value"
+                                       id="{{$.BidderId}}-{{$param.TableBidderParams.Name}}-{{$.BidderIndex}}"
+                                       placeholder="{{$param.TableBidderParams.Type}}"
+                                       data-type="{{$param.TableBidderParams.Type}}"
+                                       data-name="{{$param.TableBidderParams.Name}}">
+                                <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                            </div>
+                            <a href="javascript:void(0)" class="dg1 btn-remove-param">
+                                <svg xmlns="http://www.w3.org/2000/svg" style="vertical-align: initial;" width="15" height="15" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                    <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"></path>
+                                </svg>
+                            </a>
+                        {{else}}
+                            <div class="w-100">
+                                <input style="border-left: 0;border-radius: 0 2px 2px 0;" type="{{if eq $param.TableBidderParams.Type "int"}}number{{else}}text{{end}}"
+                                       class="pp-10 param_value"
+                                       id="{{$.BidderId}}-{{$param.TableBidderParams.Name}}-{{$.BidderIndex}}"
+                                       placeholder="{{$param.TableBidderParams.Type}}"
+                                       data-type="{{$param.TableBidderParams.Type}}"
+                                       data-name="{{$param.TableBidderParams.Name}}">
+                                <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                            </div>
+                        {{end}}
+
+                    {{end}}
+                    {{/*                <input style="border-left: 0;border-radius: 0 2px 2px 0;" class="pp-10" type="text" placeholder="string">*/}}
+
+
+                </div>
+            {{end}}
+        </div>
+        <div class="dm8" style="min-height: auto;padding-bottom: 10px;">
+            <div class="dm9">&nbsp;</div>
+            <div class="dm12">
+                <a href="javascript:void(0)" class="btn-add-param">+ Add Param</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{{/*<div class="box-c" id="bidder_{{.BidderId}}_{{.BidderIndex}}">*/}}
+{{/*    <hr class="mt-5 hr_custom bg-gray-400">*/}}
+{{/*    <div class="bidder-box" data-id="{{.BidderId}}" data-name="{{.BidderName}}" data-index="{{.BidderIndex}}">*/}}
+{{/*        <div class="row my-4">*/}}
+{{/*            <div class="d-flex align-items-center bidder-name">*/}}
+{{/*                <label class="col-form-label form-label form-label-lg w-input-group text-uppercase">*/}}
+{{/*                    {{.BidderName}}*/}}
+{{/*                </label>*/}}
+{{/*                <small><a href="{{.Link}}" target="_blank" class="ms-5 text-decoration-underline text-muted">Read more on prebid.org</a></small>*/}}
+{{/*                <div class="d">*/}}
+{{/*                    <a class="btn p-1 ms-2 rm_c" data-id="{{.BidderId}}" data-index="{{.BidderIndex}}">*/}}
+{{/*                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor"*/}}
+{{/*                             class="bi bi-x-lg" viewBox="0 0 16 16">*/}}
+{{/*                            <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"></path>*/}}
+{{/*                        </svg>*/}}
+{{/*                    </a>*/}}
+{{/*                </div>*/}}
+{{/*            </div>*/}}
+{{/*        </div>*/}}
+
+{{/*        <div class="row my-4">*/}}
+{{/*            <div class="d-flex">*/}}
+{{/*                <label class="col-form-label form-label form-label-lg w-input-group"*/}}
+{{/*                       for="type_{{.BidderId}}_{{.BidderIndex}}"> Type </label>*/}}
+{{/*                <select id="type_{{.BidderId}}_{{.BidderIndex}}" name="type" data-id="{{.BidderId}}"*/}}
+{{/*                        data-index="{{.BidderIndex}}"*/}}
+{{/*                        data-name="{{.BidderName}}"*/}}
+{{/*                        class="form-select w-50-custom type-bidder b-t-{{.BidderId}}">*/}}
+{{/*                    <option {{if eq .BidderType "1"}}disabled{{end}} value="1">Prebid Client</option>*/}}
+{{/*                    {{if ne .BidderTemplateId 2}}*/}}
+{{/*                        <option value="2" {{if eq .BidderType "1"}}selected{{end}}>Prebid Server (S2S)</option>*/}}
+{{/*                    {{end}}*/}}
+{{/*                </select>*/}}
+{{/*            </div>*/}}
+{{/*        </div>*/}}
+{{/*        */}}{{/*Type*/}}
+
+{{/*        <div class="list_param">*/}}
+{{/*            {{range $i, $param := .Params}}*/}}
+{{/*                <div class="row my-4 box-param">*/}}
+{{/*                    <div class="d-flex align-items-center">*/}}
+{{/*                        <label class="col-form-label form-label form-label-lg w-input-group"*/}}
+{{/*                               style="text-transform: capitalize">*/}}
+{{/*                            {{$param.TableBidderParams.Name}}*/}}
+{{/*                            {{if eq .BidderTemplateId 2}}*/}}
+{{/*                                <span class="ms-2" type="button"*/}}
+{{/*                                      tabindex="0"*/}}
+{{/*                                      data-bs-toggle="popover"*/}}
+{{/*                                      data-bs-content="<strong>PlacementId of Amazon:</strong><div class='ms-1 mt-2'>- Target video is require</div><div class='ms-1 mt-1'>- Target banner is blank</div>">*/}}
+{{/*                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"*/}}
+{{/*                                                     fill="currentColor"*/}}
+{{/*                                                     class="bi bi-info-circle" viewBox="0 0 16 16">*/}}
+{{/*                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>*/}}
+{{/*                                                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>*/}}
+{{/*                                                </svg>*/}}
+{{/*                                            </span>*/}}
+{{/*                            {{end}}*/}}
+{{/*                        </label>*/}}
+{{/*                        {{if eq $param.TableBidderParams.Type "boolean"}}*/}}
+{{/*                            <select id="{{$.BidderId}}-{{$param.TableBidderParams.Name}}-{{$.BidderIndex}}"*/}}
+{{/*                                    class="form-select w-50-custom param_value"*/}}
+{{/*                                    data-type="{{$param.TableBidderParams.Type}}"*/}}
+{{/*                                    data-name="{{$param.TableBidderParams.Name}}">*/}}
+{{/*                                <option value="true">true</option>*/}}
+{{/*                                <option value="false">false</option>*/}}
+{{/*                            </select>*/}}
+{{/*                        {{else}}*/}}
+{{/*                            <input type="{{if eq $param.TableBidderParams.Type "int"}}number{{else}}text{{end}}"*/}}
+{{/*                                   class="form-control w-50-custom param_value"*/}}
+{{/*                                   id="{{$.BidderId}}-{{$param.TableBidderParams.Name}}-{{$.BidderIndex}}"*/}}
+{{/*                                   placeholder="{{$param.TableBidderParams.Type}}"*/}}
+{{/*                                   data-type="{{$param.TableBidderParams.Type}}"*/}}
+{{/*                                   data-name="{{$param.TableBidderParams.Name}}">*/}}
+{{/*                        {{end}}*/}}
+{{/*                        {{if ne $param.TableBidderParams.IsRequired true}}*/}}
+{{/*                            <div class="ms-2 ps-0 d-flex align-items-center">*/}}
+{{/*                                <button type="button"*/}}
+{{/*                                        class="btn btn-outline-danger btn-sm px-2 rounded-2 btn-remove-param d-none">*/}}
+{{/*                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"*/}}
+{{/*                                         class="bi bi-trash" viewBox="0 0 16 16">*/}}
+{{/*                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>*/}}
+{{/*                                        <path fill-rule="evenodd"*/}}
+{{/*                                              d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>*/}}
+{{/*                                    </svg>*/}}
+{{/*                                </button>*/}}
+{{/*                            </div>*/}}
+{{/*                        {{end}}*/}}
+{{/*                        <span class="form-text ms-2 w-auto invalid-feedback"></span>*/}}
+{{/*                    </div>*/}}
+{{/*                </div>*/}}
+{{/*            {{end}}*/}}
+
+{{/*        </div>*/}}
+{{/*        <div class="d-flex align-items-center my-4 btn-box">*/}}
+{{/*            <div class="col-form-label form-label form-label-lg w-input-group">*/}}
+{{/*            </div>*/}}
+{{/*            <div class="col-sm-12 text-lg-start">*/}}
+{{/*                <a class="btn ps-1 border-0 btn-add-param text-primary">+ Add param</a>*/}}
+{{/*            </div>*/}}
+{{/*        </div>*/}}
+{{/*    </div>*/}}
+{{/*</div>*/}}
+<script>
+    $('[data-bs-toggle="popover"]').popover({
+        html: true,
+    })
+</script>

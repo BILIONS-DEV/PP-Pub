@@ -1,0 +1,84 @@
+{{- /*gotype: source/apps/frontend/controller.AssignInventory*/ -}}
+<div class="row">
+    <div class="col-12 mb-4">
+        <div class="card">
+            <div class="d-flex align-items-center p-0 pb-4 col-md-12">
+                <div class="ms-auto col-md-12 filter p-0">
+                    <div id="inventory_id" hidden data-inventory-id="{{.Row.TableInventory.Id}}"></div>
+                    <form id="formFilterAdTag" class="g-3">
+                        <div class="row">
+                            <div class="col-sm-9 form-inline filter-selectpicker">
+                                <div class="form-inline">
+                                    <div class="form-group-sm pe-4 py-2 d-flex flex-column">
+                                        <select id="inlineFormSelectPref" name="f_status" title="Status"
+                                                class="selectpicker select-picker-filter form-control border-0 show-menu-arrow"
+                                                multiple="multiple" data-style="border-0"
+                                                data-live-search="false" data-actions-box="false" tabindex="-1" aria-hidden="true"
+                                                data-selected-text-format="count > 0" data-count-selected-text="{0} Status">
+                                            <option value="1" {{if (InArray "1" .ParamsAdTag.Status false)}}selected{{end}}>
+                                                Live
+                                            </option>
+                                            <option value="2" {{if (InArray "2" .ParamsAdTag.Status false)}}selected{{end}}>
+                                                Paused
+                                            </option>
+                                            <option value="3" {{if (InArray "3" .ParamsAdTag.Status false)}}selected{{end}}>
+                                                Archive
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                {{/*Filter Status*/}}
+                                <div class="form-inline">
+                                    <div class="form-group-sm pe-4 py-2 d-flex flex-column">
+                                        <select id="type" name="f_type" title="Type"
+                                                class="selectpicker select-picker-filter form-control border-0 show-menu-arrow"
+                                                multiple="multiple" data-style="border-0"
+                                                data-live-search="false" data-actions-box="false" tabindex="-1" aria-hidden="true"
+                                                data-selected-text-format="count > 0" data-count-selected-text="{0} Type">
+                                            {{range .AdTypes}}
+                                                <option value="{{.Id}}"
+                                                        {{if (InArray .Id $.ParamsAdTag.Type false)}}selected{{end}}>
+                                                    {{.Name}}
+                                                </option>
+                                            {{end}}
+                                        </select>
+                                    </div>
+                                </div>
+                                {{/*Filter Type*/}}
+                            </div>
+                            <div class="col-sm-3 ">
+                                <div class="mt-2 p-0 d-flex align-items-center">
+                                    <input value="{{.ParamsAdTag.QuerySearch}}" name="f_q" class="form-control me-2"
+                                           placeholder="Search Ad Tag..."/>
+
+                                    <button type="submit" class="btn btn-outline-secondary btn-sm submit">
+                                        Run
+                                    </button>
+                                </div>
+                            </div>
+                            <input type="hidden" name="start" value="{{.ParamsAdTag.Start}}">
+                            <input type="hidden" name="length" value="{{.ParamsAdTag.Length}}">
+                            <input type="hidden" name="order_column" value="{{.ParamsAdTag.OrderColumn}}">
+                            <input type="hidden" name="order_dir" value="{{.ParamsAdTag.OrderDir}}">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table id="tableAdTags" class="table table-nowrap table-list w-100 dataTable no-footer">
+                    <thead>
+                    <tr>
+                        <th style="max-width:100px"><strong>ID</strong></th>
+                        <th style="max-width:350px"><strong>Name</strong></th>
+                        <th><strong>Status</strong></th>
+                        <th><strong>Type</strong></th>
+                        <th><strong>Size</strong></th>
+                        {{/*                        <th><strong>GAM</strong></th>*/}}
+                        <th style="max-width:130px" data-orderable="false"><strong>Action</strong></th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

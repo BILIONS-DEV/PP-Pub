@@ -1,0 +1,13 @@
+{{- /*gotype: source/apps/frontend/model.ContentRecord*/ -}}
+
+{{if eq .TableContent.Category 1}}
+    Display
+{{else if eq .TableContent.Category 2}}
+    In Stream
+{{else if eq .TableContent.Category 3}}
+    Out Stream
+{{else if eq .TableContent.Category 4}}
+    Video Discovery
+{{else}}
+    Smart Banner
+{{end}}

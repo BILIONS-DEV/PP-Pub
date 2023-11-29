@@ -1,0 +1,52 @@
+{{$TemplateLang := .Schema.LANG.Pages.Template}}
+<form id="formFilterTemplate" class="g-3">
+    <div class="row">
+        <div class="col-sm-9 form-inline filter-selectpicker">
+            <div class="form-inline">
+                <div class="form-group-sm pe-3 py-2 d-flex flex-column">
+                    <select id="type" name="f_type" title="Type"
+                            class="selectpicker select-picker-filter form-control border-0 show-menu-arrow"
+                            multiple="multiple" data-style="border-0"
+                            data-live-search="false" data-actions-box="false" tabindex="-1" aria-hidden="true"
+                            data-selected-text-format="count > 0" data-count-selected-text="{0} Type">
+                        <option value="9" {{if (InArray "9" .Params.Type false)}}selected{{end}}>
+                            Video
+                        </option>
+                        <option value="8" {{if (InArray "8" .Params.Type false)}}selected{{end}}>
+                            Native
+                        </option>
+                    </select>
+                </div>
+            </div>
+            {{/*Filter Type*/}}
+            <div class="form-inline">
+                <div class="form-group-sm pe-3 py-2 d-flex flex-column">
+                    <select id="size" name="f_size" title="Size"
+                            class="selectpicker select-picker-filter form-control border-0 show-menu-arrow"
+                            multiple="multiple" data-style="border-0"
+                            data-live-search="false" data-actions-box="false" tabindex="-1"
+                            aria-hidden="true" data-selected-text-format="count > 0" data-count-selected-text="{0} Size">
+                        <option value="1" {{if (InArray "1" .Params.Size false)}}selected{{end}}>
+                            Responsive
+                        </option>
+                        <option value="2" {{if (InArray "2" .Params.Size false)}}selected{{end}}>
+                            Fixed
+                        </option>
+                    </select>
+                </div>
+            </div>
+            {{/*Filter Size*/}}
+        </div>
+        <div class="col-sm-3 ">
+            <div class="mt-2 p-0 d-flex align-items-center">
+                <input value="{{.Params.QuerySearch}}" name="f_q" class="form-control me-2"
+                       placeholder="{{$TemplateLang.SearchTemplate}}"/>
+                <button type="submit" class="btn btn-outline-secondary btn-sm submit">
+                    {{$TemplateLang.Run}}
+                </button>
+            </div>
+        </div>
+        <input type="hidden" name="start" value="{{.Params.Start}}">
+        <input type="hidden" name="length" value="{{.Params.Length}}">
+    </div>
+</form>

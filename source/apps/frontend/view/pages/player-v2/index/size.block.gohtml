@@ -1,0 +1,7 @@
+{{- /*gotype: source/apps/frontend/model.TemplateRecord*/ -}}
+
+{{if eq .TableTemplate.Size 1}}
+    <span class="badge bg-teal-50 text-gray-600 py-2">Responsive</span>
+{{else}}
+    <span class="badge badge-warning py-2">Fixed</span>
+{{end}}

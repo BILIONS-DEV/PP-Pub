@@ -1,0 +1,55 @@
+{{- /*gotype: source/apps/frontend/controller.AssignIdentity*/ -}}
+{{$IdentityLang := .Schema.LANG.Pages.Identity}}
+<form id="filter" class="g-3">
+    <div class="row">
+        <div class="col-sm-9 form-inline filter-selectpicker">
+            <div class="form-inline">
+                <div class="form-group-sm pe-3 py-2 d-flex flex-column">
+                    <select id="inventory" name="f_domain" title="Domain"
+                            class="search-domain selectpicker select-picker-filter form-control border-0 show-menu-arrow"
+                            multiple="multiple" data-style="border-0" data-size="10"
+                            {{ $length2 := len .Domain }}
+                            data-live-search="{{if gt $length2 6}}true{{else}}false{{end}}"
+                            data-actions-box="false" tabindex="-1" aria-hidden="true"
+                            data-selected-text-format="count > 0"
+                            data-count-selected-text="{0} Domain">
+                        {{range .Domain}}
+                            <option value="{{.Id}}" {{if eq .Selected true}}selected{{end}}>{{.Name}}</option>
+                        {{end}}
+                    </select>
+                </div>
+            </div>
+            {{/*Domain*/}}
+            <div class="form-inline">
+                <div class="form-group-sm pe-3 py-2 d-flex flex-column">
+                    <select id="status" name="f_status" title="{{$IdentityLang.Status}}"
+                            class="selectpicker select-picker-filter form-control border-0 show-menu-arrow"
+                            multiple="multiple"
+                            data-style="border-0"
+                            data-live-search="false" data-actions-box="false" tabindex="-1"
+                            aria-hidden="true"
+                            data-selected-text-format="count > 0"
+                            data-count-selected-text="{0} {{$IdentityLang.Status}}">
+                        <option value="1" {{if (InArray "1" .Params.Status false)}}selected{{end}}>ON</option>
+                        <option value="0" {{if (InArray "2" .Params.Status false)}}selected{{end}}>OFF</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        {{/*Status*/}}
+
+        <div class="col-sm-3 ">
+            <div class="mt-2 p-0 d-flex align-items-center">
+                <input value="{{.Params.QuerySearch}}" name="f_q" class="form-control me-2"
+                       placeholder="{{$IdentityLang.SearchIdentity}}"/>
+                <button type="submit" class="btn btn-outline-secondary btn-sm submit">
+                    {{$IdentityLang.Run}}
+                </button>
+            </div>
+        </div>
+        <input type="hidden" name="start" value="{{.Params.Start}}">
+        <input type="hidden" name="length" value="{{.Params.Length}}">
+        <input type="hidden" name="order_column" value="{{.Params.OrderColumn}}">
+        <input type="hidden" name="order_dir" value="{{.Params.OrderDir}}">
+    </div>
+</form>

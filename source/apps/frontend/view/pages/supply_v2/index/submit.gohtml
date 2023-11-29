@@ -1,0 +1,119 @@
+{{- /*gotype: source/apps/frontend/controller.AssignInventory*/ -}}
+<div class="px-5 py-3 border-bottom border-gray-200 after-header" id="submitInventoryBoxes">
+    <div class="container-fluid px-0">
+        <div class="row align-items-center">
+            <div class="col">
+                <h1 class="h3 mb-0">DOMAINS</h1>
+            </div>
+            <div class="col-auto d-flex align-items-center my-2 my-sm-0" id="submitInventory">
+                <div class="export-dropdown">
+                    <a href="#" role="button" class="btn btn-dominant ms-1 px-3" data-bs-toggle="modal"
+                       data-bs-target="#submitDomainModalFullscreen" aria-expanded="false"
+                       aria-controls="collapseSubmitInventory">
+                        <span class="ps-1">{{.Assign.LANG.Submit}}</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="submitDomainModalFullscreen" tabindex="-1"
+         aria-labelledby="SubmitDomainModalFullscreenLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content rounded-0">
+                <div class="modal-header">
+                    <h5 class="modal-title h4" id="SubmitDomainModalFullscreenLabel">
+                        {{.Assign.LANG.Pages.Inventory.SubmitDomain.ModalTitle}}
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body mt-2">
+                    <form id="formSubmitInventory">
+                        <div class="row shadow-cus p-3 mb-2 bg-body rounded-0 setup">
+                            <div class="col-md-12">
+                                <div class="mb-4 mb-md-5">
+                                    <h3 class="mb-2 fontw600">{{.Assign.LANG.Pages.Inventory.SubmitDomain.Title}}</h3>
+                                    <div class="form-group-cus">
+                                        <input type="text" id="inventories" name="inventories"
+                                               class="form-control-cus form-control" required>
+                                        <label class="form-control-placeholder-cus" for="inventories">
+                                            {{.Assign.LANG.Pages.Inventory.SubmitDomain.Desc}}
+                                        </label>
+                                        <small class="text-muted pt-2">
+                                            {{.Assign.LANG.Pages.Inventory.SubmitDomain.Example}}
+                                        </small>
+                                    </div>
+                                    <ul id="respSubmit" class="list-unstyled profile-list"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 align-items-center setup">
+                            <div class="text-start">
+                                <button type="button" class="save-domain btn btn-secondary submit" disabled>
+                                    {{.Assign.LANG.Pages.Inventory.SubmitDomain.Button}}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .setup {
+        margin-left: 30%;
+        margin-right: 30%;
+    }
+
+    .form-group-cus {
+        position: relative;
+        margin-bottom: 1.5rem;
+        margin-top: 45px;
+    }
+
+    .form-control-placeholder-cus {
+        position: absolute;
+        top: 0;
+        /*!*padding: 7px 0 0 13px;*!*/
+        /*transition: all 200ms;*/
+        /*opacity: 0.5;*/
+        font-size: 85%;
+        transform: translate3d(0, -100%, 0);
+        color: #0907F5E0;
+    }
+
+    .form-control-cus {
+        border: 0;
+        border-radius: 0;
+        padding: 0 !important;
+        border-bottom: 1px solid #0907F5E0;
+        transition: all 200ms;
+        line-height: 2.5;
+    }
+
+    .form-control-cus:focus {
+        border-bottom: 1px solid #0907F5E0;
+    }
+
+    /*.form-control-cus:focus + .form-control-placeholder-cus,*/
+    /*.form-control-cus:valid + .form-control-placeholder-cus {*/
+    /*    font-size: 85%;*/
+    /*    transform: translate3d(0, -100%, 0);*/
+    /*    opacity: 1;*/
+    /*    color: #2320d3e0;*/
+    /*}*/
+
+    .shadow-cus {
+        box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+        border-radius: 2px !important;
+    }
+
+    .fontw600 {
+        font-weight: 600 !important;
+    }
+
+</style>

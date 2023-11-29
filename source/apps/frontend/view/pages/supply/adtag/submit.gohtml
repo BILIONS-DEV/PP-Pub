@@ -1,0 +1,139 @@
+<div class="px-3 px-xxl-5 py-3 py-lg-4 border-bottom border-gray-200 after-header" id="submitInventoryBoxes">
+    <div class="container-fluid px-0">
+        <div class="row align-items-center">
+            <div class="col">
+                <span class="text-uppercase tiny text-gray-600 Montserrat-font font-weight-semibold">Setup Ad Tag</span>
+                <h1 class="h2 mb-0 lh-sm">zlr.vn</h1>
+            </div>
+            <div class="col-auto d-flex align-items-center my-2 my-sm-0" id="submitInventory">
+                <div class="export-dropdown">
+                    <a href="#" role="button" class="btn btn-lg btn-warning ms-1 px-3"
+                       data-bs-toggle="collapse" data-bs-target="#collapseSubmitInventory" aria-expanded="false"
+                       aria-controls="collapseSubmitInventory">
+                        <span class="ps-1">Create</span>
+                        <svg class="ms-4" xmlns="http://www.w3.org/2000/svg" width="14" height="7.875"
+                             viewBox="0 0 14 7.875">
+                            <path d="M.231.228A.8.8,0,0,1,1.256.152l.088.075,6.3,6.222a.771.771,0,0,1,.076,1.013l-.076.087-6.3,6.222a.794.794,0,0,1-1.114,0,.771.771,0,0,1-.076-1.013l.076-.087L5.973,7,.231,1.328A.771.771,0,0,1,.154.315Z"
+                                  transform="translate(14) rotate(90)" fill="#1e1e1e"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="collapseSubmitInventory" aria-labelledby="submitInventory" data-bs-parent="#submitInventoryBoxes"
+         class="container-fluid px-0 collapse">
+        <div class="text-center pt-3 mt-2">
+            <h2 class="h2">Create new Ad Tag</h2>
+            <p class="big lh-lg text-black-500">
+                Your inventory will be assessed and responded to by us within 24 hours!
+            </p>
+        </div>
+
+        <div class="col-xl-12 col-xxl-12 my-4 my-xxl-5">
+            <div class="card rounded-12 shadow-dark-80 border border-gray-50 p-md-5">
+                <form id="SetupAdTag">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-4 mb-md-5">
+                                <label class="form-label form-label-lg" for="name">
+                                    Ad Tag Name
+                                    <sup class="text-danger lead">*</sup>
+                                </label>
+                                <input type="text" id="name" name="name"
+                                       placeholder="Ad tag name" class="form-control form-control-lg">
+                                <div class="invalid-feedback"></div>
+                            </div>
+                        </div>
+                        {{/* End Ad Tag Name*/}}
+
+                        <div class="col-md-6">
+                            <div class="mb-4 mb-md-5">
+                                <label class="form-label form-label-lg" for="floor_price">
+                                    Floor Price
+                                    <sup class="text-danger lead">*</sup>
+                                </label>
+                                <input type="text" id="floor_price" name="floor_price"
+                                       placeholder="Floor Price" class="form-control form-control-lg">
+                                <div class="invalid-feedback"></div>
+                            </div>
+                        </div>
+                        {{/* End Floor Price*/}}
+
+                        <div class="col-md-6">
+                            <div class="mb-4 mb-md-5">
+                                <label class="form-label form-label-lg" for="ad_tag_type">Type</label>
+                                <select id="ad_tag_type" name="ad_tag_type"
+                                        class="form-select form-select-lg"
+                                        data-placeholder="Ad tag type">
+                                    <option value="1">Display</option>
+                                    <option value="2">In Stream</option>
+                                    <option value="3">Out Stream</option>
+                                    <option value="4">Video Discovery</option>
+                                    <option value="5">Smart Banner</option>
+                                </select>
+                                <div class="invalid-feedback"></div>
+                            </div>
+                        </div>
+                        {{/* End Ad Type*/}}
+
+                        <div class="col-md-6">
+                            <div class="mb-4 mb-md-5">
+                                <label class="form-label form-label-lg" for="ad_tag_size">Size</label>
+                                <select id="ad_tag_size" name="ad_tag_size"
+                                        class="form-select form-select-lg"
+                                        data-placeholder="Ad tag type">
+                                    <option value="1">300x250</option>
+                                    <option value="2">300x600</option>
+                                    <option value="3">728x90</option>
+                                </select>
+                                <div class="invalid-feedback"></div>
+                            </div>
+                        </div>
+                        {{/* End Ad Size*/}}
+
+                        <div class="col-md-12">
+                            <div class="mb-4 mb-md-5">
+                                <label class="form-label form-label-lg" for="gam">
+                                    GAM
+                                    <sup class="text-danger lead">*</sup>
+                                </label>
+                                <input type="text" id="gam" name="gam"
+                                       placeholder="GAM Ad Unit" class="form-control form-control-lg">
+                                <div class="invalid-feedback"></div>
+                            </div>
+                        </div>
+                        {{/* End Ad Tag Name*/}}
+
+                        <div class="col-md-12">
+                            <div class="mb-4 mb-md-5">
+                                <label class="form-label form-label-lg" for="pass_back">Pass Back</label>
+                                <textarea class="form-control form-control-lg" id="pass_back" name="pass_back"
+                                          placeholder="Your Pass Back"
+                                          rows="4"></textarea>
+                                <div class="invalid-feedback"></div>
+                            </div>
+                        </div>
+                        {{/* End Ads.Txt*/}}
+                    </div>
+                    <input type="hidden" name="inventory_id" value="1">
+                    <div class="row align-items-center">
+                        <div class="col-md-7">
+                            <div class="form-check mt-md-4 mb-4">
+                                <input class="form-check-input" id="status" name="status" value="1" type="checkbox"
+                                       checked="">
+                                <label class="form-check-label" for="status">Publish Ad Tag</label>
+                                <div class="invalid-feedback"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="text-end">
+                                <button type="button" class="btn btn-lg btn-warning submit">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

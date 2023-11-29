@@ -1,0 +1,10 @@
+{{- /*gotype: source/apps/frontend/model.TemplateRecord*/ -}}
+
+
+{{if eq .TableTemplate.Layout 1}}
+    <span>Related Right</span>
+{{else if eq .TableTemplate.Layout 2}}
+    <span>Related Bottom</span>
+{{else}}
+    <span>Slide</span>
+{{end}}

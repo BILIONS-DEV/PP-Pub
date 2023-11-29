@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theme name="muze">
+    <page path="/report">
+        <!-- Import CSS -->
+        <css link="/assets/plugins/bootstrap-toggle/bootstrap-toggle.min.css"/>
+        <css link="/assets/plugins/datatables/datatables.min.css"/>
+        <!-- Import JS -->
+        <js link="/assets/plugins/select2/dist/js/select2.full.min.js"/>
+        <js link="/assets/plugins/select2/dist/js/select2.multi-checkboxes.js"/>
+        <js link="/assets/plugins/bootstrap-toggle/js/bootstrap-toggle.min.js"/>
+        <js link="/assets/plugins/datatables/datatables.min.js"/>
+        <js link="/assets/plugins/jquery-collapser/dist/jquery.collapser.min.js"/>
+    </page>
+</theme>

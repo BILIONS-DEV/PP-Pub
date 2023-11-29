@@ -1,0 +1,175 @@
+{{- /*gotype: source/apps/frontend/controller.AssignInventory*/ -}}
+{{- /*gotype: source/apps/frontend/controller.AssignInventory*/ -}}
+<div class="header border-bottom py-0">
+    <div class="container-fluid px-0 h-100">
+        <div class="header-body px-3 h-100">
+            <div class="row align-items-center h-100">
+                <a href="javascript:void(0);" class="muze-hamburger d-block d-lg-none col-auto">
+                    <img src="{{.RootDomain}}/assets/svg/icons/hamburger1.svg" alt="img">
+                    <img src="{{.RootDomain}}/assets/svg/icons/close1.svg" style="width:20px;" class="menu-close"
+                         alt="img"> </a> <a class="navbar-brand mx-auto col-auto px-0" href="#">
+                    <h1 class="header-main">Adblock Alert Generator</h1>
+                </a>
+                <div class="col d-flex align-items-center">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{/*End Header*/}}
+
+<div class="pubpower-main height-main p-0">
+    <div class="container-fluid px-0">
+        {{- /*gotype: source/apps/frontend/controller.AssignInventory*/ -}}
+        <div id="inventoryTabs" class="pr-0 custom-tab">
+            <div class="line-item-tab">
+                <ul class="nav nav-tabs nav-tabs-md nav-tabs-line position-relative pp-2">
+                    <li class="nav-item">
+                        <div id="tab-general" class="nav-link pp-3 pp-4 at-1" data-tab="2" data-bs-toggle="tab" data-bs-target="#nav-general" type="button" role="tab" aria-controls="nav-general" style="width: 150px;">
+                            <div class="dm2">
+                                <svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                    <g id="icomoon-ignore">
+                                    </g>
+                                    <path d="M17.599 3.738v2.598l0.8 0.207c0.905 0.234 1.768 0.597 2.566 1.081l0.715 0.434 1.86-1.86 2.262 2.262-1.888 1.888 0.407 0.708c0.451 0.785 0.788 1.635 1.002 2.527l0.196 0.817h2.744v3.199h-2.806l-0.216 0.782c-0.233 0.844-0.583 1.654-1.040 2.406l-0.434 0.716 2.036 2.035-2.262 2.262-2.064-2.064-0.707 0.407c-0.734 0.422-1.531 0.745-2.368 0.961l-0.8 0.206v2.951h-3.199v-2.951l-0.8-0.206c-0.837-0.216-1.634-0.539-2.368-0.961l-0.708-0.407-2.064 2.064-2.262-2.262 2.036-2.035-0.434-0.716c-0.457-0.753-0.807-1.562-1.040-2.406l-0.216-0.782h-2.806v-3.199h2.744l0.196-0.817c0.213-0.891 0.551-1.742 1.002-2.527l0.407-0.708-1.888-1.888 2.262-2.262 1.86 1.86 0.715-0.434c0.798-0.484 1.661-0.848 2.566-1.081l0.8-0.207v-2.598h3.199zM16 20.799c2.646 0 4.798-2.153 4.798-4.799s-2.152-4.799-4.798-4.799-4.798 2.153-4.798 4.799c0 2.646 2.152 4.799 4.798 4.799zM18.666 2.672h-5.331v2.839c-1.018 0.263-1.975 0.67-2.852 1.202l-2.022-2.022-3.769 3.77 2.065 2.065c-0.498 0.867-0.875 1.81-1.114 2.809h-2.97v5.331h3.060c0.263 0.953 0.655 1.85 1.156 2.676l-2.198 2.198 3.769 3.77 2.241-2.241c0.816 0.469 1.7 0.828 2.633 1.069v3.191h5.331v-3.191c0.933-0.241 1.817-0.6 2.633-1.069l2.241 2.241 3.769-3.77-2.198-2.198c0.501-0.826 0.893-1.723 1.156-2.676h3.060v-5.331h-2.97c-0.239-0.999-0.616-1.941-1.114-2.809l2.065-2.065-3.769-3.77-2.022 2.022c-0.877-0.532-1.834-0.939-2.852-1.202v-2.839h-0zM16 19.733c-2.062 0-3.732-1.671-3.732-3.733s1.67-3.732 3.732-3.732 3.732 1.671 3.732 3.732c0 2.062-1.67 3.733-3.732 3.733v0z"></path>
+                                </svg>
+                            </div>
+                            <div class="dm1">Script Generator</div>
+                        </div>
+                    </li>
+                    {{/*Config*/}}
+
+
+                    <div style="flex: 1;border-bottom: 1px solid #aab4c8;"></div>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade active show" id="nav-general" role="tabpanel" aria-labelledby="nav-general-tab">
+                {{- /*gotype: source/apps/frontend/controller.AssignInventory*/ -}}
+                <form id="adblock_analytics" action="" onsubmit="return false">
+
+                    <div class="pp6">
+                        <div class="pp40">
+                            <div class="pp5">Domain</div>
+                            <div class="pp7 ">
+                                <select id="adb-domain" class="form-control selectpicker adb-domain" title="Select">
+                                    {{range $index, $element := .Inventories}}
+                                        <option value="{{$element.Uuid}}">{{$element.Name}}</option>
+                                    {{end}}
+                                </select>
+                                <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                            </div>
+
+                            <div class="pp5">Message</div>
+                            <div class="pp7 ">
+                                <div id="summernote">
+                                    <h1 style="margin-bottom: 15px; padding: 0 30px; color: #252b37; font-size: 28px; line-height: 1.25; text-align: center;">Adblocker detected! Please consider reading this notice.</h1>
+                                    <p>
+                                        We've detected that you are using AdBlock Plus or some other adblocking software which is preventing the page from fully loading.
+                                    </p>
+                                    <p>
+                                        We don't have any banner, Flash, animation, obnoxious sound, or popup ad. We do not implement these annoying types of ads!
+                                    </p>
+                                    <p>We need money to operate the site, and almost all of it comes from our online advertising.</p>
+                                    <p>
+                                        <strong>Please add
+                                            <a href="http://yourdomain.com" target="_blank" rel="noopener">yourdomain.com</a> to your ad blocking whitelist or disable your adblocking software.</strong>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="pp5">Alert Template</div>
+                            <div class="pp7 ">
+                                <select class="form-control selectpicker adb-modal-fixed" id="adb-modal-fixed" title="Select">
+                                    <option value="modal" selected>Modal</option>
+                                    <option value="fixed">Fixed</option>
+                                </select>
+                            </div>
+
+
+                            <div class="pp5">Frequency cap (minute)</div>
+                            <div class="pp7 flex-column">
+                                <input class="form-control name adb-display-time" id="adb-display-time" value="0">
+                                <small class="mt-1"> <i>default
+                                        <strong>0</strong>: alert message will always be displayed every time the page is loaded if adblocking is detected.</i>
+                                </small>
+                            </div>
+
+                            <div class="pp5">Close button</div>
+                            <div class="pp7 ">
+                                <select class="form-control selectpicker adb-hide-close-button" id="adb-hide-close-button" title="Select">
+                                    <option value="true" selected>Hidden</option>
+                                    <option value="false">Show</option>
+                                </select>
+                            </div>
+
+                            <div class="pp5">Close the modal box on background click</div>
+                            <div class="pp7">
+                                <select class="form-control selectpicker adb-close-background" id="adb-close-background" title="Select">
+                                    <option value="false" selected>No</option>
+                                    <option value="true">Yes</option>
+                                </select>
+                            </div>
+                            <div class="mt-20 pull-right">
+                                <button type="submit" class="btn btn-primary generator">Generate</button>
+                            </div>
+                        </div>
+
+
+                        <div class="pp40">
+                            <div class="pp-5">
+                                <h5>Generated Script</h5>
+                            </div>
+                            <div class="pp7">
+                                <textarea class="form-control result-adblock-analytics" rows="28"></textarea>
+                            </div>
+                            <div class="mt-20" style="color: #bb6e2c; font-weight: 700;">
+                                <p class="m-0">
+                                    <i>Copy the generated script then place right before the &#x3C;/body&#x3E; tag of website.</i>
+                                </p>
+                                <p class="m-0">
+                                    <i>Remember that the AdBlock Alert Script must be placed directly in the HTML code of the parent frame.</i>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .pp40 {
+        padding-right: 60px;
+        max-width: 800px;
+        width: 50%;
+    }
+    .note-btn-group .note-btn {
+        border-color: rgba(0, 0, 0, .2);
+        padding: 0.28rem 0.65rem !important;
+        font-size: 13px;
+    }
+    .note-popover .popover-content, .card-header.note-toolbar {
+        padding: 0 0 5px 5px !important;
+        margin: 0;
+        background: #f5f5f5 !important;
+    }
+    .bootstrap-select.form-control {
+        margin-bottom: 0;
+        padding: 0;
+        border: 1px solid #ced4da;
+        border-color: #dee2e6;
+        height: auto;
+    }
+    p {
+        margin-top: 0;
+        margin-bottom: 1rem;
+    }
+    .bootstrap-select .dropdown-toggle .filter-option {
+        padding: unset;
+    }
+    .note-editor.note-frame.card {
+        width: 100%;
+    }
+</style>

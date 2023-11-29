@@ -1,0 +1,32 @@
+{{range $row := .}}
+{{/*    <div class="target-item border-bottom border-gray-50 ms-2 me-3" id="{{$row.Id}}">*/}}
+{{/*        <div class="list-group list-group-flush my-n3">*/}}
+{{/*            <div class="list-group-item">*/}}
+{{/*                <div class="d-flex flex-row align-items-center">*/}}
+{{/*                    <div class="col p-0">*/}}
+{{/*                        <span>{{$row.Keyword}}</span>*/}}
+{{/*                    </div>*/}}
+{{/*                    <div class="col-auto">*/}}
+{{/*                        <button type="button"*/}}
+{{/*                                data-id="{{$row.Id}}"*/}}
+{{/*                                name="{{$row.Keyword}}"*/}}
+{{/*                                class="btn d-flex align-items-center btn-outline-secondary btn-icon rounded-circle p-0 add_keywords">*/}}
+{{/*                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"*/}}
+{{/*                                 class="bi bi-plus-lg" viewBox="0 0 16 16">*/}}
+{{/*                                <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>*/}}
+{{/*                            </svg>*/}}
+{{/*                        </button>*/}}
+{{/*                    </div>*/}}
+{{/*                </div>*/}}
+{{/*            </div>*/}}
+{{/*        </div>*/}}
+{{/*    </div>*/}}
+    <div class="dm20 target-item " id="{{$row.Id}}">
+        <span>{{$row.Keyword}}</span>
+        <button class="add_keywords" data-id="{{$row.Id}}" name="{{$row.Keyword}}" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"></path>
+            </svg>
+        </button>
+    </div>
+{{end}}

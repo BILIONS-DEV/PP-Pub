@@ -1,0 +1,135 @@
+{{- /*gotype: source/apps/frontend/controller.AssignPlayerEdit*/ -}}
+{{template "player-v2/edit/inc.header" .}}
+{{/*End Header*/}}
+
+
+<div class="it-1 height-main">
+    <form id="formTemplate" class="w-100">
+        <input type="hidden" name="id" value="{{.Row.TableTemplate.Id}}">
+        <div class="d-flex h-100">
+            <div class="it-2 p-0 template-tab">
+                <ul class="nav nav-tabs nav-tabs-md nav-tabs-line position-relative pp-2">
+                    <li class="nav-item">
+                        <div id="tab-setup" class="nav-link pp-3 pp-4 rounded-0 active" data-tab="1" data-bs-toggle="tab" data-bs-target="#nav-setup" type="button" role="tab" aria-controls="nav-setup">
+                            <div class="dm2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
+                                    <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div class="dm1">Setup</div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div id="tab-customize" class="nav-link pp-3 rounded-0 border-right-0" data-tab="2" data-bs-toggle="tab" data-bs-target="#nav-customize" type="button" role="tab" aria-controls="nav-customize">
+                            <div class="dm2">
+                                <svg style="width: 17px;height: 17px;margin-top: 3px;" width="17px" height="17px" fill="currentColor" viewBox="0 -0.5 17 17" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="si-glyph si-glyph-adjustment-horizon">
+                                    <title>1197</title>
+                                    <defs></defs>
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <g fill="#434343">
+                                            <path d="M8,1 L8,2.95568848 L15.9281006,2.95568847 L15.9281006,0.99999999 L8,1 Z" class="si-glyph-fill"></path>
+                                            <rect x="0" y="1" width="1.97460938" height="1.9753418" class="si-glyph-fill"></rect>
+                                            <path d="M0,7 L2.21252442e-07,8.9876709 L5.0111084,8.9876709 L5.01110818,7 L0,7 Z" class="si-glyph-fill"></path>
+                                            <path d="M11,7 L11,8.97875977 L15.9871826,8.97875976 L15.9871826,6.99999999 L11,7 Z" class="si-glyph-fill"></path>
+                                            <rect x="0" y="13" width="8.01904297" height="1.96240234" class="si-glyph-fill"></rect>
+                                            <rect x="14" y="13" width="1.99963379" height="1.96069336" class="si-glyph-fill"></rect>
+                                            <path d="M10.9680001,16.0396729 C12.0548964,16.0396729 12.9755859,15.2177875 12.9755859,14.1590576 C12.9755859,13.1003278 12.0548964,12 10.968,12 C9.88110361,12 9.04431152,12.9611066 9.04431152,14.0198364 C9.04431152,15.0785663 9.88110367,16.0396729 10.9680001,16.0396729 Z" class="si-glyph-fill"></path>
+                                            <path d="M7.90600002,9.99328613 C8.95865475,9.99328613 10.0087891,8.97572992 10.0087891,7.91700006 C10.0087891,6.85827019 8.95865473,6 7.906,6 C6.85334527,6 6,6.85827013 6,7.917 C6,8.97572987 6.85334529,9.99328613 7.90600002,9.99328613 Z" class="si-glyph-fill"></path>
+                                            <path d="M5.0559082,3.98095703 C6.11463807,3.98095703 7.02233887,2.97572992 7.02233887,1.91700006 C7.02233887,0.85827019 5.97572987,0 4.917,0 C3.85827013,0 3,0.858270135 3,1.917 C3,2.97572987 3.99717834,3.98095703 5.0559082,3.98095703 Z" class="si-glyph-fill"></path>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="dm1">Customize</div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div id="tab-advertiring" class="nav-link pp-3 rounded-0 border-right-0 video-template-element" data-tab="2" data-bs-toggle="tab" data-bs-target="#nav-advertiring" type="button" role="tab" aria-controls="nav-advertiring">
+                            <div class="dm2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 512 512">
+                                    <g>
+                                        <g>
+                                            <g>
+                                                <path d="m473.6,256.6c0-99.3-67.1-185.9-163.3-210.6-9.2-2.4-18.6,3.2-20.9,12.4-2.4,9.2 3.2,18.6 12.4,20.9 80.9,20.7 137.4,93.7 137.4,177.3 0,73.7-43.9,139-109.6,167.7l15.9-37c3.7-8.7-0.3-18.8-9-22.6-8.7-3.7-18.8,0.3-22.6,9l-31,72.2c-3.7,8.7 0.3,18.8 9,22.6l72.2,31c10.8,3.8 19.8-2.5 22.6-9 3.7-8.7-0.3-18.8-9-22.6l-31.4-13.5c76.5-34.6 127.3-111.4 127.3-197.8z"></path>
+                                                <path d="m210.4,433.9c-80.9-20.8-137.4-93.7-137.4-177.3 0-72.7 42.7-137.2 106.9-166.5l-14.9,34.6c-3.7,8.7 0.1,19.2 9,22.6 10.4,3.9 19.2-0.8 22.6-9l31-72.3c3-7 2.9-17.5-9-22.6l-72.2-31c-8.7-3.7-18.8,0.3-22.6,9-3.7,8.7 0.3,18.8 9,22.6l33.6,14.4c-76.8,34.7-127.8,111.6-127.8,198.2 7.10543e-15,99.3 67.2,185.8 163.3,210.6 11.6,3 18.9-4.6 20.9-12.4 2.3-9.2-3.2-18.5-12.4-20.9z"></path>
+                                                <path d="m296.6,321.4c8.8-9.2 13.2-20.8 13.2-34.6 0-6.3-1.1-12.1-3.2-17.5-2.1-5.4-5.1-10-9-14-3.9-3.9-9-7.2-15.2-10-3.3-1.4-9.9-3.4-20-5.9v-57.4c6.5,1.3 11.6,4.1 15.4,8.3 3.7,4.2 6.2,10.2 7.4,18l20.6-3.1c-1.8-12.6-7-22.6-15.7-29.8-6.8-5.7-16-9.1-27.6-10.2v-9.5h-11.8v9.5c-13.2,1.3-23.2,5-29.9,10.9-10.1,8.8-15.1,20.3-15.1,34.5 0,8 1.7,15.1 5.2,21.4 3.4,6.3 8.3,11.2 14.7,14.7 8.6,4.8 17,8 25.2,9.5v63.5c-7.8-0.8-14.6-4.8-20.2-11.9-3.9-5-6.7-12.9-8.2-23.6l-20.1,3.8c0.7,10.3 3.4,19.1 7.9,26.3 4.5,7.2 9.9,12.4 16.2,15.6 6.2,3.2 14.4,5.4 24.3,6.7v19.9h11.8v-20.2c14-0.7 25.4-5.7 34.1-14.9zm-45.8-84.5c-9.1-2.7-15.5-6.4-19.3-11-3.8-4.6-5.7-10.3-5.7-17.1 0-6.9 2.2-12.8 6.7-17.8 4.5-5 10.6-8.1 18.3-9.3v55.2zm30.9,72.6c-5.1,5.8-11.5,9.1-19.2,10.1v-60.7c10.7,3.5 17.9,7.4 21.5,11.8 3.6,4.4 5.4,10.2 5.4,17.5-0.1,8.4-2.6,15.6-7.7,21.3z"></path>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="dm1">ADVERTISING</div>
+                        </div>
+                    </li>
+                    <div style="flex: 1;border-bottom: 1px solid #aab4c8; height: 65px;"></div>
+                </ul>
+
+                <div class="tab-content" id="nav-tabContent">
+
+                    <div class="tab-pane fade active show" id="nav-setup" role="tabpanel" aria-labelledby="nav-setup-tab">
+                        <div style="padding: 0 20px 20px 20px;">
+                            {{template "player-v2/edit/setup" .}}
+                        </div>
+                    </div>
+                    {{/*Setup*/}}
+
+                    <div class="tab-pane fade" id="nav-customize" role="tabpanel" aria-labelledby="nav-customize-tab">
+                        <div style="padding: 0 20px 20px 20px;">
+                            {{template "player-v2/edit/customize" .}}
+                        </div>
+                    </div>
+                    {{/*Customize*/}}
+
+                    <div class="tab-pane fade" id="nav-advertiring" role="tabpanel" aria-labelledby="nav-advertiring-tab">
+                        <div style="padding: 0 20px 20px 20px;">
+                            {{template "player-v2/edit/advertiring" .}}
+                        </div>
+                    </div>
+                    {{/*Customize*/}}
+
+                </div>
+            </div>
+            <div class="it-9 p-0">
+                <div class="dm5">
+                    <div class="dm6">
+                        <a class="dm3 " href="/player-v2/template">Close</a>
+                        <a class="dm4 submit" href="javascript:void(0)">Save</a>
+                    </div>
+                </div>
+                <div class="dm7" id="tab-prebid">
+                    {{template "player-v2/edit/preview" .}}
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<style>
+    .resizable {
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        border: 1px dotted #cbd5e0;
+        width: calc(100% - 120px);
+        max-width: calc(100% - 120px);
+        min-width: 200px;
+        /*top: 50%;*/
+        /*left: 50%;*/
+        /*transform: translate(-50%, -50%);*/
+    }
+
+    .resizer {
+        /* All resizers are positioned absolutely inside the element */
+        position: absolute;
+    }
+
+    /* Placed at the right side */
+    .resizer-r {
+        cursor: col-resize;
+        background: #0b7ef4;
+        height: 50px;
+        right: -3px;
+        top: 15px;
+        width: 5px;
+    }
+</style>

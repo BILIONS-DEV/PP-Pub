@@ -1,0 +1,36 @@
+{{- /*gotype: source/apps/frontend/controllerv2.AssignAds*/ -}}
+<form id="formFilterAds" class="g-3" data-url="/campaigns" data-table-id="tableAds">
+    <div class="row">
+        <div class="col-sm-9 form-inline filter-selectpicker">
+            {{ if .Inventories }}
+                <div class="form-inline">
+                    <div class="form-group-sm px-2 py-2 d-flex flex-column">
+                        <select id="inventory" name="inventory" title="Inventory" data-style="border-0"
+                                class="selectpicker select-picker-filter form-control border-0 show-menu-arrow" multiple data-max-options="1"
+                                data-live-search="true" data-actions-box="false" tabindex="-1" aria-hidden="true">
+                            {{range .Inventories}}
+                                <option value="{{.Name}}" {{if eq .Name $.Params.Inventory }}selected{{end}}>{{.Name}}</option>
+                            {{ end }}
+                        </select>
+                    </div>
+                </div>
+            {{ end }}
+            {{/*Filter Inventory*/}}
+
+
+        </div>
+        <div class="col-sm-3 ">
+            <div class="mt-2 p-0 d-flex align-items-center">
+                <input value="{{.Params.QuerySearch}}" name="q" class="form-control me-2"
+                       placeholder="Search ..."/>
+                <button type="submit" class="btn btn-outline-secondary btn-sm submit">
+                    Run
+                </button>
+            </div>
+        </div>
+        <input type="hidden" name="start" value="{{.Params.Start}}">
+        <input type="hidden" name="length" value="{{.Params.Length}}">
+        <input type="hidden" name="order_column" value="{{.Params.OrderColumn}}">
+        <input type="hidden" name="order_dir" value="{{.Params.OrderDir}}">
+    </div>
+</form>

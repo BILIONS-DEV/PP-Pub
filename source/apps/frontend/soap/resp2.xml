@@ -1,0 +1,34 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Header>
+        <ResponseHeader xmlns="https://www.google.com/apis/ads/publisher/v202105">
+            <requestId>a01e627e55d33cb329e12eb7f13b6e4a</requestId>
+            <responseTime>486</responseTime>
+        </ResponseHeader>
+    </soap:Header>
+    <soap:Body>
+        <getAllNetworksResponse xmlns="https://www.google.com/apis/ads/publisher/v202105">
+            <rval>
+                <id>1813204</id>
+                <displayName>Interdog Media Limited</displayName>
+                <networkCode>21766281334</networkCode>
+                <propertyCode>ca-pub-910185757715
+                    1962
+                </propertyCode>
+                <timeZone>America/New_York</timeZone>
+                <currencyCode>USD</currencyCode>
+                <effectiveRootAdUnitId>21765281337</effectiveRootAdUnitId>
+                <isTest>false</isTest>
+            </rval>
+            <rval>
+                <id>1978238</id>
+                <displayName>Linkcom Group</displayName>
+                <networkCode>22157535595</networkCode>
+                <propertyCode>ca-pub-8746322920248816</propertyCode>
+                <timeZone>America/New_York</timeZone>
+                <currencyCode>USD</currencyCode>
+                <effectiveRootAdUnitId>22156535241</effectiveRootAdUnitId>
+                <isTest>false</isTest>
+            </rval>
+        </getAllNetworksResponse>
+    </soap:Body>
+</soap:Envelope>

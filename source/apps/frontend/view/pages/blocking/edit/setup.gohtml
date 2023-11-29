@@ -1,0 +1,93 @@
+{{- /*gotype: source/apps/frontend/controller.AssignBlockingEdit*/ -}}
+{{$Lang := .Schema.LANG.Pages.Blocking}}
+<div class="pp15">
+    <div class="pp5">{{$Lang.Name}}</div>
+</div>
+<div class="pp7">
+    <div class="pp-9">
+        <input class="pp-10 form-control" type="text" id="restriction_name" name="restriction_name"
+               value="{{.Row.TableBlocking.RestrictionName}}">
+        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+    </div>
+</div>
+<div class="pp15">
+    <div class="pp5">{{$Lang.Inventory}}</div>
+</div>
+<div class="cus-selectpicker pp-9">
+    <select id="inventories" name="inventories" class="form-control selectpicker"
+            multiple="multiple" data-live-search="true" data-size="6" data-actions-box="true"
+            data-selected-text-format="count > 10"
+            title="{{$Lang.AllInventory}}">
+        {{range .Inventories}}
+            <option value="{{.TableInventory.Id}}"
+                    {{if (InArray .TableInventory.Id $.ListInventoryIdSelected false)}}selected{{end}}>{{.TableInventory.Name}}</option>
+        {{end}}
+    </select>
+    <span class="form-text ms-2 w-auto invalid-feedback"></span>
+</div>
+
+<div class="pp15">
+    <div class="pp5">{{$Lang.AdvertiserDomain}}</div>
+</div>
+<div class="pp7">
+    <div class="pp-9">
+        <input type="text"
+               class="pp-10 form-control textarea-add-custom"
+               placeholder="example: domain1, domain2, domain3,... press enter">
+        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+    </div>
+</div>
+<div class="box-list-domain mb-4" style="overflow-y: auto; max-height: 200px">
+    {{range .ListAdvertiseDomains}}
+        <div class="d-flex flex-row align-items-center p-2 border-bottom target-item item_selected">
+            <div class="col p-0">
+                <span class="m-0" style="font-size: 14px">{{.TableBlockingRestrictions.AdvertiseDomain}}</span>
+            </div>
+            <div class="col-auto px-0">
+                <button type="button" data-name="{{.TableBlockingRestrictions.AdvertiseDomain}}"
+                        style="width: 16px; height: 16px"
+                        class="btn d-flex align-items-center btn-outline-danger btn-icon rounded-circle p-0 btn-remove">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
+                         class="bi bi-dash-lg"
+                         viewBox="0 0 16 16">
+                        <path d="M0 8a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    {{end}}
+</div>
+
+
+<div class="pp15">
+    <div class="pp5">Creative</div>
+</div>
+<div class="pp7">
+    <div class="pp-9">
+        <input type="text"
+               class="pp-10 form-control textarea-add-creative"
+               placeholder="example: creativeID1, creativeID1, creativeID1,... press enter">
+    </div>
+    <span class="form-text ms-2 w-auto invalid-feedback"></span>
+</div>
+<div class="box-list-creative mb-4" style="overflow-y: auto; max-height: 200px">
+    {{range .ListCreativeId}}
+        <div class="d-flex flex-row align-items-center p-2 border-bottom target-item item_selected">
+            <div class="col p-0" style="width: 97%">
+                <span class="m-0"
+                      style="overflow-wrap: break-word;font-size: 14px">{{.TableBlockingRestrictions.CreativeId}}</span>
+            </div>
+            <div class="col-auto px-0">
+                <button type="button" data-name="{{.TableBlockingRestrictions.CreativeId}}"
+                        style="width: 16px; height: 16px"
+                        class="btn d-flex align-items-center btn-outline-danger btn-icon rounded-circle p-0 btn-remove">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
+                         class="bi bi-dash-lg"
+                         viewBox="0 0 16 16">
+                        <path d="M0 8a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    {{end}}
+</div>

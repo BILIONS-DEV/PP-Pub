@@ -1,0 +1,160 @@
+{{- /*gotype: source/apps/frontend/controller.AssignContentAdd*/ -}}
+{{$ContentLang := .Schema.LANG.Pages.Content}}
+<div class="pt1" style="border-top: 0;">
+    <div class="pp15">
+        <div class="pt2">{{$ContentLang.Name}}</div>
+    </div>
+    <div class="pp7">
+        <div class="pp-9">
+            <input class="pp-10 form-control" type="text" id="title" name="title">
+            <span class="form-text ms-2 w-auto invalid-feedback"></span>
+        </div>
+    </div>
+    {{/*Title*/}}
+    <div class="pp15">
+        <div class="pt2">{{$ContentLang.Description}}</div>
+    </div>
+    <div class="pp7">
+        <div class="pp-9">
+            <textarea class="pp17 form-control" spellcheck="false" id="content_description" name="content_description"></textarea>
+            <span class="form-text ms-2 w-auto invalid-feedback"></span>
+        </div>
+    </div>
+    {{/*Content Description*/}}
+
+    <div class="pp15">
+        <div class="pt2">{{$ContentLang.Video}}</div>
+    </div>
+    <div class="pp7">
+        <div class="box-upload-video w-100">
+            <input type='file' id="upload_video" name="upload_video" class="d-none" title="Choose a video please" aria-describedby="video_url" aria-label="Upload" accept="video/*">
+            <div class="d-flex" id="box-upload-video">
+                <label class="pp-11 mb-0" for="upload_video" style="max-width: 100px;min-width: 100px;border-right: 0;border-left: 1px solid #aab4c8;">Choose file</label>
+                <input class="pp10 w-100 form-control" id="video_url" name="video_url" type="text" value="" readonly style="border-top-left-radius: 0;border-bottom-left-radius: 0;cursor: not-allowed;">
+                <input id="duration" name="duration" type="number" value="" hidden>
+            </div>
+            <div id="loading_video" class="d-none mt-2">
+                <span class="spinner-border text-secondary" role="status"></span>
+                <span class="text-muted">Video is processing, please wait a moment!</span>
+            </div>
+            <span class="form-text ms-2 w-auto invalid-feedback"></span>
+            <input hidden id="name_file" name="name_file" value="">
+        </div>
+    </div>
+</div>
+<div class="pt1">
+    <div class="pp15">
+        <div class="pt2">Thumbnail</div>
+    </div>
+    <div class="pp7">
+        <div class="pt-99" style="min-height: 84px;height: auto;">
+            <img class="preview-thumb" src="" alt="">
+            <div class="_blur d-none" id="loading_thumb">
+                <div class="spinner-border text-secondary" style="position: absolute;top: 30%;left: 40%;" role="status">
+                    <span class="sr-only">Loading...</span></div>
+            </div>
+        </div>
+    </div>
+    <div class="pp15">
+        <div class="pt2">Select From Video</div>
+    </div>
+    <div class="pp7">
+        <div style="display:flex;align-items: center;">
+            <div class="pt-99 cursor-pointer cursor-not-allowed opacity-50" style="width: 90px;height: 50.6px;margin-right: 10px;">
+                <img class="select-thumb" src="" alt="">
+            </div>
+            <div class="pt-99 cursor-pointer cursor-not-allowed opacity-50" style="width: 90px;height: 50.6px;margin-right: 10px;">
+                <img class="select-thumb" src="" alt="">
+            </div>
+            <div class="pt-99 cursor-pointer cursor-not-allowed opacity-50" style="width: 90px;height: 50.6px;margin-right: 10px;">
+                <img class="select-thumb" src="" alt="">
+            </div>
+            <div class="pt-99 cursor-pointer cursor-not-allowed opacity-50" style="width: 90px;height: 50.6px;margin-right: 10px;">
+                <img class="select-thumb" src="" alt="">
+            </div>
+            <div class="pt-99 cursor-pointer cursor-not-allowed opacity-50" style="width: 90px;height: 50.6px;margin-right: 10px;">
+                <img class="select-thumb" src="" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="pp15">
+        <div class="pt2">Upload New Thumbnail</div>
+    </div>
+    <div class="pp7">
+        <div class="box-upload-thumb w-100" >
+            <input type='file' id="upload_thumb" name="upload_thumb" class="d-none" title="Choose a video please" aria-describedby="thumb" aria-label="Upload" accept="image/*">
+            <div class="d-flex" id="box-upload-thumb">
+                <label class="pp-11 mb-0" for="upload_thumb" style="max-width: 100px;min-width: 100px;border-right: 0;border-left: 1px solid #aab4c8;">Choose file</label>
+                <input class="pp10 w-100" id="thumb" name="thumb" type="text" value="" readonly style="border-top-left-radius: 0;border-bottom-left-radius: 0;cursor: not-allowed;">
+            </div>
+            <span class="form-text ms-2 w-auto invalid-feedback"></span>
+        </div>
+    </div>
+{{/*    <div class="pp15">*/}}
+{{/*        <div class="pt2">Link Video</div>*/}}
+{{/*    </div>*/}}
+{{/*    <div class="pp7">*/}}
+{{/*        <div class="pp-9">*/}}
+{{/*            <input class="pp-10 form-control" type="text" id="link_video" name="link_video">*/}}
+{{/*            <span class="form-text ms-2 w-auto invalid-feedback"></span>*/}}
+{{/*        </div>*/}}
+{{/*    </div>*/}}
+    {{/*Link Video*/}}
+</div>
+<div class="pt1">
+    <div class="pp15">
+        <div class="pt2">Channel
+            <span class="pp16" type="button" tabindex="0" data-bs-toggle="popover" data-bs-html="true" data-bs-content="No channel found! Create the new channel <a href='/channels/add' target='_blank'>here</a>." style="display: inline; margin-left: 3px;">
+                <svg viewBox="64 64 896 896" data-icon="question-circle" width="1em" height="1em" fill="currentColor" type="button" tabindex="0" style="width: 13px;height: 13px; margin-bottom: 2px;">
+                    <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
+                    <path d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"></path>
+                </svg>
+            </span>
+        </div>
+    </div>
+    <div class="pp7">
+        {{/*        <a class="pp9 w-100" href="#" style="cursor: not-allowed;background-color: #e9ecef;opacity: 0.5;">*/}}
+        <div class="cus-selectpicker pp-9">
+            <select id="channels" name="channels" class="form-control selectpicker">
+                {{range .Channels}}
+                    <option value="{{.TableChannels.Id}}" {{if eq .TableChannels.Id $.Params.Channels}}selected{{end}}>{{.TableChannels.Name}}</option>
+                {{end}}
+            </select>
+            <span class="form-text ms-2 w-auto invalid-feedback"></span>
+        </div>
+
+        {{/*        </a>*/}}
+    </div>
+    <div class="pp15">
+        <div class="pt2">Tags</div>
+    </div>
+    <div class="pp7" style="margin-top: -8px;">
+        <div style="position: relative;">
+            <input style="padding-left: 32px;color: #2f3542;font-size: 13px;font-weight: 400;width: 300px;" class="pp10 input-tags" id="input-tags" type="text" placeholder="Search tags">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="ds-icon-dashboard-search" style="position: absolute;left: 10px;top: 10px;width: 13px;fill: #475470;">
+                <path d="M21.41 18.59L16 13.19A7.52 7.52 0 1 0 13.19 16l5.4 5.39a2 2 0 0 0 2.82-2.82zM9.5 13A3.5 3.5 0 1 1 13 9.5 3.5 3.5 0 0 1 9.5 13z">
+                </path>
+            </svg>
+        </div>
+        <a href="javascript:void(0)" class="tr1 cursor-not-allowed add-tag">Add</a>
+    </div>
+    <div class="pp15">
+        <div class="pt2">Current Tags</div>
+    </div>
+    <div class="pp7">
+        <div class="av1 w-100">
+            <div id="list-tags"></div>
+            <div style="clear:both"></div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+

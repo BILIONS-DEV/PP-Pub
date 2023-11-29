@@ -1,0 +1,112 @@
+{{- /*gotype: source/apps/frontend/controller.AssignBidderEdit*/ -}}
+{{$DemandLang := .Schema.LANG.Pages.LineItem}}
+<div class="dm10">
+    <div class="dm8">
+        <div class="dm9">AdX/Adsense Configs</div>
+        <div class="dm12"></div>
+    </div>
+    <div class="dm11">
+        <div class="pp7">
+            <span class="pp-11 h-32">{{$DemandLang.SelectAccount}}</span>
+            <div class="end-selectpicker pp-9">
+                <select id="select_account" name="select_account" class="form-control selectpicker" title="Select Account" data-live-search="true" data-size="7" disabled>
+                    {{range .ListAccountGoogle}}
+                        <option value="{{.TableBidder.Id}}" data-type="{{.TableBidder.AccountType}}"
+                                {{if eq .TableBidder.Id $.AccountGoogleSelected.TableBidder.Id}}selected{{end}}
+                                data-system="{{if eq .TableBidder.UserId 0}}true{{else}}false{{end}}">{{if eq .TableBidder.ShowOnPub ""}}{{.TableBidder.DisplayName}}{{else}}{{.TableBidder.ShowOnPub}}{{end}}</option>
+                    {{end}}
+                </select> <span class="form-text ms-2 w-auto invalid-feedback"></span>
+            </div>
+        </div>
+        <div class="pp7">
+            <span class="pp-11 h-32">{{$DemandLang.LinkedGam}}</span>
+            <div class="end-selectpicker pp-9">
+                <select id="linked_gam" name="linked_gam" class="form-control selectpicker" title="Select a GAM" data-live-search="true" data-size="7" disabled>
+                    {{range .GamNetworks}}
+                        <option value="{{.TableGamNetwork.Id}}" {{if eq .TableGamNetwork.Id $.Row.TableLineItem.LinkedGam}}selected{{end}}>{{.TableGamNetwork.NetworkName}}</option>
+                    {{end}}
+                </select> <span class="form-text ms-2 w-auto invalid-feedback"></span>
+            </div>
+        </div>
+        <div class="pp7">
+            <span class="pp-11 h-32">{{$DemandLang.SelectConnectionType}}
+                <span class="pp16" type="button" tabindex="0" data-bs-toggle="popover" data-bs-html="true" data-bs-content="There are 2 ways to link your Adsense account with Google Ad Manager. <a href='https://support.google.com/admanager/answer/1670087' target='_blank'>Check it here." style="margin-top: -1px;">
+                    <svg viewBox="64 64 896 896" data-icon="question-circle" width="1em" height="1em" fill="currentColor" type="button" tabindex="0">
+                        <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
+                        <path d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"></path>
+                    </svg>
+                </span>
+            </span>
+            <div class="end-selectpicker pp-9">
+                <select id="select_connection_type" name="connection_type" class="form-control selectpicker" title="Select Connection Type">
+                    {{if and (eq .AccountGoogleSelected.TableBidder.AccountType 2) (eq .AccountGoogleSelected.TableBidder.IsDefault 1)}}
+                        <option value="3" {{if eq .Row.TableLineItem.ConnectionType 3}}selected{{end}}>MCM</option>
+                    {{else}}
+                        <option value="1" {{if eq .Row.TableLineItem.ConnectionType 1}}selected{{end}}>Ad units</option>
+                        <option value="2" {{if eq .Row.TableLineItem.ConnectionType 2}}selected{{end}}>Line items</option>
+                    {{end}}
+                </select> <span class="form-text ms-2 w-auto invalid-feedback"></span>
+            </div>
+        </div>
+        <div class="pp7 box_line_item_type">
+            <span class="pp-11 h-32">{{$DemandLang.SelectLineItemType}}</span>
+            <div class="end-selectpicker pp-9">
+                <select id="select_line_item_type" name="line_item_type" class="form-control selectpicker" title="Select Line Item Type" {{if ne .Row.TableLineItem.GamLineItemType 0}}disabled{{end}}>
+                    <option value="1" {{if eq .Row.TableLineItem.GamLineItemType 1}}selected{{end}}>Display</option>
+                    <option value="2" {{if eq .Row.TableLineItem.GamLineItemType 2}}selected{{end}}>Video</option>
+                </select> <span class="form-text ms-2 w-auto invalid-feedback"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="box-adsense-ad-slot {{if eq .CheckShowAdsenseSlot false}}d-none{{end}}">
+        <div class="dm8">
+            <div class="dm9">Adsense Ad Slots</div>
+            <div class="dm12">
+                <a href="javascript:void(0)" class="add-adslot">+ Add New Ad Slot</a>
+                <div class="pp7 box-c adslot-sample">
+                    <div class="start-selectpicker pp-11 p-0 border-right-0">
+                        <select name="line_item_type" class="form-control select-adsense-ad-slot-size" title="{{$DemandLang.SelectAdsenseAdSlotPlaceholder}}"
+                                data-item-label="{{$DemandLang.SelectAdsenseAdSlot}}" data-item-placeholder="{{$DemandLang.ItemAdsenseAdSlotPlaceholder}}" data-live-search="true" data-size="10">
+                            <option value=""></option>
+                            {{range .Sizes}}
+                                <option id="size-{{.TableAdSize.Name}}"
+                                        {{if (InArray .TableAdSize.Name $.ListSizeSelected false)}}disabled{{end}}
+                                        value="{{.TableAdSize.Name}}">{{.TableAdSize.Name}}</option>
+                            {{end}}
+                        </select> <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                    </div>
+                    <input style="border-radius: 0" class="pp-10 param_value border-left-0" type="number" placeholder="{{$DemandLang.ItemAdsenseAdSlotPlaceholder}}">
+                    <a href="javascript:void(0)" class="dg1 rm_c remove-ad-slot">
+                        <svg xmlns="http://www.w3.org/2000/svg" style="vertical-align: initial;" width="15" height="15" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id="adsense_ad_slot_item">
+            {{range $i, $LineItemAdsenseAdSlot := .LineItemAdsenseAdSlots}}
+                <div class="pp7 box-c">
+                    <div class="start-selectpicker pp-11 p-0 border-right-0">
+                        <select name="line_item_type" class="form-control selectpicker select-adsense-ad-slot-size" title="{{$DemandLang.SelectAdsenseAdSlotPlaceholder}}"
+                                data-item-label="{{$DemandLang.SelectAdsenseAdSlot}}" data-item-placeholder="{{$DemandLang.ItemAdsenseAdSlotPlaceholder}}" data-live-search="true"  data-size="10">
+                            {{range $.Sizes}}
+                                <option class="size-{{.TableAdSize.Name}}" {{if (InArray .TableAdSize.Name $.ListSizeSelected false)}}disabled{{end}}
+                                        {{if eq .TableAdSize.Name $LineItemAdsenseAdSlot.Size}}selected{{end}}
+                                        value="{{.TableAdSize.Name}}">{{.TableAdSize.Name}}</option>
+                            {{end}}
+                        </select> <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                    </div>
+                    <input style="border-radius: 0" class="pp-10 param_value border-left-0" type="number" placeholder="{{$DemandLang.ItemAdsenseAdSlotPlaceholder}}"
+                           id="adsense-ad-slot-{{$LineItemAdsenseAdSlot.Size}}" value="{{$LineItemAdsenseAdSlot.AdsenseAdSlotId}}" data-size="{{$LineItemAdsenseAdSlot.Size}}">
+                    <a href="javascript:void(0)" class="dg1 rm_c remove-ad-slot">
+                        <svg xmlns="http://www.w3.org/2000/svg" style="vertical-align: initial;" width="15" height="15" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"></path>
+                        </svg>
+                    </a>
+                </div>
+            {{end}}
+        </div>
+    </div>
+</div>

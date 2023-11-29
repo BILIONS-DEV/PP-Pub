@@ -1,0 +1,14 @@
+{{- /*gotype: source/apps/frontend/model.PlaylistRecord*/ -}}
+{{if eq .TablePlaylist.IsDefault 1}}
+    <div class="playlist-item-default">
+        <a href="/playlist/view?id={{.Id}}">
+            {{.TablePlaylist.Title}}
+        </a>
+    </div>
+{{else}}
+    <div class="playlist-item">
+        <a href="/playlist/edit?id={{.Id}}">
+            {{.TablePlaylist.Title}}
+        </a>
+    </div>
+{{end}}

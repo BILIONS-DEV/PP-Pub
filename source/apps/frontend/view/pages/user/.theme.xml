@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theme name="muze">
+    <page path="/user/form">
+        <!-- Import CSS -->
+        <css link="/assets/plugins/bootstrap-toggle/css/bootstrap-toggle.min.css"/>
+        <css link="/assets/plugins/select2/dist/css/select2.min.css"/>
+        <css link="/assets/plugins/select2/dist/css/select2-bootstrap.min.css"/>
+        <css link="/assets/plugins/datatables/datatables.min.css"/>
+        <!-- Import JS -->
+        <js link="/assets/plugins/bootstrap-toggle/js/bootstrap-toggle.min.js"/>
+        <js link="/assets/plugins/select2/dist/js/select2.full.js"/>
+        <js link="/assets/plugins/datatables/datatables.min.js"/>
+    </page>
+    <page path="/user/billing" includePath="/user/form">
+        <jsOnBottom link="/assets/user/billing.js"/>
+    </page>
+    <page path="/user/account" includePath="/user/form">
+        <jsOnBottom link="/assets/user/account.js"/>
+    </page>
+    <page path="/user/password" includePath="/user/form">
+        <jsOnBottom link="/assets/user/account.js"/>
+    </page>
+    <page path="/user/forgot-password" includePath="/user/form">
+        <jsOnBottom link="/assets/user/forget-password.js"/>
+    </page>
+    <page path="/user/new-password" includePath="/user/form">
+        <jsOnBottom link="/assets/user/new-password.js"/>
+    </page>
+</theme>

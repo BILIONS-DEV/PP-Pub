@@ -1,0 +1,158 @@
+{{- /*gotype: source/apps/frontend/controller.AssignPlayerEdit*/ -}}
+{{$lang := .Schema.LANG.Pages.Template}}
+
+<div class="pt1" style="border-top: 0;">
+    <div class="pp15">
+        <div class="pp5">Display Options</div>
+    </div>
+    <div class="pp7">
+        <div>
+            <div>
+                <input id="show_main_title" name="main_title" type="checkbox" {{if eq .Row.TableTemplate.MainTitle 1}}checked{{end}}>
+                <label class="light-font-label" for="show_main_title">Show main title</label>
+            </div>
+            <div>
+                <input id="show_content_title" name="title_enable" type="checkbox" {{if eq .Row.TableTemplate.TitleEnable 1}}checked{{end}}>
+                <label class="light-font-label" for="show_content_title">Show content title</label>
+            </div>
+
+            <div class="box-show-content-desc">
+                <input id="show_content_description" name="description_enable" type="checkbox" {{if eq .Row.TableTemplate.DescriptionEnable 1}}checked{{end}}>
+                <label class="light-font-label" for="show_content_description">Show content description</label>
+            </div>
+
+            <div>
+                <input id="show_controls" name="show_controls" type="checkbox" {{if eq .Row.TableTemplate.ShowControls 1}}checked{{end}}>
+                <label class="light-font-label" for="show_controls">Show controls</label>
+            </div>
+
+        </div>
+    </div>
+    <div class="pp15">
+        <div class="pt2">Main Title Text</div>
+    </div>
+    <div class="pp7">
+        <div class="pp-9">
+            <input id="main_title_text" name="main_title_text" class="pp-10 form-control" type="text"
+                   value="{{.Row.TableTemplate.MainTitleText}}">
+            <span class="form-text ms-1 w-auto invalid-feedback"></span>
+        </div>
+    </div>
+</div>
+<div class="pt1">
+    <div class="pp15">
+        <div class="pp5">Color</div>
+    </div>
+    <div class="pp7 box-controls-color">
+        <div class="pt97">Controls:</div>
+        <input type="color" class="input-color" value="{{.Row.TableTemplate.ControlColor}}" style="width: 32px;height: 32px;background: #EEEEEE;border: 1px solid #aab4c8;border-radius: 2px 0 0 2px;cursor: pointer">
+        <input style="border-radius: 0 2px 2px 0;" class="pp10 w-100 input-color form-control border-left-0" id="control_color" name="control_color" type="text" value="{{.Row.TableTemplate.ControlColor}}">
+    </div>
+    <div class="pp7 box-background-color">
+        <div class="pt97">Background:</div>
+        <input type="color" class="input-color" value="{{.Row.TableTemplate.BackgroundColor}}" style="width: 32px;height: 32px;background: #EEEEEE; border: 1px solid #aab4c8;border-radius: 2px 0 0 2px;cursor: pointer">
+        <input style="border-radius: 0 2px 2px 0;" class="pp10 w-100 input-color form-control border-left-0" id="background_color" name="background_color" type="text" value="{{.Row.TableTemplate.BackgroundColor}}">
+    </div>
+    <div class="pp7 box-title-color">
+        <div class="pt97">Title:</div>
+        <input type="color" class="input-color" value="{{.Row.TableTemplate.TitleColor}}" style="width: 32px;height: 32px;background: #EEEEEE;border: 1px solid #aab4c8;border-radius: 2px 0 0 2px;cursor: pointer">
+        <input style="border-radius: 0 2px 2px 0;" class="pp10 w-100 input-color form-control border-left-0" id="title_color" name="title_color" type="text" value="{{.Row.TableTemplate.TitleColor}}">
+    </div>
+    <div class="pp7 box-description-color">
+        <div class="pt97">Description:</div>
+        <input type="color" class="input-color" value="{{.Row.TableTemplate.DescriptionColor}}" style="width: 32px;height: 32px;background: #EEEEEE;border: 1px solid #aab4c8;border-radius: 2px 0 0 2px;cursor: pointer">
+        <input style="border-radius: 0 2px 2px 0;" class="pp10 w-100 input-color form-control border-left-0" id="description_color" name="description_color" type="text" value="{{.Row.TableTemplate.DescriptionColor}}">
+    </div>
+    <div class="pp7 box-theme-color">
+        <div class="pt97">Theme:</div>
+        <input type="color" class="input-color" value="{{.Row.TableTemplate.ThemeColor}}" style="width: 32px;height: 32px;background: #EEEEEE; border: 1px solid #aab4c8;border-radius: 2px 0 0 2px;cursor: pointer">
+        <input style="border-radius: 0 2px 2px 0;" class="pp10 w-100 input-color form-control border-left-0" id="theme_color" name="theme_color" type="text" value="{{.Row.TableTemplate.ThemeColor}}">
+    </div>
+    <div class="pp7 box-title-background-color">
+        <div class="pt97">Title Background:</div>
+        <input type="color" class="input-color" value="{{.Row.TableTemplate.TitleBackgroundColor}}" style="width: 32px;height: 32px;background: #EEEEEE;border: 1px solid #ccc;border-right: 0;border-radius: 2px 0 0 2px;cursor: pointer">
+        <input style="border-radius: 0 2px 2px 0;" class="pp10 w-100 input-color form-control border-left-0" id="title_background_color" name="title_background_color" type="text" value="{{.Row.TableTemplate.TitleBackgroundColor}}">
+    </div>
+</div>
+<div class="pt1">
+    <div class="pp15">
+        <div class="pp5">Controls</div>
+    </div>
+    <div class="pp7">
+        <div>
+            <div>
+                <input id="fullscreen_button" name="fullscreen_button" class="controls" type="checkbox" {{if eq .Row.TableTemplate.FullscreenButton 1}}checked{{end}}>
+                <label class="light-font-label" for="fullscreen_button">Fullscreen Button</label>
+            </div>
+            <div>
+                <input id="next_prev_arrows" name="next_prev_arrows_button" class="controls" type="checkbox" {{if eq .Row.TableTemplate.NextPrevArrowsButton 1}}checked{{end}}>
+                <label class="light-font-label" for="next_prev_arrows">Next / Prev Arrows</label>
+            </div>
+            <div>
+                <input id="next_prev_10_sec" name="next_prev_time" class="controls" type="checkbox" {{if eq .Row.TableTemplate.NextPrevTime 1}}checked{{end}}>
+                <label class="light-font-label" for="next_prev_10_sec">Next / Prev 10 sec</label>
+            </div>
+            <div>
+                <input id="video_config" name="video_config" class="controls" type="checkbox" {{if eq .Row.TableTemplate.VideoConfig 1}}checked{{end}}>
+                <label class="light-font-label" for="video_config">Video Config</label>
+            </div>
+            <div>
+                <input id="show_view_likes" name="show_stats" class="controls" type="checkbox" {{if eq .Row.TableTemplate.ShowStats 1}}checked{{end}}>
+                <label class="light-font-label" for="show_view_likes">Show Views/Likes</label>
+            </div>
+            <div>
+                <input id="share_button" name="share_button" class="controls" type="checkbox" {{if eq .Row.TableTemplate.ShareButton 1}}checked{{end}}>
+                <label class="light-font-label" for="share_button">Share Button</label>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="pt1">
+    <div class="pp15">
+        <div class="pp5">Logo</div>
+    </div>
+    <div class="pp7">
+        <div>
+            <input type="hidden" name="custom_logo" value="{{.Row.TableTemplate.CustomLogo}}">
+            <div>
+                <input id="show_logo" name="enable_logo" class="logo-config" type="checkbox" {{if eq .Row.TableTemplate.EnableLogo 1}}checked{{end}}>
+                <label class="light-font-label logo-config" for="show_logo">Show logo</label>
+            </div>
+            <div>
+                <input id="powered_by_pubpower" name="powered_by" class="logo-config" type="checkbox" {{if eq .Row.TableTemplate.PoweredBy 1}}checked{{end}}>
+                <label class="light-font-label" for="powered_by_pubpower">Powered by Valueimpression</label>
+            </div>
+        </div>
+    </div>
+    <div class="pp7">
+        <p style="font-size: 13px;">Recommended dimensions: We recommend logos have a height of 44px for control bar placement, and 60px elsewhere.</p>
+    </div>
+    <div class="pp15">
+        <div class="pt2">Select Logo</div>
+    </div>
+    <div class="pp7">
+        <div class="pt99 d-flex justify-content-center">
+            <img id="preview-logo" src="{{.Row.TableTemplate.Link}}" style="height: 92px">
+            <input type="file" class="d-none" name="link" id="logo" value="{{.Row.TableTemplate.Link}}">
+        </div>
+    </div>
+    <div class="pp7">
+        <a class="pt98 btn-add-logo logo-config">ADD</a>
+    </div>
+    <div class="pp15">
+        <div class="pt2">URL</div>
+    </div>
+    <div class="pp7">
+        <div class="pp-9">
+            <input id="click_through" name="click_through" class="pp-10 form-control logo-config" type="text"
+                   placeholder="https://pubpowe.io" value="{{.Row.TableTemplate.ClickThrough}}">
+            <span class="form-text ms-1 w-auto invalid-feedback"></span>
+        </div>
+    </div>
+</div>
+
+<style>
+    input::-webkit-color-swatch {
+        border: none;
+    }
+</style>

@@ -1,0 +1,134 @@
+{{- /*gotype: source/apps/frontend/controller.AssignInventory*/ -}}
+{{$TabConsent := .Schema.LANG.Pages.Inventory.Setup.TabConsent}}
+<form id="formConsent">
+    <div class="pp6">
+        <input hidden value="{{.Config.TableInventoryConfig.Id}}" name="id"/>
+        <input hidden value="{{.Row.TableInventory.Id}}" name="inventory_id"/>
+        <div class="pp14">
+            <div class="pp5">{{$TabConsent.GDPR}}</div>
+            <div class="pp7">
+                <label class="switch">
+                    <input type="checkbox" id="gdpr" name="gdpr" {{if eq .Config.TableInventoryConfig.Gdpr 1}}checked{{end}}>
+                    <span class="slider round"></span> </label>
+                <div class="pp8">
+                    The EU’s new data protection law. For more information, see
+                    <a href="https://gdpr.eu/what-is-gdpr" target="_blank">this document.</a>
+                </div>
+            </div>
+            {{/*Gam Adunit Auto Create*/}}
+
+            <div id="enable_custom_gdpr" {{if ne .Config.TableInventoryConfig.Gdpr 1}}hidden{{end}}>
+                <div class="pp15">
+                    <div class="pp5">{{$TabConsent.Timeout}}</div>
+                    <span class="pp16" type="button" tabindex="0" data-bs-toggle="popover" data-bs-content="{{$TabConsent.TimeoutDesc}}">
+                        <svg viewBox="64 64 896 896" focusable="false" data-icon="question-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                            <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
+                            <path d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"></path>
+                        </svg>
+                    </span>
+                </div>
+                <div class="pp-9">
+                    <div class="pp7">
+                        <input style="width: 224px;border-top-right-radius: 0;border-bottom-right-radius: 0;" class="pp10" type="number" placeholder="30"
+                               id="gdpr_timeout" name="gdpr_timeout" value="{{.Config.TableInventoryConfig.GdprTimeout}}">
+                        <div class="pp11"><span style="width: 50px">ms</span></div>
+                        <div class="pp8"></div>
+                    </div>
+                    <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                </div>
+            </div>
+            {{/*Prebid Timeout*/}}
+
+            <div class="pp15">
+                <div class="pp5">{{$TabConsent.CustomBrand}}</div>
+                <span class="pp16" type="button" tabindex="0" data-bs-toggle="popover" data-bs-content="{{$TabConsent.CustomBrandDesc}}">
+                <svg viewBox="64 64 896 896" focusable="false" data-icon="question-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                    <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
+                    <path d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"></path>
+                </svg>
+            </span>
+            </div>
+            <div class="pp7">
+                <label class="switch">
+                    <input type="checkbox" id="custom_brand" name="custom_brand" {{if eq .Config.TableInventoryConfig.CustomBrand 1}}checked{{end}}>
+                    <span class="slider round"></span> </label>
+                <div class="pp8"></div>
+            </div>
+            {{/*Custom Brand*/}}
+
+            <div id="enable_custom_brand" {{if ne .Config.TableInventoryConfig.CustomBrand 1}}hidden{{end}}>
+                <div class="pp15">
+                    <div class="pp5">{{$TabConsent.Logo}}</div>
+                </div>
+                <div class="pp7">
+                    <div class="pp-9">
+                        <input style="border-top-right-radius: 0;border-bottom-right-radius: 0;" class="pp10 form-control" type="text" placeholder="{{$TabConsent.LogoPlaceholder}}" id="custom_brand_logo" name="custom_brand_logo" value="{{.Config.TableInventoryConfig.Logo}}">
+                        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                        <div class="pp8">
+                        </div>
+                    </div>
+                </div>
+                <div class="pp15">
+                    <div class="pp5">{{$TabConsent.Title}}</div>
+                </div>
+                <div class="pp7">
+                    <div class="pp-9">
+                        <input style="border-top-right-radius: 0;border-bottom-right-radius: 0;" class="pp10 form-control" type="text" placeholder="{{$TabConsent.TitlePlaceholder}}" id="custom_brand_title" name="custom_brand_title" value="{{.Config.TableInventoryConfig.Title}}">
+                        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                        <div class="pp8"></div>
+                    </div>
+                </div>
+                <div class="pp15">
+                    <div class="pp5">{{$TabConsent.Content}}</div>
+                </div>
+                <div class="pp7">
+                    <div class="pp-9">
+                        <textarea class="pp17 form-control" name="custom_brand_content" id="custom_brand_content" placeholder="{{$TabConsent.ContentPlaceholder}}" spellcheck="false">{{.Config.TableInventoryConfig.Content}}</textarea>
+                        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                        <div class="pp8"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pp14">
+            <div class="pp5">{{$TabConsent.CCPA}}</div>
+            <div class="pp7">
+                <label class="switch">
+                    <input type="checkbox" id="ccpa" name="ccpa" {{if eq .Config.TableInventoryConfig.Ccpa 1}}checked{{end}}>
+                    <span class="slider round"></span> </label>
+                <div class="pp8">
+                    California Consumer Privacy Act (CCPA). For more information, see
+                    <a href="https://oag.ca.gov/privacy/ccpa" target="_blank">this document.</a>
+                </div>
+            </div>
+            <div id="enable_custom_ccpa" {{if ne .Config.TableInventoryConfig.Ccpa 1}}hidden{{end}}>
+                <div class="pp15">
+                    <div class="pp5">{{$TabConsent.Timeout}}</div>
+                    <span class="pp16" type="button" tabindex="0" data-bs-toggle="popover" data-bs-content="{{$TabConsent.TimeoutDesc}}">
+                        <svg viewBox="64 64 896 896" focusable="false" data-icon="question-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                            <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
+                            <path d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"></path>
+                        </svg>
+                    </span>
+                </div>
+                <div class="pp-9">
+                    <div class="pp7">
+                        <input style="width: 224px;border-top-right-radius: 0;border-bottom-right-radius: 0;" class="pp10" type="number" placeholder="30"
+                               id="ccpa_timeout" name="ccpa_timeout" value="{{.Config.TableInventoryConfig.CcpaTimeout}}">
+                        <div class="pp11"><span style="width: 50px">seconds</span></div>
+                        <div class="pp8"></div>
+                    </div>
+                    <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<style>
+    .hr_custom {
+        border-color: #e2e6e9 !important;
+        color: #a7a7a7;
+        margin: 0 -50px 0 -50px;
+    }
+</style>

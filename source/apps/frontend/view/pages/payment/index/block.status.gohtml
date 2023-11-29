@@ -1,0 +1,14 @@
+{{- /*gotype: source/apps/backend/model.PaymentInvoiceRecord*/ -}}
+{{if eq .TablePaymentInvoice.Status 1}}
+    {{/*    <span class="badge bg-warning text-capitalize text-warning-600 p-2">{{.TablePaymentInvoice.Status}}</span>*/}}
+    <span>Pending</span>
+{{else if eq .TablePaymentInvoice.Status 2}}
+    {{/*    <span class="badge bg-success text-capitalize p-2">{{.TablePaymentInvoice.Status}}</span>*/}}
+    <span>Approved</span>
+{{else if eq .TablePaymentInvoice.Status 3}}
+{{/*    <span class="badge bg-primary-50 text-capitalize text-primary-600 py-2">{{.TablePaymentInvoice.Status}}</span>*/}}
+    <span>Prepaid Paid</span>
+{{else if eq .TablePaymentInvoice.Status 4}}
+    {{/*    <span class="badge bg-danger-50 text-capitalize text-danger-600 py-2">{{.TablePaymentInvoice.Status}}</span>*/}}
+    <span>Rejected</span>
+{{end}}

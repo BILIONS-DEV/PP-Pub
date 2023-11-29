@@ -1,0 +1,22 @@
+{{- /*gotype: source/apps/frontend/controller.AssignPlayerEdit*/ -}}
+<div class="dm10">
+    <div class="dm8">
+        <div class="dm9">Preview</div>
+    </div>
+    <div class="dm11">
+        <div id="videocontainer" class="adsbyvli"></div>
+        <script type="text/javascript">
+            (vitag.Init = window.vitag.Init || []).push(function () {
+                var config = {{.Config}};
+                {{if eq .Row.TableTemplate.Type 4}}
+                viAPItag.initPinzoneTemplate(JSON.parse(config));
+                {{else if eq .Row.TableTemplate.Type 3}}
+                viAPItag.initPowerVideoContainer(JSON.parse(config));
+                $("#videocontainer").css("min-height", "490px");
+                {{else if eq .Row.TableTemplate.Type 2}}
+                viAPItag.initPowerVideoContainer(JSON.parse(config));
+                {{end}}
+            });
+        </script>
+    </div>
+</div>

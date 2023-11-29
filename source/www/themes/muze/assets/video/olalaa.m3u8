@@ -1,0 +1,11 @@
+#EXTM3U
+#EXT-X-VERSION:3
+#EXT-X-TARGETDURATION:10
+#EXT-X-MEDIA-SEQUENCE:0
+#EXTINF:10.416667,
+https://self-serve.interdogmedia.com/video?id=0
+#EXTINF:10.416667,
+https://self-serve.interdogmedia.com/video?id=1
+#EXTINF:9.125000,
+https://self-serve.interdogmedia.com/video?id=2
+#EXT-X-ENDLIST

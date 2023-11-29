@@ -1,0 +1,81 @@
+{{- /*gotype: source/apps/frontend/controller.AssignChannelsEdit*/ -}}
+{{$Channels := .Schema.LANG.Pages.Channels}}
+<div class="pp15">
+    <div class="pt2">{{$Channels.Name}}</div>
+</div>
+<div class="pp7">
+    <div class="pp-9">
+        <input class="pp-10 form-control" type="text" id="name" name="name">
+        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+    </div>
+</div>
+{{/*Title*/}}
+<div class="pp15">
+    <div class="pt2">{{$Channels.Description}}</div>
+</div>
+<div class="pp7">
+    <div class="pp-9">
+        <textarea class="pp17" spellcheck="false" id="description" name="description"></textarea>
+        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+    </div>
+</div>
+{{/*Content Description*/}}
+<div class="pp15">
+    <div class="pt2">{{$Channels.Category}}</div>
+</div>
+<div class="pp7">
+    <div class="cus-selectpicker pp-9">
+        <select id="category" name="category" class="form-control selectpicker" data-size="6" data-live-search="true">
+            {{range .Categories}}
+                <option value="{{.TableCategory.Id}}">{{.TableCategory.Name}}</option>
+            {{end}}
+        </select>
+    </div>
+</div>
+{{/*Category*/}}
+
+<div class="pp15">
+    <div class="pt2">{{$Channels.Language}}</div>
+</div>
+<div class="pp7">
+    <div class="cus-selectpicker pp-9">
+        <select id="language" name="language" class="form-control selectpicker" data-size="6" data-live-search="true">
+            {{range .Languages}}
+                <option value="{{.TableLanguage.Id}}" {{if eq .TableLanguage.Code "en"}}selected{{end}}>{{.TableLanguage.LanguageName}}</option>
+            {{end}}
+        </select>
+    </div>
+</div>
+{{/*Category*/}}
+<div class="pp15">
+    <div class="pt2">Tags</div>
+</div>
+<div class="pp7" style="margin-top: -8px;">
+    <div style="position: relative;">
+        <input style="padding-left: 32px;color: #2f3542;font-size: 13px;font-weight: 400;width: 300px;" class="pp10 input-tags" id="input-tags" type="text" placeholder="Search tags">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="ds-icon-dashboard-search" style="position: absolute;left: 10px;top: 10px;width: 13px;fill: #475470;">
+            <path d="M21.41 18.59L16 13.19A7.52 7.52 0 1 0 13.19 16l5.4 5.39a2 2 0 0 0 2.82-2.82zM9.5 13A3.5 3.5 0 1 1 13 9.5 3.5 3.5 0 0 1 9.5 13z">
+            </path>
+        </svg>
+    </div>
+    <a href="javascript:void(0)" class="tr1 cursor-not-allowed add-tag">Add</a>
+</div>
+<div class="pp15">
+    <div class="pt2">Current Tags</div>
+</div>
+<div class="pp7">
+    <div class="av1 w-100">
+        <div id="list-tags"></div>
+        <div style="clear:both"></div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,120 @@
+{{- /*gotype: source/apps/frontend/controller.CopyTag*/ -}}
+<div class="it4">
+    <div class="it7">
+        <h3>Header JS</h3>
+    </div>
+    <div class="it10">
+        <p>Place the below script inside the <span style="color: #0b7ef4;">&lt;head&gt;&lt;/head&gt;</span> of the page
+        </p>
+    </div>
+    <div class="it11">
+        <div class="it12 cus-selectpicker">
+
+            <label>Js Load Type</label>
+            <select class="form-control selectpicker js-load-type">
+                <option value="asynchronous">Asynchronous</option>
+                <option value="normal">Normal</option>
+            </select>
+        </div>
+        <div class="it13 js-type-asynchronous">
+            <label>Code Snippet</label>
+            <input type="text" class="it5" id="pw_11441" readonly="readonly" onclick="this.select();" style="max-height: 32px" value='<script type="text/javascript" src="//cdn.vlitag.com/w/{{.Inventory.TableInventory.Uuid}}.js" async defer></script><script>var vitag = vitag || {};vitag.gdprShowConsentToolButton = false;</script>'>
+        </div>
+        <div class="it13 js-type-normal d-none">
+            <label>Code Snippet</label>
+            <input type="text" class="it5" id="pw_11441" readonly="readonly" onclick="this.select();" style="max-height: 32px" value='<script type="text/javascript" src="//cdn.vlitag.com/w/{{.Inventory.TableInventory.Uuid}}.js"></script><script>var vitag = vitag || {};vitag.gdprShowConsentToolButton = false;</script>'>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div class="it4 border-bottom-0">
+    <div class="it7">
+        <h3>Place the tag code below at where you want the ad instream</h3>
+    </div>
+    <table class="supply-list">
+        <thead>
+        <tr>
+            <th>Tag Name</th>
+            <th>Code Snippet</th>
+            <th style="min-width: 65px">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{if not .ListAdTagInstream}}
+            <tr>
+                <td colspan="3">
+                    <p class="text-danger">Sorry, we couldn't find any data. Please initialize your ad tag</p></td>
+            </tr>
+        {{else}}
+            {{range .ListAdTagInstream}}
+                {{if eq .AdTag.TableInventoryAdTag.Renderer 6}}
+                    <tr>
+                        <td>{{.AdTag.TableInventoryAdTag.Name}}</td>
+                        <td>
+                            <input type="text" class="it5" id="pw_{{.AdTag.TableInventoryAdTag.Id}}"
+                                   value='<button onclick="loadAd();">Load AD</button> <div class="adsbyvli" data-ad-slot="pw_{{.AdTag.TableInventoryAdTag.Id}}"></div> <script> var vitag = vitag || {}; vitag.instreamConfig = vitag.instreamConfig || {}; vitag.instreamConfig = {loadingText: "Loading advertisement..",started: function(){}, complete: function() {}, error: function() {}, hidden: function() {} }; function loadAd() { (vitag.Init = window.vitag.Init || []).push(function () { viAPItag.initPowerInstream("pw_{{.AdTag.TableInventoryAdTag.Id}}"); }); } </script>'
+                                   readonly="readonly"
+                                   onclick="this.select();">
+                        </td>
+                        <td class="it8">
+                            <a class="it6 copy-adtag text-black" data-id="{{.AdTag.TableInventoryAdTag.Id}}" href="javascript:void(0)" for="pw_{{.AdTag.TableInventoryAdTag.Id}}">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="ds-icon-dashboard-copy">
+                                    <path d="M19.75 8.69h-2.37V6.31a2 2 0 0 0-2-2H4.25a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2.37v2.38a2 2 0 0 0 2 2h11.13a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2zm-15.5 4.62v-7h11.13v2.38H8.62a2 2 0 0 0-2 2v2.62zm15.5 4.38H8.62v-7h11.13z">
+                                    </path>
+                                </svg>
+                            </a>
+                        </td>
+                    </tr>
+                {{else}}
+                    <tr>
+                        <td>{{.AdTag.TableInventoryAdTag.Name}}</td>
+                        <td>
+                            <input type="text" class="it5" id="pw_{{.AdTag.TableInventoryAdTag.Id}}" value='<div class="adsbyvli" data-ad-slot="pw_{{.AdTag.TableInventoryAdTag.Id}}"></div> <script type="text/javascript"> (vitag.Init = window.vitag.Init || []).push(function () { viAPItag.initPowerInstream("pw_{{.AdTag.TableInventoryAdTag.Id}}"); }); </script>' readonly="readonly" onclick="this.select();">
+                        </td>
+                        <td class="it8">
+                            <a class="it6 copy-adtag text-black" data-id="{{.AdTag.TableInventoryAdTag.Id}}" href="javascript:void(0)" for="pw_{{.AdTag.TableInventoryAdTag.Id}}">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="ds-icon-dashboard-copy">
+                                    <path d="M19.75 8.69h-2.37V6.31a2 2 0 0 0-2-2H4.25a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2.37v2.38a2 2 0 0 0 2 2h11.13a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2zm-15.5 4.62v-7h11.13v2.38H8.62a2 2 0 0 0-2 2v2.62zm15.5 4.38H8.62v-7h11.13z">
+                                    </path>
+                                </svg>
+                            </a>
+                        </td>
+                    </tr>
+                {{end}}
+            {{end}}
+        {{end}}
+        {{if .VastAdTagInstream}}
+            {{range .VastAdTagInstream}}
+                <tr class="box-vast">
+                    <td class="cus-selectpicker width-70">
+                        <span>{{.AdTag.TableInventoryAdTag.Name}}</span>
+                        <select name="" id="" class="vast-type form-control selectpicker pl-2">
+                            <option value="vpaid">Vpaid</option>
+                            <option value="vast">Vast</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" class="it5 vast-type-vpaid" id="pw_vpaid" value='{{.VastVpaid.VastUrl}}' readonly="readonly" onclick="this.select();">
+                        <input type="text" class="it5 vast-type-vast d-none" id="pw_vast" value='{{.VastS2s.VastUrl}}' readonly="readonly" onclick="this.select();">
+                    </td>
+                    <td class="it8">
+                        <a class="it6 copy-adtag vast-type-vpaid text-black" data-id="vpaid" href="javascript:void(0)" for="pw_vpaid">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="ds-icon-dashboard-copy">
+                                <path d="M19.75 8.69h-2.37V6.31a2 2 0 0 0-2-2H4.25a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2.37v2.38a2 2 0 0 0 2 2h11.13a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2zm-15.5 4.62v-7h11.13v2.38H8.62a2 2 0 0 0-2 2v2.62zm15.5 4.38H8.62v-7h11.13z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a class="it6 copy-adtag vast-type-vast d-none text-black" data-id="vast" href="javascript:void(0)" for="pw_vast">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="ds-icon-dashboard-copy">
+                                <path d="M19.75 8.69h-2.37V6.31a2 2 0 0 0-2-2H4.25a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2.37v2.38a2 2 0 0 0 2 2h11.13a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2zm-15.5 4.62v-7h11.13v2.38H8.62a2 2 0 0 0-2 2v2.62zm15.5 4.38H8.62v-7h11.13z">
+                                </path>
+                            </svg>
+                        </a>
+                    </td>
+                </tr>
+            {{end}}
+        {{end}}
+
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,67 @@
+{{template "content/index/inc.header" .}}
+{{/*End Header*/}}
+
+<div class="pubpower-main pb-3 height-main">
+    <div class="container-fluid px-0">
+        <div class="row">
+            <div class="col-12 mb-4">
+                <div class="card">
+                    <div class="align-items-center p-0 pb-4 col-md-12">
+                        <div class="ms-auto col-md-12 filter p-0">
+                            {{template "content/index/inc.filter" .}}
+                        </div>
+                    </div>
+                    <div class="table-responsive" style="height:65vh">
+                        <table id="tableContents" class="table table-nowrap table-list w-100 dataTable no-footer">
+                            <thead>
+                            <tr>
+                                <th><strong>Content</strong></th>
+                                <th><strong>Type</strong></th>
+                                <th data-orderable="false" style="max-width:130px"><strong>Action</strong></th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .modal_cus {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0); /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    }
+
+    .modal-content-cus {
+        background-color: #fefefe;
+        margin: 5% auto; /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 50%; /* Could be more or less, depending on screen size */
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>

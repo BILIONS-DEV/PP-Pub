@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theme name="muze">
+    <page path="/content">
+        <!-- Import CSS -->
+        <css link="/assets/plugins/bootstrap431/css/bootstrap.min.css"/>
+        <css link="/assets/plugins/datatables/datatables.min.css"/>
+        <css link="/assets/plugins/ajax-bootstrap-select-1.4.5/dist/css/ajax-bootstrap-select.min.css"/>
+        <css link="/assets/plugins/bootstrap-select-1.13.18/css/bootstrap-select.min.css"/>
+        <!-- Import JS -->
+        <js link="/assets/js/popper.min.js"/>
+        <js link="/assets/plugins/bootstrap431/js/bootstrap.min.js"/>
+        <js link="/assets/plugins/datatables/datatables.min.js"/>
+        <js link="/assets/plugins/select2/dist/js/select2.full.js"/>
+        <js link="/assets/plugins/bootstrap-select-1.13.18/js/bootstrap-select.min.js"/>
+        <js link="/assets/plugins/ajax-bootstrap-select-1.4.5/dist/js/ajax-bootstrap-select.min.js"/>
+        <jsOnBottom link="/assets/content/index.js"/>
+        <jsOnBottom link="/assets/js/hls.min.js"/>
+    </page>
+
+    <page path="/content/form">
+        <!-- Import CSS -->
+        <css link="/assets/plugins/bootstrap431/css/bootstrap.min.css"/>
+        <css link="/assets/plugins/bootstrap-toggle/css/bootstrap-toggle.min.css"/>
+        <css link="/assets/plugins/bootstrap-select-1.13.18/css/bootstrap-select.min.css"/>
+        <!--        <css link="/assets/plugins/select2/dist/css/select2.min.css"/>-->
+        <!--        <css link="/assets/plugins/select2/dist/css/select2-bootstrap.min.css"/>-->
+        <!--        <css link="/assets/plugins/datatables/datatables.min.css"/>-->
+        <!-- Import JS -->
+        <!--        <js link="/assets/plugins/select2/dist/js/select2.full.js"/>-->
+        <js link="/assets/js/popper.min.js"/>
+        <js link="/assets/plugins/bootstrap431/js/bootstrap.min.js"/>
+        <js link="/assets/plugins/bootstrap-toggle/js/bootstrap-toggle.min.js"/>
+        <js link="/assets/plugins/daterangepicker/moment.min.js"/>
+        <!--        <js link="/assets/plugins/datatables/datatables.min.js"/>-->
+        <js link="/assets/plugins/bootstrap-select-1.13.18/js/bootstrap-select.min.js"/>
+        <js link="/assets/plugins/jquery-collapser/dist/jquery.collapser.min.js"/>
+        <js link="/assets/plugins/sweetalert/sweetalert.min.js"/>
+        <js link="/assets/js/hls.min.js"/>
+    </page>
+
+    <page path="/content/add" includePath="/content/form">
+        <jsOnBottom link="/assets/content/add.js"/>
+    </page>
+    <page path="/content/add/video" includePath="/content/form">
+        <jsOnBottom link="/assets/content/add.js"/>
+    </page>
+    <page path="/content/quiz/add" includePath="/content/form">
+        <jsOnBottom link="/assets/content/add-quiz.js"/>
+    </page>
+    <page path="/content/quiz/edit" includePath="/content/form">
+        <jsOnBottom link="/assets/content/edit-quiz.js"/>
+    </page>
+    <page path="/content/edit/quiz" includePath="/content/form">
+        <jsOnBottom link="/assets/content/edit.js"/>
+    </page>
+    <page path="/content/edit/video" includePath="/content/form">
+        <jsOnBottom link="/assets/content/edit.js"/>
+    </page>
+</theme>

@@ -1,0 +1,130 @@
+{{- /*gotype: source/apps/frontend/controller.CopyTag*/ -}}
+<form id="toolCopyTag">
+    <div class="it4">
+        <div class="it7">
+            <h3>Generate Responsive Ad Tag</h3>
+        </div>
+        <div class="it10">
+            <p>This responsive ad tag automatically switches based on device type: Desktop or Mobile. Place this ad unit
+                at where you want it display.</p>
+        </div>
+        <div class="it-11">
+            <div class="it-12">
+                <label>Desktop Tag</label>
+                <div class="cus-selectpicker pp-9">
+                    <select id="desktop_tag" name="desktop_tag" class="form-control selectpicker">
+                        {{range .ListTagTool}}
+                            <option value="{{.TableInventoryAdTag.Id}}" data-type="{{.TableInventoryAdTag.Type.Int}}">{{.TableInventoryAdTag.Name}}</option>
+                        {{end}}
+                    </select> <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                </div>
+                {{/*Desktop Tag*/}}
+
+                <div class="box-mobile-sticky">
+                    <label style="margin-top: 20px;">Mobile Tag</label>
+                    <div class="cus-selectpicker pp-9">
+                        <select id="mobile_tag_sticky" name="mobile_tag" disabled class="form-control selectpicker"
+                                title="Select mobile tag">
+                            {{range .ListTagTool}}
+                                {{if eq .TableInventoryAdTag.Type 5}}
+                                    <option value="{{.TableInventoryAdTag.Id}}" data-type="{{.TableInventoryAdTag.Type.Int}}">{{.TableInventoryAdTag.Name}}</option>
+                                {{end}}
+                            {{end}}
+                        </select> <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                    </div>
+                </div>
+                {{/*Mobile Tag Sticky*/}}
+
+                <div class="d-none box-mobile-display">
+                    <label style="margin-top: 20px;">Mobile Tag</label>
+                    <div class="cus-selectpicker pp-9">
+                        <select id="mobile_tag_display" class="form-control selectpicker" title="Select mobile tag">
+                            {{range .ListTagTool}}
+                                {{if eq .TableInventoryAdTag.Type 1}}
+                                    <option value="{{.TableInventoryAdTag.Id}}" data-type="{{.TableInventoryAdTag.Type.Int}}">{{.TableInventoryAdTag.Name}}</option>
+                                {{end}}
+                            {{end}}
+                        </select> <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                    </div>
+                </div>
+                {{/*Mobile Tag Desktop*/}}
+
+                {{/*            <a class="pp9 pp-9" href="#"> <span>cumaps.net_sticky_desktop_970x90</span>*/}}
+                {{/*                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="ds-icon-dashboard-chevron-down" style="width: 10px;">*/}}
+                {{/*                    <path d="M4 6a2 2 0 0 1 1.41.59L12 13.17l6.59-6.58a2 2 0 0 1 2.82 2.82l-8 8a2 2 0 0 1-2.82 0l-8-8A2 2 0 0 1 4 6z">*/}}
+                {{/*                    </path>*/}}
+                {{/*                </svg>*/}}
+                {{/*            </a> */}}
+
+                {{/*            <label style="margin-top: 20px;">Mobile Tag</label> <a class="pp9 pp-9" href="#">*/}}
+                {{/*                <span>cumaps.net_mobile_sticky_320x100</span>*/}}
+                {{/*                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="ds-icon-dashboard-chevron-down" style="width: 10px;">*/}}
+                {{/*                    <path d="M4 6a2 2 0 0 1 1.41.59L12 13.17l6.59-6.58a2 2 0 0 1 2.82 2.82l-8 8a2 2 0 0 1-2.82 0l-8-8A2 2 0 0 1 4 6z">*/}}
+                {{/*                    </path>*/}}
+                {{/*                </svg>*/}}
+                {{/*            </a>*/}}
+
+                <div class="box_display">
+                    <div class="pp5" style="margin-top: 20px;">Placeholder</div>
+                    <div class="pp7">
+                        <label class="switch"> <input type="checkbox" id="place_holder" name="place_holder" checked>
+                            <span class="slider round"></span> </label>
+                        <div class="pp8">
+                            This display Placeholder while ads loading. Check out
+                            <a href="https://valueimpression.com/demo/display/t1.html" target="_blank">this demo</a>
+                        </div>
+                    </div>
+                    <div class="box_place_holder">
+                        <div class="pp15">
+                            <div class="pp5">Place Holder Text</div>
+                        </div>
+                        <div class="pp7">
+                            <input style="width: 100%;" class="pp10" type="text" id="place_holder_text"
+                                   value="SPONSOR AD" name="place_holder_text">
+                        </div>
+                        <div class="pp15">
+                            <div class="pp5">Text Color</div>
+                        </div>
+                        <div class="pp7">
+                            <label style="width: 32px;height: 32px;background: #EEEEEE;border: 1px solid #aab4c8;border-right: 0;border-radius: 2px 0 0 2px!important;"
+                                   for="select_text_color">
+                                <input type="color" style="opacity: 0"
+                                       class="form-control form-control-color border-end-0 rounded-0 rounded-start rounded-end"
+                                       id="select_text_color" value="#EEEEEE"
+                                       title="Choose your color"> </label>
+                            <input style="width: 100%; border-radius: 0 2px 2px 0;" class="pp10" type="text"
+                                   id="text_color" name="text_color" value="#EEEEEE">
+                        </div>
+                        <div class="pp15">
+                            <div class="pp5">Border Color</div>
+                        </div>
+                        <div class="pp7">
+                            <label style="width: 32px;height: 32px;background: #EEEEEE;border: 1px solid #aab4c8;border-right: 0;border-radius: 2px 0 0 2px!important;"
+                                   for="select_text_color">
+                                <input type="color" style="opacity: 0"
+                                       class="form-control form-control-color border-end-0 rounded-0 rounded-start rounded-end"
+                                       id="select_border_color" value="#EEEEEE"
+                                       title="Choose your color"> </label>
+                            <input style="width: 100%; border-radius: 0 2px 2px 0;" class="pp10" type="text"
+                                   id="border_color" name="border_color" value="#EEEEEE">
+                        </div>
+                    </div>
+                </div>
+                <div class="pp36" style="margin-top: 25px;">
+                    <a href="javascript:void(0)" class="build-tool">Generate</a>
+                </div>
+            </div>
+            <div class="it-13">
+                <label>Code Snippet</label>
+                <textarea style="background: rgb(61, 73, 99);height: 200px;" class="it5" spellcheck="false"
+                          onclick="this.select();" id="script_build">  </textarea>
+            </div>
+        </div>
+        <div class="it14">
+        </div>
+    </div>
+</form>
+
+<script>
+    $(".selectpicker").selectpicker()
+</script>

@@ -1,0 +1,351 @@
+<!-- include summernote css/js -->
+{{/*<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">*/}}
+{{/*<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>*/}}
+{{$TemplateLang := .Schema.LANG.Pages.Support}}
+<div class="px-5 py-3 border-bottom border-gray-200 after-header">
+    <div class="container-fluid px-0">
+        <div class="row align-items-center">
+            <div class="col">
+                <h1 class="h3 mb-0">{{$TemplateLang.Title}}</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="px-5 pt-5 pb-3 height-main">
+    <div class="container-fluid px-0">
+        <div class="row">
+
+
+            <!-- Search and page links for the page -->
+
+
+            <!-- Notification Messages -->
+            <div class="alert alert-with-close notice" id="noticeajax" style="display:none;"></div>
+
+
+            <div class="c-wrapper">
+                <div class="new_ticket_page">
+                    <section class="content main rounded-6 fc-new-ticket">
+                        <h3 class="heading">Submit a ticket</h3>
+                        <form accept-charset="UTF-8" action="/support/tickets" class="form-portal ticket-form" enctype="multipart/form-data" id="new_helpdesk_ticket" method="post" rel="validate">
+                            <div style="margin:0;padding:0;display:inline">
+                                <input name="utf8" type="hidden" value="&#x2713;"/><input name="authenticity_token" type="hidden" value="xUs6n3SeIov5erqvTb4Z9c0LCzuH+EQo5UHmFAvs9/M="/>
+                            </div>
+
+
+                            <div class="control-group ">
+                                <label class=" required control-label requester-label " for="helpdesk_ticket_email">Requester</label>
+                                <div class="controls   ">
+
+                                    <div class="row-fluid">
+                                        <input class="span12 email required" data-remote="true" id="helpdesk_ticket_email" name="helpdesk_ticket[email]" placeholder="Email" size="30" type="email" value=""/>
+
+                                        <div id="name_field" class="default_name_field hide">
+                                            <input class="text span12 name_field" placeholder="Your Name"
+                                                   name="helpdesk_ticket[name]" type="text"/>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="control-group ">
+                                <label class=" required control-label subject-label " for="helpdesk_ticket_subject">Subject</label>
+                                <div class="controls   ">
+                                    <input class=" required text span12" id="helpdesk_ticket_subject" name="helpdesk_ticket[subject]" size="30" type="text"/>
+                                </div>
+                            </div>
+                            <div class="control-group ">
+                                <label class=" required control-label description-label " for="helpdesk_ticket_description">Description</label>
+                                <div class="controls   ">
+                                    {{/*               <textarea class=" required_redactor html_paragraph span12" cols="40" id="helpdesk_ticket_ticket_body_attributes_description_html" name="helpdesk_ticket[ticket_body_attributes][description_html]" rows="6"></textarea>*/}}
+                                    <textarea class=" required_redactor html_paragraph span12" id="sumemrnot-editor" name="helpdesk_ticket[ticket_body_attributes][description_html]" rows="20"></textarea>
+                                    <div class="single_file">
+                                        <div class="attach-wrapper row-fluid new-attach" id="attachment-type" data-multifile-enable="true" data-location="portal">
+                                            <div class="attachments-list-wrap">
+                                                <div class="attachments-list-form" id="ticket-container">
+
+                                                    <div class="attachment_contents">
+                                                        <div id="ticket-attachments" class="attachments-wrap shared_attachment_list">
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="clearfix"></div>
+                                                <div class="hidden_upload">
+                                                    <div class="add_attachment"><span>+</span> Attach a file</div>
+                                                    <input type="file" name="emptyfile"
+                                                           id="ticket_file"
+                                                           data-attach-id="ticket"
+                                                           nameWhenFilled="helpdesk_ticket[attachments][][resource]"
+                                                           fileContainer="ticket-container"
+                                                           fileList="ticket-attachments"
+                                                           sendFocusTo="ticket-body"
+                                                           max_size="20"
+                                                           max_attachment=""
+                                                    >
+                                                </div>
+
+
+                                            </div>
+
+                                            <!-- screenshot-->
+                                            <!--screenshot end -->
+
+                                        </div>
+
+
+                                        <script type="text/javascript">
+                                            // Fix for Firefox/IE - To override :hover style persistance after click on input[type=file] element
+                                            // $(document).ready(function () {
+                                            //     $("#sumemrnot-editor").summernote();
+                                            // });
+                                            // jQuery('div.attach-wrapper a[data-toggle="dropdown"]').bind('click', function () {
+                                            //     jQuery(this).parents('div.attach-wrapper').find('a.attach-link-wrap').first().css({
+                                            //         'background-color': 'inherit',
+                                            //         'background-image': 'inherit',
+                                            //         'color': 'inherit',
+                                            //         'box-shadow': 'inherit'
+                                            //     });
+                                            // });
+                                            // jQuery('li.portal-attach a.attach-link-wrap')
+                                            //     .bind('mouseover', function () {
+                                            //         jQuery(this).removeAttr('style');
+                                            //     })
+                                            //     .bind('mousemove', function (event) {
+                                            //         // Fix to move "Browse" button along with mouse pointer - fix for IE.
+                                            //         p = jQuery(this).find('div').first();
+                                            //         newLeft = Math.min(175, Math.max(event.clientX - p.offset().left + p.position().left - 5, 0));
+                                            //         window.title = newLeft;
+                                            //         p.css({left: newLeft, top: 0});
+                                            //     })
+                                        </script>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- block ends here for fragment cache -->
+                            <div class="control-group">
+                                <div class="controls recaptcha-control">
+                                    {{/*                                    <iframe src="/support/recaptcha#6LdvejUUAAAAAEn6wjOFcPVRyQr4KtAJ03ltA1SQ"*/}}
+                                    {{/*                                            class="recaptcha-frame"*/}}
+                                    {{/*                                            id="recaptcha-frame"*/}}
+                                    {{/*                                            height="100px"*/}}
+                                    {{/*                                            width="320px">*/}}
+                                    {{/*                                    </iframe>*/}}
+                                </div>
+                            </div>
+                            <input id="meta_user_agent" name="meta[user_agent]" type="hidden" value="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.8 Safari/537.36"/>
+                            <input id="meta_seen_articles" name="meta[seen_articles]" type="hidden"/>
+                            <input id="meta_enterprise_enabled" name="meta[enterprise_enabled]" type="hidden" value="false"/>
+                            <input id="meta_referrer" name="meta[referrer]" type="hidden" value="https://pubstack.freshdesk.com/support/home"/>
+
+                            <div class="form-actions">
+                                <input class="btn btn-primary" id="helpdesk_ticket_submit" name="commit" type="submit" value="Submit"/>
+                                <a href="/support/home" class="btn" style="line-height: 27px; color: white">Cancel</a>
+                            </div>
+
+
+                        </form>
+                        {{/*                        <script type="text/javascript">*/}}
+                        {{/*                            //<![CDATA[*/}}
+
+                        {{/*                            jQuery(document).on('focus', '.redactor_editor', function () {*/}}
+                        {{/*                                jQuery('#helpdesk_ticket_ticket_body_attributes_description_html-error').css({'display': 'none'})*/}}
+                        {{/*                                jQuery('#helpdesk_ticket_ticket_body_attributes_description_html-error').parents('.control-group').removeClass('error-group')*/}}
+                        {{/*                            });*/}}
+                        {{/*                            jQuery(document).on('blur', '.redactor_editor', function () {*/}}
+                        {{/*                                if (!jQuery('#helpdesk_ticket_ticket_body_attributes_description_html').data('redactor').isNotEmpty()) {*/}}
+                        {{/*                                    jQuery('#helpdesk_ticket_ticket_body_attributes_description_html-error').css({'display': 'block'})*/}}
+                        {{/*                                    jQuery('#helpdesk_ticket_ticket_body_attributes_description_html-error').parents('.control-group').addClass('error-group')*/}}
+                        {{/*                                }*/}}
+                        {{/*                            });*/}}
+
+                        {{/*                            (function ($) {*/}}
+                        {{/*                                var populateRequestForm = function () {*/}}
+                        {{/*                                    var requester_input = $('#helpdesk_ticket_email');*/}}
+                        {{/*                                    requester_input.val("").trigger('focusout');*/}}
+                        {{/*                                };*/}}
+                        {{/*                                jQuery(document).ready(function () {*/}}
+                        {{/*                                    populateRequestForm();*/}}
+                        {{/*                                    jQuery('#meta_referrer').val(document.referrer.escapeHTML());*/}}
+                        {{/*                                    if (jQBrowser.desktop) {*/}}
+                        {{/*                                        var redactor_type = "anonymous-ticket"*/}}
+                        {{/*                                        invokeRedactor('helpdesk_ticket_ticket_body_attributes_description_html', redactor_type)*/}}
+                        {{/*                                    }*/}}
+
+                        {{/*                                    var focus_element = Form.findFirstElement(document.forms[0]);*/}}
+                        {{/*                                    if ($(focus_element).prop('id') == "helpdesk_ticket_ticket_body_attributes_description_html") {*/}}
+                        {{/*                                        jQuery(focus_element).data('redactor').$editor.focus();*/}}
+                        {{/*                                    } else {*/}}
+                        {{/*                                        Form.focusFirstElement(document.forms[0]);*/}}
+                        {{/*                                    }*/}}
+
+                        {{/*                                    jQuery(".dynamic_sections")*/}}
+                        {{/*                                        .on("change", function (e) {*/}}
+                        {{/*                                            var id;*/}}
+                        {{/*                                            var $el = jQuery(this);*/}}
+                        {{/*                                            var selected = $el.find(':selected');*/}}
+                        {{/*                                            if (selected.length > 0) {*/}}
+                        {{/*                                                id = selected.data().id;*/}}
+                        {{/*                                            }*/}}
+                        {{/*                                            var nextElements = $el.closest('div.control-group').nextAll();*/}}
+                        {{/*                                            nextElements.each(jQuery.proxy(function (index, dataItem) {*/}}
+                        {{/*                                                if (jQuery(dataItem).hasClass('ticket_section'))*/}}
+                        {{/*                                                    dataItem.remove();*/}}
+                        {{/*                                                else*/}}
+                        {{/*                                                    return false;*/}}
+                        {{/*                                            }, this));*/}}
+                        {{/*                                            var element = jQuery('.picklist_section_' + id).parent();*/}}
+                        {{/*                                            if (element.length != 0) {*/}}
+                        {{/*                                                jQuery(jQuery('.picklist_section_' + id).val()*/}}
+                        {{/*                                                    .replace(new RegExp('&lt', 'g'), '<')*/}}
+                        {{/*                                                    .replace(new RegExp('&gt', 'g'), '>'))*/}}
+                        {{/*                                                    .insertAfter(jQuery("#" + this.id).parents('.control-group'));*/}}
+                        {{/*                                            }*/}}
+                        {{/*                                        });*/}}
+                        {{/*                                    jQuery('.dynamic_sections, [id^="helpdesk_ticket_custom_field_"]:not(".nested_field")').trigger('change');*/}}
+
+                        {{/*                                    jQuery('[id^="helpdesk_ticket_custom_field_"][type*="checkbox"]').val(1).trigger('change');*/}}
+                        {{/*                                });*/}}
+
+
+                        {{/*                                jQuery("#helpdesk_ticket_email").focusout(function () {*/}}
+                        {{/*                                    var ticket_email = jQuery("#helpdesk_ticket_email").val();*/}}
+                        {{/*                                    if (false) {*/}}
+                        {{/*                                        jQuery.ajax({*/}}
+                        {{/*                                            type: 'POST',*/}}
+                        {{/*                                            data: {email: ticket_email},*/}}
+                        {{/*                                            datatype: 'json',*/}}
+                        {{/*                                            url: "/helpdesk/commons/user_companies",*/}}
+                        {{/*                                            success: function (data) {*/}}
+                        {{/*                                                if (data != false) {*/}}
+                        {{/*                                                    jQuery('#helpdesk_ticket_company_id').empty();*/}}
+
+                        {{/*                                                    jQuery.each(data, function (key, val) {*/}}
+                        {{/*                                                        jQuery("<option/>").val(val[1]).html(val[0]).appendTo("#helpdesk_ticket_company_id");*/}}
+                        {{/*                                                    });*/}}
+
+                        {{/*                                                    if (!jQuery("#cc_emails").hasClass("non_company_ccs")) {*/}}
+                        {{/*                                                        jQuery("#helpdesk_ticket_company_id").on("change", function () {*/}}
+                        {{/*                                                            jQuery("#cc_emails_filter").select2('val', '').empty();*/}}
+                        {{/*                                                        });*/}}
+                        {{/*                                                    }*/}}
+
+                        {{/*                                                    jQuery('#helpdesk_ticket_company_id').val('').change();*/}}
+                        {{/*                                                    jQuery('.company-label').parent().insertAfter(jQuery("#helpdesk_ticket_email"));*/}}
+                        {{/*                                                    jQuery('#helpdesk_ticket_company_id').removeAttr("disabled");*/}}
+                        {{/*                                                    jQuery('.company-label').parent().slideDown();*/}}
+                        {{/*                                                    jQuery('#add-cc-button').slideDown();*/}}
+                        {{/*                                                } else {*/}}
+                        {{/*                                                    jQuery('#helpdesk_ticket_company_id').attr("disabled", true);*/}}
+                        {{/*                                                    jQuery('.company-label').parent().slideUp();*/}}
+                        {{/*                                                    if (false)*/}}
+                        {{/*                                                        jQuery('#add-cc-button, #cc-emails').slideUp();*/}}
+                        {{/*                                                }*/}}
+                        {{/*                                            }*/}}
+                        {{/*                                        });*/}}
+                        {{/*                                    }*/}}
+                        {{/*                                }).trigger("focusout");*/}}
+
+                        {{/*                                var form_submitted = false;*/}}
+                        {{/*                                jQuery('#new_helpdesk_ticket [type=submit]').click(function (event) {*/}}
+                        {{/*                                    var _form = jQuery('#new_helpdesk_ticket');*/}}
+                        {{/*                                    var validForm = _form.valid();*/}}
+                        {{/*                                    _form.find('.datepicker_popover').each(function (index) {*/}}
+                        {{/*                                        validForm = jQuery(this).valid() && validForm;*/}}
+                        {{/*                                    });*/}}
+
+                        {{/*                                    if (validForm) {*/}}
+                        {{/*                                        jQuery(this).removeClass('cancel');*/}}
+                        {{/*                                    } else {*/}}
+                        {{/*                                        jQuery(this).addClass('cancel');*/}}
+                        {{/*                                        return false;*/}}
+                        {{/*                                    }*/}}
+
+                        {{/*                                    var cc_emails = _form.find('input[name="cc_emails"]')*/}}
+                        {{/*                                    var cc_emails_val = cc_emails.val()*/}}
+                        {{/*                                    if (cc_emails_val && cc_emails_val.split(",").length >= 50) {*/}}
+                        {{/*                                        alert('You can add upto 50 CC emails');*/}}
+                        {{/*                                        return false;*/}}
+                        {{/*                                    }*/}}
+
+                        {{/*                                    if (getFromSessionStorage('seenArticlesArray') && getFromSessionStorage('seenArticlesArray').length > 0) {*/}}
+                        {{/*                                        var _seenArticles = getFromSessionStorage('seenArticlesArray').slice().splice(-50); // only taking last 50 items*/}}
+                        {{/*                                        jQuery('#meta_seen_articles').val(JSON.stringify(_seenArticles));*/}}
+                        {{/*                                        removeFromSessionStorage('seenArticlesArray');*/}}
+                        {{/*                                    }*/}}
+                        {{/*                                    _form.find("button, a.btn").attr('disabled', true);*/}}
+                        {{/*                                });*/}}
+
+                        {{/*                                $(window).on('load', function () {*/}}
+                        {{/*                                    $('[id^="helpdesk_ticket_group_"]').trigger('change');*/}}
+                        {{/*                                });*/}}
+                        {{/*                            })(jQuery);*/}}
+
+                        {{/*                            //]]>*/}}
+                        {{/*                        </script>*/}}
+                        <script type="text/javascript">
+                            //<![CDATA[
+
+                            // (function ($) {
+                            //     $(document).ready(function () {
+                            //         $("#helpdesk_ticket_email").focusout(function () {
+                            //             var ticket_email = $("#helpdesk_ticket_email").val().trim().toLowerCase();
+                            //             var current_user_email = "";
+                            //             var $nameField = $("#name_field");
+                            //             (ticket_email === current_user_email || !ticket_email.isValidEmail()) ? $nameField.hide() : $nameField.slideDown();
+                            //         });
+                            //     });
+                            // })(jQuery);
+
+                            //]]>
+                        </script>
+                    </section>
+
+                    <section class="sidebar content-light rounded-6 hide ticket-search" id="new-ticket-search">
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<style>
+    .note-editor .card-header {
+        display: block;
+    }
+    .btn {
+        border-radius: 2px;
+        background-color: #000246;
+        border: solid 1px #000;
+        background-image: none;
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        font-family: Trebuchet MS, Helvetica, sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 1.2px;
+        color: #8b8b8c;
+        padding: 5px 20px;
+        text-transform: uppercase;
+    }
+    .btn-group > .btn[type=button] {
+        padding: 8px;
+    }
+    i.note-icon-font.note-recent-color {
+        background-color: #8b8b8c !important;
+        color: #efefef !important;
+    }
+    button.btn.btn-primary:hover, input[type="submit"].btn:hover, a.btn:hover {
+        background-color: #000360;
+        text-decoration: none;
+    }
+</style>

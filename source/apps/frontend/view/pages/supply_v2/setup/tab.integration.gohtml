@@ -1,0 +1,176 @@
+{{- /*gotype: source/apps/frontend/controller.AssignInventory*/ -}}
+<div class="it1">
+    <div class="nav nav-verticle flex-column nav-pills it2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <a class="nav-link active it3" id="pills-display-tab" data-bs-toggle="pill" href="#pills-display" role="tab" aria-controls="pills-display" aria-selected="true">Display</a>
+        <a class="nav-link  it3" id="pills-stickybanner-tab" data-bs-toggle="pill" href="#pills-stickybanner" role="tab" aria-controls="pills-stickybanner" aria-selected="true">Sticky Banner</a>
+        <a class="nav-link  it3" id="pills-instream-tab" data-bs-toggle="pill" href="#pills-instream" role="tab" aria-controls="pills-instream" aria-selected="true">Instream</a>
+        <a class="nav-link  it3" id="pills-outstream-tab" data-bs-toggle="pill" href="#pills-outstream" role="tab" aria-controls="pills-outstream" aria-selected="true">Outstream</a>
+        <a class="nav-link  it3" id="pills-tool-tab" data-bs-toggle="pill" href="#pills-tool" role="tab" aria-controls="pills-tool" aria-selected="true">Tool</a>
+    </div>
+    <div class="it9">
+        <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-display" role="tabpanel" aria-labelledby="pills-display-tab">
+                <div class="it4">
+                    <div class="it7">
+                        <h3>Header JS</h3>
+                    </div>
+                    <div class="it10">
+                        <p>Place the below script inside the
+                            <span style="color: #0b7ef4;">&lt;head&gt;&lt;/head&gt;</span> of the page</p>
+                    </div>
+                    <div class="it11">
+                        <div class="it12 cus-selectpicker">
+
+                            <label>Js Load Type</label>
+                            <select class="form-control selectpicker js-load-type">
+                                <option value="asynchronous">Asynchronous</option>
+                                <option value="normal">Normal</option>
+                            </select>
+{{/*                            <a class="pp9" href="#"> <span>Asynchronous</span>*/}}
+{{/*                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="ds-icon-dashboard-chevron-down" style="width: 10px;">*/}}
+{{/*                                    <path d="M4 6a2 2 0 0 1 1.41.59L12 13.17l6.59-6.58a2 2 0 0 1 2.82 2.82l-8 8a2 2 0 0 1-2.82 0l-8-8A2 2 0 0 1 4 6z">*/}}
+{{/*                                    </path>*/}}
+{{/*                                </svg>*/}}
+{{/*                            </a>*/}}
+                        </div>
+                        <div class="it13 js-type-asynchronous">
+                            <label>Code Snippet</label>
+                            <input type="text" class="it5" id="pw_11441" readonly="readonly" onclick="this.select();" style="max-height: 32px" value='<script type="text/javascript" src="//cdn.vlitag.com/w/{{.Row.TableInventory.Uuid}}.js" async defer></script><script>var vitag = vitag || {};vitag.gdprShowConsentToolButton = false;</script>'>
+                        </div>
+                        <div class="it13 js-type-normal d-none">
+                            <label>Code Snippet</label>
+                            <input type="text" class="it5" id="pw_11441" readonly="readonly" onclick="this.select();" style="max-height: 32px" value='<script type="text/javascript" src="//cdn.vlitag.com/w/{{.Row.TableInventory.Uuid}}.js"></script><script>var vitag = vitag || {};vitag.gdprShowConsentToolButton = false;</script>'>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="it4">
+                    <div class="it7">
+                        <h3>Place the tag code below at where you want the ad display</h3>
+                    </div>
+                    <table class="supply-list">
+                        <thead>
+                        <tr>
+                            <th>Tag Name</th>
+                            <th>Code Snippet</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>cumaps.net_mobile_sticky_320x100</td>
+                            <td>
+                                <input type="text" class="it5" id="pw_11441" value="<div class=&quot;adsbyvli&quot; style=&quot;width:300px;height:250px;display:inline-block;&quot; data-ad-slot=&quot;pw_11441&quot;></div> <script type=&quot;text/javascript&quot;>(vitag.Init = window.vitag.Init || []).push(function () { viAPItag.display(&quot;pw_11441&quot;) })</script>" readonly="readonly" onclick="this.select();">
+                            </td>
+                            <td class="it8">
+                                <a class="it6" href="#">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="ds-icon-dashboard-copy">
+                                        <path d="M19.75 8.69h-2.37V6.31a2 2 0 0 0-2-2H4.25a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2.37v2.38a2 2 0 0 0 2 2h11.13a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2zm-15.5 4.62v-7h11.13v2.38H8.62a2 2 0 0 0-2 2v2.62zm15.5 4.38H8.62v-7h11.13z">
+                                        </path>
+                                    </svg>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>cumaps.net_mobile_300x250_in_other_say</td>
+                            <td>
+                                <input type="text" class="it5" id="pw_11441" value="<div class=&quot;adsbyvli&quot; style=&quot;width:300px;height:250px;display:inline-block;&quot; data-ad-slot=&quot;pw_11441&quot;></div> <script type=&quot;text/javascript&quot;>(vitag.Init = window.vitag.Init || []).push(function () { viAPItag.display(&quot;pw_11441&quot;) })</script>" readonly="readonly" onclick="this.select();">
+                            </td>
+                            <td class="it8">
+                                <a class="it6" href="#">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="ds-icon-dashboard-copy">
+                                        <path d="M19.75 8.69h-2.37V6.31a2 2 0 0 0-2-2H4.25a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2.37v2.38a2 2 0 0 0 2 2h11.13a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2zm-15.5 4.62v-7h11.13v2.38H8.62a2 2 0 0 0-2 2v2.62zm15.5 4.38H8.62v-7h11.13z">
+                                        </path>
+                                    </svg>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>cumaps.net_mobile_300x250_in_other_places</td>
+                            <td>
+                                <input type="text" class="it5" id="pw_11441" value="<div class=&quot;adsbyvli&quot; style=&quot;width:300px;height:250px;display:inline-block;&quot; data-ad-slot=&quot;pw_11441&quot;></div> <script type=&quot;text/javascript&quot;>(vitag.Init = window.vitag.Init || []).push(function () { viAPItag.display(&quot;pw_11441&quot;) })</script>" readonly="readonly" onclick="this.select();">
+                            </td>
+                            <td class="it8">
+                                <a class="it6" href="#">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="ds-icon-dashboard-copy">
+                                        <path d="M19.75 8.69h-2.37V6.31a2 2 0 0 0-2-2H4.25a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2.37v2.38a2 2 0 0 0 2 2h11.13a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2zm-15.5 4.62v-7h11.13v2.38H8.62a2 2 0 0 0-2 2v2.62zm15.5 4.38H8.62v-7h11.13z">
+                                        </path>
+                                    </svg>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>cumaps.net_mobile_320x100_in_other_places</td>
+                            <td>
+                                <input type="text" class="it5" id="pw_11441" value="<div class=&quot;adsbyvli&quot; style=&quot;width:300px;height:250px;display:inline-block;&quot; data-ad-slot=&quot;pw_11441&quot;></div> <script type=&quot;text/javascript&quot;>(vitag.Init = window.vitag.Init || []).push(function () { viAPItag.display(&quot;pw_11441&quot;) })</script>" readonly="readonly" onclick="this.select();">
+                            </td>
+                            <td class="it8">
+                                <a class="it6" href="#">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="ds-icon-dashboard-copy">
+                                        <path d="M19.75 8.69h-2.37V6.31a2 2 0 0 0-2-2H4.25a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2.37v2.38a2 2 0 0 0 2 2h11.13a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2zm-15.5 4.62v-7h11.13v2.38H8.62a2 2 0 0 0-2 2v2.62zm15.5 4.38H8.62v-7h11.13z">
+                                        </path>
+                                    </svg>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>cumaps.net_mobile_300x250_bellow_other_say</td>
+                            <td>
+                                <input type="text" class="it5" id="pw_11441" value="<div class=&quot;adsbyvli&quot; style=&quot;width:300px;height:250px;display:inline-block;&quot; data-ad-slot=&quot;pw_11441&quot;></div> <script type=&quot;text/javascript&quot;>(vitag.Init = window.vitag.Init || []).push(function () { viAPItag.display(&quot;pw_11441&quot;) })</script>" readonly="readonly" onclick="this.select();">
+                            </td>
+                            <td class="it8">
+                                <a class="it6" href="#">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="ds-icon-dashboard-copy">
+                                        <path d="M19.75 8.69h-2.37V6.31a2 2 0 0 0-2-2H4.25a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2.37v2.38a2 2 0 0 0 2 2h11.13a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2zm-15.5 4.62v-7h11.13v2.38H8.62a2 2 0 0 0-2 2v2.62zm15.5 4.38H8.62v-7h11.13z">
+                                        </path>
+                                    </svg>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>cumaps.net_mobile_320x100_in_other_say</td>
+                            <td>
+                                <input type="text" class="it5" id="pw_11441" value="<div class=&quot;adsbyvli&quot; style=&quot;width:300px;height:250px;display:inline-block;&quot; data-ad-slot=&quot;pw_11441&quot;></div> <script type=&quot;text/javascript&quot;>(vitag.Init = window.vitag.Init || []).push(function () { viAPItag.display(&quot;pw_11441&quot;) })</script>" readonly="readonly" onclick="this.select();">
+                            </td>
+                            <td class="it8">
+                                <a class="it6" href="#">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="ds-icon-dashboard-copy">
+                                        <path d="M19.75 8.69h-2.37V6.31a2 2 0 0 0-2-2H4.25a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2.37v2.38a2 2 0 0 0 2 2h11.13a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2zm-15.5 4.62v-7h11.13v2.38H8.62a2 2 0 0 0-2 2v2.62zm15.5 4.38H8.62v-7h11.13z">
+                                        </path>
+                                    </svg>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-bottom: 0;">cumaps.net_mobile_300x250_bellow_photos</td>
+                            <td style="border-bottom: 0;">
+                                <input type="text" class="it5" id="pw_11441" value="<div class=&quot;adsbyvli&quot; style=&quot;width:300px;height:250px;display:inline-block;&quot; data-ad-slot=&quot;pw_11441&quot;></div> <script type=&quot;text/javascript&quot;>(vitag.Init = window.vitag.Init || []).push(function () { viAPItag.display(&quot;pw_11441&quot;) })</script>" readonly="readonly" onclick="this.select();">
+                            </td>
+                            <td class="it8" style="border-bottom: 0;">
+                                <a class="it6" href="#">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="ds-icon-dashboard-copy">
+                                        <path d="M19.75 8.69h-2.37V6.31a2 2 0 0 0-2-2H4.25a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2.37v2.38a2 2 0 0 0 2 2h11.13a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2zm-15.5 4.62v-7h11.13v2.38H8.62a2 2 0 0 0-2 2v2.62zm15.5 4.38H8.62v-7h11.13z">
+                                        </path>
+                                    </svg>
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="pills-stickybanner" role="tabpanel" aria-labelledby="pills-stickybanner-tab">
+                stickybanner
+            </div>
+            <div class="tab-pane fade" id="pills-instream" role="tabpanel" aria-labelledby="pills-instream-tab">
+                instream
+            </div>
+            <div class="tab-pane fade" id="pills-outstream" role="tabpanel" aria-labelledby="pills-outstream-tab">
+                outstream
+            </div>
+            <div class="tab-pane fade" id="pills-tool" role="tabpanel" aria-labelledby="pills-tool-tab">
+                tool
+            </div>
+        </div>
+    </div>
+</div>

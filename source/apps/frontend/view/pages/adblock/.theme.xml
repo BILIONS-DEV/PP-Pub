@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theme name="muze">
+    <page path="/adblock/analytics">
+        <!-- Import CSS -->
+        <css link="/assets/plugins/bootstrap431/css/bootstrap.min.css"/>
+        <css link="/assets/plugins/bootstrap-toggle/css/bootstrap-toggle.min.css"/>
+        <css link="/assets/plugins/bootstrap-select/dist/css/bootstrap-select.min.css"/>
+        <css link="/assets/plugins/select2/dist/css/select2.min.css"/>
+        <css link="/assets/plugins/select2/dist/css/select2-bootstrap.min.css"/>
+        <css link="/assets/plugins/daterangepicker/daterangepicker.css"/>
+        <css link="/assets/plugins/datatables/datatables.min.css"/>
+        <css link="/assets/plugins/syncfusion/base-material.css"/>
+        <css link="/assets/plugins/syncfusion/button-material.css"/>
+        <css link="/assets/plugins/syncfusion/calendars-material.css"/>
+        <!-- Import JS -->
+        <js link="/assets/plugins/bootstrap-toggle/js/bootstrap-toggle.min.js"/>
+        <js link="/assets/plugins/select2/dist/js/select2.full.js"/>
+        <js link="/assets/plugins/select2/dist/js/select2.multi-checkboxes.js"/>
+        <js link="/assets/plugins/bootstrap-select/dist/js/bootstrap-select.min.js"/>
+        <js link="/assets/plugins/daterangepicker/moment.min.js"/>
+        <js link="/assets/plugins/daterangepicker/daterangepicker.js"/>
+        <js link="/assets/plugins/datatables/datatables.min.js"/>
+        <js link="/assets/plugins/highcharts/highcharts.js"/>
+        <js link="/assets/plugins/syncfusion/ej2-base.min.js"/>
+        <js link="/assets/plugins/syncfusion/ej2-inputs.min.js"/>
+        <js link="/assets/plugins/syncfusion/ej2-buttons.min.js"/>
+        <js link="/assets/plugins/syncfusion/ej2-lists.min.js"/>
+        <js link="/assets/plugins/syncfusion/ej2-popups.min.js"/>
+        <js link="/assets/plugins/syncfusion/ej2-calendars.min.js"/>
+        <jsOnBottom link="/assets/adblock/analytics.js"/>
+    </page>
+
+    <page path="/adblock/default">
+        <!-- Import CSS -->
+        <css link="/assets/plugins/bootstrap431/css/bootstrap.min.css" rel="stylesheet" media="all"/>
+        <css link="/assets/plugins/bootstrap-toggle/css/bootstrap-toggle.min.css" rel="stylesheet" media="all"/>
+        <!--        <css link="/assets/plugins/select2/dist/css/select2.min.css" rel="stylesheet" media="all" inline="false"/>-->
+        <!--        <css link="/assets/plugins/select2/dist/css/select2-bootstrap.min.css"/>-->
+        <css link="/assets/plugins/daterangepicker/daterangepicker.css" rel="stylesheet" media="all"/>
+        <css link="/assets/plugins/datatables/datatables.min.css" rel="stylesheet" media="all"/>
+        <css link="/assets/plugins/bootstrap-select-1.13.18/css/bootstrap-select.min.css" rel="stylesheet"/>
+        <!-- Import JS -->
+        <js link="/assets/js/popper.min.js"/>
+        <js link="/assets/plugins/bootstrap431/js/bootstrap.min.js"/>
+        <js link="/assets/plugins/bootstrap-toggle/js/bootstrap-toggle.min.js"/>
+        <!--        <js link="/assets/plugins/select2/dist/js/select2.full.js"/>-->
+        <js link="/assets/plugins/daterangepicker/moment.min.js"/>
+        <js link="/assets/plugins/daterangepicker/daterangepicker.js"/>
+        <js link="/assets/plugins/datatables/datatables.min.js"/>
+        <js link="/assets/plugins/bootstrap-select-1.13.18/js/bootstrap-select.min.js"/>
+    </page>
+
+    <page path="/adblock/generator" includePath="/adblock/default">
+        <css link="/assets/plugins/summernote-0.8.18-dist/summernote-bs4.min.css"/>
+
+        <js link="/assets/plugins/summernote-0.8.18-dist/summernote-bs4.min.js"/>
+        <jsOnBottom link="/assets/adblock/generator.js"/>
+    </page>
+</theme>

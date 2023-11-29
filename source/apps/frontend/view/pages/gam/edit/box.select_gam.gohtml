@@ -1,0 +1,32 @@
+{{- /*gotype: source/apps/frontend/controller.AssignGam*/ -}}
+<div class="alert bg-gray-50 my-5 py-4 shadow-none" role="alert">
+    <h5 class="alert-heading fs-5 font-weight-semibold">2. {{.Schema.LANG.Pages.GAM.Step.Step2.Title}}</h5>
+    <p class="fw-normal">{{.Schema.LANG.Pages.GAM.Step.Step2.Description}}</p>
+    <div class="table-responsive mt-4 mb-0">
+        <table class="table table-nowrap overflow-hidden">
+            <thead>
+            <tr>
+                <th class="fw-bold w-25">Network ID</th>
+                <th class="fw-bold">Network Name</th>
+                <th class="fw-bold text-end">Select</th>
+            </tr>
+            </thead>
+            <tbody class="list networkSelect">
+            {{range .Networks}}
+                <tr>
+                    <td class="fw-normal">{{.TableGamNetwork.NetworkId}}</td>
+                    <td class="fw-normal">{{.TableGamNetwork.NetworkName}}</td>
+                    <td class="clearfix">
+                        <div class="form-check form-switch mb-0 text-end float-end">
+                            <input class="form-check-input select-network" type="checkbox" id="flexSwitchCheckChecked"
+                                   data-gam-id="{{.TableGamNetwork.GamId}}"
+                                   value="{{.TableGamNetwork.Id}}"
+                                   {{if eq .TableGamNetwork.Status 2}}checked=""{{end}}>
+                        </div>
+                    </td>
+                </tr>
+            {{end}}
+            </tbody>
+        </table>
+    </div>
+</div>

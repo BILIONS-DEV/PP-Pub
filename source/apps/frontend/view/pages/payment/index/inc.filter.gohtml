@@ -1,0 +1,41 @@
+{{- /*gotype: source/apps/frontend/controller.AssignLineItemIndex*/ -}}
+{{$lang := .Schema.LANG.Pages.Payment}}
+<form id="formFilter" class="g-3">
+    <div class="row">
+        <div class="col-sm-9 form-inline filter-selectpicker">
+            <div class="form-inline">
+                <div class="form-group-sm pe-3 py-2 d-flex flex-column">
+                    <select id="status" name="f_status" title="Status"
+                            class="selectpicker select-picker-filter form-control border-0 show-menu-arrow"
+                            multiple="multiple"
+                            data-style="border-0" data-size="10"
+                            data-live-search="false" data-actions-box="false" tabindex="-1"
+                            aria-hidden="true"
+                            data-selected-text-format="count > 0"
+                            data-count-selected-text="{0} Status">
+                        <option value="1"
+                                {{if (InArray "1" .Params.Status false)}}selected{{end}}>
+                            Pending
+                        </option>
+                        <option value="2"
+                                {{if (InArray "2" .Params.Status false)}}selected{{end}}>
+                            Done
+                        </option>
+                    </select>
+                </div>
+            </div>
+            {{/*Status*/}}
+        </div>
+        <div class="col-sm-3">
+            <div class="mt-2 p-0 d-flex align-items-center">
+                <input value="{{.Params.QuerySearch}}" name="f_q" class="form-control me-2"
+                       placeholder="Search..."/>
+                <button type="submit" class="btn btn-outline-secondary btn-sm submit">
+                    Run
+                </button>
+            </div>
+        </div>
+        <input type="hidden" name="start" value="{{.Params.Start}}">
+        <input type="hidden" name="length" value="{{.Params.Length}}">
+    </div>
+</form>

@@ -1,0 +1,89 @@
+{{- /*gotype: source/apps/frontend/controllerv2.AssignQuizEdit*/ -}}
+{{$ContentLang := .Assign.LANG.Pages.Content}}
+<div class="pt1" style="border-top: 0;">
+    <div class="pp15">
+        <div class="pt2">Title</div>
+    </div>
+    <div class="pp7">
+        <div class="pp-9">
+            <input class="pp-10 form-control" type="text" id="title" name="title" value="{{.Row.Title}}">
+            <span class="form-text ms-2 w-auto invalid-feedback"></span>
+        </div>
+    </div>
+    {{/*Title*/}}
+
+    <div class="pp15">
+        <div class="pt2">Content Type</div>
+    </div>
+    <div class="pp7">
+        <input type="hidden" name="content_type" value="{{.Row.ContentType}}">
+        <div class="cus-selectpicker pp-9">
+            <select class="form-control selectpicker" id="content_type" disabled>
+                <option value="2" {{if eq .Row.ContentType 2}}selected{{end}}>Quiz 1</option>
+                <option value="3" {{if eq .Row.ContentType 3}}selected{{end}}>Quiz 2</option>
+            </select>
+        </div>
+    </div>
+    {{/*Content Type*/}}
+
+    <div class="box-illustration">
+        <div class="pp15">
+            <div class="pt2">Illustration</div>
+        </div>
+        <div class="pp7">
+            <div class="box-upload-thumb w-100" >
+                <input type='file' id="upload_illustration" name="upload_illustration" class="d-none upload_illustration" title="Choose a background please" aria-describedby="thumb" aria-label="Upload" accept="image/*">
+                <div class="d-flex" id="box-upload-thumb">
+                    <label class="pp-11 mb-0" for="upload_illustration" style="max-width: 100px;min-width: 100px;border-right: 0;border-left: 1px solid #aab4c8;">Choose file</label>
+                    <input class="pp10 w-100 illustration" id="illustration" name="illustration" type="text" readonly style="border-top-left-radius: 0;border-bottom-left-radius: 0;cursor: not-allowed;" value="{{if ne .Row.Illustration ""}}{{.Row.Illustration}}{{end}}">
+                </div>
+                <span class="form-text ms-2 w-auto invalid-feedback"></span>
+            </div>
+        </div>
+        <div class="pp7">
+            <div class="preview-image-answer d-flex justify-content-center">
+                <img class="show-illustration" src="{{if ne .Row.Illustration ""}}{{$.DomainUpload}}{{.Row.Illustration}}{{end}}" data-link="" style="height: 92px">
+            </div>
+            <span class="ms-2 text_answer" style="height: 92px;max-height: 92px; width: 100%;padding: 10px"></span>
+        </div>
+    </div>
+    {{/*Illustration*/}}
+    
+    <div class="pp15">
+        <div class="pt2">Category</div>
+    </div>
+    <div class="pp7">
+        <div class="cus-selectpicker pp-9">
+            <select id="category" name="category" class="form-control selectpicker" data-size="6" data-live-search="true">
+                {{range .Categories}}
+                    <option value="{{.Id}}" {{if eq $.Row.CategoryID .Id}}selected{{end}}>{{.Name}}</option>
+                {{end}}
+            </select>
+        </div>
+    </div>
+    {{/*Category*/}}
+
+</div>
+
+<style>
+    .preview-image-answer {
+        background-image: url(https://apps.valueimpression.com/assets/img/transparent-background.png);
+        border: 1px solid rgba(170, 180, 200, 0.5);
+        margin-bottom: 5px;
+        display: block;
+        width: 200px;
+        height: 92px;
+    }
+    .checkbox-round {
+        width: 1.3em;
+        height: 1.3em;
+        background-color: white;
+        border-radius: 50%;
+        vertical-align: middle;
+        border: 1px solid #ddd;
+        appearance: none;
+        -webkit-appearance: none;
+        outline: none;
+        cursor: pointer;
+    }
+</style>

@@ -1,0 +1,140 @@
+{{- /*gotype: source/apps/frontend/controller.AssignFloorEdit*/ -}}
+{{$FloorLang := .Schema.LANG.Pages.Floor}}
+<form id="filter" class="g-3">
+    <div class="row">
+        <div class="col-sm-9 form-inline filter-selectpicker">
+            <div class="form-inline">
+                <div class="form-group-sm pe-3 py-2 d-flex flex-column">
+                    <select id="inventory" name="f_domain" title="Domain"
+                            class="search-domain selectpicker select-picker-filter form-control border-0 show-menu-arrow"
+                            multiple="multiple"
+                            data-style="border-0" data-size="10"
+                            {{ $length2 := len .Domain }}
+                            data-live-search="{{if gt $length2 6}}true{{else}}false{{end}}"
+                            data-actions-box="false" tabindex="-1"
+                            aria-hidden="true"
+                            data-selected-text-format="count > 0"
+                            data-count-selected-text="{0} Domain">
+                        {{range .Domain}}
+                            <option value="{{.Id}}" {{if eq .Selected true}}selected{{end}}>{{.Name}}</option>
+                        {{end}}
+                    </select>
+                </div>
+            </div>
+            {{/*Domain*/}}
+            <div class="form-inline">
+                <div class="form-group-sm pe-3 py-2 d-flex flex-column">
+                    <select id="ad_format" name="f_ad_format" title="Format"
+                            class="search-adformat selectpicker select-picker-filter form-control show-menu-arrow"
+                            multiple="multiple"
+                            data-style="border-0" data-size="10"
+                            {{ $length4 := len .Format }}
+                            data-live-search="{{if gt $length4 6}}true{{else}}false{{end}}"
+                            data-actions-box="false" tabindex="-1"
+                            aria-hidden="true"
+                            data-selected-text-format="count > 0"
+                            data-count-selected-text="{0} Format">
+                        {{range .Format}}
+                            <option value="{{.Id}}" {{if eq .Selected true}}selected{{end}}>{{.Name}}</option>
+                        {{end}}
+                    </select>
+                </div>
+            </div>
+            {{/*Format*/}}
+            <div class="form-inline">
+                <div class="form-group-sm pe-3 py-2 d-flex flex-column">
+                    <select id="ad_size" name="f_ad_size" title="Size"
+                            class="search-adsize selectpicker select-picker-filter form-control show-menu-arrow"
+                            multiple="multiple"
+                            data-style="border-0" data-size="10"
+                            {{ $length6 := len .Size }}
+                            data-live-search="{{if gt $length6 6}}true{{else}}false{{end}}"
+                            data-actions-box="false" tabindex="-1"
+                            aria-hidden="true"
+                            data-selected-text-format="count > 0"
+                            data-count-selected-text="{0} Size">
+                        {{range .Size}}
+                            <option value="{{.Id}}" {{if eq .Selected true}}selected{{end}}>{{.Name}}</option>
+                        {{end}}
+                    </select>
+                </div>
+            </div>
+            {{/*Size*/}}
+            <div class="form-inline">
+                <div class="form-group-sm pe-3 py-2 d-flex flex-column">
+                    <select id="ad_tag" name="f_ad_tag" title="Ad Tag"
+                            class="search-adtag selectpicker select-picker-filter form-control show-menu-arrow"
+                            multiple="multiple"
+                            data-style="border-0" data-size="10"
+                            {{ $length8 := len .AdTag }}
+                            data-live-search="{{if gt $length8 6}}true{{else}}false{{end}}"
+                            data-actions-box="false" tabindex="-1"
+                            aria-hidden="true"
+                            data-selected-text-format="count > 0"
+                            data-count-selected-text="{0} Ad Tag">
+                        {{range .AdTag}}
+                            <option value="{{.Id}}" {{if eq .Selected true}}selected{{end}}>{{.Name}}</option>
+                        {{end}}
+                    </select>
+                </div>
+            </div>
+            {{/*AdTag*/}}
+            <div class="form-inline">
+                <div class="form-group-sm pe-3 py-2 d-flex flex-column">
+                    <select id="device" name="f_device" title="Device"
+                            class="search-device selectpicker select-picker-filter form-control show-menu-arrow"
+                            multiple="multiple" data-style="border-0" data-size="10"
+                            {{ $length10 := len .Device }}data-live-search="{{if gt $length10 6}}true{{else}}false{{end}}"
+                            data-actions-box="false" tabindex="-1" aria-hidden="true"
+                            data-selected-text-format="count > 0"
+                            data-count-selected-text="{0} Device">
+                        {{range .Device}}
+                            <option value="{{.Id}}" {{if eq .Selected true}}selected{{end}}>{{.Name}}</option>
+                        {{end}}
+                    </select>
+                </div>
+            </div>
+            {{/*Device*/}}
+            <div class="form-inline">
+                <div class="form-group-sm pe-3 py-2 d-flex flex-column">
+                    <select id="geo" name="f_geo" title="Geography"
+                            class="search-country selectpicker select-picker-filter form-control border-0 show-menu-arrow"
+                            multiple="multiple" data-style="border-0" data-size="10"
+                            {{ $length12 := len .Country }}
+                            data-live-search="{{if gt $length12 6}}true{{else}}false{{end}}" data-actions-box="false"
+                            tabindex="-1"
+                            aria-hidden="true" data-selected-text-format="count > 0"
+                            data-count-selected-text="{0} Geography">
+                        {{range .Country}}
+                            <option value="{{.Id}}" {{if eq .Selected true}}selected{{end}}>{{.Name}}</option>
+                        {{end}}
+                    </select>
+                </div>
+            </div>
+            {{/*Geography*/}}
+            <div class="form-inline">
+                <div class="form-group-sm pe-3 py-2 d-flex flex-column">
+                    <select id="status" name="f_status" title="Status"
+                            class="selectpicker select-picker-filter form-control border-0 show-menu-arrow"
+                            multiple="multiple" data-style="border-0" data-selected-text-format="count > 0" data-count-selected-text="{0} Status"
+                            data-live-search="false" data-actions-box="false" tabindex="-1" aria-hidden="true">
+                        <option value="1" {{if (InArray "1" .Params.Status false)}}selected{{end}}>ON</option>
+                        <option value="0" {{if (InArray "2" .Params.Status false)}}selected{{end}}>OFF</option>
+                    </select>
+                </div>
+            </div>
+            {{/*Status*/}}
+
+        </div>
+        <div class="col-sm-3 ">
+            <div class="mt-2 p-0 d-flex align-items-center">
+                <input value="{{.Params.QuerySearch}}" name="f_q" class="form-control me-2"
+                       placeholder="{{$FloorLang.SearchFloor}}"/>
+                <button type="submit" class="btn btn-outline-secondary btn-sm submit">
+                    {{$FloorLang.Run}}
+                </button>
+            </div>
+        </div>
+        <input type="hidden" name="start" value="{{.Params.Start}}">
+        <input type="hidden" name="length" value="{{.Params.Length}}"></div>
+</form>

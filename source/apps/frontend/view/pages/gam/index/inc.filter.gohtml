@@ -1,0 +1,16 @@
+<form id="formFilterGam" class="g-3">
+    <div class="row">
+        <div class="col-sm-9 form-inline filter-selectpicker"></div>
+        <div class="col-sm-3 ">
+            <div class="mt-2 p-0 d-flex align-items-center">
+                <input value="{{.Params.QuerySearch}}" name="f_q" class="form-control me-2"
+                       placeholder="Search Gam..."/>
+                <button type="submit" class="btn btn-outline-secondary btn-sm submit">
+                    Run
+                </button>
+            </div>
+        </div>
+        <input type="hidden" name="start" value="{{.Params.Start}}">
+        <input type="hidden" name="length" value="{{.Params.Length}}">
+    </div>
+</form>

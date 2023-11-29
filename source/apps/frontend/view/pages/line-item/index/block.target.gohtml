@@ -1,0 +1,19 @@
+{{- /*gotype: source/apps/frontend/model.Target*/ -}}
+<div class='ps-2 max-lines mb-2'>
+    <strong>Domains: </strong> {{if .TextListInventory}}{{.TextListInventory}}{{else}}All{{end}}
+</div>
+<div class='ps-2 max-lines my-2'>
+    <strong>Adtag: </strong> {{if .TextListAdTag}}{{.TextListAdTag}}{{else}}All{{end}}
+</div>
+<div class='ps-2 max-lines my-2'>
+    <strong>Size: </strong> {{if .TextListAdSize}}{{.TextListAdSize}}{{else}}All{{end}}
+</div>
+<div class='ps-2 max-lines my-2'>
+    <strong>Format: </strong> {{if .TextListAdFormat}}{{.TextListAdFormat}}{{else}}All{{end}}
+</div>
+<div class='ps-2 max-lines my-2'>
+    <strong>Geo: </strong> {{if .TextListGeo}}{{.TextListGeo}}{{else}}All{{end}}
+</div>
+<div class='ps-2 max-lines my-2'>
+    <strong>Device: </strong> {{if .TextListDevice}}{{.TextListDevice}}{{else}}All{{end}}
+</div>

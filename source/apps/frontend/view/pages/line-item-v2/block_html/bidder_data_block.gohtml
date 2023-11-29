@@ -1,0 +1,29 @@
+{{range $row := .}}
+    <div id="{{$row.Name}}" class="form-check mb-4 pt-1">
+        <input class="form-check-input" type="checkbox" value="{{$row.Name}}" id="bidder{{$row.Id}}"
+               name="bidder" data-bidder-id="{{$row.Id}}" style="width: 17px;height: 17px"
+               {{if $row.IsChecked}}checked{{end}}
+        >
+        <label class="ms-2" for="bidder{{$row.Id}}" style="text-transform: capitalize">
+            {{$row.Name}}
+        </label>
+        <div id="param-{{$row.Name}}" class="row align-items-center mx-2 mt-2 bg-gray-50"
+             {{if eq $row.IsChecked false}} style="display: none" {{end}}
+        >
+            <div class="col-auto">
+                <input type="text"
+                       placeholder="PlacementId"
+                       class="placementId form-control border-top-0 border-start-0 border-end-0 rounded-0 bg-gray-50"
+                       {{if $row.IsChecked}}value="{{$row.Placement}}" {{end}}
+                >
+            </div>
+            <div class="col-auto">
+                <input type="text"
+                       placeholder="PublisherID"
+                       class="publisherID form-control border-top-0 border-start-0 border-end-0 rounded-0 bg-gray-50"
+                       {{if $row.IsChecked}}value="{{$row.Publisher}}" {{end}}
+                >
+            </div>
+        </div>
+    </div>
+{{end}}

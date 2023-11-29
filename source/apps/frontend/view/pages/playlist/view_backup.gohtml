@@ -1,0 +1,172 @@
+{{- /*gotype: source/apps/frontend/controller.AssignPlaylistEdit*/ -}}
+{{$Playlist := .Schema.LANG.Pages.Playlist}}
+<div class="px-5 py-3 border-bottom border-gray-200">
+    <div class="container-fluid px-0">
+        <div class="row align-items-center">
+            <div class="col">
+                <a href="/playlist">
+                    <span class="text-uppercase tiny text-gray-600 Montserrat-font font-weight-semibold">{{$Playlist.Top}}</span>
+                </a>
+                <h1 class="h4 mb-0">{{$Playlist.Edit}}</h1>
+            </div>
+        </div>
+    </div>
+</div>
+{{/*End Header*/}}
+
+<div class="px-5 pt-5 pb-3 height-main">
+    <div class="container-fluid px-0">
+        <div class="row">
+            <div class="col-12">
+                <form id="editPlaylist" data-user="{{.Row.TablePlaylist.UserId}}">
+
+                    <div id="MainBox" class="card rounded-0 shadow-dark-80 border border-gray-50 mb-5">
+                        <div class="d-flex align-items-center bg-dominant px-4">
+                            <h5 class="card-header-title font-weight-semibold m-2">{{$Playlist.Main}}</h5>
+                        </div>
+                        <div id="collapseMainBox" class="collapse show" data-bs-parent="#MainBox">
+                            <div class="card-body px-5 py-for-card">
+                                <input type="hidden" name="id" value="{{.Row.TablePlaylist.Id}}">
+
+                                <div class="row my-4">
+                                    <div class="d-flex align-items-center">
+                                        <label class="col-form-label form-label form-label-lg w-input-group"
+                                               for="name">
+                                            {{$Playlist.Name}}
+                                        </label> <input type="text" class="form-control w-50-custom" disabled
+                                                        id="name" name="name" value="{{.Row.TablePlaylist.Name}}">
+                                        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                                    </div>
+                                </div>
+                                {{/*Name*/}}
+
+                                <div class="row my-4">
+                                    <div class="d-flex">
+                                        <label class="col-form-label form-label form-label-lg w-input-group"
+                                               for="description">
+                                            {{$Playlist.Description}}
+                                        </label> <textarea class="form-control w-50-custom" id="description" disabled
+                                                           name="description">{{.Row.TablePlaylist.Description}}</textarea>
+                                        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                                    </div>
+                                </div>
+                                {{/*Description*/}}
+
+                            </div>
+                        </div>
+                    </div>
+                    {{/*Main Card*/}}
+
+                    <div id="PlaylistConfigBox" class="card rounded-0 shadow-dark-80 border border-gray-50 mb-5">
+                        <div class="d-flex align-items-center bg-dominant px-4 toggle-collapse">
+                            <h5 class="card-header-title font-weight-semibold m-2">{{$Playlist.PlaylistConfig}}</h5>
+                            <div class="ms-auto pe-md-2">
+                                <div class="export-dropdown">
+                                    <a aria-controls="collapsePlaylistConfigBox" data-bs-target="#collapsePlaylistConfigBox"
+                                       data-bs-toggle="collapse"
+                                       aria-expanded="{{if (InArray "collapsePlaylistConfigBox" $.ListBoxCollapse false)}}false{{else}}true{{end}}"
+                                       class="btn btn-link px-3 {{if (InArray "collapsePlaylistConfigBox" $.ListBoxCollapse false)}}{{else}}collapsed{{end}}"
+                                       href="javascript:void(0);">
+                                        <svg class="ms-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                             viewBox="0 0 13 13">
+                                            <rect data-name="Icons/Tabler/Chevron Down background" width="16"
+                                                  height="16" fill="none"></rect>
+                                            <path d="M.214.212a.738.738,0,0,1,.952-.07l.082.07L7.1,5.989a.716.716,0,0,1,.071.94L7.1,7.011l-5.85,5.778a.738.738,0,0,1-1.034,0,.716.716,0,0,1-.071-.94l.071-.081L5.547,6.5.214,1.233A.716.716,0,0,1,.143.293Z"
+                                                  transform="translate(13 3.25) rotate(90)" fill="#1e1e1e"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="collapsePlaylistConfigBox"
+                             class="collapse {{if (InArray "collapsePlaylistConfigBox" $.ListBoxCollapse false)}}{{else}}show{{end}}"
+                             data-bs-parent="#PlaylistConfigBox">
+                            <div class="card-body px-5 py-for-card">
+                                <div class="row my-4">
+                                    <div class="d-flex align-items-center">
+                                        <label class="col-form-label form-label form-label-lg w-input-group"
+                                               for="ordering_method"> Ordering Method </label>
+                                        <select name="ordering_method" id="ordering_method" class="form-control w-50-custom select2" disabled>
+                                            <option value="most_view" {{if eq .Row.TablePlaylist.OrderingMethod "most_view"}}selected{{end}}>Most viewed</option>
+                                            <option value="newest_first" {{if eq .Row.TablePlaylist.OrderingMethod "newest_first"}}selected{{end}}>Newest first</option>
+                                            <option value="oldest_first" {{if eq .Row.TablePlaylist.OrderingMethod "oldest_first"}}selected{{end}}>Oldest first</option>
+                                            <option value="random" {{if eq .Row.TablePlaylist.OrderingMethod "random"}}selected{{end}}>Random</option>
+                                        </select>
+                                        {{/*                                        <input type="text" class="form-control w-50-custom" id="ordering_method" name="ordering_method">*/}}
+                                        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                                    </div>
+                                </div>
+                                {{/*Start Date*/}}
+
+                                <div class="row my-4">
+                                    <div class="d-flex align-items-center">
+                                        <label class="col-form-label form-label form-label-lg w-input-group"
+                                               for="videos_limit"> Videos Limit </label>
+                                        <input type="number" class="form-control w-50-custom"
+                                               id="videos_limit" name="videos_limit" value="{{.Row.TablePlaylist.VideosLimit}}" disabled>
+                                        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                                    </div>
+                                </div>
+                                {{/*End Date*/}}
+
+                                <div class="row my-4">
+                                    <div class="d-flex">
+                                        <label class="col-form-label form-label form-label-lg w-input-group"> Channels & Videos </label>
+                                        <div class="col-sm-8">
+                                            <div class="accordion muze-collapes border border-bottom-0 border-gray-50"
+                                                 id="channels_videos">
+
+                                                {{template "playlist/view/config.language" .}}
+                                                {{/*config language*/}}
+
+                                                {{template "playlist/view/config.channels" .}}
+                                                {{/*config channels*/}}
+
+                                                {{template "playlist/view/config.category" .}}
+                                                {{/*config cateogories*/}}
+
+                                                {{template "playlist/view/config.keywords" .}}
+                                                {{/*config keywords*/}}
+
+                                                {{template "playlist/view/config.videos" .}}
+                                                {{/*config videos*/}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{/*Target*/}}
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{{/*Form Infomation*/}}
+
+<style>
+    .remove-content {
+        cursor: pointer;
+    }
+    .rm_c {
+        float: right;
+        margin-right: 24px;
+    }
+    .d {
+        position: absolute;
+        right: 5px;
+        width: 10px;
+    }
+    .hr_custom {
+        border-color: #e2e6e9 !important;
+        color: #a7a7a7;
+        margin: 0 -50px 0 -50px;
+    }
+    .avatar.avatar-lg {
+        width: 7.25rem;
+    }
+    li[aria-disabled="true"] {
+        display: none;
+    }
+</style>

@@ -1,0 +1,127 @@
+{{- /*gotype: source/apps/frontend/controller.AssignIdentityEdit*/ -}}
+{{$Lang := .Schema.LANG.Pages.Identity}}
+<div class="dm10">
+    <div class="dm8">
+        <div class="dm9">User Id Modules</div>
+        <div class="dm12">
+            <a href="javascript:void(0)" class="add-module">+ Add New Module</a>
+        </div>
+    </div>
+    <div class="dm8 box-select-module">
+        <div class="pp7 w-100">
+            <div class="bor0-selectpicker pp-9">
+                <select id="select-module" class="form-control selectpicker icon-placeholder-search" title="Select a module" data-live-search="true" data-size="7" data-live-search-placeholder="Search Domain">
+                    {{range .ModuleUserId}}
+                        <option value="{{.TableModuleUserId.Id}}">{{.TableModuleUserId.Name}}</option>
+                    {{end}}
+                </select> <span class="form-text ms-2 w-auto invalid-feedback"></span>
+            </div>
+        </div>
+    </div>
+    <div id="module-params">
+        {{range $key,$value := .Modules}}
+            <div class="dm11 module_param_box box-c" id="ModuleParamBox-{{$value.ModuleId}}" data-id="{{$value.ModuleId}}">
+                <div class="bidder-box" data-id="{{$value.ModuleId}}" data-name="{{$value.Name}}">
+                    <div class="pp15 position-relative">
+                        <div class="pp5 text-capitalize">{{$value.Name}}</div>
+                        <div class="d">
+                            <a class="btn p-1 ms-2 rm_c" data-id="{{$value.ModuleId}}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor"
+                                     class="bi bi-x-lg" viewBox="0 0 16 16">
+                                    <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    {{if eq $value.Name "criteo"}}
+                        <span>
+                The Criteo ID module does not require any configuration parameters. It should work as-is provided that bidders use it in their adapters.
+            </span>
+                    {{else}}
+                        {{if $value.Params}}
+                            <div class="ms-1">
+                                Params
+                            </div>
+                        {{end}}
+                        {{range $key, $param := $value.Params}}
+                            <div class="pp7 box-param">
+                                <span class="pp-11">{{$value.Name}}</span>
+                                {{if eq $param.Type "string"}}
+                                    <input type="text" class="form-control pp-10 param_value"
+                                           style="border-left: 0;border-radius: 0 2px 2px 0;"
+                                           id="{{$value.ModuleId}}-{{$param.Name}}"
+                                           data-option="params" data-id="{{$value.ModuleId}}" data-module-name="{{$value.Name}}"
+                                           data-type="{{$param.Type}}" data-name="{{$param.Name}}"
+                                           value="{{$param.Template}}" placeholder="{{$param.Type}}">
+                                {{else if eq $param.Type "json"}}
+                                    <input type="text" class="form-control pp-10 param_value"
+                                           style="border-left: 0;border-radius: 0 2px 2px 0;"
+                                           id="{{$value.ModuleId}}-{{$param.Name}}"
+                                           data-option="params" data-id="{{$value.ModuleId}}" data-module-name="{{$value.Name}}"
+                                           data-type="{{$param.Type}}" data-name="{{$param.Name}}"
+                                           value="{{$param.Template}}" placeholder="{{$param.Type}}">
+                                {{else if eq $param.Type "boolean"}}
+                                    <input type="text" class="form-control pp-10 param_value"
+                                           style="border-left: 0;border-radius: 0 2px 2px 0;"
+                                           id="{{$value.ModuleId}}-{{$param.Name}}"
+                                           data-option="params" data-id="{{$value.ModuleId}}" data-module-name="{{$value.Name}}"
+                                           data-type="{{$param.Type}}" data-name="{{$param.Name}}"
+                                           value="{{$param.Template}}" placeholder="{{$param.Type}}">
+                                {{else}}
+                                    <input type="number" class="form-control pp-10 param_value"
+                                           style="border-left: 0;border-radius: 0 2px 2px 0;"
+                                           id="{{$value.ModuleId}}-{{$param.Name}}"
+                                           data-option="params" data-id="{{$value.ModuleId}}" data-module-name="{{$value.Name}}"
+                                           data-type="{{$param.Type}}" data-name="{{$param.Name}}"
+                                           value="{{$param.Template}}" placeholder="{{$param.Type}}">
+                                {{end}}
+                                <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                            </div>
+                        {{end}}
+                    {{end}}
+                    {{if .Storage}}
+                        <div class="ms-1">
+                            Storage
+                        </div>
+                    {{end}}
+                    {{range $key, $param := $value.Storage}}
+                        <div class="pp7 box-param">
+                            <span class="pp-11">{{$param.Name}}</span>
+                            {{if eq $param.Type "string"}}
+                                <input type="text" class="form-control pp-10 param_value"
+                                       style="border-left: 0;border-radius: 0 2px 2px 0;"
+                                       id="{{$value.ModuleId}}-{{$param.Name}}"
+                                       data-option="storage" data-id="{{$value.ModuleId}}" data-module-name="{{$value.Name}}"
+                                       data-type="{{$param.Type}}" data-name="{{$param.Name}}"
+                                       value="{{$param.Template}}" placeholder="{{$param.Type}}">
+                            {{else if eq $param.Type "json"}}
+                                <input type="text" class="form-control pp-10 param_value"
+                                       style="border-left: 0;border-radius: 0 2px 2px 0;"
+                                       id="{{$value.ModuleId}}-{{$param.Name}}"
+                                       data-option="storage" data-id="{{$value.ModuleId}}" data-module-name="{{$value.Name}}"
+                                       data-type="{{$param.Type}}" data-name="{{$param.Name}}"
+                                       value="{{$param.Template}}" placeholder="{{$param.Type}}">
+                            {{else if eq $param.Type "boolean"}}
+                                <input type="text" class="form-control pp-10 param_value"
+                                       style="border-left: 0;border-radius: 0 2px 2px 0;"
+                                       id="{{$value.ModuleId}}-{{$param.Name}}"
+                                       data-option="storage" data-id="{{$value.ModuleId}}" data-module-name="{{$value.Name}}"
+                                       data-type="{{$param.Type}}" data-name="{{$param.Name}}"
+                                       value="{{$param.Template}}" placeholder="{{$param.Type}}">
+                            {{else}}
+                                <input type="number" class="form-control pp-10 param_value"
+                                       style="border-left: 0;border-radius: 0 2px 2px 0;"
+                                       id="{{$value.ModuleId}}-{{$param.Name}}"
+                                       data-option="storage" data-id="{{$value.ModuleId}}" data-module-name="{{$value.Name}}"
+                                       data-type="{{$param.Type}}" data-name="{{$param.Name}}"
+                                       value="{{$param.Template}}" placeholder="{{$param.Type}}">
+                            {{end}}
+                            <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                        </div>
+                    {{end}}
+                </div>
+                <div class="dm8" style="min-height: auto;padding-bottom: 10px;"></div>
+            </div>
+        {{end}}
+    </div>
+</div>

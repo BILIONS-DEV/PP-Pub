@@ -1,0 +1,71 @@
+{{- /*gotype: source/apps/frontend/controller.AssignFloorEdit*/ -}}
+{{$Lang := .Schema.LANG.Pages.Floor}}
+
+<div class="dm21 floor_type_hard"  data-toggle="collapse" href="#collapseSizes">
+    <div class="dm13">
+        <a href="#" class="">{{$Lang.Size}}</a>
+    </div>
+    <div class="dm15">
+        <div class="dm22">
+            <span id="text_for_size">{{$Lang.AllSizes}}</span>
+        </div>
+    </div>
+    <div class="dm23">
+        <button type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"></path>
+            </svg>
+        </button>
+    </div>
+</div>
+<div class="collapse floor_type_hard" id="collapseSizes" data-parent=".accordion">
+    <div class="dm16 block_size">
+        <div class="pp7" style="margin: 0;">
+            <span style="width: 32px;height: 32px;background: #EEEEEE;border: 1px solid #ccc;border-right: 0;border-radius: 2px 0 0 2px;display: flex;align-items: center;justify-content: center;">
+                <img src="https://apps.valueimpression.com/assets/svg/icons/search@16.svg" alt="Search">
+            </span>
+            <input style="width: 100%;" class="pp10" type="text" placeholder="{{$Lang.SearchAdSize}}" id="search_ad_size">
+            <a href="#" class="remove_all_size">Clear</a>
+        </div>
+        <div class="dm17">
+            <div class="dm18 box-target" id="list_ad_size">
+                {{$len6 := len .AdSizes}}
+                <div class="list-group list-group-flush my-n3 pt-3 box_empty_size"
+                     {{if ne $len6 0}}hidden{{end}} >
+                    <div class="list-group-item">
+                        <div id="load_empty_ad_size" class="d-flex flex-row align-items-center px-md-2">
+                            <div class="col p-0 text-center">
+                                <h6 class="m-0 font-weight-semibold fs-12">No data available</h6></div>
+                        </div>
+                    </div>
+                </div>
+                {{range .AdSizes}}
+                    <div class="dm20 target-item" id="{{.TableAdSize.Id}}" {{if (InArray .TableAdSize.Id $.AdSizeOfFloor false)}}hidden{{end}}>
+                        <span>{{.TableAdSize.Name}}</span>
+                        <button class="add_size" data-id="{{.TableAdSize.Id}}" name="{{.TableAdSize.Name}}" type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                {{end}}
+            </div>
+            {{/*Left Box Size*/}}
+            <div class="dm19 box-target-selected box_ad_size">
+                {{range .AdSizesIncluded}}
+                    <div class="dm20 target-item item_selected" id="{{.TableAdSize.Id}}">
+                        <span>{{.TableAdSize.Name}}</span>
+                        <button class="remove_adSize" id="{{.TableAdSize.Id}}" name="{{.TableAdSize.Name}}" type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 16 16">
+                                <path d="M0 8a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                {{end}}
+            </div>
+            {{/*Right Box Size*/}}
+            <input hidden value="{{.IsMoreAdSize}}" id="is_more_adsize"/>
+            <input hidden value="{{.SizeLastPage}}" id="last_page_size"/>
+        </div>
+    </div>
+</div>

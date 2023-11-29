@@ -1,0 +1,44 @@
+{{- /*gotype: source/apps/frontend/controller.AssignAbTestingEdit*/ -}}
+{{$Lang := .Schema.LANG.Pages.AbTesting}}
+<div class="pp15">
+    <div class="pp5">{{$Lang.Name}}</div>
+</div>
+<div class="pp7">
+    <div class="pp-9">
+        <input class="pp-10 form-control" type="text" id="name" name="name" value="{{.Row.TableAbTesting.Name}}">
+        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+    </div>
+</div>
+<div class="pp15">
+    <div class="pp5"> {{$Lang.Description}}</div>
+</div>
+<div class="pp7">
+    <textarea class="pp17" spellcheck="false" id="description" name="description">{{.Row.TableAbTesting.Description}}</textarea>
+    <span class="form-text ms-2 w-auto invalid-feedback"></span>
+</div>
+<div class="pp15">
+    <div class="pp5">{{$Lang.TestType}}</div>
+</div>
+<div class=" cus-selectpicker pp-9">
+    <select id="test_type" name="test_type" class="form-control selectpicker" disabled>
+{{/*        <option value="1" {{if eq .Row.TableAbTesting.TestType 1}}selected{{end}}>*/}}
+{{/*            Auction Timeout*/}}
+{{/*        </option>*/}}
+{{/*        <option value="2" {{if eq .Row.TableAbTesting.TestType 2}}selected{{end}}>*/}}
+{{/*            Client vs Server*/}}
+{{/*        </option>*/}}
+{{/*        <option value="3" {{if eq .Row.TableAbTesting.TestType 3}}selected{{end}}>*/}}
+{{/*            User Id Module*/}}
+{{/*        </option>*/}}
+        <option value="4" {{if eq .Row.TableAbTesting.TestType 4}}selected{{end}}>
+            Dynamic vs Hard Price Floor
+        </option>
+    </select>
+    <span class="form-text ms-2 w-auto invalid-feedback"></span>
+</div>
+<div class="pp15">
+    <div class="pp5">Status</div>
+</div>
+<div class="pp7">
+    <label class="switch"> <input type="checkbox" id="status" name="status" {{if eq .Row.TableAbTesting.Status 1}}checked{{end}}> <span class="slider round"></span> </label>
+</div>

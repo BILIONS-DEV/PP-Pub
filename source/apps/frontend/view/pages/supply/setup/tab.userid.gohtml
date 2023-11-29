@@ -1,0 +1,394 @@
+{{- /*gotype: source/apps/frontend/controller.AssignInventory*/ -}}
+{{$TabUserID := .Schema.LANG.Pages.Inventory.Setup.TabUserID}}
+<form id="formUserId">
+    <div class="row">
+        <div class="col-12">
+            <input hidden value="{{.Config.TableInventoryConfig.Id}}" name="id"/>
+            <input hidden value="{{.Row.TableInventory.Id}}" name="inventory_id"/>
+
+            <div id="UserIdBox" class="card rounded-0 shadow-dark-80 border border-gray-50 mb-5">
+                <div class="d-flex align-items-center bg-dominant px-4 toggle-collapse">
+                    <h5 class="card-header-title font-weight-semibold m-2">{{.Schema.LANG.Main.ToUpper}}</h5>
+                    <div class="ms-auto pe-md-2">
+                        <div class="export-dropdown">
+                            <a aria-controls="collapseUserIdBox" data-bs-target="#collapseUserIdBox"
+                               data-bs-toggle="collapse"
+                               aria-expanded="{{if (InArray "collapseUserIdBox" $.ListBoxCollapse false)}}false{{else}}true{{end}}"
+                               class="btn btn-link px-3 {{if (InArray "collapseUserIdBox" $.ListBoxCollapse false)}}{{else}}collapsed{{end}}"
+                               href="javascript:void(0);">
+                                <svg class="ms-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                     viewBox="0 0 13 13">
+                                    <rect data-name="Icons/Tabler/Chevron Down background" width="16"
+                                          height="16" fill="none"></rect>
+                                    <path d="M.214.212a.738.738,0,0,1,.952-.07l.082.07L7.1,5.989a.716.716,0,0,1,.071.94L7.1,7.011l-5.85,5.778a.738.738,0,0,1-1.034,0,.716.716,0,0,1-.071-.94l.071-.081L5.547,6.5.214,1.233A.716.716,0,0,1,.143.293Z"
+                                          transform="translate(13 3.25) rotate(90)" fill="#1e1e1e"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div id="collapseUserIdBox"
+                     class="collapse {{if (InArray "collapseUserIdBox" $.ListBoxCollapse false)}}{{else}}show{{end}}"
+                     data-bs-parent="#UserIdBox">
+                    <div class="card-body px-5 py-for-card">
+
+                        <div class="row my-4">
+                            <div class="d-flex align-items-center">
+                                <label class="col-form-label form-label form-label-lg w-input-group">
+                                    {{$TabUserID.SyncDelay}}
+                                    <span class="ms-2" type="button" tabindex="0"
+                                          data-bs-toggle="popover"
+                                          data-bs-content="{{$TabUserID.SyncDelayDesc}}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                             fill="currentColor"
+                                             class="bi bi-info-circle" viewBox="0 0 16 16">
+                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                        </svg>
+                                    </span>
+                                </label>
+                                <input type="number" class="form-control w-50-custom" placeholder="3000"
+                                       id="sync_delay" name="sync_delay"
+                                       value="{{if eq .Config.TableInventoryConfig.SyncDelay 0}}3000{{else}}{{.Config.TableInventoryConfig.SyncDelay}}{{end}}">
+                                <span class="form-text ms-2">ms</span>
+                                <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                            </div>
+                        </div>
+                        {{/*Sync Delay*/}}
+
+                        <div class="row my-4">
+                            <div class="d-flex align-items-center">
+                                <label class="col-form-label form-label form-label-lg w-input-group">
+                                    {{$TabUserID.AuctionDelay}}
+                                    <span class="ms-2" type="button"
+                                          tabindex="0"
+                                          data-bs-toggle="popover"
+                                          data-bs-content="{{$TabUserID.AuctionDelayDesc}}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                             fill="currentColor"
+                                             class="bi bi-info-circle" viewBox="0 0 16 16">
+                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                        </svg>
+                                    </span> </label>
+                                <input type="number" class="form-control w-50-custom" placeholder="50"
+                                       id="auction_delay" name="auction_delay"
+                                       value="{{.Config.TableInventoryConfig.AuctionDelay}}">
+                                <span class="form-text ms-2">ms</span>
+                                <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                            </div>
+                        </div>
+                        {{/*Auction Delay*/}}
+                    </div>
+                </div>
+            </div>
+            {{/*MAIN*/}}
+
+{{/*            <div id="SettingBox"*/}}
+{{/*                 class="card rounded-0 shadow-dark-80 border border-gray-50 mb-5 box_type_google_hide">*/}}
+{{/*                <div class="d-flex align-items-center bg-dominant px-4 toggle-collapse">*/}}
+{{/*                    */}}{{/*                    <h5 class="card-header-title font-weight-semibold m-2">{{$TabUserID.Module}}</h5>*/}}
+{{/*                    <h5 class="card-header-title font-weight-semibold m-2">USER ID MODULES</h5>*/}}
+{{/*                    <div class="ms-auto pe-md-2">*/}}
+{{/*                        <div class="export-dropdown">*/}}
+{{/*                            <a aria-controls="collapseSettingBox" data-bs-target="#collapseSettingBox"*/}}
+{{/*                               data-bs-toggle="collapse"*/}}
+{{/*                               aria-expanded="{{if (InArray "collapseSettingBox" $.ListBoxCollapse false)}}false{{else}}true{{end}}"*/}}
+{{/*                               class="btn btn-link px-3 {{if (InArray "collapseSettingBox" $.ListBoxCollapse false)}}{{else}}collapsed{{end}}"*/}}
+{{/*                               href="javascript:void(0);">*/}}
+{{/*                                <svg class="ms-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16"*/}}
+{{/*                                     viewBox="0 0 13 13">*/}}
+{{/*                                    <rect data-name="Icons/Tabler/Chevron Down background" width="16"*/}}
+{{/*                                          height="16" fill="none"></rect>*/}}
+{{/*                                    <path d="M.214.212a.738.738,0,0,1,.952-.07l.082.07L7.1,5.989a.716.716,0,0,1,.071.94L7.1,7.011l-5.85,5.778a.738.738,0,0,1-1.034,0,.716.716,0,0,1-.071-.94l.071-.081L5.547,6.5.214,1.233A.716.716,0,0,1,.143.293Z"*/}}
+{{/*                                          transform="translate(13 3.25) rotate(90)" fill="#1e1e1e"></path>*/}}
+{{/*                                </svg>*/}}
+{{/*                            </a>*/}}
+{{/*                        </div>*/}}
+{{/*                    </div>*/}}
+{{/*                </div>*/}}
+{{/*                <div id="collapseSettingBox"*/}}
+{{/*                     class="collapse {{if (InArray "collapseSettingBox" $.ListBoxCollapse false)}}{{else}}show{{end}}"*/}}
+{{/*                     data-bs-parent="#SettingBox">*/}}
+{{/*                    <div class="card-body px-5 py-for-card">*/}}
+{{/*                        <div class="row my-4" id="select_bidder_box">*/}}
+{{/*                            <div class="d-flex align-items-center">*/}}
+{{/*                                <label class="col-form-label form-label form-label-lg w-input-group"*/}}
+{{/*                                       for="select-bidder">*/}}
+{{/*                                    {{$TabUserID.Module}}*/}}
+{{/*                                </label>*/}}
+{{/*                                <div class="w-50-custom">*/}}
+{{/*                                    <select id="select-module" class="form-select select2"*/}}
+{{/*                                            data-placeholder="Select a module" style="text-transform: capitalize">*/}}
+{{/*                                        <option value=""></option>*/}}
+{{/*                                        {{if .ListIdOfInventory}}*/}}
+{{/*                                            {{range .ModuleUserId}}*/}}
+{{/*                                                <option value="{{.TableModuleUserId.Id}}">{{.TableModuleUserId.Name}}</option>*/}}
+{{/*                                            {{end}}*/}}
+{{/*                                        {{else}}*/}}
+{{/*                                            {{range .ModuleUserId}}*/}}
+{{/*                                                <option value="{{.TableModuleUserId.Id}}">{{.TableModuleUserId.Name}}</option>*/}}
+{{/*                                            {{end}}*/}}
+{{/*                                        {{end}}*/}}
+{{/*                                    </select>*/}}
+{{/*                                    <select id="module" name="module" class="select2-hidden-accessible" multiple*/}}
+{{/*                                            data-placeholder="Select a module" style="text-transform: capitalize">*/}}
+{{/*                                        {{if .ListIdOfInventory}}*/}}
+{{/*                                            {{range .ModuleUserId}}*/}}
+{{/*                                                <option {{if (InArray .TableModuleUserId.Id $.ListIdOfInventory false)}}selected{{end}}*/}}
+{{/*                                                        value="{{.TableModuleUserId.Id}}">{{.TableModuleUserId.Name}}</option>*/}}
+{{/*                                            {{end}}*/}}
+{{/*                                        {{else}}*/}}
+{{/*                                            {{range .ModuleUserId}}*/}}
+{{/*                                                <option {{if (InArray .TableModuleUserId.Id $.ListModuleIdDefault false)}}selected{{end}}*/}}
+{{/*                                                        value="{{.TableModuleUserId.Id}}">{{.TableModuleUserId.Name}}</option>*/}}
+{{/*                                            {{end}}*/}}
+{{/*                                        {{end}}*/}}
+{{/*                                    </select> <span class="form-text ms-2 w-auto invalid-feedback"></span>*/}}
+{{/*                                </div>*/}}
+{{/*                            </div>*/}}
+{{/*                        </div>*/}}
+{{/*                        */}}{{/*Select Bidder*/}}
+
+{{/*                        <div id="module-params">*/}}
+{{/*                            {{range $key, $value := .Modules}}*/}}
+{{/*                                {{$name := print $value.Name }}*/}}
+{{/*                                <div class="module_param_box box-c" id="ModuleParamBox-{{$value.ModuleId}}"*/}}
+{{/*                                     data-name="{{$name}}" data-id="{{$value.ModuleId}}">*/}}
+{{/*                                    <hr class="mt-5 hr_custom bg-gray-400">*/}}
+{{/*                                    <div class="bidder-box" data-id="{{$value.ModuleId}}" data-name="{{$name}}">*/}}
+{{/*                                        <div class="row my-4">*/}}
+{{/*                                            <div class="d-flex align-items-center bidder-name">*/}}
+{{/*                                                <label class="col-form-label form-label form-label-lg w-input-group text-uppercase">*/}}
+{{/*                                                    {{$name}}*/}}
+{{/*                                                </label>*/}}
+{{/*                                                <div class="d">*/}}
+{{/*                                                    <a class="btn p-1 ms-2 rm_c" data-id="{{$value.ModuleId}}">*/}}
+{{/*                                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15"*/}}
+{{/*                                                             fill="currentColor"*/}}
+{{/*                                                             class="bi bi-x-lg" viewBox="0 0 16 16">*/}}
+{{/*                                                            <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"></path>*/}}
+{{/*                                                        </svg>*/}}
+{{/*                                                    </a>*/}}
+{{/*                                                </div>*/}}
+{{/*                                            </div>*/}}
+{{/*                                        </div>*/}}
+
+{{/*                                        <div id="collapseModuleParamBox-{{$name}}" class="collapse show"*/}}
+{{/*                                             data-bs-parent="#ModuleParamBox-{{$value.ModuleId}}">*/}}
+{{/*                                            {{if $value.Params}}*/}}
+{{/*                                                <div class="row my-4">*/}}
+{{/*                                                    <div class="d-flex align-items-center">*/}}
+{{/*                                                        <label class="col-form-label form-label form-label-lg w-input-group font-weight-bold">*/}}
+{{/*                                                            PARAMS </label>*/}}
+{{/*                                                    </div>*/}}
+{{/*                                                </div>*/}}
+{{/*                                            {{end}}*/}}
+{{/*                                            {{range $key, $param := $value.Params}}*/}}
+{{/*                                                <div class="row my-4">*/}}
+{{/*                                                    <div class="d-flex align-items-center">*/}}
+{{/*                                                        <label class="col-form-label form-label form-label-lg w-input-group"*/}}
+{{/*                                                               for="{{$value.ModuleId}}-{{$param.Name}}"*/}}
+{{/*                                                               style="text-transform: capitalize">*/}}
+{{/*                                                            {{$param.Name}}*/}}
+{{/*                                                        </label>*/}}
+{{/*                                                        {{if eq $param.Type "string"}}*/}}
+{{/*                                                            <input type="text" class="form-control w-50-custom"*/}}
+{{/*                                                                   id="{{$value.ModuleId}}-{{$param.Name}}"*/}}
+{{/*                                                                   data-option="params" data-id="{{$value.ModuleId}}"*/}}
+{{/*                                                                   data-module-name="{{$value.Name}}"*/}}
+{{/*                                                                   data-type="{{$param.Type}}"*/}}
+{{/*                                                                   data-name="{{$param.Name}}"*/}}
+{{/*                                                                   value="{{$param.Template}}"*/}}
+{{/*                                                                   placeholder="{{$param.Type}}">*/}}
+{{/*                                                            <span class="form-text ms-2"></span>*/}}
+{{/*                                                        {{else if eq $param.Type "json"}}*/}}
+{{/*                                                            <input type="text" class="form-control w-50-custom"*/}}
+{{/*                                                                   id="{{$value.ModuleId}}-{{$param.Name}}"*/}}
+{{/*                                                                   data-option="params" data-id="{{$value.ModuleId}}"*/}}
+{{/*                                                                   data-module-name="{{$value.Name}}"*/}}
+{{/*                                                                   data-type="{{$param.Type}}"*/}}
+{{/*                                                                   data-name="{{$param.Name}}"*/}}
+{{/*                                                                   value="{{$param.Template}}"*/}}
+{{/*                                                                   placeholder="{{$param.Type}}">*/}}
+{{/*                                                            <span class="form-text ms-2"></span>*/}}
+{{/*                                                        {{else if eq $param.Type "boolean"}}*/}}
+{{/*                                                            <input type="text" class="form-control w-50-custom"*/}}
+{{/*                                                                   id="{{$value.ModuleId}}-{{$param.Name}}"*/}}
+{{/*                                                                   data-option="params" data-id="{{$value.ModuleId}}"*/}}
+{{/*                                                                   data-module-name="{{$value.Name}}"*/}}
+{{/*                                                                   data-type="{{$param.Type}}"*/}}
+{{/*                                                                   data-name="{{$param.Name}}"*/}}
+{{/*                                                                   value="{{$param.Template}}"*/}}
+{{/*                                                                   placeholder="{{$param.Type}}">*/}}
+{{/*                                                            <span class="form-text ms-2"></span>*/}}
+{{/*                                                        {{else}}*/}}
+{{/*                                                            <input type="number" class="form-control w-50-custom"*/}}
+{{/*                                                                   id="{{$value.ModuleId}}-{{$param.Name}}"*/}}
+{{/*                                                                   data-option="params" data-id="{{$value.ModuleId}}"*/}}
+{{/*                                                                   data-module-name="{{$value.Name}}"*/}}
+{{/*                                                                   data-type="{{$param.Type}}"*/}}
+{{/*                                                                   data-name="{{$param.Name}}"*/}}
+{{/*                                                                   value="{{$param.Template}}"*/}}
+{{/*                                                                   placeholder="{{$param.Type}}">*/}}
+{{/*                                                            <span class="form-text ms-2"></span>*/}}
+{{/*                                                        {{end}}*/}}
+{{/*                                                    </div>*/}}
+{{/*                                                </div>*/}}
+{{/*                                            {{end}}*/}}
+{{/*                                            {{if $value.Storage}}*/}}
+{{/*                                                {{if $value.Params}}*/}}
+{{/*                                                    <hr class="hr_custom my-4"/>*/}}
+{{/*                                                {{end}}*/}}
+{{/*                                                <div class="row my-4">*/}}
+{{/*                                                    <div class="d-flex align-items-center">*/}}
+{{/*                                                        <label class="col-form-label form-label form-label-lg w-input-group font-weight-bold">*/}}
+{{/*                                                            STORAGE </label>*/}}
+{{/*                                                    </div>*/}}
+{{/*                                                </div>*/}}
+{{/*                                            {{end}}*/}}
+{{/*                                            {{range $key, $param := $value.Storage}}*/}}
+{{/*                                                <div class="row my-4">*/}}
+{{/*                                                    <div class="d-flex align-items-center">*/}}
+{{/*                                                        <label class="col-form-label form-label form-label-lg w-input-group"*/}}
+{{/*                                                               for="{{$value.ModuleId}}-{{$param.Name}}"*/}}
+{{/*                                                               style="text-transform: capitalize">*/}}
+{{/*                                                            {{$param.Name}}*/}}
+{{/*                                                        </label>*/}}
+{{/*                                                        {{if eq $param.Type "string"}}*/}}
+{{/*                                                            <input type="text" class="form-control w-50-custom"*/}}
+{{/*                                                                   id="{{$value.ModuleId}}-{{$param.Name}}"*/}}
+{{/*                                                                   data-option="storage" data-id="{{$value.ModuleId}}"*/}}
+{{/*                                                                   data-module-name="{{$value.Name}}"*/}}
+{{/*                                                                   data-type="{{$param.Type}}"*/}}
+{{/*                                                                   data-name="{{$param.Name}}"*/}}
+{{/*                                                                   value="{{$param.Template}}"*/}}
+{{/*                                                                   placeholder="{{$param.Type}}">*/}}
+{{/*                                                            <span class="form-text ms-2"></span>*/}}
+{{/*                                                        {{else if eq $param.Type "json"}}*/}}
+{{/*                                                            <input type="text" class="form-control w-50-custom"*/}}
+{{/*                                                                   id="{{$value.ModuleId}}-{{$param.Name}}"*/}}
+{{/*                                                                   data-option="storage" data-id="{{$value.ModuleId}}"*/}}
+{{/*                                                                   data-module-name="{{$value.Name}}"*/}}
+{{/*                                                                   data-type="{{$param.Type}}"*/}}
+{{/*                                                                   data-name="{{$param.Name}}"*/}}
+{{/*                                                                   value="{{$param.Template}}"*/}}
+{{/*                                                                   placeholder="{{$param.Type}}">*/}}
+{{/*                                                            <span class="form-text ms-2"></span>*/}}
+{{/*                                                        {{else if eq $param.Type "boolean"}}*/}}
+{{/*                                                            <input type="text" class="form-control w-50-custom"*/}}
+{{/*                                                                   id="{{$value.ModuleId}}-{{$param.Name}}"*/}}
+{{/*                                                                   data-option="storage" data-id="{{$value.ModuleId}}"*/}}
+{{/*                                                                   data-module-name="{{$value.Name}}"*/}}
+{{/*                                                                   data-type="{{$param.Type}}"*/}}
+{{/*                                                                   data-name="{{$param.Name}}"*/}}
+{{/*                                                                   value="{{$param.Template}}"*/}}
+{{/*                                                                   placeholder="{{$param.Type}}">*/}}
+{{/*                                                            <span class="form-text ms-2"></span>*/}}
+{{/*                                                        {{else}}*/}}
+{{/*                                                            <input type="number" class="form-control w-50-custom"*/}}
+{{/*                                                                   id="{{$value.ModuleId}}-{{$param.Name}}"*/}}
+{{/*                                                                   data-option="storage" data-id="{{$value.ModuleId}}"*/}}
+{{/*                                                                   data-module-name="{{$value.Name}}"*/}}
+{{/*                                                                   data-type="{{$param.Type}}"*/}}
+{{/*                                                                   data-name="{{$param.Name}}"*/}}
+{{/*                                                                   value="{{$param.Template}}"*/}}
+{{/*                                                                   placeholder="{{$param.Type}}">*/}}
+{{/*                                                            <span class="form-text ms-2"></span>*/}}
+{{/*                                                        {{end}}*/}}
+{{/*                                                    </div>*/}}
+{{/*                                                </div>*/}}
+{{/*                                            {{end}}*/}}
+{{/*                                            {{if $value.Storage}}*/}}
+{{/*                                                <hr class="hr_custom my-4"/>*/}}
+{{/*                                            {{else if $value.Params}}*/}}
+{{/*                                                <hr class="hr_custom my-4"/>*/}}
+{{/*                                            {{end}}*/}}
+{{/*                                            */}}{{/*            <div class="row my-4">*/}}
+{{/*                                            */}}{{/*                <div class="d-flex align-items-center">*/}}
+{{/*                                            */}}{{/*                    <label class="col-form-label form-label form-label-lg w-input-group  font-weight-bold">*/}}
+{{/*                                            */}}{{/*                        MODULE*/}}
+{{/*                                            */}}{{/*                    </label>*/}}
+{{/*                                            */}}{{/*                </div>*/}}
+{{/*                                            */}}{{/*            </div>*/}}
+{{/*                                            <div class="row my-4">*/}}
+{{/*                                                <div class="d-flex align-items-center">*/}}
+{{/*                                                    <label class="col-form-label form-label form-label-lg w-input-group">*/}}
+{{/*                                                        A/B Testing*/}}
+{{/*                                                        <span class="ms-2" type="button"*/}}
+{{/*                                                              tabindex="0"*/}}
+{{/*                                                              data-bs-toggle="popover"*/}}
+{{/*                                                              data-bs-content="Performance measurement">*/}}
+{{/*                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"*/}}
+{{/*                                             fill="currentColor"*/}}
+{{/*                                             class="bi bi-info-circle" viewBox="0 0 16 16">*/}}
+{{/*                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>*/}}
+{{/*                                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>*/}}
+{{/*                                        </svg>*/}}
+{{/*                                    </span> </label>*/}}
+{{/*                                                    <div class="form-check form-switch mb-0 ps-0">*/}}
+{{/*                                                        <input type="checkbox" data-toggle="toggle"*/}}
+{{/*                                                               {{if eq $value.AbTesting 1}}checked{{end}}*/}}
+{{/*                                                               class="enable_testing"*/}}
+{{/*                                                               data-module-name="{{$value.Name}}"*/}}
+{{/*                                                               data-id="{{$value.ModuleId}}"*/}}
+{{/*                                                               data-option="ab_testing"*/}}
+{{/*                                                               id="ab_testing_{{$value.Name}}" name="ab_testing"*/}}
+{{/*                                                               data-on="On" data-off="Off"*/}}
+{{/*                                                               data-onstyle="dominant btn-sm"*/}}
+{{/*                                                               data-offstyle="soft-secondary btn-sm"*/}}
+{{/*                                                               data-style="rounded-24">*/}}
+{{/*                                                    </div>*/}}
+{{/*                                                </div>*/}}
+{{/*                                            </div>*/}}
+{{/*                                            <div id="ab_testing_{{$value.Name}}"*/}}
+{{/*                                                 {{if eq $value.AbTesting 2}}hidden{{end}}>*/}}
+{{/*                                                <div class="row my-4">*/}}
+{{/*                                                    <div class="d-flex align-items-center">*/}}
+{{/*                                                        <label class="col-form-label form-label form-label-lg w-input-group">*/}}
+{{/*                                                            Volume*/}}
+{{/*                                                            <span class="ms-2" type="button"*/}}
+{{/*                                                                  tabindex="0"*/}}
+{{/*                                                                  data-bs-toggle="popover"*/}}
+{{/*                                                                  data-bs-content="The volume of traffic you want to test on this module (percent)">*/}}
+{{/*                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"*/}}
+{{/*                                             fill="currentColor"*/}}
+{{/*                                             class="bi bi-info-circle" viewBox="0 0 16 16">*/}}
+{{/*                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>*/}}
+{{/*                                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>*/}}
+{{/*                                        </svg>*/}}
+{{/*                                    </span> </label>*/}}
+{{/*                                                        <input type="number" data-id="{{$value.ModuleId}}"*/}}
+{{/*                                                               data-option="volume"*/}}
+{{/*                                                               class="form-control w-50-custom" placeholder="50"*/}}
+{{/*                                                               id="volume_{{$value.Name}}" name="volume"*/}}
+{{/*                                                               data-module-name="{{$value.Name}}"*/}}
+{{/*                                                               value="{{if eq $value.Volume 0}}50{{else}}{{$value.Volume}}{{end}}">*/}}
+{{/*                                                        <span class="form-text ms-2">%</span>*/}}
+{{/*                                                        <span class="form-text ms-2 w-auto invalid-feedback"></span>*/}}
+{{/*                                                    </div>*/}}
+{{/*                                                </div>*/}}
+{{/*                                            </div>*/}}
+{{/*                                        </div>*/}}
+{{/*                                    </div>*/}}
+{{/*                                </div>*/}}
+
+
+
+{{/*                            {{end}}*/}}
+{{/*                        </div>*/}}
+{{/*                        */}}{{/*End Select Bidder Row*/}}
+{{/*                    </div>*/}}
+{{/*                </div>*/}}
+{{/*            </div>*/}}
+            {{/*Settings Card*/}}
+
+            <div class="row">
+                <div class="col-sm-12 text-lg-end">
+                    <button type="button" class="btn btn-dominant btn-lg submit">{{$TabUserID.Button}}</button>
+                </div>
+            </div>
+            {{/* Button*/}}
+        </div>
+    </div>
+</form>

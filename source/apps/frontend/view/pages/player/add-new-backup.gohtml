@@ -1,0 +1,676 @@
+<div class="px-5 py-2 border-bottom border-gray-200">
+    <div class="container-fluid px-0">
+        <div class="row align-items-center">
+            <div class="col">
+                <span class="text-uppercase tiny text-gray-600 Montserrat-font font-weight-semibold">PLAYER</span>
+                <h1 class="h2 mb-0">Add Template</h1>
+            </div>
+        </div>
+    </div>
+</div>
+{{/*End Header*/}}
+
+
+<div class="p-lg-5 p-4">
+    <div class="container-fluid px-0">
+        <div class="row">
+            <div class="col-12 mb-3 mb-xl-4">
+
+                <div class="card rounded-12 shadow-dark-80 border border-gray-50 mb-5">
+                    <div class="p-3 border-bottom border-gray-200">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h5 class="card-header-title font-weight-semibold my-2">Preview</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body py-4">
+                        <p>Content preview</p>
+                        <div class="container demo">
+
+
+                            <div class="text-center">
+                                <button type="button" class="btn btn-demo" data-toggle="modal" data-target="#myModal">
+                                    Left Sidebar Modal
+                                </button>
+
+                                <button type="button" class="btn btn-demo" data-toggle="modal" data-target="#myModal2">
+                                    Right Sidebar Modal
+                                </button>
+                            </div>
+
+                            <!-- Modal -->
+                            <div class="modal left fade" id="myModal" tabindex="-1" role="dialog"
+                                 aria-labelledby="myModalLabel">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="myModalLabel">Left Sidebar</h4>
+                                        </div>
+
+                                        <div class="modal-body">
+                                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
+                                                terry richardson ad squid. 3 wolf moon officia aute, non cupidatat
+                                                skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                                                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
+                                                single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
+                                                helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+                                                proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft
+                                                beer farm-to-table, raw denim aesthetic synth nesciunt you probably
+                                                haven't heard of them accusamus labore sustainable VHS.
+                                            </p>
+                                        </div>
+
+                                    </div><!-- modal-content -->
+                                </div><!-- modal-dialog -->
+                            </div><!-- modal -->
+
+                            <!-- Modal -->
+                            <div class="modal right fade" id="myModal2" tabindex="-1" role="dialog"
+                                 aria-labelledby="myModalLabel2">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="myModalLabel2">Right Sidebar</h4>
+                                        </div>
+
+                                        <div class="modal-body">
+                                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
+                                                terry richardson ad squid. 3 wolf moon officia aute, non cupidatat
+                                                skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                                                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
+                                                single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
+                                                helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+                                                proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft
+                                                beer farm-to-table, raw denim aesthetic synth nesciunt you probably
+                                                haven't heard of them accusamus labore sustainable VHS.
+                                            </p>
+                                        </div>
+
+                                    </div><!-- modal-content -->
+                                </div><!-- modal-dialog -->
+                            </div><!-- modal -->
+
+
+                        </div><!-- container -->
+
+                        <footer class="demo-footer">
+                            <a href="http://www.bootpen.com" target="_blank">Get more code snippets</a>
+                        </footer>
+                    </div>
+                </div>
+                {{/*Preview Card*/}}
+
+                <div class="card rounded-12 shadow-dark-80 border border-gray-50 mb-5">
+                    <div class="p-3 px-4 border-bottom border-gray-200">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h5 class="card-header-title font-weight-semibold my-2">Main</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body py-5">
+                        <div class="row mb-4 px-3">
+                            <label class="col-sm-2 col-form-label form-label form-label-lg text-lg-end" for="name">
+                                Name</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control form-control-lg" placeholder="Template name"
+                                       value=""
+                                       id="name" name="name">
+                            </div>
+                        </div>
+                        {{/*Name*/}}
+
+                        <div class="row mb-4 px-3">
+                            <label class="col-sm-2 col-form-label form-label form-label-lg text-lg-end" for="type">
+                                Ad Type</label>
+                            <div class="col-sm-8">
+                                <select id="type" name="type" class="form-select form-select-lg">
+                                    <option value="1">Video Discovery</option>
+                                </select>
+                            </div>
+                        </div>
+                        {{/*Type*/}}
+
+                    </div>
+                </div>
+                {{/*Information Card*/}}
+
+                <div class="card rounded-12 shadow-dark-80 border border-gray-50 mb-3 mb-xl-5">
+                    <div class="p-3 px-4 border-bottom border-gray-200">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h5 class="card-header-title font-weight-semibold m-2">Appearance</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body py-5">
+
+                        <div class="px-3">
+                            <div class="media py-2 py-md-4">
+                                <div class="media-body my-2 w-100">
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-2 text-lg-end">
+                                            <span class="form-label form-label-lg">Player Size</span>
+                                            <sup class="ms-2" type="button"
+                                                 tabindex="0"
+                                                 data-bs-toggle="popover"
+                                                 data-bs-content="Ads automatically adjust their size to fit available ad spaces Responsive or Fixed">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                     fill="currentColor"
+                                                     class="bi bi-info-circle" viewBox="0 0 16 16">
+                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                                </svg>
+                                            </sup>
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <div class="form-check form-switch mb-0">
+                                                <input type="checkbox" checked data-toggle="toggle"
+                                                       data-on="responsive" data-off="fixed"
+                                                       data-onstyle="primary btn-sm" data-offstyle="secondary btn-sm"
+                                                       data-style="rounded-24"
+                                                       id="player_size" name="player_size">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-8">
+                                            <div class="row" id="player_size_fixed">
+                                                <div class="col-lg-auto col-md-12 d-flex align-items-center">
+                                                    <input type="text" class="form-control form-control-lg"
+                                                           placeholder="Width"
+                                                           id="player_size_width" name="player_size_width">
+                                                    <span class="form-text ms-2">px</span>
+                                                </div>
+                                                <div class="col-lg-auto col-md-12 d-flex align-items-center">
+                                                    <input type="text" class="form-control form-control-lg"
+                                                           placeholder="Height"
+                                                           id="player_size_height" name="player_size_height">
+                                                    <span class="form-text ms-2">px</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{/*                                    <div class="row">*/}}
+                                    {{/*                                        <div class="col-lg-2"></div>*/}}
+                                    {{/*                                        <div class="col-lg-10">*/}}
+                                    {{/*                                            <div class="row mt-4" id="player_size_fixed">*/}}
+                                    {{/*                                                <div class="col-lg-auto col-md-12 d-flex align-items-center">*/}}
+                                    {{/*                                                    <input type="text" class="form-control form-control-lg"*/}}
+                                    {{/*                                                           placeholder="Width"*/}}
+                                    {{/*                                                           id="player_size_width" name="player_size_width">*/}}
+                                    {{/*                                                    <span class="form-text ms-2">px</span>*/}}
+                                    {{/*                                                </div>*/}}
+                                    {{/*                                                <div class="col-lg-auto col-md-12 d-flex align-items-center">*/}}
+                                    {{/*                                                    <input type="text" class="form-control form-control-lg"*/}}
+                                    {{/*                                                           placeholder="Height"*/}}
+                                    {{/*                                                           id="player_size_height" name="player_size_height">*/}}
+                                    {{/*                                                    <span class="form-text ms-2">px</span>*/}}
+                                    {{/*                                                </div>*/}}
+                                    {{/*                                            </div>*/}}
+                                    {{/*                                        </div>*/}}
+                                    {{/*                                    </div>*/}}
+                                </div>
+                            </div>
+                            {{/*Player Size*/}}
+                        </div>
+
+                        <div class="row mb-2 px-3">
+                            <label class="col-sm-2 col-form-label form-label form-label-lg text-lg-end"
+                                   for="player_color">
+                                Player Color
+                            </label>
+                            <div class="col-sm-8 d-flex px-5">
+                                <input type="color"
+                                       class="form-control form-control-lg form-control-color border-gray-300 border-end-0 rounded-0 rounded-start"
+                                       id="select_color" value="#563d7c" title="Choose your color">
+                                <input type="text"
+                                       class="form-control form-control-lg border-gray-300 border-start-0 rounded-0 rounded-end"
+                                       id="player_color" name="player_color"
+                                       value="#222222">
+                            </div>
+                        </div>
+                        {{/*Player Color*/}}
+
+                        <div class="px-3 mb-2">
+                            <div class="media py-2 py-md-4">
+                                <div class="media-body my-2 w-100">
+                                    <div class="row align-items-center">
+                                        <div class="col-sm-2 text-lg-end">
+                                            <span class="form-label form-label-lg">Related Video</span>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="form-check form-switch mb-0">
+                                                <input type="checkbox" checked data-toggle="toggle"
+                                                       data-on="show" data-off="hidden"
+                                                       data-onstyle="primary btn-sm" data-offstyle="secondary btn-sm"
+                                                       data-style="rounded-24"
+                                                       id="related_video" name="related_video">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{/*Related Video*/}}
+
+                        <div class="row mb-2 px-3">
+                            <label class="col-sm-2 col-form-label form-label form-label-lg text-lg-end"
+                                   for="player_layout">
+                                Player Layout</label>
+                            <div class="col-sm-8  px-5">
+                                <select id="player_layout" name="player_layout" class="form-select form-select-lg">
+                                    <option value="1">Related Right</option>
+                                    <option value="2">Related Bottom</option>
+                                    <option value="3">Slide</option>
+                                </select>
+                            </div>
+                        </div>
+                        {{/*Player Layout*/}}
+
+                        <div class="px-3">
+                            <div class="media py-2 py-md-4">
+                                <div class="media-body my-2 w-100">
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-2 text-lg-end">
+                                            <span class="form-label form-label-lg">Sticky Player</span>
+                                            <sup class="ms-2" type="button"
+                                                 tabindex="0"
+                                                 data-bs-toggle="popover"
+                                                 data-bs-content="Sticky ads in the desired position">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                     fill="currentColor"
+                                                     class="bi bi-info-circle" viewBox="0 0 16 16">
+                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                                </svg>
+                                            </sup>
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <div class="form-check form-switch mb-0">
+                                                <input type="checkbox" checked data-toggle="toggle"
+                                                       data-on="on" data-off="off"
+                                                       data-onstyle="primary btn-sm" data-offstyle="secondary btn-sm"
+                                                       data-style="rounded-24"
+                                                       id="sticky_player" name="sticky_player">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div id="sticky_player_setting" class="row align-items-center">
+                                                <div class="col-lg-4 col-md-12 d-flex align-items-center">
+                                                    <span class="form-text me-2">Position</span>
+                                                    <select class="form-select form-select-lg">
+                                                        <option value="1">Bottom Right</option>
+                                                        <option value="2">Bottom Left</option>
+                                                        <option value="3">Top Right</option>
+                                                        <option value="4">Top Right</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-lg-4 col-md-12 d-flex align-items-center">
+                                                    <input type="text" class="form-control form-control-lg"
+                                                           placeholder="Bottom Margin"
+                                                           id="sticky_margin_bottom" name="sticky_margin_bottom">
+                                                    <span class="form-text ms-2">px</span>
+                                                </div>
+                                                <div class="col-lg-4 col-md-12 d-flex align-items-center">
+                                                    <input type="text" class="form-control form-control-lg"
+                                                           placeholder="Right Margin"
+                                                           id="sticky_margin_right" name="sticky_margin_right">
+                                                    <span class="form-text ms-2">px</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{/*                                    <div class="row">*/}}
+                                    {{/*                                        <div class="col-lg-2"></div>*/}}
+                                    {{/*                                        <div class="col-lg-10">*/}}
+                                    {{/*                                            <div id="sticky_player_setting" class="row mt-4 align-items-center">*/}}
+                                    {{/*                                                <div class="col-lg-auto col-md-12 d-flex align-items-center">*/}}
+                                    {{/*                                                    <span class="form-text me-2">Position</span>*/}}
+                                    {{/*                                                    <select class="form-select form-select-lg">*/}}
+                                    {{/*                                                        <option value="1">Bottom Right</option>*/}}
+                                    {{/*                                                        <option value="2">Bottom Left</option>*/}}
+                                    {{/*                                                        <option value="3">Top Right</option>*/}}
+                                    {{/*                                                        <option value="4">Top Right</option>*/}}
+                                    {{/*                                                    </select>*/}}
+                                    {{/*                                                </div>*/}}
+                                    {{/*                                                <div class="col-lg-auto col-md-12 d-flex align-items-center">*/}}
+                                    {{/*                                                    <input type="text" class="form-control form-control-lg"*/}}
+                                    {{/*                                                           placeholder="Bottom Margin"*/}}
+                                    {{/*                                                           id="sticky_margin_bottom" name="sticky_margin_bottom">*/}}
+                                    {{/*                                                    <span class="form-text ms-2">px</span>*/}}
+                                    {{/*                                                </div>*/}}
+                                    {{/*                                                <div class="col-lg-auto col-md-12 d-flex align-items-center">*/}}
+                                    {{/*                                                    <input type="text" class="form-control form-control-lg"*/}}
+                                    {{/*                                                           placeholder="Right Margin"*/}}
+                                    {{/*                                                           id="sticky_margin_right" name="sticky_margin_right">*/}}
+                                    {{/*                                                    <span class="form-text ms-2">px</span>*/}}
+                                    {{/*                                                </div>*/}}
+                                    {{/*                                            </div>*/}}
+                                    {{/*                                        </div>*/}}
+                                    {{/*                                    </div>*/}}
+                                </div>
+                            </div>
+                            {{/*Sticky Player*/}}
+
+                            <div class="media py-2 py-md-4">
+                                <div class="media-body my-2 w-100">
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-2 text-lg-end">
+                                            <span class="form-label form-label-lg">Enable Logo</span>
+                                            <sup class="ms-2" type="button"
+                                                 tabindex="0"
+                                                 data-bs-toggle="popover"
+                                                 data-bs-content="If set to ON, show a logo on the top right corner of the player.<br/>By enabling it and leaving the logo URL field empty, the default logo will appear">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                     fill="currentColor"
+                                                     class="bi bi-info-circle" viewBox="0 0 16 16">
+                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                                </svg>
+                                            </sup>
+                                        </div>
+                                        <div class="col-lg-10">
+                                            <div class="form-check form-switch mb-0">
+                                                <input type="checkbox" checked data-toggle="toggle"
+                                                       data-on="on" data-off="off"
+                                                       data-onstyle="primary btn-sm" data-offstyle="secondary btn-sm"
+                                                       data-style="rounded-24"
+                                                       id="enable_logo" name="enable_logo">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/*Enable Logo*/}}
+
+                            <div class="media py-2 py-md-4">
+                                <div class="media-body my-2 w-100">
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-2 text-lg-end">
+                                            <span class="form-label form-label-lg">Custom Logo</span>
+                                            <sup class="ms-2" type="button"
+                                                 tabindex="0"
+                                                 data-bs-toggle="popover"
+                                                 data-bs-content="<strong>Link</strong>: The link to the logo you would like to use instead of Apacdex's.We recommend using a png, with a transparent background<br/><br/><strong>ClickThrough</strong>: Link that will open when clicking on the logo">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                     fill="currentColor"
+                                                     class="bi bi-info-circle" viewBox="0 0 16 16">
+                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                                </svg>
+                                            </sup>
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <div class="form-check form-switch mb-0">
+                                                <input type="checkbox" checked data-toggle="toggle"
+                                                       data-on="on" data-off="off"
+                                                       data-onstyle="primary btn-sm" data-offstyle="secondary btn-sm"
+                                                       data-style="rounded-24"
+                                                       id="custom_logo" name="custom_logo">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-8">
+                                            <div id="custom_logo_setting" class="row align-items-center">
+                                                <div class="col-lg-auto col-md-12 d-flex align-items-center">
+                                                    <div class="input-group">
+                                                        <button class="btn btn-outline-secondary btn-lg fileUpload border-gray-300"
+                                                                type="button"
+                                                                id="button-addon1">
+                                                            <span>Upload</span>
+                                                            <input id="upload_logo" type="file" class="upload"/>
+                                                        </button>
+                                                        <input type="text" class="form-control form-control-lg"
+                                                               placeholder="Link"
+                                                               aria-label="Example text with button addon"
+                                                               aria-describedby="button-addon1"
+                                                               id="logo_url" name="logo_url">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-auto col-md-12 d-flex align-items-center">
+                                                    <input type="text" class="form-control form-control-lg"
+                                                           placeholder="ClickThrough"
+                                                           id="logo_link_click_through" name="logo_link_click_through">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{/*                                    <div class="row">*/}}
+                                    {{/*                                        <div class="col-lg-2"></div>*/}}
+                                    {{/*                                        <div class="col-lg-10">*/}}
+                                    {{/*                                            <div id="custom_logo_setting" class="row mt-4 align-items-center">*/}}
+                                    {{/*                                                <div class="col-lg-auto col-md-12 d-flex align-items-center">*/}}
+                                    {{/*                                                    <div class="input-group">*/}}
+                                    {{/*                                                        <button class="btn btn-outline-secondary btn-lg fileUpload border-gray-300"*/}}
+                                    {{/*                                                                type="button"*/}}
+                                    {{/*                                                                id="button-addon1">Upload*/}}
+                                    {{/*                                                            <input id="upload_logo" type="file" class="upload">*/}}
+                                    {{/*                                                        </button>*/}}
+                                    {{/*                                                        <input type="text" class="form-control form-control-lg"*/}}
+                                    {{/*                                                               placeholder="Link"*/}}
+                                    {{/*                                                               aria-label="Example text with button addon"*/}}
+                                    {{/*                                                               aria-describedby="button-addon1"*/}}
+                                    {{/*                                                               id="logo_url" name="logo_url">*/}}
+                                    {{/*                                                    </div>*/}}
+                                    {{/*                                                </div>*/}}
+                                    {{/*                                                <div class="col-lg-auto col-md-12 d-flex align-items-center">*/}}
+                                    {{/*                                                    <input type="text" class="form-control form-control-lg"*/}}
+                                    {{/*                                                           placeholder="ClickThrough"*/}}
+                                    {{/*                                                           id="logo_link_click_through" name="logo_link_click_through">*/}}
+                                    {{/*                                                </div>*/}}
+                                    {{/*                                            </div>*/}}
+                                    {{/*                                        </div>*/}}
+                                    {{/*                                    </div>*/}}
+                                </div>
+                            </div>
+                            {{/*Custom Logo*/}}
+                        </div>
+                    </div>
+                </div>
+                {{/*Appearance Card*/}}
+
+                <div class="card rounded-12 shadow-dark-80 border border-gray-50 mb-3 mb-xl-5">
+                    <div class="p-3 px-4 border-bottom border-gray-200">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h5 class="card-header-title font-weight-semibold m-2">Ad Config</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body py-5">
+                        <div class="row mb-4 px-3">
+                            <label class="col-sm-2 col-form-label form-label form-label-lg text-lg-end"
+                                   for="vast_retry">
+                                Vast Retry</label>
+                            <div class="col-sm-8 px-5">
+                                <input type="text" class="form-control form-control-lg"
+                                       placeholder="Vast retry"
+                                       id="vast_retry" name="vast_retry">
+                            </div>
+                        </div>
+                        {{/*Player Layout*/}}
+
+                        <div class="px-3">
+                            <div class="media py-2 py-md-4">
+                                <div class="media-body my-2 w-100">
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-2 text-lg-end">
+                                            <span class="form-label form-label-lg">Auto Skip</span>
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <div class="form-check form-switch mb-0">
+                                                <input type="checkbox" checked data-toggle="toggle"
+                                                       data-on="on" data-off="off"
+                                                       data-onstyle="primary btn-sm" data-offstyle="secondary btn-sm"
+                                                       data-style="rounded-24"
+                                                       id="player_size" name="player_size">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-8">
+                                            <div class="row" id="auto_skip_setting">
+                                                <div class="col-lg-4 col-md-12 d-flex align-items-center">
+                                                    <input type="text" class="form-control form-control-lg"
+                                                           placeholder="Time To Skip"
+                                                           id="time_to_skip" name="time_to_skip">
+                                                    <span class="form-text ms-2">seconds</span>
+                                                </div>
+                                                <div class="col-lg-4 col-md-12 d-flex align-items-center">
+                                                    <input type="text" class="form-control form-control-lg"
+                                                           placeholder="Show Auto Skip Buttons"
+                                                           id="show_auto_skip" name="show_auto_skip">
+                                                    <span class="form-text ms-2">seconds</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{/*                                    <div class="row">*/}}
+                                    {{/*                                        <div class="col-lg-2"></div>*/}}
+                                    {{/*                                        <div class="col-lg-10">*/}}
+                                    {{/*                                            <div class="row mt-4" id="auto_skip_setting">*/}}
+                                    {{/*                                                <div class="col-lg-4 col-md-12 d-flex align-items-center">*/}}
+                                    {{/*                                                    <input type="text" class="form-control form-control-lg"*/}}
+                                    {{/*                                                           placeholder="Time To Skip"*/}}
+                                    {{/*                                                           id="time_to_skip" name="time_to_skip">*/}}
+                                    {{/*                                                    <span class="form-text ms-2">seconds</span>*/}}
+                                    {{/*                                                </div>*/}}
+                                    {{/*                                                <div class="col-lg-4 col-md-12 d-flex align-items-center">*/}}
+                                    {{/*                                                    <input type="text" class="form-control form-control-lg"*/}}
+                                    {{/*                                                           placeholder="Show Auto Skip Buttons"*/}}
+                                    {{/*                                                           id="show_auto_skip" name="show_auto_skip">*/}}
+                                    {{/*                                                    <span class="form-text ms-2">seconds</span>*/}}
+                                    {{/*                                                </div>*/}}
+                                    {{/*                                            </div>*/}}
+                                    {{/*                                        </div>*/}}
+                                    {{/*                                    </div>*/}}
+                                </div>
+                            </div>
+                            {{/*Auto Skip*/}}
+                        </div>
+                        {{/*Setting*/}}
+                    </div>
+                </div>
+                {{/*Ads Config*/}}
+
+
+                <div class="my-3 row">
+                    <div class="col-sm-12 text-lg-end">
+                        <button type="submit" class="btn btn-warning btn-xl">Submit</button>
+                    </div>
+                </div>
+                {{/* Button*/}}
+
+            </div>
+        </div>
+    </div>
+</div>
+{{/*Form Infomation*/}}
+
+<style>
+    /*******************************
+* MODAL AS LEFT/RIGHT SIDEBAR
+* Add "left" or "right" in modal parent div, after class="modal".
+* Get free snippets on bootpen.com
+*******************************/
+    .modal.left .modal-dialog,
+    .modal.right .modal-dialog {
+        position: fixed;
+        margin: auto;
+        width: 80%;
+        height: 100%;
+        -webkit-transform: translate3d(0%, 0, 0);
+        -ms-transform: translate3d(0%, 0, 0);
+        -o-transform: translate3d(0%, 0, 0);
+        transform: translate3d(0%, 0, 0);
+    }
+
+    .modal.left .modal-content,
+    .modal.right .modal-content {
+        height: 100%;
+        overflow-y: auto;
+    }
+
+    .modal.left .modal-body,
+    .modal.right .modal-body {
+        padding: 15px 15px 80px;
+    }
+
+    /*Left*/
+    .modal.left.fade .modal-dialog {
+        left: -320px;
+        -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+        -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
+        -o-transition: opacity 0.3s linear, left 0.3s ease-out;
+        transition: opacity 0.3s linear, left 0.3s ease-out;
+    }
+
+    .modal.left.fade.in .modal-dialog {
+        left: 0;
+    }
+
+    /*Right*/
+    .modal.right.fade .modal-dialog {
+        right: -320px;
+        -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+        -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+        -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+        transition: opacity 0.3s linear, right 0.3s ease-out;
+    }
+
+    .modal.right.fade.in .modal-dialog {
+        right: 0;
+    }
+
+    /* ----- MODAL STYLE ----- */
+    .modal-content {
+        border-radius: 0;
+        border: none;
+    }
+
+    .modal-header {
+        border-bottom-color: #EEEEEE;
+        background-color: #FAFAFA;
+    }
+
+    /* ----- v CAN BE DELETED v ----- */
+    body {
+        background-color: #78909C;
+    }
+
+    .demo {
+        padding-top: 60px;
+        padding-bottom: 110px;
+    }
+
+    .btn-demo {
+        margin: 15px;
+        padding: 10px 15px;
+        border-radius: 0;
+        font-size: 16px;
+        background-color: #FFFFFF;
+    }
+
+    .btn-demo:focus {
+        outline: 0;
+    }
+
+    .demo-footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        padding: 15px;
+        background-color: #212121;
+        text-align: center;
+    }
+
+    .demo-footer > a {
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 16px;
+        color: #fff;
+    }
+</style>

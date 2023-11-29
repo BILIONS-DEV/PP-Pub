@@ -1,0 +1,51 @@
+{{- /*gotype: source/apps/frontend/controller.AssignGam*/ -}}
+{{template "gam/edit/inc.header"}}
+{{/*End Header*/}}
+
+<div class="px-5 pt-5 pb-3 height-main">
+    <div class="container-fluid px-0">
+        <div class="row">
+            <div class="col-12">
+{{/*                <div class="text-center pt-2 pb-4">*/}}
+{{/*                    <h2 class="h3">Set Up Google Ad Manager (GAM)</h2>*/}}
+{{/*                </div>*/}}
+                <ul class="step-list mb-4">
+                    <li class="step-sign-in active">
+                        <span class="circle circle-lg bg-primary">1</span>
+                        <h5 class="mb-0 mt-3 font-weight-semibold">{{.Schema.LANG.Pages.GAM.Step.Step1.Headline}}</h5>
+                    </li>
+                    <li class="step-select {{if eq .StepSelected.Step2 true}}active{{end}}">
+                        <span class="circle circle-lg {{if eq .StepSelected.Step2 true}}bg-primary{{else}}bg-gray-200{{end}}">2</span>
+                        <h5 class="mb-0 mt-3 font-weight-semibold">{{.Schema.LANG.Pages.GAM.Step.Step2.Headline}}</h5>
+                    </li>
+                    <li class="step-api-access {{if eq .StepSelected.Step3 true}}active{{end}}">
+                        <span class="circle circle-lg {{if eq .StepSelected.Step3 true}}bg-primary{{else}}bg-gray-200{{end}}">3</span>
+                        <h5 class="mb-0 mt-3 font-weight-semibold">{{.Schema.LANG.Pages.GAM.Step.Step3.Headline}}</h5>
+                    </li>
+                    <li class="step-push-line  {{if eq .StepSelected.Step4 true}}active{{end}}">
+                        <span class="circle circle-lg {{if eq .StepSelected.Step4 true}}bg-primary{{else}}bg-gray-200{{end}}">4</span>
+                        <h5 class="mb-0 mt-3 font-weight-semibold">{{.Schema.LANG.Pages.GAM.Step.Step4.Headline}}</h5>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-12">
+                {{template "gam/edit/box.enable_gam" .}}
+
+                {{template "gam/edit/box.select_gam" .}}
+
+                {{template "gam/edit/box.enable_access_api" .}}
+
+                {{template "gam/edit/box.push_line_item" .}}
+            </div>
+        </div>
+    </div>
+</div>
+{{/*Form Infomation*/}}
+<style>
+    .height-main .container-fluid{
+        max-width: 1000px;
+    }
+    .alert.shadow-none{
+        border-radius: 3px;
+    }
+</style>

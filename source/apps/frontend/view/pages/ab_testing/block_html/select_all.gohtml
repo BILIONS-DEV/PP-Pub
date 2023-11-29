@@ -1,0 +1,33 @@
+{{range $key, $value := .}}
+    <div class="border border-gray-50 item_selected"
+         id="{{$value.Id}}">
+        <div class="list-group list-group-flush my-n3">
+            <div class="list-group-item px-2 px-md-3">
+                <div class="d-flex flex-row align-items-center px-md-2"
+                     style="height: 25px">
+                    <div class="col p-0">
+                        <h6 class="m-0 font-weight-semibold fs-12">
+                            {{$value.Name}}
+                        </h6>
+                    </div>
+                    <div class="col-auto">
+                        <button type="button"
+                                id="{{$value.Id}}"
+                                name="{{$value.Name}}"
+                                class="btn d-flex align-items-center btn-outline-danger btn-icon rounded-circle p-0 remove_country"
+                                style="width: 25px;height: 25px">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 width="12"
+                                 height="12"
+                                 fill="currentColor"
+                                 class="bi bi-dash-lg"
+                                 viewBox="0 0 16 16">
+                                <path d="M0 8a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{{end}}

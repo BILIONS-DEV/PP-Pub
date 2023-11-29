@@ -1,0 +1,209 @@
+{{- /*gotype: source/apps/frontend/controller.AssignBidderEdit*/ -}}
+{{$DemandLang := .Schema.LANG.Pages.LineItem}}
+<div class="dm21 box_type_google_hide" data-toggle="collapse" href="#collapseGeography">
+    <div class="dm13">
+        <a href="#" class="">{{$DemandLang.Geography}}</a>
+    </div>
+    <div class="dm15">
+        <div class="dm22">
+            <span id="text_for_geo">{{$DemandLang.AllGeographies}}</span>
+        </div>
+    </div>
+    <div class="dm23">
+        <button type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"></path>
+            </svg>
+        </button>
+    </div>
+</div>
+<div class="collapse box_type_google_hide" id="collapseGeography" data-parent=".accordion">
+    <div class="dm16 block_geo">
+        <div class="pp7" style="margin: 0;">
+            <span style="width: 32px;height: 32px;background: #EEEEEE;border: 1px solid #ccc;border-right: 0;border-radius: 2px 0 0 2px;display: flex;align-items: center;justify-content: center;">
+                <img src="https://apps.valueimpression.com/assets/svg/icons/search@16.svg" alt="Search">
+            </span>
+            <input style="width: 100%;" class="pp10" type="text" placeholder="{{$DemandLang.SearchGeography}}" id="search_geography">
+            <a href="#" class="remove_all_geo">{{$DemandLang.Clear}}</a>
+        </div>
+        <div class="dm17">
+            <div class="dm18 box-target" id="list_geography">
+                {{$len5 := len .Countries}}
+                <div class="list-group list-group-flush my-n3 pt-3 box_empty_geo" {{if ne $len5 0}}hidden{{end}}>
+                    <div class="list-group-item">
+                        <div id="load_empty_geo" class="d-flex flex-row align-items-center px-md-2">
+                            <div class="col p-0 text-center">
+                                <h6 class="m-0 font-weight-semibold fs-12">No data available</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{range .Countries}}
+                    <div class="dm20 target-item" id="{{.TableCountry.Id}}">
+                        <span>{{.TableCountry.Name}}</span>
+                        <button class="add_country" data-id="{{.TableCountry.Id}}" name="{{.TableCountry.Name}}"
+                                type="button" {{if (InArray .TableCountry.Id $.CountryOfBidder false)}}hidden{{end}}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                {{end}}
+            </div>
+            {{/*Left Box GEO*/}}
+            <div class="dm19 box-target-selected box_geography">
+                {{range .CountriesIncluded}}
+                    <div class="dm20 target-item item_selected" id="{{.TableCountry.Id}}">
+                        <span>{{.TableCountry.Name}}</span>
+                        <button class="remove_Geo" id="{{.TableCountry.Id}}" name="{{.TableCountry.Name}}" type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 16 16">
+                                <path d="M0 8a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                {{end}}
+            </div>
+            {{/*Right Box GEO*/}}
+            <input hidden value="true" id="is_more_geography"/>
+            <input hidden value="{{.IsMoreGeography}}" id="is_more_geography"/>
+            <input hidden value="{{.GeoLastPage}}" id="last_page_geo"/>
+        </div>
+    </div>
+</div>
+
+
+{{/*<div class="card px-4 box_type_google_hide {{if eq .Row.TableLineItemV2.ServerType.Int 2}}d-none{{end}}">*/}}
+{{/*    <div class="card-header p-0" id="pricingTwo">*/}}
+{{/*        <h5 class="mb-0 d-grid">*/}}
+{{/*            <button class="btn btn-light btn-block text-start p-3 rounded-0 fs-6 btn-collapse collapsed"*/}}
+{{/*                    type="button" data-bs-toggle="collapse"*/}}
+{{/*                    data-bs-target="#collapseTwo" aria-expanded="false"*/}}
+{{/*                    aria-controls="collapseTwo">*/}}
+{{/*                <div class="row w-100">*/}}
+{{/*                    <div class="col-6">{{$DemandLang.Geography}}</div>*/}}
+{{/*                    <div class="col-auto align-items-center d-flex text-notify-target">*/}}
+{{/*                        <svg xmlns="http://www.w3.org/2000/svg"*/}}
+{{/*                             width="16"*/}}
+{{/*                             height="16" fill="currentColor"*/}}
+{{/*                             class="bi bi-check-lg text-blue-600 me-2"*/}}
+{{/*                             viewBox="0 0 16 16">*/}}
+{{/*                            <path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/>*/}}
+{{/*                        </svg>*/}}
+{{/*                        <span class="fs-6 fw-normal"*/}}
+{{/*                              style="font-size: 0.85rem !important;"*/}}
+{{/*                              id="text_for_geo">{{$DemandLang.AllGeographies}}</span>*/}}
+{{/*                    </div>*/}}
+{{/*                </div>*/}}
+{{/*            </button>*/}}
+{{/*        </h5>*/}}
+{{/*    </div>*/}}
+{{/*    <div id="collapseTwo" class="collapse" aria-labelledby="pricingTwo"*/}}
+{{/*         data-bs-parent="#target">*/}}
+{{/*        <div class="card-body card-target lh-lg pt-3 px-0">*/}}
+{{/*            <div class="row">*/}}
+{{/*                <div class="col-lg-6 col-xxl-6">*/}}
+{{/*                    <div class="row mb-3 header-target">*/}}
+{{/*                        <div class="col-md-12">*/}}
+{{/*                            <div class="d-flex search-left border border-gray-300 rounded-2">*/}}
+{{/*                                <img src="/assets/svg/icons/search@16.svg"*/}}
+{{/*                                     alt="Search" class="ps-2">*/}}
+{{/*                                <input type="search"*/}}
+{{/*                                       class="form-control border-0 pe-0 input-search-target"*/}}
+{{/*                                       placeholder="{{$DemandLang.SearchGeography}}"*/}}
+{{/*                                       id="search_geography">*/}}
+{{/*                            </div>*/}}
+{{/*                        </div>*/}}
+{{/*                    </div>*/}}
+{{/*                    <div id="list_geography" class="box-target">*/}}
+{{/*                        {{$len5 := len .Countries}}*/}}
+{{/*                        <div class="list-group list-group-flush my-n3 pt-3 box_empty_geo"*/}}
+{{/*                             {{if ne $len5 0}}hidden{{end}} >*/}}
+{{/*                            <div class="list-group-item">*/}}
+{{/*                                <div id="load_empty_geo" class="d-flex flex-row align-items-center px-md-2">*/}}
+{{/*                                    <div class="col p-0 text-center"><h6 class="m-0 font-weight-semibold fs-12">No data*/}}
+{{/*                                            available</h6></div>*/}}
+{{/*                                </div>*/}}
+{{/*                            </div>*/}}
+{{/*                        </div>*/}}
+{{/*                        {{range .Countries}}*/}}
+{{/*                            <div class="target-item border-bottom border-gray-50 ms-2 me-3"*/}}
+{{/*                                 id="{{.TableCountry.Id}}"*/}}
+{{/*                                 {{if (InArray .TableCountry.Id $.CountryOfBidder false)}}hidden{{end}}>*/}}
+{{/*                                <div class="list-group list-group-flush my-n3">*/}}
+{{/*                                    <div class="list-group-item">*/}}
+{{/*                                        <div class="d-flex flex-row align-items-center">*/}}
+{{/*                                            <div class="col p-0">*/}}
+{{/*                                                <span>{{.TableCountry.Name}}</span>*/}}
+{{/*                                            </div>*/}}
+{{/*                                            <div class="col-auto">*/}}
+{{/*                                                <button type="button"*/}}
+{{/*                                                        data-id="{{.TableCountry.Id}}"*/}}
+{{/*                                                        name="{{.TableCountry.Name}}"*/}}
+{{/*                                                        class="btn d-flex align-items-center btn-outline-secondary btn-icon rounded-circle p-0 add_country">*/}}
+{{/*                                                    <svg xmlns="http://www.w3.org/2000/svg"*/}}
+{{/*                                                         width="12"*/}}
+{{/*                                                         height="12"*/}}
+{{/*                                                         fill="currentColor"*/}}
+{{/*                                                         class="bi bi-plus-lg"*/}}
+{{/*                                                         viewBox="0 0 16 16">*/}}
+{{/*                                                        <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>*/}}
+{{/*                                                    </svg>*/}}
+{{/*                                                </button>*/}}
+{{/*                                            </div>*/}}
+{{/*                                        </div>*/}}
+{{/*                                    </div>*/}}
+{{/*                                </div>*/}}
+{{/*                            </div>*/}}
+{{/*                        {{end}}*/}}
+{{/*                    </div>*/}}
+{{/*                </div>*/}}
+{{/*                */}}{{/*Left Box GEO*/}}
+{{/*                <div class="col-lg-6 col-xxl-6 block_geo">*/}}
+{{/*                    <div class="row mb-3 header-target">*/}}
+{{/*                        <div class="col-md-12">*/}}
+{{/*                            <div class="d-flex">*/}}
+{{/*                                <a class="btn btn-clear-target ms-auto remove_all_geo">*/}}
+{{/*                                    {{$DemandLang.Clear}}*/}}
+{{/*                                </a>*/}}
+{{/*                            </div>*/}}
+{{/*                        </div>*/}}
+{{/*                    </div>*/}}
+{{/*                    <div class="box-target-selected box_geography">*/}}
+{{/*                        {{range .CountriesIncluded}}*/}}
+{{/*                            <div class="target-item border-bottom border-gray-50 ms-2 me-3 item_selected"*/}}
+{{/*                                 id="{{.TableCountry.Id}}">*/}}
+{{/*                                <div class="list-group list-group-flush my-n3">*/}}
+{{/*                                    <div class="list-group-item">*/}}
+{{/*                                        <div class="d-flex flex-row align-items-center">*/}}
+{{/*                                            <div class="col p-0">*/}}
+{{/*                                                <span>{{.TableCountry.Name}}</span>*/}}
+{{/*                                            </div>*/}}
+{{/*                                            <div class="col-auto">*/}}
+{{/*                                                <button type="button"*/}}
+{{/*                                                        id="{{.TableCountry.Id}}"*/}}
+{{/*                                                        name="{{.TableCountry.Name}}"*/}}
+{{/*                                                        class="btn d-flex align-items-center btn-outline-danger btn-icon rounded-circle p-0 remove_Geo">*/}}
+{{/*                                                    <svg xmlns="http://www.w3.org/2000/svg"*/}}
+{{/*                                                         width="12"*/}}
+{{/*                                                         height="12"*/}}
+{{/*                                                         fill="currentColor"*/}}
+{{/*                                                         class="bi bi-dash-lg"*/}}
+{{/*                                                         viewBox="0 0 16 16">*/}}
+{{/*                                                        <path d="M0 8a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z"></path>*/}}
+{{/*                                                    </svg>*/}}
+{{/*                                                </button>*/}}
+{{/*                                            </div>*/}}
+{{/*                                        </div>*/}}
+{{/*                                    </div>*/}}
+{{/*                                </div>*/}}
+{{/*                            </div>*/}}
+{{/*                        {{end}}*/}}
+{{/*                    </div>*/}}
+{{/*                </div>*/}}
+{{/*                */}}{{/*Right Box GEO*/}}
+{{/*                <input hidden value="{{.IsMoreGeography}}" id="is_more_geography"/>*/}}
+{{/*                <input hidden value="{{.GeoLastPage}}" id="last_page_geo"/>*/}}
+{{/*            </div>*/}}
+{{/*        </div>*/}}
+{{/*    </div>*/}}
+{{/*</div>*/}}

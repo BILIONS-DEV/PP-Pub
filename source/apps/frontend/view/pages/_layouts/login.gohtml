@@ -1,0 +1,62 @@
+{{- /*gotype: source/apps/frontend/config/assign.Schema*/ -}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{.Title}}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="shortcut icon" href="https://valueimpression.com/images/logo/Favicon.png" type="image/x-icon"/>
+    {{EmbedCSS .Theme .TemplatePath}}
+    {{EmbedCssInline .Theme .TemplatePath}}
+    <meta name="robots" content="noindex, nofollow"/>
+    {{safeHTML "<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->"}}
+    {{safeHTML "<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->"}}
+    {{safeHTML "<!--[if lt IE 9]>"}}
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    {{safeHTML "<![endif]-->"}}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-216483522-1">
+    </script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-216483522-1');
+    </script>
+    {{if eq .RedditPixel true}}
+        <!-- Reddit Pixel -->
+        <script>
+            !function (w, d) {
+                if (!w.rdt) {
+                    var p = w.rdt = function () {
+                        p.sendEvent ? p.sendEvent.apply(p, arguments) : p.callQueue.push(arguments)
+                    };
+                    p.callQueue = [];
+                    var t = d.createElement("script");
+                    t.src = "https://www.redditstatic.com/ads/pixel.js", t.async = !0;
+                    var s = d.getElementsByTagName("script")[0];
+                    s.parentNode.insertBefore(t, s)
+                }
+            }(window, document);
+            rdt('init', 't2_fngsn9hq', {"optOut": false, "useDecimalCurrencyValues": true, "email": "<EMAIL-HERE>"});
+            // rdt('track', 'PageVisit');
+            // rdt('track', 'SignUp');
+
+        </script>
+        <!-- DO NOT MODIFY UNLESS TO REPLACE A USER IDENTIFIER -->
+        <!-- End Reddit Pixel -->
+    {{end}}
+</head>
+<body class="signup-simple-template bg-gray-100">
+{{embed}}
+{{EmbedJS .Theme .TemplatePath}}
+</body>
+</html>

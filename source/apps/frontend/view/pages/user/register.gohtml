@@ -1,0 +1,80 @@
+<div class="bg-primary signup-header text-center">
+    <div class="container">
+        {{/*        <a href="/" title="{{.Title}}"><img src="/assets/svg/brand/logo-white@150.svg" alt="Muze"></a>*/}}
+        <a href="/" title="{{.Title}}"><img src="https://valueimpression.com/images/logo/app-valueImpression.svg" width="250" alt="Valueimpression"></a>
+    </div>
+</div>
+<div class="container">
+    <div class="simple-login-form rounded-12 shadow-dark-80 bg-white">
+        <h2 class="mb-3">Create Account</h2>
+        <form id="register" class="pt-3">
+            <div class="row">
+                <div class="col-md-6 mb-4 pb-md-2">
+                    <label class="form-label form-label-lg" for="first_name">First name</label>
+                    <input type="text" class="form-control form-control-xl" id="first_name" name="first_name"
+                           placeholder="First name">
+                    <div class="invalid-feedback"></div>
+                </div>
+                <div class="col-md-6 mb-4 pb-md-2">
+                    <label class="form-label form-label-lg" for="last_name">Last name</label>
+                    <input type="text" class="form-control form-control-xl" id="last_name" name="last_name"
+                           placeholder="Last name">
+                    <div class="invalid-feedback"></div>
+                </div>
+            </div>
+            <div class="mb-4 pb-md-2">
+                <label class="form-label form-label-lg" for="email">Email address</label>
+                <input type="email" class="form-control form-control-xl" id="email" name="email"
+                       placeholder="Your email">
+                <div class="invalid-feedback"></div>
+            </div>
+            <div class="mb-4 pb-md-2">
+                <label class="form-label form-label-lg" for="password">Password</label>
+                <input type="password" class="form-control form-control-xl" id="password" name="password"
+                       placeholder="•••••••••">
+                <div class="invalid-feedback"></div>
+            </div>
+            <div class="mb-4 pb-md-2">
+                <label class="form-label form-label-lg" for="confirm_password">Confirm Password</label>
+                <input type="password" class="form-control form-control-xl" id="confirm_password"
+                       name="confirm_password"
+                       placeholder="•••••••••">
+                <div class="invalid-feedback"></div>
+            </div>
+            <div class="d-grid">
+                <button type="button" class="submit btn btn-xl btn-primary">Sign up</button>
+                <div class="valid-feedback text-center"></div>
+            </div>
+            <div class="my-3 my-sm-4 d-flex pb-1">
+                <div class="form-check form-check-sm mb-0">
+                    <input class="form-check-input" type="checkbox" id="agree" name="agree" value="1">
+                    <label class="form-check-label small text-gray-600" for="agree">
+                        By clicking “<a href="#0" class="text-gray-600">Sign</a>” up I am confirming I am 16 or older
+                        and I
+                        accept the <a href="https://valueimpression.com/terms/" target="_blank" class="text-gray-600"><u>Terms of Use</u></a>
+                    </label>
+                    <div class="invalid-feedback"></div>
+                </div>
+            </div>
+            <div class="border-top border-gray-200 pt-3 pt-sm-4 text-center">
+                <span class="text-gray-700">
+                    Already have an account? <a href="/login" class="link-primary">Sign in</a>
+                </span>
+            </div>
+            <input type="hidden" id="BackURL" name="BackURL" value="{{.BackURL}}">
+        </form>
+    </div>
+</div>
+<style>
+    .bg-primary {
+        background-color: rgb(48, 66, 249) !important;
+    }
+    .btn-primary {
+        background-color: rgb(48, 66, 249);
+        border-color: rgb(48, 66, 249);
+    }
+    .btn-primary:hover {
+        background-color: rgb(21, 39, 226);
+        border-color: rgb(21, 39, 226);
+    }
+</style>

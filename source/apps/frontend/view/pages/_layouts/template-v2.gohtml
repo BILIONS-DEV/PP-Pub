@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{.Title}}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="shortcut icon" href="https://valueimpression.com/images/logo/Favicon.png" type="image/x-icon"/>
+    {{EmbedCSS .Theme .TemplatePath}}
+    {{EmbedCssInline .Theme .TemplatePath}}
+    <meta name="robots" content="noindex, nofollow"/>
+    <link rel="stylesheet" href="https://videoplayer.vliplatform.com/style.css"/>
+    <script src="https://videoplayer.vliplatform.com/script.js"></script>
+    <script type="text/javascript" src="//cdn.vlitag.com/w/ee9d3edb-a1bc-437f-b7a1-27b3cbaaae27.js?v=2" async defer></script>
+    <script>var vitag = vitag || {};
+        vitag.gdprShowConsentToolButton = false;</script>
+    {{safeHTML "<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->"}}
+    {{safeHTML "<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->"}}
+    {{safeHTML "<!--[if lt IE 9]>"}}
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    {{safeHTML "<![endif]-->"}}
+    {{if or (eq .Uri "/player-v2/template/add") (eq .Uri "/player-v2/template/edit")}}
+        {{/*<script src="//dsp.vlitag.com/js/v1/adtag.js?v=165465" async defer></script>*/}}
+        <script src="https://adsystem.pocpoc.io/js/v1/adtag.js" async defer></script>
+        <script type="text/javascript">
+            var ppocTag = ppocTag || {};
+            ppocTag.uId = ppocTag.uId || {};
+            ppocTag.uId = `xxx-xxx-xxx`;
+            window.previewAd = true;
+        </script>
+    {{end}}
+</head>
+<body class="hydrated">
+<div class="main">
+    <div class="main-left">
+        {{if ne .UserAdmin.Email ""}}
+            {{template "_components/sidebar" .}}
+        {{else}}
+            {{if eq .UserLogin.Permission 6}} {{/*Permission Managed Service*/}}
+            {{template "_components/sidebar-managed_service" .}}
+            {{else if eq .UserLogin.Permission 7}}  {{/*Permission Publisher*/}}
+            {{template "_components/sidebar-publisher" .}}
+            {{else}}
+                {{template "_components/sidebar" .}}
+            {{end}}
+        {{end}}
+    </div>
+    <!-- Muze Main Content -->
+    <div class="main-right">
+        {{/*        {{template "_components/header" .}}*/}}
+        {{embed}}
+        <div class="">
+            {{template "_components/footer" .}}
+        </div>
+    </div>
+</div>
+{{/*{{(RenderJS .Uri)}}*/}}
+{{EmbedJS .Theme .TemplatePath}}
+</body>
+</html>

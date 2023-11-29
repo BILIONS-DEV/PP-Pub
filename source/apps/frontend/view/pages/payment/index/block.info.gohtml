@@ -1,0 +1,7 @@
+{{- /*gotype: source/apps/backend/model.PaymentRInvoiceRecord*/ -}}
+<div class="text-capitalize">
+    <span class="{{if eq .PaymentDateNow true}}text-danger{{end}}">Payment Date: {{.PaymentDate}}</span>
+</div>
+<div class="text-capitalize">
+    <span>Paid Date: {{if eq .HaveBeenPaid true}}{{.PaidDate}}{{else}}--{{end}}</span>
+</div>

@@ -1,0 +1,57 @@
+{{- /*gotype: source/apps/frontend/controller.AssignBlockingIndex*/ -}}
+{{template "blocking/index/inc.header" .}}
+<div class="pubpower-main pb-3 height-main">
+    <div class="container-fluid px-0">
+        <div class="row">
+            <div class="col-12 mb-4">
+                <div class="card">
+                    <div class="align-items-center p-0 pb-4 col-md-12">
+                        <div class="ms-auto col-md-12 filter p-0">
+                            {{template "blocking/index/inc.filter" .}}
+                        </div>
+                    </div>
+                    <div class="table-responsive" style="height:65vh">
+                        <table id="tableBlocking" class="table table-nowrap table-list w-100 dataTable no-footer">
+                            <thead>
+                            <tr>
+                                <th style="max-width:75%"><strong>RESTRICTION NAME</strong></th>
+                                <th data-orderable="false"><strong>Action</strong></th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .max-lines {
+        /*width: 300px;*/
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 5; /* number of lines to show */
+        -webkit-box-orient: vertical;
+    }
+
+    .bootstrap-select > .dropdown-toggle {
+        width: auto;
+    }
+
+    .select-picker-filter .actions-btn {
+        font-weight: 600;
+        white-space: nowrap;
+    }
+
+    :not(.input-group) > .bootstrap-select.form-control:not([class*=col-]) {
+        width: auto;
+    }
+
+    .bootstrap-select .status {
+        padding: 3px;
+        background: #f5f5f5;
+        margin: 0 5px;
+        white-space: nowrap;
+    }
+</style>

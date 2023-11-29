@@ -1,0 +1,31 @@
+<html>
+	<head>
+		<title>asd</title>
+		<link rel="stylesheet" href="dist/daterangepicker.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://momentjs.com/downloads/moment.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+		<script src="dist/daterangepicker.min.js"></script>
+	</head>
+	<body>
+	<input/>
+	<script>
+		$("input").daterangepicker({
+			minDate: moment().subtract(2, 'years'),
+				callback: function (startDate, endDate, period) {
+				$(this).val(startDate.format('L') + ' – ' + endDate.format('L'));
+			}
+		});
+	</script>
+	<button>a</button>
+	<script>
+		$("button").daterangepicker({
+			minDate: moment().subtract(2, 'years'),
+				callback: function (startDate, endDate, period) {
+				$(this).val(startDate.format('L') + ' – ' + endDate.format('L'));
+			}
+		});
+	</script>
+	
+	</body>
+</html>

@@ -1,0 +1,30 @@
+{{- /*gotype: source/apps/frontend/controller.AssignPayment*/ -}}
+{{$Payment := .Schema.LANG.Pages.Payment}}
+<form id="formFilter" class="g-3">
+    <div class="row">
+        <div class="col-sm-9 form-inline">
+            <div class="form-group-sm pe-5 py-2 d-flex flex-column">
+                <span class="fs-label-filter">Status</span>
+                <select id="f_status" name="f_status" title="All" data-size="7"
+                        class="selectpicker select-picker-filter form-control border-0 show-menu-arrow"
+                        multiple="multiple" data-style="border-0" data-live-search="false" data-actions-box="false"
+                        tabindex="-1" aria-hidden="true" data-selected-text-format="count > 1">
+                    <option value="1">Pending</option>
+                    <option value="2">Done</option>
+                </select>
+            </div>
+            {{/* Filter Category*/}}
+        </div>
+        <div class="col-sm-3 ">
+            <div class="mt-2 p-0 d-flex align-items-center">
+                <input value="{{.Params.QuerySearch}}" name="f_q" class="form-control me-2"
+                       placeholder="Search ..."/>
+                <button type="submit" class="btn btn-outline-secondary btn-sm submit">
+                    {{$Payment.Run}}
+                </button>
+            </div>
+        </div>
+        <input type="hidden" name="start" value="{{.Params.Start}}">
+        <input type="hidden" name="length" value="{{.Params.Length}}">
+    </div>
+</form>
