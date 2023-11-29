@@ -60,7 +60,14 @@ func IsDemo() bool {
 }
 
 func IsWindow() bool {
-	if GOOS == "windows" {
+	if GOOS == "windows" || GOOS == "darwin" {
+		return true
+	}
+	return false
+}
+
+func IsMacOs() bool {
+	if GOOS == "darwin" {
 		return true
 	}
 	return false
