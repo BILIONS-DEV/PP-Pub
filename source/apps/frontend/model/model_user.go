@@ -44,7 +44,8 @@ type RecoverPassword struct {
 }
 
 const (
-	CookieLogin      = "mcflgi"
+	//CookieLogin      = "mcflgi"
+	CookieLogin      = "mctehj"
 	CookieLoginAdmin = "mcfIgiAd"
 	CookieMaster     = "mcflgim"
 	CookieReferer    = "referer"

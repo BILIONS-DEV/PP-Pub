@@ -1,6 +1,7 @@
 package helper
 
 import (
+	"fmt"
 	"github.com/gofiber/fiber/v2"
 	"net/url"
 	"source/apps/frontend/config"
@@ -86,6 +87,8 @@ func Bootstrap(ctx *fiber.Ctx) error {
 		LANG:         lang.Translate,
 		DeviceUA:     utility.GetDeviceFromUA(string(ctx.Context().UserAgent())),
 	})
+	fmt.Printf("%+v\n", "XXX")
+	fmt.Printf("%+v\n", userAdmin)
 	ctx.Locals("UserLogin", UserLogin)
 	ctx.Locals("UserAdmin", userAdmin)
 	return ctx.Next()

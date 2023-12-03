@@ -54,7 +54,8 @@ type UserLoginModel struct {
 }
 
 const (
-	CookieLoginFE    = "mcflgi"
+	//CookieLoginFE    = "mcflgi"
+	CookieLoginFE    = "mctehj"
 	CookieLoginBE    = "mcfIgi"
 	CookieLoginAdmin = "mcfIgiAd"
 	CookieMaster     = "mcflgim"

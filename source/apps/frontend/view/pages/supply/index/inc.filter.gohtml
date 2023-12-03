@@ -18,33 +18,33 @@
             </div>
             {{/*Filter Status*/}}
 
-            <div class="form-inline">
-                <div class="form-group-sm px-2 py-2 d-flex flex-column">
-                    <select id="type" name="f_type" title="Supply Type" multiple="multiple" data-style="border-0"
-                            class="selectpicker select-picker-filter form-control border-0 show-menu-arrow"
-                            data-live-search="false" data-actions-box="false" tabindex="-1" aria-hidden="true"
-                            data-selected-text-format="count > 0" data-count-selected-text="{0} Supply Type">
-                        <option value="1" {{if (InArray "1" .Params.Type false)}}selected{{end}}>Web</option>
-                        <option value="2" {{if (InArray "2" .Params.Type false)}}selected{{end}}>App</option>
-                    </select>
-                </div>
-            </div>
-
+{{/*            <div class="form-inline">*/}}
+{{/*                <div class="form-group-sm px-2 py-2 d-flex flex-column">*/}}
+{{/*                    <select id="type" name="f_type" title="Supply Type" multiple="multiple" data-style="border-0"*/}}
+{{/*                            class="selectpicker select-picker-filter form-control border-0 show-menu-arrow"*/}}
+{{/*                            data-live-search="false" data-actions-box="false" tabindex="-1" aria-hidden="true"*/}}
+{{/*                            data-selected-text-format="count > 0" data-count-selected-text="{0} Supply Type">*/}}
+{{/*                        <option value="1" {{if (InArray "1" .Params.Type false)}}selected{{end}}>Web</option>*/}}
+{{/*                        <option value="2" {{if (InArray "2" .Params.Type false)}}selected{{end}}>App</option>*/}}
+{{/*                    </select>*/}}
+{{/*                </div>*/}}
+{{/*            </div>*/}}
             {{/*Filter type*/}}
-            <div class="form-inline">
-                <div class="form-group-sm px-2 py-2 d-flex flex-column">
-                    <select id="ads_sync" name="f_ads_sync" title="Ads.Txt" multiple="multiple" data-style="border-0"
-                            class="selectpicker select-picker-filter form-control border-0 show-menu-arrow"
-                            data-live-search="false" data-actions-box="false" tabindex="-1" aria-hidden="true"
-                            data-selected-text-format="count > 0" data-count-selected-text="{0} Option Ads.Txt">
-                        <option value="1" {{if (InArray "1" .Params.AdsTxtSync false)}}selected{{end}}>In Sync</option>
-                        <option value="2" {{if (InArray "2" .Params.AdsTxtSync false)}}selected{{end}}>Not In Sync
-                        </option>
-                        <option value="3" {{if (InArray "3" .Params.AdsTxtSync false)}}selected{{end}}>Does Not Exist
-                        </option>
-                    </select>
-                </div>
-            </div>
+
+{{/*            <div class="form-inline">*/}}
+{{/*                <div class="form-group-sm px-2 py-2 d-flex flex-column">*/}}
+{{/*                    <select id="ads_sync" name="f_ads_sync" title="Ads.Txt" multiple="multiple" data-style="border-0"*/}}
+{{/*                            class="selectpicker select-picker-filter form-control border-0 show-menu-arrow"*/}}
+{{/*                            data-live-search="false" data-actions-box="false" tabindex="-1" aria-hidden="true"*/}}
+{{/*                            data-selected-text-format="count > 0" data-count-selected-text="{0} Option Ads.Txt">*/}}
+{{/*                        <option value="1" {{if (InArray "1" .Params.AdsTxtSync false)}}selected{{end}}>In Sync</option>*/}}
+{{/*                        <option value="2" {{if (InArray "2" .Params.AdsTxtSync false)}}selected{{end}}>Not In Sync*/}}
+{{/*                        </option>*/}}
+{{/*                        <option value="3" {{if (InArray "3" .Params.AdsTxtSync false)}}selected{{end}}>Does Not Exist*/}}
+{{/*                        </option>*/}}
+{{/*                    </select>*/}}
+{{/*                </div>*/}}
+{{/*            </div>*/}}
             {{/*Filter AdsTxtSync*/}}
 
         </div>

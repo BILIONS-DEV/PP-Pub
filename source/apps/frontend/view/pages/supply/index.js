@@ -121,7 +121,6 @@ function SubmitFormInventory(formID, functionCallback, url = "") {
             $("#formSubmitInventory").find(".invalid-feedback").text("(*) Required").parent().addClass("is-invalid").find("input").addClass("is-invalid");
             return;
         }
-        // console.log(postData)
         $.ajax({
             url: url,
             type: "POST",

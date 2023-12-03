@@ -1,6 +1,7 @@
 package controllerv2
 
 import (
+	"fmt"
 	"github.com/gofiber/fiber/v2"
 	"source/apps/frontend/config"
 	"source/apps/frontend/view"
@@ -43,15 +44,15 @@ func (t *inventory) Index(ctx *fiber.Ctx) (err error) {
 func (t *inventory) IndexPost(ctx *fiber.Ctx) (err error) {
 	// get user login
 	userLogin := getUserLogin(ctx)
-
 	var payload dto.PayloadInventoryIndexPost
 	if err = ctx.BodyParser(&payload); err != nil {
+		fmt.Printf("%+v\n", err)
 		return ctx.Status(fiber.StatusBadRequest).JSON(
 			dto.MakeResponseError(err),
 		)
 	}
 	payload.UserID = userLogin.ID
-
+	fmt.Println("data: ", userLogin.ID)
 	if errs := payload.Validate(); len(errs) > 0 {
 		return ctx.Status(fiber.StatusBadRequest).JSON(
 			dto.MakeResponseErrorWithID(errs...),

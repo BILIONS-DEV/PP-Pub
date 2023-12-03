@@ -41,6 +41,7 @@ type AssignInventory struct {
 }
 
 func (t *Inventory) Setup(ctx *fiber.Ctx) error {
+	return ctx.SendStatus(fiber.StatusNotFound)
 	userLogin := GetUserLogin(ctx)
 	userAdmin := GetUserAdmin(ctx)
 	isAccept := new(model.User).CheckUserLogin(userLogin, userAdmin, config.URIInventorySetup)
@@ -119,6 +120,7 @@ func (t *Inventory) Setup(ctx *fiber.Ctx) error {
 }
 
 func (t *Inventory) SetupConfig(ctx *fiber.Ctx) error {
+	return ctx.SendStatus(fiber.StatusNotFound)
 	userLogin := GetUserLogin(ctx)
 	userAdmin := GetUserAdmin(ctx)
 	isAccept := new(model.User).CheckUserLogin(userLogin, userAdmin, config.URIInventorySetup)
@@ -141,6 +143,7 @@ func (t *Inventory) SetupConfig(ctx *fiber.Ctx) error {
 }
 
 func (t *Inventory) SetupConsent(ctx *fiber.Ctx) error {
+	return ctx.SendStatus(fiber.StatusNotFound)
 	userLogin := GetUserLogin(ctx)
 	userAdmin := GetUserAdmin(ctx)
 	isAccept := new(model.User).CheckUserLogin(userLogin, userAdmin, config.URIInventoryConsent)
@@ -163,6 +166,7 @@ func (t *Inventory) SetupConsent(ctx *fiber.Ctx) error {
 }
 
 func (t *Inventory) SetupUserId(ctx *fiber.Ctx) error {
+	return ctx.SendStatus(fiber.StatusNotFound)
 	userLogin := GetUserLogin(ctx)
 	userAdmin := GetUserAdmin(ctx)
 	isAccept := new(model.User).CheckUserLogin(userLogin, userAdmin, config.URIInventoryUserId)
@@ -185,6 +189,7 @@ func (t *Inventory) SetupUserId(ctx *fiber.Ctx) error {
 }
 
 func (t *Inventory) Delete(ctx *fiber.Ctx) error {
+	return ctx.SendStatus(fiber.StatusNotFound)
 	userLogin := GetUserLogin(ctx)
 	userAdmin := GetUserAdmin(ctx)
 	isAccept := new(model.User).CheckUserLogin(userLogin, userAdmin, config.URIInventoryDelete)
@@ -284,6 +289,7 @@ func (t *Inventory) FilterConnection(ctx *fiber.Ctx) error {
 }
 
 func (t *Inventory) Submit(ctx *fiber.Ctx) error {
+	return ctx.SendStatus(fiber.StatusNotFound)
 	userLogin := GetUserLogin(ctx)
 	userAdmin := GetUserAdmin(ctx)
 	isAccept := new(model.User).CheckUserLogin(userLogin, userAdmin, config.URIInventorySubmit)

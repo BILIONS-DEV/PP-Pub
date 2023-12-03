@@ -64,11 +64,7 @@
 <body class="hydrated">
 <div class="main">
     <div class="main-left">
-        {{if ne .UserAdmin.Email ""}}
-            {{template "_components/sidebar" .}}
-        {{else}}
-            {{template "_components/sidebar-managed_service" .}}
-        {{end}}
+        {{template "_components/sidebar" .}}
     </div>
     <!-- Muze Main Content -->
     <div class="main-right">
