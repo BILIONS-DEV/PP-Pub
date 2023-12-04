@@ -81,7 +81,7 @@ func (t *inventoryRepo) setFilterCondition(userID int64, listStatus, listSupplyT
 	return func(db *gorm.DB) *gorm.DB {
 		var condition = make(map[string]interface{})
 		// => convert input sang dữ liệu condition để query
-		condition["user_id"] = userID
+		condition["sub_pub_id"] = userID
 		if listStatus != nil {
 			condition["status"] = listStatus
 		}

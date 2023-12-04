@@ -325,7 +325,6 @@ func Connect() (DB *gorm.DB) {
 			Database: envs["MYSQL_DATABASE_MAIN"],
 		}
 	}
-
 	if helpers.IsHaiMode() {
 		Config = haiSqlConfig
 	}

@@ -40,6 +40,9 @@ type User struct {
 	Referer             string              `gorm:"column:referer" json:"referer"`
 	Demo                string              `gorm:"column:demo" json:"demo"`
 	Logged              int64               `gorm:"column:logged" json:"logged"`
+	ParentSub           string              `gorm:"column:parent_sub" json:"parent_sub"`
+	Logo                string              `gorm:"column:logo" json:"logo"`
+	RootDomain          string              `gorm:"column:root_domain" json:"root_domain"`
 	SystemSync          int64               `gorm:"column:system_sync" json:"system_sync"`
 	CreatedBy           int64               `gorm:"column:created_by" json:"created_by"`
 	UpdatedBy           int64               `gorm:"column:updated_by" json:"updated_by"`

@@ -1,6 +1,6 @@
 package config
 
-const (
+var (
 	TitlePrefix = "Valueimpression"
 )
 

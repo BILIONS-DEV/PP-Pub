@@ -10,15 +10,22 @@
                         <rect width="20" height="3.33" x="2" y="2.02" rx="1" ry="1"></rect>
                         <rect width="20" height="3.33" x="2" y="10.32" rx="1" ry="1"></rect>
                         <rect width="20" height="3.33" x="2" y="18.67" rx="1" ry="1"></rect>
-                    </svg></wui-icon>
+                    </svg>
+                </wui-icon>
             </button>
         </div>
         <a href="/" class="ms-3">
-            {{/*        <img src="{{.RootDomain}}/assets/svg/brand/logo.svg" alt="Muze">*/}}
-            <img class="vli" src="https://valueimpression.com/images/logo/app-valueImpression.svg" alt="Muze">
-            <img src="{{.RootDomain}}/assets/svg/brand/logo-white.svg" alt="Muze" class="white-logo2">
-            <img src="{{.RootDomain}}/assets/svg/brand/muze-icon.svg" class="muze-icon" alt="Muze">
-            <img src="{{.RootDomain}}/assets/svg/brand/muze-icon-white.svg" class="muze-icon-white" alt="Muze">
+            {{if (ne .UserLogin.Logo "")}}
+                <img src="{{.RootDomain}}{{.UserLogin.Logo}}" alt="Muze">
+                <img src="{{.RootDomain}}/assets/svg/brand/logo-white.svg" alt="Muze" class="white-logo2">
+                <img src="{{.RootDomain}}/assets/svg/brand/muze-icon.svg" class="muze-icon" alt="Muze">
+                <img src="{{.RootDomain}}/assets/svg/brand/muze-icon-white.svg" class="muze-icon-white" alt="Muze"> </a>
+            {{ else }}
+                <img src="https://pubpower.io/img/pub-power-black.png" alt="Muze">
+                <img src="{{.RootDomain}}/assets/svg/brand/logo-white.svg" alt="Muze" class="white-logo2">
+                <img src="{{.RootDomain}}/assets/svg/brand/muze-icon.svg" class="muze-icon" alt="Muze">
+                <img src="{{.RootDomain}}/assets/svg/brand/muze-icon-white.svg" class="muze-icon-white" alt="Muze"> </a>
+            {{ end }}
         </a>
     </div>
 
@@ -33,11 +40,15 @@
                     <div class="menu-icon">
                         <wui-icon name="play" size="s" class="wui-icon wui-icon--play -size-s hydrated"
                                   innerhtml="<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 24 24&quot; id=&quot;ds-icon-dashboard-play&quot;><path d=&quot;M20.11 10.34l-12-8A2 2 0 0 0 5 4v16a2 2 0 0 0 3.11 1.66l12-8a2 2 0 0 0 0-3.32z&quot;/></svg>">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><g data-name="icons/tabler/chart" transform="translate(0)"><rect data-name="Icons/Tabler/Chart background" width="16" height="16" fill="none"></rect> <path d="M.686,13.257a.686.686,0,0,1-.093-1.365l.093-.006H15.314a.686.686,0,0,1,.093,1.365l-.093.006ZM.394,9.535l-.089-.05a.688.688,0,0,1-.24-.863l.05-.088L3.773,3.048a.684.684,0,0,1,.782-.272l.095.039L7.811,4.4,11.121.257a.687.687,0,0,1,.945-.122L12.142.2,15.8,3.858a.686.686,0,0,1-.893,1.036l-.077-.067L11.713,1.712,8.536,5.685a.684.684,0,0,1-.743.225l-.1-.04L4.578,4.313,1.256,9.294a.684.684,0,0,1-.862.24Z" transform="translate(0 1)" fill="#1e1e1e"></path></g></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <g data-name="icons/tabler/chart" transform="translate(0)">
+                                    <rect data-name="Icons/Tabler/Chart background" width="16" height="16" fill="none"></rect>
+                                    <path d="M.686,13.257a.686.686,0,0,1-.093-1.365l.093-.006H15.314a.686.686,0,0,1,.093,1.365l-.093.006ZM.394,9.535l-.089-.05a.688.688,0,0,1-.24-.863l.05-.088L3.773,3.048a.684.684,0,0,1,.782-.272l.095.039L7.811,4.4,11.121.257a.687.687,0,0,1,.945-.122L12.142.2,15.8,3.858a.686.686,0,0,1-.893,1.036l-.077-.067L11.713,1.712,8.536,5.685a.684.684,0,0,1-.743.225l-.1-.04L4.578,4.313,1.256,9.294a.684.684,0,0,1-.862.24Z" transform="translate(0 1)" fill="#1e1e1e"></path>
+                                </g>
+                            </svg>
                         </wui-icon>
                     </div>
-                    <span class="ms-3">Dashboards</span>
-                </a>
+                    <span class="ms-3">Dashboards</span> </a>
             </li>
             {{/*Dashboards*/}}
 
@@ -53,24 +64,20 @@
                                 <rect width="5" height="20" x="9.47" y="2" rx="1" ry="1"></rect>
                                 <rect width="5" height="15" x="17" y="7" rx="1" ry="1"></rect>
                                 <rect width="5" height="10" x="2" y="12" rx="1" ry="1"></rect>
-                            </svg></wui-icon>
+                            </svg>
+                        </wui-icon>
                     </div>
-                    <span class="ms-3">Report</span>
-                </a>
+                    <span class="ms-3">Report</span> </a>
                 <div class="collapse collapse-box {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.ReportGroup}}show{{end}}"
                      id="sidebarReport" data-bs-parent="#sidebarParent">
                     <ul class="nav nav-sm flex-column" id="sidebarReportSubmenu">
                         <li class="nav-item">
                             <a href="/report/"
-                               class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.ReportGroup}}active{{end}}">
-                                Overview
-                            </a>
+                               class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.ReportGroup}}active{{end}}"> Overview </a>
                         </li>
                         <li class="nav-item">
                             <a href="/report/dimension"
-                               class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.Dimension}}active{{end}}">
-                                By Dimension
-                            </a>
+                               class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.Dimension}}active{{end}}"> By Dimension </a>
                         </li>
                         {{/*                        <li class="nav-item">*/}}
                         {{/*                            <a href="/report/video"*/}}
@@ -98,53 +105,51 @@
                         {{/*                        </li>*/}}
                         <li class="nav-item">
                             <a href="/report/saved"
-                               class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.Saved}}active{{end}}">
-                                Saved Queries
-                            </a>
+                               class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.Saved}}active{{end}}"> Saved Queries </a>
                         </li>
                     </ul>
                 </div>
             </li>
             {{/*Report*/}}
 
-{{/*            <li class="nav-item">*/}}
-{{/*                <a class="nav-link collapsed" href="#sidebarSetup" aria-controls="sidebarSetup" role="button"*/}}
-{{/*                   data-bs-toggle="collapse"*/}}
-{{/*                   aria-expanded="{{if IsActiveSidebarWithGroup .Uri .SidebarSetup.SetupGroup}}true{{end}}">*/}}
-{{/*                    <div class="menu-icon">*/}}
-{{/*                        <wui-icon name="recommendations" size="s"*/}}
-{{/*                                  class="wui-icon wui-icon--recommendations -size-s hydrated"*/}}
-{{/*                                  innerhtml="<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 24 24&quot; id=&quot;ds-icon-dashboard-recommendations&quot;><rect width=&quot;5.5&quot; height=&quot;5.5&quot; x=&quot;2&quot; y=&quot;5.63&quot; rx=&quot;1&quot; ry=&quot;1&quot;/><rect width=&quot;5.5&quot; height=&quot;5.5&quot; x=&quot;9.25&quot; y=&quot;5.63&quot; rx=&quot;1&quot; ry=&quot;1&quot;/><rect width=&quot;5.5&quot; height=&quot;5.5&quot; x=&quot;2&quot; y=&quot;12.88&quot; rx=&quot;1&quot; ry=&quot;1&quot;/><rect width=&quot;5.5&quot; height=&quot;5.5&quot; x=&quot;9.37&quot; y=&quot;12.88&quot; rx=&quot;1&quot; ry=&quot;1&quot;/><rect width=&quot;5.5&quot; height=&quot;5.5&quot; x=&quot;16.5&quot; y=&quot;5.63&quot; rx=&quot;1&quot; ry=&quot;1&quot;/><rect width=&quot;5.5&quot; height=&quot;5.5&quot; x=&quot;16.5&quot; y=&quot;12.88&quot; rx=&quot;1&quot; ry=&quot;1&quot;/></svg>">*/}}
-{{/*                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"*/}}
-{{/*                                 id="ds-icon-dashboard-recommendations">*/}}
-{{/*                                <rect width="5.5" height="5.5" x="2" y="5.63" rx="1" ry="1"></rect>*/}}
-{{/*                                <rect width="5.5" height="5.5" x="9.25" y="5.63" rx="1" ry="1"></rect>*/}}
-{{/*                                <rect width="5.5" height="5.5" x="2" y="12.88" rx="1" ry="1"></rect>*/}}
-{{/*                                <rect width="5.5" height="5.5" x="9.37" y="12.88" rx="1" ry="1"></rect>*/}}
-{{/*                                <rect width="5.5" height="5.5" x="16.5" y="5.63" rx="1" ry="1"></rect>*/}}
-{{/*                                <rect width="5.5" height="5.5" x="16.5" y="12.88" rx="1" ry="1"></rect>*/}}
-{{/*                            </svg></wui-icon>*/}}
-{{/*                    </div>*/}}
-{{/*                    <span class="ms-3">Setup</span>*/}}
-{{/*                </a>*/}}
-{{/*                <div class="collapse collapse-box {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.SetupGroup}}show{{end}}"*/}}
-{{/*                     id="sidebarSetup" data-bs-parent="#sidebarParent">*/}}
-{{/*                    <ul class="nav nav-sm flex-column" id="sidebarSetupSubmenu">*/}}
-{{/*                        <li class="nav-item">*/}}
-{{/*                            <a href="/supply"*/}}
-{{/*                               class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.Inventory}}active{{end}}">*/}}
-{{/*                                Supply*/}}
-{{/*                            </a>*/}}
-{{/*                        </li>*/}}
-{{/*                        <li class="nav-item">*/}}
-{{/*                            <a href="/blocking"*/}}
-{{/*                               class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.Blocking}}active{{end}}">*/}}
-{{/*                                Ad Quality*/}}
-{{/*                            </a>*/}}
-{{/*                        </li>*/}}
-{{/*                    </ul>*/}}
-{{/*                </div>*/}}
-{{/*            </li>*/}}
+            {{/*            <li class="nav-item">*/}}
+            {{/*                <a class="nav-link collapsed" href="#sidebarSetup" aria-controls="sidebarSetup" role="button"*/}}
+            {{/*                   data-bs-toggle="collapse"*/}}
+            {{/*                   aria-expanded="{{if IsActiveSidebarWithGroup .Uri .SidebarSetup.SetupGroup}}true{{end}}">*/}}
+            {{/*                    <div class="menu-icon">*/}}
+            {{/*                        <wui-icon name="recommendations" size="s"*/}}
+            {{/*                                  class="wui-icon wui-icon--recommendations -size-s hydrated"*/}}
+            {{/*                                  innerhtml="<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 24 24&quot; id=&quot;ds-icon-dashboard-recommendations&quot;><rect width=&quot;5.5&quot; height=&quot;5.5&quot; x=&quot;2&quot; y=&quot;5.63&quot; rx=&quot;1&quot; ry=&quot;1&quot;/><rect width=&quot;5.5&quot; height=&quot;5.5&quot; x=&quot;9.25&quot; y=&quot;5.63&quot; rx=&quot;1&quot; ry=&quot;1&quot;/><rect width=&quot;5.5&quot; height=&quot;5.5&quot; x=&quot;2&quot; y=&quot;12.88&quot; rx=&quot;1&quot; ry=&quot;1&quot;/><rect width=&quot;5.5&quot; height=&quot;5.5&quot; x=&quot;9.37&quot; y=&quot;12.88&quot; rx=&quot;1&quot; ry=&quot;1&quot;/><rect width=&quot;5.5&quot; height=&quot;5.5&quot; x=&quot;16.5&quot; y=&quot;5.63&quot; rx=&quot;1&quot; ry=&quot;1&quot;/><rect width=&quot;5.5&quot; height=&quot;5.5&quot; x=&quot;16.5&quot; y=&quot;12.88&quot; rx=&quot;1&quot; ry=&quot;1&quot;/></svg>">*/}}
+            {{/*                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"*/}}
+            {{/*                                 id="ds-icon-dashboard-recommendations">*/}}
+            {{/*                                <rect width="5.5" height="5.5" x="2" y="5.63" rx="1" ry="1"></rect>*/}}
+            {{/*                                <rect width="5.5" height="5.5" x="9.25" y="5.63" rx="1" ry="1"></rect>*/}}
+            {{/*                                <rect width="5.5" height="5.5" x="2" y="12.88" rx="1" ry="1"></rect>*/}}
+            {{/*                                <rect width="5.5" height="5.5" x="9.37" y="12.88" rx="1" ry="1"></rect>*/}}
+            {{/*                                <rect width="5.5" height="5.5" x="16.5" y="5.63" rx="1" ry="1"></rect>*/}}
+            {{/*                                <rect width="5.5" height="5.5" x="16.5" y="12.88" rx="1" ry="1"></rect>*/}}
+            {{/*                            </svg></wui-icon>*/}}
+            {{/*                    </div>*/}}
+            {{/*                    <span class="ms-3">Setup</span>*/}}
+            {{/*                </a>*/}}
+            {{/*                <div class="collapse collapse-box {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.SetupGroup}}show{{end}}"*/}}
+            {{/*                     id="sidebarSetup" data-bs-parent="#sidebarParent">*/}}
+            {{/*                    <ul class="nav nav-sm flex-column" id="sidebarSetupSubmenu">*/}}
+            {{/*                        <li class="nav-item">*/}}
+            {{/*                            <a href="/supply"*/}}
+            {{/*                               class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.Inventory}}active{{end}}">*/}}
+            {{/*                                Supply*/}}
+            {{/*                            </a>*/}}
+            {{/*                        </li>*/}}
+            {{/*                        <li class="nav-item">*/}}
+            {{/*                            <a href="/blocking"*/}}
+            {{/*                               class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.Blocking}}active{{end}}">*/}}
+            {{/*                                Ad Quality*/}}
+            {{/*                            </a>*/}}
+            {{/*                        </li>*/}}
+            {{/*                    </ul>*/}}
+            {{/*                </div>*/}}
+            {{/*            </li>*/}}
             <li class="nav-item">
                 <a class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.SetupGroup}}active{{end}}" href="/supply">
                     <div class="menu-icon">
@@ -155,8 +160,7 @@
                             </svg>
                         </wui-icon>
                     </div>
-                    <span class="ms-3">Supply</span>
-                </a>
+                    <span class="ms-3">Supply</span> </a>
             </li>
             {{/*Setup*/}}
 
@@ -172,8 +176,7 @@
                             </svg>
                         </wui-icon>
                     </div>
-                    <span class="ms-3">Payment</span>
-                </a>
+                    <span class="ms-3">Payment</span> </a>
             </li>
             {{/*Payment*/}}
         </ul>

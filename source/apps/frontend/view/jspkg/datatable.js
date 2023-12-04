@@ -144,7 +144,6 @@ function Render(formID = "", isClickForm = false, refresh = false) {
     if (jQuery.inArray(pageLength, [10, 25, 50, 100]) >= 0) {
         setting.pageLength = pageLength;
     }
-    console.log(setting);
     setting.displayStart = parseFloat(postData.start);
     $(`#${tableID}`).DataTable(setting);
 }

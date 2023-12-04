@@ -99,14 +99,14 @@ func initForV2(app fiber.Router) {
 			MinifyHtml: true,
 		}),
 	})
-	handle.StartServer(8538)
+	handle.StartServer(8550)
 }
 
 func run(app *fiber.App) {
 	if utility.IsWindow() {
 		// log.Fatal(app.ListenTLS(":8540", "../../localhost.pem", "../../localhost-key.pem"))
-		log.Fatal(app.Listen(":8538"))
+		log.Fatal(app.Listen(":8550"))
 	} else {
-		log.Fatal(app.Listen(":8538"))
+		log.Fatal(app.Listen(":8550"))
 	}
 }

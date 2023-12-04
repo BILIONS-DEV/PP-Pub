@@ -47,6 +47,9 @@ type TableUser struct {
 	Logged              int64               `gorm:"column:logged" json:"logged"`
 	SystemSync          int64               `gorm:"column:system_sync" json:"system_sync"`
 	SyncPocPoc          string              `gorm:"default:pending;column:sync_pocpoc" json:"sync_pocpoc"`
+	ParentSub           string              `gorm:"column:parent_sub" json:"parent_sub"`
+	Logo                string              `gorm:"column:logo" json:"logo"`
+	RootDomain          string              `gorm:"column:root_domain" json:"root_domain"`
 	CreatedBy           int64               `gorm:"column:created_by" json:"created_by"`
 	UpdatedBy           int64               `gorm:"column:updated_by" json:"updated_by"`
 	CreatedAt           time.Time           `gorm:"column:created_at" json:"created_at"`

@@ -251,7 +251,7 @@ func newAssign(ctx *fiber.Ctx, title string) Assign {
 	return assign
 }
 func titleWithPrefix(title string) (titleWithPrefix string) {
-	titleWithPrefix = title + " - " + titlePrefix
+	titleWithPrefix = title
 	return
 }
 
