@@ -100,6 +100,13 @@ func (t *user) GetUserByCookie(ctx *fiber.Ctx, key string) (isLogin bool, record
 		return
 	}
 	// Set isLogin = true và trả ra dữ liệu
+	if record.Presenter != 0 {
+		presenter := t.GetByID(record.Presenter)
+		if presenter.ParentSub == "yes" {
+			record.Logo = presenter.Logo
+			record.RootDomain = presenter.RootDomain
+		}
+	}
 	isLogin = true
 	return isLogin, record
 }

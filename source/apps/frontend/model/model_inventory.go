@@ -70,7 +70,7 @@ func (t *Inventory) GetByFiltersForAdmin(inputs *payload.InventoryFilterPayload)
 func (t *Inventory) GetByFilters(inputs *payload.InventoryFilterPayload, userId int64, lang lang.Translation) (response datatable.Response, err error) {
 	var inventories []InventoryRecord
 	var total int64
-	err = mysql.Client.Where("user_id = ?", userId).
+	err = mysql.Client.Where("sub_pub_id = ?", userId).
 		Scopes(
 			t.SetFilterStatus(inputs),
 			t.setFilterSearch(inputs),
@@ -206,10 +206,10 @@ func (t *Inventory) SetFilterUser(inputs *payload.InventoryFilterPayload) func(d
 			switch inputs.PostData.User.(type) {
 			case string, int:
 				if inputs.PostData.User != "" {
-					return db.Where("user_id = ?", inputs.PostData.User)
+					return db.Where("sub_pub_id = ?", inputs.PostData.User)
 				}
 			case []string, []interface{}:
-				return db.Where("user_id IN ?", inputs.PostData.User)
+				return db.Where("sub_pub_id IN ?", inputs.PostData.User)
 			}
 		}
 		return db
@@ -379,17 +379,17 @@ func (t *Inventory) GetAll() (records []InventoryRecord) {
 }
 
 func (t *Inventory) GetByUser(userId int64) (records []InventoryRecord) {
-	mysql.Client.Where("user_id = ?", userId).Find(&records)
+	mysql.Client.Where("sub_pub_id = ?", userId).Find(&records)
 	return
 }
 
 func (t *Inventory) GetByUserId(userId int64) (row []InventoryRecord, err error) {
-	err = mysql.Client.Where("user_id = ?", userId).Unscoped().Find(&row).Error
+	err = mysql.Client.Where("sub_pub_id = ?", userId).Unscoped().Find(&row).Error
 	return
 }
 
 func (t *Inventory) CountData(value string, userId int64) (count int64) {
-	mysql.Client.Model(&InventoryRecord{}).Where("name like ? and user_id = ?", "%"+value+"%", userId).Count(&count)
+	mysql.Client.Model(&InventoryRecord{}).Where("name like ? and sub_pub_id = ?", "%"+value+"%", userId).Count(&count)
 	return
 }
 
@@ -400,9 +400,9 @@ func (t *Inventory) CountDataSystem(value string) (count int64) {
 
 func (t *Inventory) CountDataPageEdit(userId int64, listId []int64) (count int64) {
 	if len(listId) > 0 {
-		mysql.Client.Model(&InventoryRecord{}).Where("user_id = ? and id not in ?", userId, listId).Count(&count)
+		mysql.Client.Model(&InventoryRecord{}).Where("sub_pub_id = ? and id not in ?", userId, listId).Count(&count)
 	} else {
-		mysql.Client.Model(&InventoryRecord{}).Where("user_id = ?", userId).Count(&count)
+		mysql.Client.Model(&InventoryRecord{}).Where("sub_pub_id = ?", userId).Count(&count)
 	}
 
 	return
@@ -422,10 +422,10 @@ func (t *Inventory) LoadMoreData(key, value string, userId int64, listSelected [
 	limit := 10
 	page, offset := pagination.Pagination(key, limit)
 	if len(listSelected) > 0 {
-		mysql.Client.Where("name like ? AND user_id = ? AND id NOT IN ? AND status = ?", "%"+value+"%", userId, listSelected, mysql.StatusApproved).
+		mysql.Client.Where("name like ? AND sub_pub_id = ? AND id NOT IN ? AND status = ?", "%"+value+"%", userId, listSelected, mysql.StatusApproved).
 			Limit(limit).Offset(offset).Find(&rows)
 	} else {
-		mysql.Client.Where("name like ? AND user_id = ? AND status = ?", "%"+value+"%", userId, mysql.StatusApproved).Limit(limit).Offset(offset).Find(&rows)
+		mysql.Client.Where("name like ? AND sub_pub_id = ? AND status = ?", "%"+value+"%", userId, mysql.StatusApproved).Limit(limit).Offset(offset).Find(&rows)
 	}
 	total := t.CountData(value, userId)
 	totalPages := int(total) / limit
@@ -469,9 +469,9 @@ func (t *Inventory) LoadMoreDataPageEdit(userId int64, listSelected []int64) (ro
 	limit := 10
 	page, offset := pagination.Pagination("1", limit)
 	if len(listSelected) > 0 {
-		mysql.Client.Where("user_id = ? and id not in ? and status = ?", userId, listSelected, mysql.StatusApproved).Find(&rows)
+		mysql.Client.Where("sub_pub_id = ? and id not in ? and status = ?", userId, listSelected, mysql.StatusApproved).Find(&rows)
 	} else {
-		mysql.Client.Where("user_id = ? and status = ?", userId, mysql.StatusApproved).Limit(limit).Offset(offset).Find(&rows)
+		mysql.Client.Where("sub_pub_id = ? and status = ?", userId, mysql.StatusApproved).Limit(limit).Offset(offset).Find(&rows)
 	}
 	if len(rows) > 10 {
 		rows = rows[0:9]
@@ -518,7 +518,7 @@ func (t *Inventory) LoadMoreDataPageEditSystem(listSelected []int64) (rows []Inv
 }
 
 func (t *Inventory) GetById(id, userId int64) (row InventoryRecord, err error) {
-	err = mysql.Client.Where("id = ? and user_id = ?", id, userId).Find(&row).Error
+	err = mysql.Client.Where("id = ? and sub_pub_id = ?", id, userId).Find(&row).Error
 	row.GetFullData()
 	return
 }
@@ -529,18 +529,18 @@ func (t *Inventory) GetByIdSystem(id int64) (row InventoryRecord, err error) {
 }
 
 func (t *Inventory) GetByUserIdLimit(userId int64, limit int) (row []InventoryRecord, err error) {
-	err = mysql.Client.Where("user_id = ?", userId).Limit(limit).Find(&row).Error
+	err = mysql.Client.Where("sub_pub_id = ?", userId).Limit(limit).Find(&row).Error
 	return
 }
 
 func (t *Inventory) GetByUserIdSearch(userId int64, search string) (row []InventoryRecord, err error) {
-	err = mysql.Client.Where("user_id = ? and name LIKE ?", userId, "%"+search+"%").Limit(20).Find(&row).Error
+	err = mysql.Client.Where("sub_pub_id = ? and name LIKE ?", userId, "%"+search+"%").Limit(20).Find(&row).Error
 	return
 }
 
 func (t *Inventory) GetAllIdsOfUser(userId int64) (ids []int64) {
 	var inventories []InventoryRecord
-	mysql.Client.Select("id").Where("user_id = ? AND status = ?", userId, mysql.StatusApproved).Find(&inventories)
+	mysql.Client.Select("id").Where("sub_pub_id = ? AND status = ?", userId, mysql.StatusApproved).Find(&inventories)
 	for _, inventory := range inventories {
 		ids = append(ids, inventory.Id)
 	}
@@ -686,7 +686,7 @@ func (rec *InventoryRecord) AdsTxtScanned(SyncAdsTxt mysql.TYPEInventorySyncAdsT
 }
 
 func (t *Inventory) GetByIdForFilter(id, userId int64) (row InventoryRecord, err error) {
-	err = mysql.Client.Unscoped().Where("id = ? and user_id = ? and status = ?", id, userId, mysql.StatusApproved).Find(&row).Error
+	err = mysql.Client.Unscoped().Where("id = ? and sub_pub_id = ? and status = ?", id, userId, mysql.StatusApproved).Find(&row).Error
 	if row.Id == 0 {
 		err = errors.New("Record not found")
 	}
@@ -764,7 +764,7 @@ func (t *Inventory) Delete(id, userId int64, userAdmin UserRecord, lang lang.Tra
 	inventory, _ := new(Inventory).GetById(id, userId)
 	// Xóa và cập nhập trạng thái reject cho domain
 	err := mysql.Client.Model(&InventoryRecord{}).
-		Where("id = ? and user_id = ?", id, userId).
+		Where("id = ? and sub_pub_id = ?", id, userId).
 		Updates(&InventoryRecord{mysql.TableInventory{DeletedAt: gorm.DeletedAt{
 			Time:  time.Now(),
 			Valid: true},
@@ -780,7 +780,7 @@ func (t *Inventory) Delete(id, userId int64, userAdmin UserRecord, lang lang.Tra
 	}
 	// Đặt tất cả ad tag trong domain về trạng thái not live
 	err = mysql.Client.Model(&InventoryAdTagRecord{}).
-		Where("inventory_id = ? and user_id = ?", id, userId).
+		Where("inventory_id = ? and sub_pub_id = ?", id, userId).
 		Updates(&InventoryAdTagRecord{mysql.TableInventoryAdTag{
 			Status: mysql.TypeStatusAdTagNotLive}}).
 		Error
@@ -822,7 +822,7 @@ func (t *Inventory) Delete(id, userId int64, userAdmin UserRecord, lang lang.Tra
 }
 
 func (t *Inventory) GetListBoxCollapse(userId, inventoryId int64, page string) (list []string) {
-	mysql.Client.Select("box_collapse").Model(&PageCollapseRecord{}).Where("user_id = ? and page_collapse = ? and is_collapse = ? and page_id = ?", userId, page, 1, inventoryId).Find(&list)
+	mysql.Client.Select("box_collapse").Model(&PageCollapseRecord{}).Where("sub_pub_id = ? and page_collapse = ? and is_collapse = ? and page_id = ?", userId, page, 1, inventoryId).Find(&list)
 	return
 }
 
@@ -857,7 +857,7 @@ func (t *Inventory) UpdateRenderCacheWithLineItem(lineItemId int64, userId int64
 				} else {
 					for _, sizeId := range listSize {
 						var adTags []InventoryAdTagRecord
-						mysql.Client.Where("primary_ad_size = ? and user_id = ?", sizeId, userId).Find(&adTags)
+						mysql.Client.Where("primary_ad_size = ? and sub_pub_id = ?", sizeId, userId).Find(&adTags)
 						for _, adTag := range adTags {
 							t.ResetCacheWorker(adTag.InventoryId)
 						}
@@ -867,7 +867,7 @@ func (t *Inventory) UpdateRenderCacheWithLineItem(lineItemId int64, userId int64
 				if listSize[0] == -1 {
 					for _, formatId := range listAdFormat {
 						var adTags []InventoryAdTagRecord
-						mysql.Client.Where("type = ? and user_id = ?", formatId, userId).Find(&adTags)
+						mysql.Client.Where("type = ? and sub_pub_id = ?", formatId, userId).Find(&adTags)
 						for _, adTag := range adTags {
 							t.ResetCacheWorker(adTag.InventoryId)
 						}
@@ -876,7 +876,7 @@ func (t *Inventory) UpdateRenderCacheWithLineItem(lineItemId int64, userId int64
 					for _, formatId := range listAdFormat {
 						for _, sizeId := range listSize {
 							var adTags []InventoryAdTagRecord
-							mysql.Client.Where("primary_ad_size = ? and type = ? and user_id = ?", sizeId, formatId, userId).Find(&adTags)
+							mysql.Client.Where("primary_ad_size = ? and type = ? and sub_pub_id = ?", sizeId, formatId, userId).Find(&adTags)
 
 							for _, adTag := range adTags {
 								t.ResetCacheWorker(adTag.InventoryId)
@@ -930,7 +930,7 @@ func (t *Inventory) UpdateRenderCacheWithFloor(floorId int64, userId int64) {
 				} else {
 					for _, sizeId := range listSize {
 						var adTags []InventoryAdTagRecord
-						mysql.Client.Where("primary_ad_size = ? and user_id = ?", sizeId, userId).Find(&adTags)
+						mysql.Client.Where("primary_ad_size = ? and sub_pub_id = ?", sizeId, userId).Find(&adTags)
 						for _, adTag := range adTags {
 							t.ResetCacheWorker(adTag.InventoryId)
 						}
@@ -940,7 +940,7 @@ func (t *Inventory) UpdateRenderCacheWithFloor(floorId int64, userId int64) {
 				if listSize[0] == -1 {
 					for _, formatId := range listAdFormat {
 						var adTags []InventoryAdTagRecord
-						mysql.Client.Where("type = ? and user_id = ?", formatId, userId).Find(&adTags)
+						mysql.Client.Where("type = ? and sub_pub_id = ?", formatId, userId).Find(&adTags)
 						for _, adTag := range adTags {
 							t.ResetCacheWorker(adTag.InventoryId)
 						}
@@ -949,7 +949,7 @@ func (t *Inventory) UpdateRenderCacheWithFloor(floorId int64, userId int64) {
 					for _, formatId := range listAdFormat {
 						for _, sizeId := range listSize {
 							var adTags []InventoryAdTagRecord
-							mysql.Client.Where("primary_ad_size = ? and type = ? and user_id = ?", sizeId, formatId, userId).Find(&adTags)
+							mysql.Client.Where("primary_ad_size = ? and type = ? and sub_pub_id = ?", sizeId, formatId, userId).Find(&adTags)
 
 							for _, adTag := range adTags {
 								t.ResetCacheWorker(adTag.InventoryId)
@@ -978,7 +978,7 @@ func (t *Inventory) ResetCacheWorker(inventoryId int64) {
 }
 
 func (t *Inventory) ResetCacheAll(userId int64) {
-	mysql.Client.Model(&InventoryRecord{}).Where("user_id = ?", userId).Update("render_cache", 1)
+	mysql.Client.Model(&InventoryRecord{}).Where("sub_pub_id = ?", userId).Update("render_cache", 1)
 }
 
 func (t *Inventory) GetByName(name string) (rows []InventoryRecord, err error) {

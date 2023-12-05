@@ -41,7 +41,6 @@ type AssignInventory struct {
 }
 
 func (t *Inventory) Setup(ctx *fiber.Ctx) error {
-	return ctx.SendStatus(fiber.StatusNotFound)
 	userLogin := GetUserLogin(ctx)
 	userAdmin := GetUserAdmin(ctx)
 	isAccept := new(model.User).CheckUserLogin(userLogin, userAdmin, config.URIInventorySetup)
@@ -59,13 +58,13 @@ func (t *Inventory) Setup(ctx *fiber.Ctx) error {
 	if err != nil {
 		tab = 1
 	}
+	fmt.Println("data: ", userLogin.Permission)
 	// bỏ tab 2,3,5 với user permission managed service
-	if userLogin.Permission == mysql.UserPermissionManagedService && !userAdmin.IsFound() {
+	if userLogin.Permission == mysql.UserPermissionManagedService || userLogin.Permission == mysql.UserPermissionSubPublisher {
 		if tab == 2 || tab == 3 || tab == 5 {
 			return ctx.SendStatus(fiber.StatusNotFound)
 		}
 	}
-
 	assigns := AssignInventory{Schema: assign.Get(ctx)}
 	if err := ctx.QueryParser(&assigns.Params); err != nil {
 		return err
@@ -120,7 +119,6 @@ func (t *Inventory) Setup(ctx *fiber.Ctx) error {
 }
 
 func (t *Inventory) SetupConfig(ctx *fiber.Ctx) error {
-	return ctx.SendStatus(fiber.StatusNotFound)
 	userLogin := GetUserLogin(ctx)
 	userAdmin := GetUserAdmin(ctx)
 	isAccept := new(model.User).CheckUserLogin(userLogin, userAdmin, config.URIInventorySetup)
@@ -143,18 +141,21 @@ func (t *Inventory) SetupConfig(ctx *fiber.Ctx) error {
 }
 
 func (t *Inventory) SetupConsent(ctx *fiber.Ctx) error {
-	return ctx.SendStatus(fiber.StatusNotFound)
 	userLogin := GetUserLogin(ctx)
 	userAdmin := GetUserAdmin(ctx)
 	isAccept := new(model.User).CheckUserLogin(userLogin, userAdmin, config.URIInventoryConsent)
 	if !isAccept {
 		return ctx.SendStatus(fiber.StatusNotFound)
 	}
+	response := ajax.Responses{}
 	inputs := payload.GeneralInventory{}
 	if err := ctx.BodyParser(&inputs); err != nil {
-		return err
+		response.Status = ajax.ERROR
+		response.Errors = append(response.Errors, ajax.Error{
+			Id:      "",
+			Message: err.Error(),
+		})
 	}
-	response := ajax.Responses{}
 	errs := new(model.InventoryConfig).SetupInventoryConfig(inputs, "consent", userLogin.Id, userAdmin)
 	if len(errs) > 0 {
 		response.Status = ajax.ERROR

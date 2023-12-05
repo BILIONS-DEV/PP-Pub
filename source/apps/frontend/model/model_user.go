@@ -1221,6 +1221,8 @@ func (t *User) CheckUserLogin(userLogin UserRecord, userAdmin UserRecord, uri st
 		return
 	case mysql.UserPermissionPublisher:
 		isAccept = t.checkPermissionPublisher(uri)
+	case mysql.UserPermissionSubPublisher:
+		isAccept = t.checkPermissionPublisher(uri)
 		return
 	}
 	return

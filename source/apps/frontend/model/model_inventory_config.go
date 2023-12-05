@@ -2,6 +2,7 @@ package model
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/asaskevich/govalidator"
 	"source/apps/frontend/lang"
 	"source/apps/frontend/payload"
@@ -24,6 +25,7 @@ func (InventoryConfigRecord) TableName() string {
 }
 
 func (t *InventoryConfig) SetupInventoryConfig(inputs payload.GeneralInventory, value string, userId int64, userAdmin UserRecord) (errs []ajax.Error) {
+	fmt.Printf("%+v\n", "XXX")
 	lang := lang.Translate
 	inventory, _ := new(Inventory).GetById(inputs.InventoryId, userId)
 	recordOld := t.VerificationRecord(inputs.InventoryId)
@@ -38,7 +40,7 @@ func (t *InventoryConfig) SetupInventoryConfig(inputs payload.GeneralInventory, 
 	if len(errs) > 0 {
 		return
 	}
-
+	fmt.Printf("%+v\n", "111")
 	inventoryNew := inventory
 	var recordNew InventoryConfigRecord
 	recordNew = recordOld

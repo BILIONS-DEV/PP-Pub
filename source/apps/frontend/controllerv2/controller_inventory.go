@@ -46,7 +46,6 @@ func (t *inventory) IndexPost(ctx *fiber.Ctx) (err error) {
 	userLogin := getUserLogin(ctx)
 	var payload dto.PayloadInventoryIndexPost
 	if err = ctx.BodyParser(&payload); err != nil {
-		fmt.Printf("%+v\n", err)
 		return ctx.Status(fiber.StatusBadRequest).JSON(
 			dto.MakeResponseError(err),
 		)
