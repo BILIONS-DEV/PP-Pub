@@ -58,7 +58,7 @@ func (t *Inventory) Setup(ctx *fiber.Ctx) error {
 	if err != nil {
 		tab = 1
 	}
-	fmt.Println("data: ", userLogin.Permission)
+	//fmt.Println("data: ", userLogin.Permission)
 	// bỏ tab 2,3,5 với user permission managed service
 	if userLogin.Permission == mysql.UserPermissionManagedService || userLogin.Permission == mysql.UserPermissionSubPublisher {
 		if tab == 2 || tab == 3 || tab == 5 {
@@ -81,9 +81,9 @@ func (t *Inventory) Setup(ctx *fiber.Ctx) error {
 	if cf.Id == 0 {
 		cf = new(model.InventoryConfig).MakeRowDefault(row.Id)
 	}
-	_ = row.ScanAdsTxt()
+	//_ = row.ScanAdsTxt()
 
-	module, err := new(model.ModuleUserId).GetAll()
+	//module, err := new(model.ModuleUserId).GetAll()
 	if err != nil {
 		return err
 	}
@@ -91,23 +91,23 @@ func (t *Inventory) Setup(ctx *fiber.Ctx) error {
 	assigns.Tab = tab
 	assigns.Row = row
 	assigns.Config = cf
-	assigns.ModuleUserId = module
+	//assigns.ModuleUserId = module
 	assigns.ParamsAdTag = params
 	assigns.ListBoxCollapse = collapse
 	assigns.GamNetworks = new(model.GamNetwork).GetByUser(userLogin.Id)
 	assigns.AdTypes = new(model.AdType).GetAll(userLogin, userAdmin)
-	assigns.Bidders = new(model.InventoryConnectionDemand).GetByInventory(row)
-	assigns.CountConnectWaiting = 0
-	for _, bidderId := range new(model.RlsBidderSystemInventory).GetListIdBidderApprove(row.Name) {
-		bidder := new(model.Bidder).GetByIdNoCheckUser(bidderId)
-		if bidder.Id == 0 || bidder.BidderTemplateId == 1 { // Bỏ qua nếu k tìm thấy bidder hoặc là bidder google
-			continue
-		}
-		status := new(model.InventoryConnectionDemand).GetStatus(row.Id, bidder.Id)
-		if status == 2 {
-			assigns.CountConnectWaiting++
-		}
-	}
+	//assigns.Bidders = new(model.InventoryConnectionDemand).GetByInventory(row)
+	//assigns.CountConnectWaiting = 0
+	//for _, bidderId := range new(model.RlsBidderSystemInventory).GetListIdBidderApprove(row.Name) {
+	//	bidder := new(model.Bidder).GetByIdNoCheckUser(bidderId)
+	//	if bidder.Id == 0 || bidder.BidderTemplateId == 1 { // Bỏ qua nếu k tìm thấy bidder hoặc là bidder google
+	//		continue
+	//	}
+	//	status := new(model.InventoryConnectionDemand).GetStatus(row.Id, bidder.Id)
+	//	if status == 2 {
+	//		assigns.CountConnectWaiting++
+	//	}
+	//}
 
 	adsMissingLine, syncError := row.GetAllMissingAdsTxt()
 	assigns.AdsTxtMissingLines = adsMissingLine
