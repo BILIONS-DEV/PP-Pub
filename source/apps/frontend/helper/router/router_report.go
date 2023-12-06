@@ -9,5 +9,7 @@ import (
 func Report(app *fiber.App) {
 	Report := new(controller.Report)
 	app.Get(config.URIReport, Report.Index)
-	app.Post(config.URIReport, Report.Filter)
+	app.Get(config.URIReportDimension, Report.Dimension)
+	app.Get(config.URIReportSaved, Report.Saved)
+
 }

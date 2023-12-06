@@ -10,7 +10,7 @@
         <!-- Import JS -->
         <js link="/assets/vendor/highcharts/highmaps.js"/>
         <js link="/assets/vendor/apexcharts/dist/apexcharts.min.js"/>
-        <js link="/assets/home/dashboard.js"/>
+<!--        <js link="/assets/home/dashboard.js"/>-->
     </page>
 
     <page path="/test">

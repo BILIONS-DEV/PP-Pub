@@ -1127,7 +1127,7 @@ function GetTable(isClickForm = false, refresh = false) {
             { data: "status", name: "Status" },
             { data: "type", name: "Type" },
             { data: "size", name: "Size" },
-            { data: "action", name: "Action" },
+            // { data: "action", name: "Action" },
         ],
         drawCallback: function () {
             $(".dataTables_paginate > ul.pagination > li > a.page-link").addClass("text-secondary");
@@ -2702,7 +2702,7 @@ function loadCodeQuiz(element) {
     let text = '';
     if (postData.quiz) {
         text = `
-<div class="adsbyvli" data-ad-slot='pw_${postData.playzone_tag}'></div> 
+<div class="futureads" data-ad-slot='pw_${postData.playzone_tag}'></div> 
 <script type="text/javascript"> 
     (vitag.Init = window.vitag.Init || []).push(function () { 
         viAPItag.initPlayZone('pw_${postData.playzone_tag}', { "quizIds": [${postData.quiz}] }) 

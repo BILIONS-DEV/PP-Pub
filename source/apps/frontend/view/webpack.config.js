@@ -129,6 +129,10 @@ const Config = (env, argv) => {
             //=> Page: Ad Block
             "adblock/analytics": ["./pages/adblock/analytics.js"],
             "adblock/generator": ["./pages/adblock/generator.js"],
+            //=> Page: Report
+            // "report/index": ["./pages/report/analytics.js"],
+            // "report/dimension": ["./pages/report/generator.js"],
+            // "report/saved": ["./pages/report/generator.js"],
         },
         output: {
             // filename: '[name].min.js',

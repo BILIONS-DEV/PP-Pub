@@ -2003,7 +2003,7 @@ button.btn-custom-unblock {
     position: absolute;
     top: -8px;
     left: 15px;
-    font-size: 9px!important;
+    font-size: 9px !important;
     animation: bounce 1s ease-in-out infinite;
     animation-iteration-count: infinite;
     animation-direction: alternate;
@@ -2019,4 +2019,7 @@ button.btn-custom-unblock {
     100% {
         transform: translateY(4px);
     }
+}
+table.dataTable > thead .sorting:before, table.dataTable > thead .sorting:after, table.dataTable > thead .sorting_asc:before, table.dataTable > thead .sorting_asc:after, table.dataTable > thead .sorting_desc:before, table.dataTable > thead .sorting_desc:after, table.dataTable > thead .sorting_asc_disabled:before, table.dataTable > thead .sorting_asc_disabled:after, table.dataTable > thead .sorting_desc_disabled:before, table.dataTable > thead .sorting_desc_disabled:after {
+    bottom: 1.3em;
 }

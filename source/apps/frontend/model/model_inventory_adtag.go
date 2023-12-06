@@ -30,12 +30,12 @@ func (InventoryAdTagRecord) TableName() string {
 func (t *InventoryAdTag) GetByFilters(inputs *payload.InventoryAdTagFilterPayload, userLogin UserRecord, userAdmin UserRecord, lang lang.Translation) (response datatable.Response, err error) {
 	var inventoryAdTags []InventoryAdTagRecord
 	var total int64
-	err = mysql.Client.Where("user_id = ?", userLogin.Id).
+	err = mysql.Client.
 		Scopes(
 			t.SetFilterStatus(inputs),
 			t.setFilterSearch(inputs),
 			t.setFilterInventory(inputs),
-			t.setFilterUser(userLogin.Id),
+			//t.setFilterUser(userLogin.Id),
 			t.setFilterType(inputs),
 		).
 		Model(&inventoryAdTags).Count(&total).
@@ -46,6 +46,7 @@ func (t *InventoryAdTag) GetByFilters(inputs *payload.InventoryAdTagFilterPayloa
 				Offset: inputs.Start,
 			}),
 		).
+		//Debug().
 		Find(&inventoryAdTags).Error
 	if err != nil {
 		if !utility.IsWindow() {
@@ -68,19 +69,19 @@ type InventoryAdTagRecordDatatable struct {
 	Type       string `json:"type"`
 	Size       string `json:"size"`
 	FloorPrice string `json:"floor_price"`
-	Action     string `json:"action"`
+	//Action     string `json:"action"`
 }
 
 func (t *InventoryAdTag) MakeResponseDatatable(inventoryAdTags []InventoryAdTagRecord, userLogin UserRecord, userAdmin UserRecord) (records []InventoryAdTagRecordDatatable) {
 	for _, inventoryAdTag := range inventoryAdTags {
 		var adSize AdSizeRecord
 		adSize = new(AdSize).GetById(inventoryAdTag.PrimaryAdSize)
-		isDisable := false
-		if userAdmin.Permission == mysql.UserPermissionAdmin || userAdmin.Permission == mysql.UserPermissionSale || inventoryAdTag.Type == mysql.TYPEDisplay {
-			isDisable = true
-		} else if userLogin.Permission != mysql.UserPermissionManagedService {
-			isDisable = true
-		}
+		//isDisable := false
+		//if userAdmin.Permission == mysql.UserPermissionAdmin || userAdmin.Permission == mysql.UserPermissionSale || inventoryAdTag.Type == mysql.TYPEDisplay {
+		//	isDisable = true
+		//} else if userLogin.Permission != mysql.UserPermissionManagedService {
+		//	isDisable = true
+		//}
 		rec := InventoryAdTagRecordDatatable{
 			InventoryAdTagRecord: inventoryAdTag,
 			RowId:                strconv.FormatInt(inventoryAdTag.Id, 10),
@@ -89,10 +90,10 @@ func (t *InventoryAdTag) MakeResponseDatatable(inventoryAdTags []InventoryAdTagR
 			Type:                 inventoryAdTag.TableInventoryAdTag.Type.String(),
 			Size:                 htmlblock.Render("supply/adtag/block.size.gohtml", adSize).String(),
 			//FloorPrice:           "$" + fmt.Sprintf("%.2f", inventoryAdTag.TableInventoryAdTag.FloorPrice),
-			Action: htmlblock.Render("supply/adtag/block.action.gohtml", fiber.Map{
-				"adTag":     inventoryAdTag,
-				"isDisable": isDisable,
-			}).String(),
+			//Action: htmlblock.Render("supply/adtag/block.action.gohtml", fiber.Map{
+			//	"adTag":     inventoryAdTag,
+			//	"isDisable": isDisable,
+			//}).String(),
 		}
 		records = append(records, rec)
 	}

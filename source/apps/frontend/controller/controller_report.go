@@ -19,6 +19,14 @@ func (t *Report) Index(ctx *fiber.Ctx) error {
 	return ctx.Render("report/index", assigns, view.LAYOUTMain)
 }
 
-func (t *Report) Filter(ctx *fiber.Ctx) error {
-	return ctx.JSON(fiber.Map{})
+func (t *Report) Dimension(ctx *fiber.Ctx) error {
+	assigns := AssignReport{Schema: assign.Get(ctx)}
+	assigns.Title = config.TitleWithPrefix("Reports By Dimension")
+	return ctx.Render("report/dimension", assigns, view.LAYOUTMain)
+}
+
+func (t *Report) Saved(ctx *fiber.Ctx) error {
+	assigns := AssignReport{Schema: assign.Get(ctx)}
+	assigns.Title = config.TitleWithPrefix("Reports Saved Queries")
+	return ctx.Render("report/saved", assigns, view.LAYOUTMain)
 }

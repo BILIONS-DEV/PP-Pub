@@ -364,8 +364,10 @@ func init() {
 	)
 	SidebarSetup.AdBlock = append(SidebarSetup.AdBlock,
 		URIAdBlockAnalytics, URIAdBlockAlertGenerator, // => AdBlock
-	)
-	// SystemGroup
+	) // SystemGroup
+	SidebarSetup.ReportGroup = append(SidebarSetup.ReportGroup,
+		URIReport, URIReportDimension, URIReportSaved, // => Report
+	) // ReportGroup
 	SidebarSetup.SystemGroup = append(SidebarSetup.SystemGroup, SidebarSetup.Bidder...)
 	SidebarSetup.SystemGroup = append(SidebarSetup.SystemGroup, SidebarSetup.Config...)
 	// SetupGroup

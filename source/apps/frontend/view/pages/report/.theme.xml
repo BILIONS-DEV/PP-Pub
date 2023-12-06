@@ -11,4 +11,10 @@
         <js link="/assets/plugins/datatables/datatables.min.js"/>
         <js link="/assets/plugins/jquery-collapser/dist/jquery.collapser.min.js"/>
     </page>
+    <page path="/report/dimension" includePath="/report">
+
+    </page>
+    <page path="/report/saved" includePath="/report">
+
+    </page>
 </theme>

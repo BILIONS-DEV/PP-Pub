@@ -444,7 +444,7 @@ func (t *Inventory) CopyAdTag(ctx *fiber.Ctx) (err error) {
 				vastTag := VastTag{
 					AdTag: tag,
 					VastVpaid: Vast{
-						VastUrl: "https://cdn.vlitag.com/vpaid/w/" + copyTag.Inventory.Uuid + "?tagid=" + strconv.FormatInt(tag.Id, 10) + "&page_url=" + pageUrl + "&sz=" + playerSize,
+						VastUrl: "https://cdn.bilsyndication.com/vpaid/w/" + copyTag.Inventory.Uuid + "?tagid=" + strconv.FormatInt(tag.Id, 10) + "&page_url=" + pageUrl + "&sz=" + playerSize,
 						//VastUrl:  "https://nc.pubpowerplatform.io/vpaid/w/" + copyTag.Inventory.Uuid + "?tagid=" + strconv.FormatInt(tag.Id, 10) + "&page_url=" + pageUrl + "&sz=" + playerSize,
 						VastName: "Vast Vpaid",
 					},
@@ -465,7 +465,7 @@ func (t *Inventory) CopyAdTag(ctx *fiber.Ctx) (err error) {
 				vastTag := VastTag{
 					AdTag: tag,
 					VastVpaid: Vast{
-						VastUrl: "https://cdn.vlitag.com/vpaid/w/" + copyTag.Inventory.Uuid + "?tagid=" + strconv.FormatInt(tag.Id, 10) + "&page_url=" + pageUrl + "&sz=" + playerSize,
+						VastUrl: "https://cdn.bilsyndication.com/vpaid/w/" + copyTag.Inventory.Uuid + "?tagid=" + strconv.FormatInt(tag.Id, 10) + "&page_url=" + pageUrl + "&sz=" + playerSize,
 						//VastUrl:  "https://nc.pubpowerplatform.io/vpaid/w/" + copyTag.Inventory.Uuid + "?tagid=" + strconv.FormatInt(tag.Id, 10) + "&page_url=" + pageUrl + "&sz=" + playerSize,
 						VastName: "Vast Vpaid",
 					},
