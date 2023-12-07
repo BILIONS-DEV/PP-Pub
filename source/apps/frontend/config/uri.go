@@ -341,9 +341,9 @@ func init() {
 	SidebarSetup.Blocking = append(SidebarSetup.Blocking,
 		URIBlocking, URIBlockingAdd, URIBlockingEdit, // => Blocking
 	)
-	SidebarSetup.Report = append(SidebarSetup.Blocking,
-		URIReport, URIReportTop, URIReportDimension, URIReportResponse, URIReportSaved, // => Report
-	)
+	//SidebarSetup.Report = append(SidebarSetup.Blocking,
+	//	URIReport, URIReportTop, URIReportDimension, URIReportResponse, URIReportSaved, // => Report
+	//)
 	SidebarSetup.Support = append(SidebarSetup.Support,
 		URISUPPORT, // => Support
 	)
@@ -368,6 +368,12 @@ func init() {
 	SidebarSetup.ReportGroup = append(SidebarSetup.ReportGroup,
 		URIReport, URIReportDimension, URIReportSaved, // => Report
 	) // ReportGroup
+	SidebarSetup.Dimension = append(SidebarSetup.Dimension,
+		URIReportDimension, // => Dimension
+	) // Dimension
+	SidebarSetup.Saved = append(SidebarSetup.Saved,
+		URIReportSaved, // => Saved
+	) // Saved
 	SidebarSetup.SystemGroup = append(SidebarSetup.SystemGroup, SidebarSetup.Bidder...)
 	SidebarSetup.SystemGroup = append(SidebarSetup.SystemGroup, SidebarSetup.Config...)
 	// SetupGroup

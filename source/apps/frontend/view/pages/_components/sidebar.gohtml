@@ -72,36 +72,12 @@
                      id="sidebarReport" data-bs-parent="#sidebarParent">
                     <ul class="nav nav-sm flex-column" id="sidebarReportSubmenu">
                         <li class="nav-item">
-                            <a href="/report" class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.ReportGroup}}active{{end}}"> Overview </a>
+                            <a href="/report" class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.Report}}active{{end}}"> Overview </a>
                         </li>
                         <li class="nav-item">
                             <a href="/report/dimension"
                                class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.Dimension}}active{{end}}"> By Dimension </a>
                         </li>
-                        {{/*                        <li class="nav-item">*/}}
-                        {{/*                            <a href="/report/video"*/}}
-                        {{/*                               class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.Video}}active{{end}}">*/}}
-                        {{/*                                Video Analytics*/}}
-                        {{/*                            </a>*/}}
-                        {{/*                        </li>*/}}
-                        {{/*                        <li class="nav-item">*/}}
-                        {{/*                            <a href="/report/response"*/}}
-                        {{/*                               class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.Response}}active{{end}}">*/}}
-                        {{/*                                Bidder Metrics*/}}
-                        {{/*                            </a>*/}}
-                        {{/*                        </li>*/}}
-                        {{/*                        <li class="nav-item">*/}}
-                        {{/*                            <a href="/report/cmp"*/}}
-                        {{/*                               class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.Top }}active{{end}}">*/}}
-                        {{/*                                CMP Analytics*/}}
-                        {{/*                            </a>*/}}
-                        {{/*                        </li>*/}}
-                        {{/*                        <li class="nav-item">*/}}
-                        {{/*                            <a href="/report/blocked"*/}}
-                        {{/*                               class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.Top }}active{{end}}">*/}}
-                        {{/*                                Bid Blocked*/}}
-                        {{/*                            </a>*/}}
-                        {{/*                        </li>*/}}
                         <li class="nav-item">
                             <a href="/report/saved"
                                class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.Saved}}active{{end}}"> Saved Queries </a>
