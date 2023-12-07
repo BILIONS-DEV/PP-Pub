@@ -1,0 +1,66 @@
+{{- /*gotype: source/apps/frontend/controller.AssignInventory*/ -}}
+{{template "websites/setup/inc.header" .}}
+{{/*End Header*/}}
+<div class="pubpower-main height-main p-0">
+    <div class="container-fluid px-0">
+        {{template "websites/inc.tab" .}}
+
+        <div class="tab-content" id="nav-tabContent">
+
+            <div class="tab-pane fade p-4 {{if eq .Tab 1}}active show{{end}}" id="nav-adtag" role="tabpanel"
+                 aria-labelledby="nav-adtag-tab">
+                {{template "websites/setup/tab.adtag" .}}
+            </div>
+            {{/*Tab AdTag*/}}
+
+            <div class="tab-pane fade {{if eq .Tab 2}}active show{{end}}" id="nav-general" role="tabpanel"
+                 aria-labelledby="nav-general-tab">
+                {{template "websites/setup/tab.config" .}}
+            </div>
+            {{/*Tab General*/}}
+
+            <div class="tab-pane fade {{if eq .Tab 3}}active show{{end}}" id="nav-consent" role="tabpanel"
+                 aria-labelledby="nav-consent-tab">
+                {{template "websites/setup/tab.consent" .}}
+            </div>
+            {{/*Tab Consent*/}}
+
+            <div class="tab-pane fade {{if eq .Tab 4}}active show{{end}}" id="nav-adstxt" role="tabpanel"
+                 aria-labelledby="nav-adstxt-tab">
+                {{template "websites/setup/tab.ads_txt" .}}
+            </div>
+            {{/*Tab Ads.txt*/}}
+
+            <div class="tab-pane fade {{if eq .Tab 5}}active show{{end}}" id="nav-connection" role="tabpanel"
+                 aria-labelledby="nav-connection-tab">
+                {{template "websites/setup/tab.connection" .}}
+            </div>
+            {{/*Tab Connection*/}}
+
+            <div class="tab-pane fade {{if eq .Tab 6}}active show{{end}}" id="nav-integration" role="tabpanel"
+                 aria-labelledby="nav-integration-tab">
+                {{/*                {{template "websites/setup/tab.integration" .}}*/}}
+            </div>
+            {{/*Tab Integration*/}}
+
+        </div>
+
+    </div>
+
+</div>
+<div class="customize-sidebar close-sidebar" id="BoxAdtag">
+    <div class="sidebar-header">
+        <h3>
+            <span class="sidebar-title">Create New Ad Tag</span>
+        </h3>
+
+        <a href="javascript:void(0)" id="btn-close" class="customize-close">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="ds-icon-dashboard-cross">
+                <path d="M14.83 12l6.58-6.59a2 2 0 0 0-2.82-2.82L12 9.17 5.41 2.59a2 2 0 0 0-2.82 2.82L9.17 12l-6.58 6.59a2 2 0 1 0 2.82 2.82L12 14.83l6.59 6.58a2 2 0 0 0 2.82-2.82z">
+                </path>
+            </svg>
+        </a>
+    </div>
+    <div class="result-adtag">
+    </div>
+</div>

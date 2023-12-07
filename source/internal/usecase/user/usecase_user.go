@@ -105,6 +105,7 @@ func (t *user) GetUserByCookie(ctx *fiber.Ctx, key string) (isLogin bool, record
 		if presenter.ParentSub == "yes" {
 			record.Logo = presenter.Logo
 			record.RootDomain = presenter.RootDomain
+			record.Brand = presenter.Brand
 		}
 	}
 	isLogin = true

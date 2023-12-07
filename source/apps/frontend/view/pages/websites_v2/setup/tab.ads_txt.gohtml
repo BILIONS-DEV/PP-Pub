@@ -1,0 +1,144 @@
+{{- /*gotype: source/apps/frontend/controller.AssignInventory*/ -}}
+<div class="pp-6" style="max-width: 864px;">
+    <div class="pp5"><b>Option 1: </b>Setup your ads.txt file directly</div>
+    <p style="margin: 10px 0;">The following lines must be included in your site's ads.txt file so you can sell your inventory to all demands partner. Please update your ads.txt file to include the missing line items.</p>
+    <div class="pp25">
+        <div id="resultLoadMissingLine" style="max-height: 500px;overflow-y: auto;">
+            <div class="d-flex dropdown export-dropdown float-end">
+                <button role="button" id="CopyAdsTxt" data-bs-toggle="dropdown" aria-expanded="false" class="btn btn-sm btn-warning rounded-0">
+                    <span>Copy </span>
+                    <svg class="ms-2" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13">
+                        <rect data-name="Icons/Tabler/Chevron Down background" width="13" height="13" fill="none"></rect>
+                        <path d="M.214.212a.738.738,0,0,1,.952-.07l.082.07L7.1,5.989a.716.716,0,0,1,.071.94L7.1,7.011l-5.85,5.778a.738.738,0,0,1-1.034,0,.716.716,0,0,1-.071-.94l.071-.081L5.547,6.5.214,1.233A.716.716,0,0,1,.143.293Z" transform="translate(13 3.25) rotate(90)" fill="#495057"></path>
+                    </svg>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="CopyAdsTxt">
+                    <li>
+                        <a class="dropdown-item copy-line" data-type="entire" href="#"> <span>Entire line</span> </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item copy-line" data-type="missing" href="#"> <span>Missing line</span> </a>
+                    </li>
+                </ul>
+            </div>
+            {{range $index, $item := .AdsTxtMissingLines}}
+                <div class="pp26">
+                    <div class="pp27">
+                        {{if .Status}}
+                            <button>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                                    <path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z">
+                                    </path>
+                                </svg>
+                            </button>
+                        {{else}}
+                            <button style="background-color: #dc3545;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                    <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z">
+                                    </path>
+                                </svg>
+                            </button>
+                        {{end}}
+                        <span>{{IncIndex $index}}</span>
+                    </div>
+                    <div class="pp28 ads-line{{if not .Status}} ads-line-missing{{end}}">{{.Text}}</div>
+                </div>
+            {{end}}
+        </div>
+        <div class="pp29">
+            <button>
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                    <path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z">
+                    </path>
+                </svg>
+            </button>
+            <span>In sync line items</span>
+            <button style="background-color: #dc3545;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                    <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z">
+                    </path>
+                </svg>
+            </button>
+            <span>Missing line items</span>
+            <div class="ms-auto mr-2">
+                Last scanned:  <span id="lastScanAds">{{if eq .Row.TableInventory.LastScanAdsTxt.Valid true}}{{.Row.TableInventory.LastScanAdsTxt.Value.Format "2006-01-02 at 15:04:05"}}{{end}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="pp5"><b>Option 2: </b>Use {{.UserLogin.Brand}} ads.txt management</div>
+    <div class="pp30">Setup your custom ads.txt lines</div>
+    <p>You can include your custom ads.txt lines below.</p>
+    <form id="SaveAdsTxt" method="POST" action="">
+        <textarea id="ads_txt" name="ads_txt" style="margin: 20px 0;" class="pp17" spellcheck="false">{{.Row.TableInventory.AdsTxtCustom}}</textarea>
+        <div class="pp36">
+            <span></span> <a class="submit at2" href="#">Save</a>
+        </div>
+    </form>
+    <div class="pp30">Redirect your current Ads.txt file</div>
+    <p>In order for Ads.txt Manager to handle your ads.txt file, you’ll need to set a redirect for your ads.txt file so that Ads.txt Manager can handle the file.</p>
+    <div class="pp7" style="width: 800px;">
+        <span class="pp11" style="border-left: 1px solid #aab4c8;border-right: 0;border-radius: 2px 0 0 2px;font-size: 12px;">Ads.txt redirect url</span>
+        <input style="width: 424px;border-top-left-radius: 0;border-bottom-left-radius: 0;" class="pp10" type="text" value="https://ads-txt.bilsyndication.com/{{.Row.Uuid}}/ads.txt">
+    </div>
+    <div class="pp30">There are 3 different ways you can set your redirect</div>
+    <div class="pp31">
+        <div class="tab-pane fade show active" id="pills-result-2" role="tabpanel" aria-labelledby="pills-result-tab-2">
+            <nav class="pp32">
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-link active pp33" id="nav-htaccess-tab" data-bs-toggle="tab" href="#nav-htaccess" role="tab" aria-controls="nav-htaccess" aria-selected="true">.htaccess</a>
+                    <a class="nav-link" id="nav-nginx-tab" data-bs-toggle="tab" href="#nav-nginx" role="tab" aria-controls="nav-nginx" aria-selected="false">Nginx</a>
+                    <a class="nav-link" id="nav-php-tab" data-bs-toggle="tab" href="#nav-php" role="tab" aria-controls="nav-php" aria-selected="false">PHP</a>
+                </div>
+            </nav>
+            <div class="tab-content mt-3 pp34" id="nav-tabContent">
+                <div class="tab-pane fade active show" id="nav-htaccess" role="tabpanel" aria-labelledby="nav-htaccess-tab">
+                    <code> <span>Redirect 301 /ads.txt</span> https://ads-txt.bilsyndication.com/{{.Row.Uuid}}/ads.txt
+                    </code>
+                </div>
+                <div class="tab-pane fade" id="nav-nginx" role="tabpanel" aria-labelledby="nav-nginx-tab">
+                    <code> server {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;location ~ /ads.txt {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 301 https://ads-txt.bilsyndication.com/{{.Row.Uuid}}/ads.txt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br> } </code>
+                </div>
+                <div class="tab-pane fade" id="nav-php" role="tabpanel" aria-labelledby="nav-php-tab">
+                    <code> function getRequestUri() {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$request_uri = str_replace($_SERVER['SCRIPT_NAME'], "", $_SERVER['REQUEST_URI']);<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (isset($_SERVER['REDIRECT_QUERY_STRING'])
+                        &amp;&amp;
+                        $_SERVER['REDIRECT_QUERY_STRING']) {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$request_uri = str_replace("?" . $_SERVER['REDIRECT_QUERY_STRING'], "", $_SERVER['REQUEST_URI']);<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} elseif (isset($_SERVER['QUERY_STRING']) &amp;&amp;
+                        $_SERVER['QUERY_STRING']) {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$request_uri = str_replace("?" . $_SERVER['QUERY_STRING'], "", $_SERVER['REQUEST_URI']);<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return $request_uri;<br> }<br><br> if (getRequestUri() == "/ads.txt") {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; header('Location: https://ads-txt.bilsyndication.com/{{.Row.Uuid}}/ads.txt');<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; exit;<br> };<br> </code>
+                </div>
+            </div>
+        </div>
+
+        {{/*        <div class="pp32">*/}}
+        {{/*            <a href="#" class="pp33">.htaccess</a> <a href="#">Nginx</a> <a href="#">PHP</a>*/}}
+        {{/*        </div>*/}}
+        {{/*        <div class="pp34">*/}}
+        {{/*            <span>Redirect 301 /ads.txt https://ads-txt.bilsyndication.com/d1f317a3-ff94-4fdc-825d-39a74aadcb42/ads.txt</span></span>*/}}
+        {{/*            <a href="#">*/}}
+        {{/*                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="ds-icon-dashboard-copy">*/}}
+        {{/*                    <path d="M19.75 8.69h-2.37V6.31a2 2 0 0 0-2-2H4.25a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2.37v2.38a2 2 0 0 0 2 2h11.13a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2zm-15.5 4.62v-7h11.13v2.38H8.62a2 2 0 0 0-2 2v2.62zm15.5 4.38H8.62v-7h11.13z">*/}}
+        {{/*                    </path>*/}}
+        {{/*                </svg>*/}}
+        {{/*            </a>*/}}
+        {{/*        </div>*/}}
+    </div>
+    <div class="pp30">Check your Ads.txt</div>
+    <form id="scanAds" method="POST">
+        <div class="pp35">
+            <p>Check your ads.txt file to ensure that all line items are present and correct.</p>
+            <input type="hidden" id="did" name="did" value="{{.Row.TableInventory.Id}}">
+            <a id="scanAdsTxt" class="submit" href="javascript:void(0)">Check Ads.txt</a>
+        </div>
+    </form>
+
+</div>

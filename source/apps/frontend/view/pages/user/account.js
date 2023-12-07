@@ -6,6 +6,7 @@ $(document).ready(function () {
     $("#method").on("change", function () {
         ChangeSelectBilling($(this))
     })
+    ChangeTab()
     GetMethodDefaultBilling()
 })
 
@@ -157,4 +158,31 @@ function SumitFormBilling(formID, ajaxUrl, callback) {
             }
         });
     });
+}
+
+function ChangeTab() {
+    $(".custom-tab").on("click", ".nav-link", function () {
+        $(".custom-tab").find(".nav-link").removeClass("pp-4").removeClass('at-1')
+        $(this).addClass("pp-4")
+        var tab = $(this).attr("data-tab")
+        if (tab != "1") {
+            $(this).addClass("at-1")
+        }
+    })
+
+    $("#tab-profile").on("click", function () {
+        $("#tab-profile").addClass("active")
+        $("#tab-change-password").removeClass("active")
+        $("#tab-billing").removeClass("active")
+    })
+    $("#tab-change-password").on("click", function () {
+        $("#tab-profile").removeClass("active")
+        $("#tab-change-password").addClass("active")
+        $("#tab-billing").removeClass("active")
+    })
+    $("#tab-billing").on("click", function () {
+        $("#tab-profile").removeClass("active")
+        $("#tab-change-password").removeClass("active")
+        $("#tab-billing").addClass("active")
+    })
 }

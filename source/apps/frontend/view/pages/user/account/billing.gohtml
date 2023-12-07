@@ -1,0 +1,167 @@
+<form id="submitBilling">
+    <div class="pp6">
+        <div class="pp14">
+            <input name="id" id="id" hidden value="{{.Billing.TableUserBilling.Id}}"/>
+            <input name="user_id" id="user_id" hidden value="{{.Billing.TableUserBilling.UserId}}"/>
+
+            <div class="pp5">Method</div>
+            <div class="pp7 mt-2">
+                <div class="pp7 cus-selectpicker">
+                    <select id="method" name="method" class="form-control selectpicker" data-placeholder="Select your payment method">
+                        <option {{if eq .Billing.TableUserBilling.Method "bank"}}selected{{end}} value="bank">Bank</option>
+                        <option {{if eq .Billing.TableUserBilling.Method "paypal"}}selected{{end}} value="paypal">Paypal</option>
+                        <option {{if eq .Billing.TableUserBilling.Method "payoneer"}}selected{{end}} value="payoneer">Payoneer</option>
+                        <option {{if eq .Billing.TableUserBilling.Method "currency"}}selected{{end}} value="currency">Currency</option>
+                    </select>
+                    <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                </div>
+                <span class="form-text ms-2 w-auto invalid-feedback"></span>
+            </div>
+            {{/*Method*/}}
+
+            <div id="method_bank" {{if ne .Billing.TableUserBilling.Method "bank"}}class="d-none"{{end}}>
+                <div class="row mb-4">
+                    <div class="">
+                        <label class="col-form-label form-label form-label-lg w-input-group"></label>
+                        <div class="alert alert-warning mx-auto w-70 border" role="alert">
+                            <p class="fw-normal">
+                                Minimum Payment Threshold: <strong>1,000 USD</strong>
+                            </p>
+                            <hr>
+                            <p class="mb-0 fw-normal">Please choose other payment methods if your revenue has not reached $1000 for the best support.</p>
+                        </div>
+                    </div>
+                </div>
+                {{/*alert*/}}
+                <div class="pp5">Beneficiary Name</div>
+                <div class="pp7 mt-2">
+                    <input class="pp10" id="beneficiary_name" name="beneficiary_name" value="{{.Billing.TableUserBilling.BeneficiaryName}}">
+                    <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                </div>
+                {{/*Beneficiary Name*/}}
+                <div class="pp5">Bank Name</div>
+                <div class="pp7 mt-2">
+                    <input class="pp10" id="bank_name" name="bank_name" value="{{.Billing.TableUserBilling.BankName}}">
+                    <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                </div>
+                {{/*Bank Name*/}}
+                <div class="pp5">Bank Address</div>
+                <div class="pp7 mt-2">
+                    <input class="pp10" id="bank_address" name="bank_address" value="{{.Billing.TableUserBilling.BankAddress}}">
+                    <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                </div>
+                {{/*Bank Address*/}}
+                <div class="pp5">Bank Account Number</div>
+                <div class="pp7 mt-2">
+                    <input class="pp10" id="bank_account_number" name="bank_account_number" value="{{.Billing.TableUserBilling.BankAccountNumber}}">
+                    <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                </div>
+                {{/*Bank Account Number*/}}
+                <div class="pp5">Bank Routing Number</div>
+                <div class="pp7 mt-2">
+                    <input class="pp10" id="bank_routing_number" name="bank_routing_number" value="{{.Billing.TableUserBilling.BankRoutingNumber}}">
+                    <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                </div>
+                {{/*Bank Routing Number*/}}
+                <div class="pp5">Bank Iban Number</div>
+                <div class="pp7 mt-2">
+                    <input class="pp10" id="bank_iban_number" name="bank_iban_number" value="{{.Billing.TableUserBilling.BankIbanNumber}}">
+                    <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                </div>
+                {{/*Bank Iban Number*/}}
+                <div class="pp5">Swift Code</div>
+                <div class="pp7 mt-2">
+                    <input class="pp10" id="swift_code" name="swift_code" value="{{.Billing.TableUserBilling.SwiftCode}}">
+                    <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                </div>
+                {{/*Swift Code*/}}
+                <div class="pp5">IFSC Code</div>
+                <div class="pp7 mt-2">
+                    <input class="pp10" id="ifsc_code" name="ifsc_code" value="{{.Billing.TableUserBilling.IFSCCode}}">
+                    <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                </div>
+                {{/*IFSC Code*/}}
+            </div>
+
+            <div id="method_paypal" {{if ne .Billing.TableUserBilling.Method "paypal"}}class="d-none"{{end}}>
+                <div class="row mb-4">
+                    <div class="">
+                        <label class="col-form-label form-label form-label-lg w-input-group"></label>
+                        <div class="alert alert-warning mx-auto w-70 border" role="alert">
+                            <p class="fw-normal">
+                                Minimum Payment Threshold: <strong>100 USD</strong>
+                            </p>
+                            <hr>
+                            <p class="mb-0 fw-normal">Please choose other payment methods if your revenue has not reached $100 for the best support.</p>
+                        </div>
+                    </div>
+                </div>
+                {{/*alert*/}}
+                <div class="pp5">Paypal Email</div>
+                <div class="pp7 mt-2">
+                    <input class="pp10" id="paypal_email" name="paypal_email" value="{{.Billing.TableUserBilling.PaypalEmail}}">
+                    <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                </div>
+                {{/*Paypal Email*/}}
+            </div>
+            <div id="method_payoneer" {{if ne .Billing.TableUserBilling.Method "payoneer"}}class="d-none"{{end}}>
+                <div class="row mb-4">
+                    <div class="">
+                        <label class="col-form-label form-label form-label-lg w-input-group"></label>
+                        <div class="alert alert-warning mx-auto w-70 border" role="alert">
+                            <p class="fw-normal">
+                                Minimum Payment Threshold: <strong>100 USD</strong>
+                            </p>
+                            <hr>
+                            <p class="mb-0 fw-normal">Please choose other payment methods if your revenue has not reached $100 for the best support.</p>
+                        </div>
+                    </div>
+                </div>
+                {{/*alert*/}}
+                <div class="pp5">PayOneer Email</div>
+                <div class="pp7 mt-2">
+                    <input class="pp10" id="payoneer_email" name="payoneer_email" value="{{.Billing.TableUserBilling.PayOneerEmail}}">
+                    <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                </div>
+                {{/*Payoneer Email*/}}
+            </div>
+            <div id="method_currency" {{if ne .Billing.TableUserBilling.Method "currency"}}class="d-none"{{end}}>
+                <div class="row mb-4">
+                    <div class="">
+                        <label class="col-form-label form-label form-label-lg w-input-group"></label>
+                        <div class="alert alert-warning mx-auto w-70 border" role="alert">
+                            <p class="fw-normal">
+                                Minimum Payment Threshold: <strong>100 USD</strong>
+                            </p>
+                            <hr>
+                            <p class="mb-0 fw-normal">Due to the fund preparation, payment will be processed from the 15th of the month.</p>
+                        </div>
+                    </div>
+                </div>
+                {{/*alert*/}}
+                <div class="pp5">Crypto Currency</div>
+                <div class="pp7 mt-2">
+                    <div class="pp7 cus-selectpicker">
+                        <select id="cryptocurrency" name="cryptocurrency" class="form-control selectpicker" data-placeholder="Select your payment method">
+                            <option {{if eq .Billing.TableUserBilling.Cryptocurrency "BCH"}}selected{{end}} value="BCH">Bitcoin Cash (BCH)</option>
+                            <option {{if eq .Billing.TableUserBilling.Cryptocurrency "BTC"}}selected{{end}} value="BTC">Bitcoin (BTC)</option>
+                            <option {{if eq .Billing.TableUserBilling.Cryptocurrency "USDT"}}selected{{end}} value="USDT">Tether (USDT - ERC20)</option>
+                        </select>
+                        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                    </div>
+                </div>
+                {{/*Currency*/}}
+                <div class="pp5">Wallet ID</div>
+                <div class="pp7 mt-2">
+                    <input class="pp10" id="wallet_id" name="wallet_id" value="{{.Billing.TableUserBilling.WalletId}}">
+                    <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pp6 pt-0">
+        <button type="submit" class="btn dm4 btn-lg text-white submit">
+            SUBMIT
+        </button>
+    </div>
+</form>

@@ -14,7 +14,24 @@
     <page path="/user/billing" includePath="/user/form">
         <jsOnBottom link="/assets/user/billing.js"/>
     </page>
-    <page path="/user/account" includePath="/user/form">
+    <page path="/user/account">
+        <css link="/assets/plugins/bootstrap431/css/bootstrap.min.css" rel="stylesheet"/>
+        <css link="/assets/plugins/bootstrap-toggle/css/bootstrap-toggle.min.css"/>
+        <css link="/assets/plugins/anno-js/anno.css"/>
+        <css link="/assets/plugins/datatables/datatables.min.css" rel="stylesheet" media="all" inline="false"/>
+        <css link="/assets/plugins/select2/dist/css/select2.min.css" rel="stylesheet" media="all" inline="false"/>
+        <!--        <css link="/assets/plugins/select2/dist/css/select2-bootstrap.min.css" rel="stylesheet" media="all" inline="false"/>-->
+        <!--        <css link="/assets/plugins/ajax-bootstrap-select-1.4.5/dist/css/ajax-bootstrap-select.min.css"/>-->
+        <css link="/assets/plugins/bootstrap-select-1.13.18/css/bootstrap-select.min.css" rel="stylesheet"/>
+        <!-- Import JS -->
+        <js link="/assets/js/popper.min.js"/>
+        <js link="/assets/plugins/bootstrap431/js/bootstrap.min.js"/>
+        <js link="/assets/plugins/bootstrap-toggle/js/bootstrap-toggle.min.js"/>
+        <js link="/assets/plugins/datatables/datatables.min.js"/>
+        <!--        <js link="/assets/plugins/select2/dist/js/select2.full.js"/>-->
+        <!--        <js link="/assets/plugins/anno-js/anno.js"/>-->
+        <!--        <js link="/assets/plugins/anno-js/jquery.scrollintoview.min.js"/>-->
+        <js link="/assets/plugins/bootstrap-select-1.13.18/js/bootstrap-select.min.js"/>
         <jsOnBottom link="/assets/user/account.js"/>
     </page>
     <page path="/user/password" includePath="/user/form">

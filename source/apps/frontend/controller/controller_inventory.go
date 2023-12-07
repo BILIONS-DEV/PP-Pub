@@ -58,7 +58,6 @@ func (t *Inventory) Setup(ctx *fiber.Ctx) error {
 	if err != nil {
 		tab = 1
 	}
-	//fmt.Println("data: ", userLogin.Permission)
 	// bỏ tab 2,3,5 với user permission managed service
 	if userLogin.Permission == mysql.UserPermissionManagedService || userLogin.Permission == mysql.UserPermissionSubPublisher {
 		if tab == 2 || tab == 3 || tab == 5 {
@@ -115,7 +114,7 @@ func (t *Inventory) Setup(ctx *fiber.Ctx) error {
 
 	assigns.Title = config.TitleWithPrefix("Setup Inventory")
 	assigns.LANG.Title = "Setup Inventory"
-	return ctx.Render("supply/setup", assigns, view.LAYOUTMain)
+	return ctx.Render("websites/setup", assigns, view.LAYOUTMain)
 }
 
 func (t *Inventory) SetupConfig(ctx *fiber.Ctx) error {
@@ -219,9 +218,9 @@ func (t *Inventory) Index(ctx *fiber.Ctx) error {
 	}
 	assigns := AssignInventory{Schema: assign.Get(ctx)}
 	assigns.Params = params
-	assigns.Title = config.TitleWithPrefix("Supplies")
-	assigns.LANG.Title = "Supplies"
-	return ctx.Render("supply/index", assigns, view.LAYOUTMain)
+	assigns.Title = config.TitleWithPrefix("Websites")
+	assigns.LANG.Title = "Websites"
+	return ctx.Render("websites/index", assigns, view.LAYOUTMain)
 }
 
 func (t *Inventory) Filter(ctx *fiber.Ctx) error {
@@ -336,7 +335,7 @@ func (t *Inventory) LoadModuleParam(ctx *fiber.Ctx) (err error) {
 	}
 	moduleParam.Params = mapParam
 	moduleParam.Storage = storage
-	data := htmlblock.Render("supply/index/block_module.gohtml", moduleParam).String()
+	data := htmlblock.Render("websites/index/block_module.gohtml", moduleParam).String()
 	var moreData payload.LoadMoreData
 	moreData.Data = data
 	return ctx.JSON(moreData)
@@ -518,8 +517,8 @@ func (t *Inventory) CopyAdTag(ctx *fiber.Ctx) (err error) {
 	}
 	copyTag.ListTagTool = new(model.AdTag).GetAdTagForTool(id)
 	copyTag.ListQuiz, _ = new(model.Quiz).GetAllQuizForUserSelect(userLogin.Email)
-	// data := htmlblock.Render("supply/box.copy_adtag.gohtml", copyTag).String()
-	return ctx.Render("supply/copy_adtag/box.copy_adtag", copyTag)
+	// data := htmlblock.Render("websites/box.copy_adtag.gohtml", copyTag).String()
+	return ctx.Render("websites/copy_adtag/box.copy_adtag", copyTag)
 }
 
 type BuildScript struct {
@@ -565,8 +564,8 @@ func (t *Inventory) BuildScript(ctx *fiber.Ctx) (err error) {
 	if tagDesktop.Size.Width != tagMobile.Size.Width || tagDesktop.Size.Height != tagMobile.Size.Height {
 		isShowStyle = true
 	}
-	// data := htmlblock.Render("supply/box.copy_adtag.gohtml", copyTag).String()
-	return ctx.Render("supply/copy_adtag/script", BuildScript{
+	// data := htmlblock.Render("websites/box.copy_adtag.gohtml", copyTag).String()
+	return ctx.Render("websites/copy_adtag/script", BuildScript{
 		TimeStamp:       time.Now().Unix(),
 		TagDesktop:      tagDesktop,
 		TagMobile:       tagMobile,

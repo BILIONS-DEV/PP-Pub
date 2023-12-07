@@ -87,7 +87,7 @@ func Bootstrap(ctx *fiber.Ctx) error {
 		DeviceUA:     utility.GetDeviceFromUA(string(ctx.Context().UserAgent())),
 	})
 	if UserLogin.Logo != "" && UserLogin.RootDomain != "" {
-		config.TitlePrefix = UserLogin.RootDomain
+		config.TitlePrefix = UserLogin.Brand
 	}
 	ctx.Locals("UserLogin", UserLogin)
 	ctx.Locals("UserAdmin", userAdmin)

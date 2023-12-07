@@ -206,6 +206,7 @@ func (t *User) UserLogin(ctx *fiber.Ctx) (user UserRecord) {
 		if presenter.ParentSub == "yes" {
 			user.Logo = presenter.Logo
 			user.RootDomain = presenter.RootDomain
+			user.Brand = presenter.Brand
 		}
 	}
 	if !user.IsAdmin() {

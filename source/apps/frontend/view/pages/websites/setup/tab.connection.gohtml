@@ -1,0 +1,48 @@
+{{- /*gotype: source/apps/frontend/controller.AssignInventory*/ -}}
+{{/*<div class="pp24">*/}}
+{{/*    <p>Connect with the world class demands partners through*/}}
+{{/*        <b>{{.UserLogin.Brand}}</b> with just a few clicks. You can cancel this option any time you want.</p>*/}}
+{{/*    <span>Note: A flat fee 10% will apply</span>*/}}
+{{/*</div>*/}}
+<div class="pp-06">
+    {{range .Bidders}}
+        <div class="pp18 item">
+            <div class="pp19">
+{{/*                <img src="https://aws-config-bucket-986950052850.s3.amazonaws.com/AdvertisingIdentity.svg"/>*/}}
+                <img src="https://apps.valueimpression.com/assets/img/icon/AdvertisingIdentity.svg?v=3"/>
+                <span>SSP</span>
+            </div>
+            <div class="pp20">
+                {{if ne .Logo ""}}
+                    <img data-bidder="{{.BidderRecord.TableBidder.BidderCode}}" src="https://apps.pubpower.io/assets/img{{.Logo}}"
+                            {{if eq .BidderRecord.TableBidder.BidderCode "sharethrough"}}
+                                style="width: 170px;"
+                            {{else if eq .BidderRecord.TableBidder.BidderCode "eplanning"}}
+                                style="width: 110px;"
+                            {{else if eq .BidderRecord.TableBidder.BidderCode "rtbhouse"}}
+                                style="width: 110px;"
+                            {{else if eq .BidderRecord.TableBidder.BidderCode "oftmedia"}}
+                                style="width: 80px;"
+                            {{else if eq .BidderRecord.TableBidder.BidderCode "colossusssp"}}
+                                style="width: 130px;"
+                            {{end}}
+                    />
+                {{else}}
+                    <h4>{{.BidderRecord.TableBidder.BidderCode}}</h4>
+                {{end}}
+            </div>
+            <div class="pp21">
+                <div class="pp22">
+                    {{if eq .Status "Live"}}
+                        <span class="pp23 status"></span> <span class="status-text">{{.Status}}</span>
+                    {{else}}
+                        <span class="pp-23 status"></span> <span class="status-text">{{.Status}}</span>
+                    {{end}}
+                </div>
+                <label class="switch" style="margin: 0 10px;">
+                    <input class="connection" type="checkbox" {{if eq .Status "Live"}}checked{{end}} data-bidder-id="{{.BidderRecord.TableBidder.Id}}"
+                           data-inventory-id="{{$.Row.TableInventory.Id}}"> <span class="slider round"></span> </label>
+            </div>
+        </div>
+    {{end}}
+</div>

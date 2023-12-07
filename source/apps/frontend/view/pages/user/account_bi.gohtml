@@ -1,0 +1,66 @@
+{{- /*gotype: source/apps/frontend/controller.AssignUserAccount*/ -}}
+{{$UserLang := .Schema.LANG.Pages.User}}
+<div class="px-5 py-3 border-bottom border-gray-200">
+    <div class="container-fluid px-0">
+        <div class="row align-items-center">
+            <div class="col">
+                <h1 class="h3 mb-0">{{$UserLang.TopAccount}}</h1>
+            </div>
+        </div>
+    </div>
+</div>
+{{/*End Header*/}}
+
+<div class="px-5 pt-5 pb-3 height-main">
+    <div class="container-fluid px-0">
+        <div class="row">
+            <div class="col-12">
+                <div id="MainBox" class="card rounded-0 shadow-dark-80 border border-gray-50 mb-5">
+                    {{/*                    <div class="d-flex align-items-center bg-dominant px-4">*/}}
+                    {{/*                        <h5 class="card-header-title font-weight-semibold m-2">{{$UserLang.MainAccount}}</h5>*/}}
+                    {{/*                    </div>*/}}
+                    <div id="collapseMainBox" class="collapse show" data-bs-parent="#MainBox">
+                        <div class="card-body px-5 py-for-card">
+                            <div class="mb-2 mb-md-3 mb-xl-4 pb-3">
+                                <ul class="nav nav-tabs nav-tabs-md nav-tabs-line position-relative zIndex-0">
+                                    <li class="nav-item">
+                                        <a id="tab-profile" class="nav-link active" data-bs-toggle="tab"
+                                           data-bs-target="#nav-profile" type="button" role="tab"
+                                           aria-controls="nav-profile" aria-selected="true">{{$UserLang.Profile}}</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a id="tab-change-password" class="nav-link" data-bs-toggle="tab"
+                                           data-bs-target="#nav-change-password" type="button" role="tab"
+                                           aria-controls="nav-change-password" aria-selected="false">{{$UserLang.ChangePassword}}</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a id="tab-billing" class="nav-link" data-bs-toggle="tab"
+                                           data-bs-target="#nav-billing" type="button" role="tab"
+                                           aria-controls="nav-billing" aria-selected="false">{{$UserLang.MainBilling}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="tab-content" id="nav-tabContent">
+                                {{template "user/account/profile" .}}
+                                {{/*Tab Profile*/}}
+                                {{template "user/account/change-password" .}}
+                                {{/*Tab Change Password*/}}
+                                {{template "user/account/billing" .}}
+                                {{/*Tab Billing*/}}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/*Main Card*/}}
+            </div>
+        </div>
+    </div>
+</div>
+{{/*Form Infomation*/}}
+<style>
+    .nav-tabs.nav-tabs-line .nav-link.active {
+        border-color: #0b7ef4;
+    }
+</style>

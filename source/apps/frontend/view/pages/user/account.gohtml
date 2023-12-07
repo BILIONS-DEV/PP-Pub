@@ -1,519 +1,76 @@
 {{- /*gotype: source/apps/frontend/controller.AssignUserAccount*/ -}}
 {{$UserLang := .Schema.LANG.Pages.User}}
-<div class="px-5 py-3 border-bottom border-gray-200">
-    <div class="container-fluid px-0">
-        <div class="row align-items-center">
-            <div class="col">
-                <h1 class="h3 mb-0">{{$UserLang.TopAccount}}</h1>
+<div class="header border-bottom py-0">
+    <div class="container-fluid px-0 h-100">
+        <div class="header-body px-3 h-100">
+            <div class="row align-items-center h-100">
+                <a href="javascript:void(0);" class="muze-hamburger d-block d-lg-none col-auto">
+                    <img src="{{.RootDomain}}/assets/svg/icons/hamburger1.svg" alt="img">
+                    <img src="{{.RootDomain}}/assets/svg/icons/close1.svg" style="width:20px;" class="menu-close"
+                         alt="img"> </a> <a class="navbar-brand mx-auto col-auto px-0" href="#">
+                    <h1 class="header-main">Account</h1>
+                </a>
+                <div class="col d-flex align-items-center">
+                </div>
+
+                <div class="col-auto d-flex flex-wrap align-items-center icon-blue-hover ps-0">
+                    <div class="dropdown grid-option box-notifi">
+                        <a href="#" class="text-dark ms-3 mb-0 notification" data-bs-toggle="dropdown" id="notification" data-bs-auto-close="outside" data-bs-autoClose="false">
+                            <svg id="Icons_tabler_notification" class="notification" data-name="Icons/tabler/notification" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <rect id="Icons_Tabler_Notification_background" data-name="Icons/Tabler/Notification background" width="24" height="24" fill="none"/>
+                                <path d="M6.162,19.63l-.005-.246v-.308H.926A.923.923,0,0,1,.471,17.35a4,4,0,0,0,1.956-2.66l.036-.229V10.726A9.492,9.492,0,0,1,7.292,2.873l.147-.08,0-.018A3.369,3.369,0,0,1,10.566.007L10.771,0a3.379,3.379,0,0,1,3.287,2.573l.045.22.147.08a9.556,9.556,0,0,1,4.806,7.541l.023.355-.007,3.582a4.016,4.016,0,0,0,2,3,.924.924,0,0,1-.329,1.719l-.126.008H15.387v.308a4.616,4.616,0,0,1-9.225.246ZM8,19.385a2.769,2.769,0,0,0,5.532.189l.007-.189v-.308H8ZM9.242,3.228l-.012.238-.005.045L9.2,3.63l-.039.113-.054.107-.035.055L9,4l-.036.038-.05.046-.1.074L8.7,4.219A7.7,7.7,0,0,0,4.332,10.46l-.022.309-.007,3.8a5.875,5.875,0,0,1-.94,2.541l-.084.119H18.266l-.007-.012a6.007,6.007,0,0,1-.983-2.452l-.043-.306V10.812a7.674,7.674,0,0,0-4.4-6.593.919.919,0,0,1-.518-.7l-.009-.132a1.538,1.538,0,0,0-3.069-.157Z" transform="translate(1.499)" fill="#1e1e1e"/>
+                            </svg>
+                            <sup class="status bg-danger notification text-center d-none" id="number-notification"></sup>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end py-0" aria-labelledby="dropdownMenuClickableOutside">
+                            <div class="dropdown-header d-flex align-items-center px-4 py-2 border-bottom d-flex justify-content-between">
+                                <span class="fs-16 Montserrat-font font-weight-semibold text-black-600" style="height: 1.9375rem;line-height: 1.9375rem;">Notification</span>
+                                <a class="close-notification text-black-50" href="javascript:void(0)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor"
+                                         class="bi bi-x-lg" viewBox="0 0 16 16">
+                                        <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                            <div class="dropdown-body" data-simplebar id="result-notification"></div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
 </div>
 {{/*End Header*/}}
 
-<div class="px-5 pt-5 pb-3 height-main">
+
+<div class="pubpower-main height-main p-0">
     <div class="container-fluid px-0">
-        <div class="row">
-            <div class="col-12">
-                <div id="MainBox" class="card rounded-0 shadow-dark-80 border border-gray-50 mb-5">
-                    {{/*                    <div class="d-flex align-items-center bg-dominant px-4">*/}}
-                    {{/*                        <h5 class="card-header-title font-weight-semibold m-2">{{$UserLang.MainAccount}}</h5>*/}}
-                    {{/*                    </div>*/}}
-                    <div id="collapseMainBox" class="collapse show" data-bs-parent="#MainBox">
-                        <div class="card-body px-5 py-for-card">
-                            <div class="mb-2 mb-md-3 mb-xl-4 pb-3">
-                                <ul class="nav nav-tabs nav-tabs-md nav-tabs-line position-relative zIndex-0">
-                                    <li class="nav-item">
-                                        <a id="tab-profile" class="nav-link active" data-bs-toggle="tab"
-                                           data-bs-target="#nav-profile" type="button" role="tab"
-                                           aria-controls="nav-profile" aria-selected="true">{{$UserLang.Profile}}</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a id="tab-change-password" class="nav-link" data-bs-toggle="tab"
-                                           data-bs-target="#nav-change-password" type="button" role="tab"
-                                           aria-controls="nav-change-password" aria-selected="false">{{$UserLang.ChangePassword}}</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a id="tab-billing" class="nav-link" data-bs-toggle="tab"
-                                           data-bs-target="#nav-billing" type="button" role="tab"
-                                           aria-controls="nav-billing" aria-selected="false">{{$UserLang.MainBilling}}</a>
-                                    </li>
-                                </ul>
-                            </div>
+        {{template "user/account/inc.tab" .}}
 
-                            <div class="tab-content" id="nav-tabContent">
-                                <div class="tab-pane fade active show" id="nav-profile" role="tabpanel"
-                                     aria-labelledby="nav-consent-tab">
-                                    <form id="profile">
-                                        <div class="row my-4">
-                                            <div class="d-flex align-items-center">
-                                                <label class="col-form-label form-label form-label-lg w-input-group"
-                                                       for="email">
-                                                    {{$UserLang.Email}}
-                                                    <span class="required-label">*</span>
-                                                </label>
-                                                <input id="email" name="email"
-                                                       class="form-control w-50-custom"
-                                                       value="{{.Row.TableUser.Email}}"/>
-                                                <span class="form-text ms-2 w-auto invalid-feedback"></span>
-                                            </div>
-                                        </div>
-                                        {{/*Email*/}}
-
-                                        <div class="row my-4">
-                                            <div class="d-flex align-items-center">
-                                                <label class="col-form-label form-label form-label-lg w-input-group"
-                                                       for="first_name">
-                                                    {{$UserLang.FirstName}}
-                                                    <span class="required-label">*</span>
-                                                </label>
-                                                <input id="first_name" name="first_name"
-                                                       class="form-control w-50-custom"
-                                                       value="{{.Row.TableUser.FirstName}}"/>
-                                                <span class="form-text ms-2 w-auto invalid-feedback"></span>
-                                            </div>
-                                        </div>
-                                        {{/*First Name*/}}
-
-                                        <div class="row my-4">
-                                            <div class="d-flex">
-                                                <label class="col-form-label form-label form-label-lg w-input-group"
-                                                       for="last_name">
-                                                    {{$UserLang.LastName}}
-                                                    <span class="required-label">*</span></label>
-                                                <input id="last_name" name="last_name"
-                                                       class="form-control w-50-custom"
-                                                       value="{{.Row.TableUser.LastName}}"/>
-                                                <span class="form-text ms-2 w-auto invalid-feedback"></span>
-                                            </div>
-                                        </div>
-                                        {{/*Last Name*/}}
-
-                                        <div class="row my-4">
-                                            <div class="d-flex">
-                                                <label class="col-form-label form-label form-label-lg w-input-group" for="address">
-                                                    {{$UserLang.Address}}
-                                                    <span class="required-label">*</span></label>
-                                                <input id="address" name="address"
-                                                       class="form-control w-50-custom"
-                                                       value="{{.Row.TableUser.Address}}"/>
-                                                <span class="form-text ms-2 w-auto invalid-feedback"></span>
-                                            </div>
-                                        </div>
-                                        {{/*Address*/}}
-
-                                        <div class="row my-4">
-                                            <div class="d-flex">
-                                                <label class="col-form-label form-label form-label-lg w-input-group" for="city">
-                                                    {{$UserLang.City}}
-                                                    <span class="required-label">*</span></label>
-                                                <input id="city" name="city"
-                                                       class="form-control w-50-custom"
-                                                       value="{{.Row.TableUser.City}}"/>
-                                                <span class="form-text ms-2 w-auto invalid-feedback"></span>
-                                            </div>
-                                        </div>
-                                        {{/*City*/}}
-
-                                        <div class="row my-4">
-                                            <div class="d-flex">
-                                                <label class="col-form-label form-label form-label-lg w-input-group" for="state">
-                                                    {{$UserLang.State}}
-                                                    <span class="required-label">*</span></label>
-                                                <input id="state" name="state"
-                                                       class="form-control w-50-custom"
-                                                       value="{{.Row.TableUser.State}}"/>
-                                                <span class="form-text ms-2 w-auto invalid-feedback"></span>
-                                            </div>
-                                        </div>
-                                        {{/*State*/}}
-
-                                        <div class="row my-4">
-                                            <div class="d-flex">
-                                                <label class="col-form-label form-label form-label-lg w-input-group" for="zip_code">
-                                                    {{$UserLang.ZipCode}}
-                                                    <span class="required-label">*</span></label>
-                                                <input id="zip_code" name="zip_code"
-                                                       class="form-control w-50-custom"
-                                                       value="{{.Row.TableUser.ZipCode}}"/>
-                                                <span class="form-text ms-2 w-auto invalid-feedback"></span>
-                                            </div>
-                                        </div>
-                                        {{/*ZipCode*/}}
-
-                                        <div class="row my-4">
-                                            <div class="d-flex">
-                                                <label class="col-form-label form-label form-label-lg w-input-group" for="country">
-                                                    {{$UserLang.Country}}
-                                                    <span class="required-label">*</span></label>
-                                                <input id="country" name="country"
-                                                       class="form-control w-50-custom"
-                                                       value="{{.Row.TableUser.Country}}"/>
-                                                <span class="form-text ms-2 w-auto invalid-feedback"></span>
-                                            </div>
-                                        </div>
-                                        {{/*Country*/}}
-
-                                        <div class="row my-4">
-                                            <div class="d-flex">
-                                                <label class="col-form-label form-label form-label-lg w-input-group" for="phone_number">
-                                                    {{$UserLang.PhoneNumber}}
-                                                    <span class="required-label">*</span></label>
-                                                <input id="phone_number" name="phone_number"
-                                                       class="form-control w-50-custom"
-                                                       value="{{.Row.TableUser.PhoneNumber}}"/>
-                                                <span class="form-text ms-2 w-auto invalid-feedback"></span>
-                                            </div>
-                                        </div>
-                                        {{/*PhoneNumber*/}}
-
-                                        <div class="row">
-                                            <div class="col-sm-12 text-lg-end">
-                                                <button type="submit" class="btn dm4 btn-lg text-white submit">
-                                                    {{$UserLang.Button}}
-                                                </button>
-                                            </div>
-                                        </div>
-                                        {{/* Button*/}}
-                                    </form>
-                                </div>
-                                {{/*Tab Profile*/}}
-
-                                <div class="tab-pane fade" id="nav-change-password" role="tabpanel" aria-labelledby="nav-userid-tab">
-                                    <form id="changePassword">
-                                        <div class="row my-4">
-                                            <div class="d-flex">
-                                                <label class="col-form-label form-label form-label-lg w-input-group"
-                                                       for="old_password">
-                                                    {{$UserLang.OldPassword}}
-                                                    <span class="required-label">*</span></label>
-                                                <input id="old_password" name="old_password" type="password"
-                                                       class="form-control w-50-custom"/>
-                                                <span class="form-text ms-2 w-auto invalid-feedback"></span>
-                                            </div>
-                                        </div>
-                                        {{/*PassWord*/}}
-
-                                        <div class="row my-4">
-                                            <div class="d-flex">
-                                                <label class="col-form-label form-label form-label-lg w-input-group"
-                                                       for="new_password">
-                                                    {{$UserLang.NewPassword}}
-                                                    <span class="required-label">*</span></label>
-                                                <input id="new_password" name="new_password" type="password"
-                                                       class="form-control w-50-custom"/>
-                                                <span class="form-text ms-2 w-auto invalid-feedback"></span>
-                                            </div>
-                                        </div>
-                                        {{/*PassWord*/}}
-
-                                        <div class="row my-4">
-                                            <div class="d-flex">
-                                                <label class="col-form-label form-label form-label-lg w-input-group"
-                                                       for="confirm_password">
-                                                    {{$UserLang.ConfirmPassword}}
-                                                    <span class="required-label">*</span></label>
-                                                <input id="confirm_password" name="confirm_password" type="password"
-                                                       class="form-control w-50-custom"/>
-                                                <span class="form-text ms-2 w-auto invalid-feedback"></span>
-                                            </div>
-                                        </div>
-                                        {{/*Confirm PassWord*/}}
-
-                                        <div class="row">
-                                            <div class="col-sm-12 text-lg-end">
-                                                <button type="submit" class="btn dm4 btn-lg text-white submit">
-                                                    {{$UserLang.Button}}
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                                {{/*Tab Change Password*/}}
-
-                                <div class="tab-pane fade" id="nav-billing">
-                                    <form id="submitBilling">
-                                        <input name="id" id="id" hidden value="{{.Billing.TableUserBilling.Id}}"/>
-                                        <input name="user_id" id="user_id" hidden value="{{.Billing.TableUserBilling.UserId}}"/>
-
-                                        <div class="row my-4">
-                                            <div class="d-flex align-items-center">
-                                                <label class="col-form-label form-label form-label-lg w-input-group"
-                                                       for="method">
-                                                    {{$UserLang.Method}}
-                                                    <span class="required-label">*</span></label>
-                                                <div class="w-50-custom">
-                                                    <select id="method" name="method" class="form-select form-control input-full select2"
-                                                            data-placeholder="Select your payment method">
-                                                        <option {{if eq .Billing.TableUserBilling.Method "bank"}}selected{{end}} value="bank">Bank</option>
-                                                        <option {{if eq .Billing.TableUserBilling.Method "paypal"}}selected{{end}} value="paypal">Paypal</option>
-                                                        <option {{if eq .Billing.TableUserBilling.Method "payoneer"}}selected{{end}} value="payoneer">Payoneer</option>
-                                                        <option {{if eq .Billing.TableUserBilling.Method "currency"}}selected{{end}} value="currency">Currency</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {{/*Method*/}}
-                                        <div id="method_bank"
-                                             {{if ne .Billing.TableUserBilling.Method "bank"}}class="d-none"{{end}}>
-                                            <div class="row my-4">
-                                                <div class="d-flex align-items-center">
-                                                    <label class="col-form-label form-label form-label-lg w-input-group"></label>
-                                                    <div class="w-50-custom">
-                                                        <div class="alert alert-warning mx-auto w-70 border" role="alert">
-                                                            <p class="fw-normal">
-                                                                Minimum Payment Threshold: <strong>1,000 USD</strong>
-                                                            </p>
-                                                            <hr>
-                                                            <p class="mb-0 fw-normal">Please choose other payment methods if your revenue has not reached $1000 for the best support.</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            {{/*alert*/}}
-
-                                            <div class="row my-4">
-                                                <div class="d-flex">
-                                                    <label class="col-form-label form-label form-label-lg w-input-group"
-                                                           for="beneficiary_name">
-                                                        {{$UserLang.BeneficiaryName}}
-                                                        <span class="required-label">*</span></label>
-                                                    <input id="beneficiary_name" name="beneficiary_name"
-                                                           class="form-control w-50-custom"
-                                                           value="{{.Billing.TableUserBilling.BeneficiaryName}}"/>
-                                                    <span class="form-text ms-2 w-auto invalid-feedback"></span>
-                                                </div>
-                                            </div>
-                                            {{/*Beneficiary Name */}}
-
-                                            <div class="row my-4">
-                                                <div class="d-flex">
-                                                    <label class="col-form-label form-label form-label-lg w-input-group"
-                                                           for="bank_name">
-                                                        {{$UserLang.BankName}}
-                                                        <span class="required-label">*</span></label>
-                                                    <input id="bank_name" name="bank_name"
-                                                           class="form-control w-50-custom"
-                                                           value="{{.Billing.TableUserBilling.BankName}}"/>
-                                                    <span class="form-text ms-2 w-auto invalid-feedback"></span>
-                                                </div>
-                                            </div>
-                                            {{/*Bank Name*/}}
-
-                                            <div class="row my-4">
-                                                <div class="d-flex">
-                                                    <label class="col-form-label form-label form-label-lg w-input-group"
-                                                           for="bank_address">
-                                                        {{$UserLang.BankAddress}}
-                                                        <span class="required-label">*</span></label>
-                                                    <input id="bank_address" name="bank_address"
-                                                           class="form-control w-50-custom"
-                                                           value="{{.Billing.TableUserBilling.BankAddress}}"/>
-                                                    <span class="form-text ms-2 w-auto invalid-feedback"></span>
-                                                </div>
-                                            </div>
-                                            {{/*Bank Address*/}}
-
-                                            <div class="row my-4">
-                                                <div class="d-flex">
-                                                    <label class="col-form-label form-label form-label-lg w-input-group"
-                                                           for="bank_account_number">
-                                                        {{$UserLang.BankAccountNumber}}
-                                                        <span class="required-label">*</span></label>
-                                                    <input id="bank_account_number" name="bank_account_number"
-                                                           class="form-control w-50-custom"
-                                                           value="{{.Billing.TableUserBilling.BankAccountNumber}}"/>
-                                                    <span class="form-text ms-2 w-auto invalid-feedback"></span>
-                                                </div>
-                                            </div>
-                                            {{/*Bank Account Number */}}
-
-                                            <div class="row my-4">
-                                                <div class="d-flex">
-                                                    <label class="col-form-label form-label form-label-lg w-input-group"
-                                                           for="bank_routing_number">
-                                                        {{$UserLang.BankRoutingNumber}}
-                                                    </label>
-                                                    <input id="bank_routing_number" name="bank_routing_number"
-                                                           class="form-control w-50-custom"
-                                                           value="{{.Billing.TableUserBilling.BankRoutingNumber}}"/>
-                                                    <span class="form-text ms-2 w-auto invalid-feedback"></span>
-                                                </div>
-                                            </div>
-                                            {{/*Bank Routing Number */}}
-
-                                            <div class="row my-4">
-                                                <div class="d-flex">
-                                                    <label class="col-form-label form-label form-label-lg w-input-group"
-                                                           for="bank_iban_number">
-                                                        {{$UserLang.BankIbanNumber}}
-                                                    </label>
-                                                    <input id="bank_iban_number" name="bank_iban_number"
-                                                           class="form-control w-50-custom"
-                                                           value="{{.Billing.TableUserBilling.BankIbanNumber}}"/>
-                                                    <span class="form-text ms-2 w-auto invalid-feedback"></span>
-                                                </div>
-                                            </div>
-                                            {{/*Bank Iban Number*/}}
-
-                                            <div class="row my-4">
-                                                <div class="d-flex">
-                                                    <label class="col-form-label form-label form-label-lg w-input-group"
-                                                           for="swift_code">
-                                                        {{$UserLang.SwiftCode}}
-                                                    </label>
-                                                    <input id="swift_code" name="swift_code"
-                                                           class="form-control w-50-custom"
-                                                           value="{{.Billing.TableUserBilling.SwiftCode}}"/>
-                                                    <span class="form-text ms-2 w-auto invalid-feedback"></span>
-                                                </div>
-                                            </div>
-                                            {{/*Swift Code*/}}
-
-                                            <div class="row my-4">
-                                                <div class="d-flex">
-                                                    <label class="col-form-label form-label form-label-lg w-input-group"
-                                                           for="ifsc_code">
-                                                        {{$UserLang.IFSCCode}}
-                                                    </label>
-                                                    <input id="ifsc_code" name="ifsc_code"
-                                                           class="form-control w-50-custom"
-                                                           value="{{.Billing.TableUserBilling.IFSCCode}}"/>
-                                                    <span class="form-text ms-2 w-auto invalid-feedback"></span>
-                                                </div>
-                                            </div>
-                                            {{/*IFSC Code*/}}
-                                        </div>
-
-                                        <div id="method_paypal"
-                                             {{if ne .Billing.TableUserBilling.Method "paypal"}}class="d-none"{{end}}>
-                                            <div class="row my-4">
-                                                <div class="d-flex align-items-center">
-                                                    <label class="col-form-label form-label form-label-lg w-input-group"></label>
-                                                    <div class="w-50-custom">
-                                                        <div class="alert alert-warning mx-auto w-70 border" role="alert">
-                                                            <p class="fw-normal">
-                                                                Minimum Payment Threshold: <strong>100 USD</strong>
-                                                            </p>
-                                                            <hr>
-                                                            <p class="mb-0 fw-normal">Please choose other payment methods if your revenue has not reached $100 for the best support.</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row my-4">
-                                                <div class="d-flex">
-                                                    <label class="col-form-label form-label form-label-lg w-input-group"
-                                                           for="paypal_email">
-                                                        {{$UserLang.PaypalEmail}}
-                                                        <span class="required-label">*</span></label>
-                                                    <input id="paypal_email" name="paypal_email"
-                                                           class="form-control w-50-custom"
-                                                           value="{{.Billing.TableUserBilling.PaypalEmail}}"/>
-                                                    <span class="form-text ms-2 w-auto invalid-feedback"></span>
-                                                </div>
-                                            </div>
-                                            {{/*Paypal Email*/}}
-                                        </div>
-
-                                        <div id="method_payoneer"
-                                             {{if ne .Billing.TableUserBilling.Method "payoneer"}}class="d-none"{{end}}>
-                                            <div class="row my-4">
-                                                <div class="d-flex align-items-center">
-                                                    <label class="col-form-label form-label form-label-lg w-input-group"></label>
-                                                    <div class="w-50-custom">
-                                                        <div class="alert alert-warning mx-auto w-70 border" role="alert">
-                                                            <p class="fw-normal">
-                                                                Minimum Payment Threshold: <strong>100 USD</strong>
-                                                            </p>
-                                                            <hr>
-                                                            <p class="mb-0 fw-normal">Please choose other payment methods if your revenue has not reached $100 for the best support.</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row my-4">
-                                                <div class="d-flex">
-                                                    <label class="col-form-label form-label form-label-lg w-input-group"
-                                                           for="payoneer_email">
-                                                        {{$UserLang.PayOneerEmail}}
-                                                        <span class="required-label">*</span></label>
-                                                    <input id="payoneer_email" name="payoneer_email"
-                                                           class="form-control w-50-custom"
-                                                           value="{{.Billing.TableUserBilling.PayOneerEmail}}"/>
-                                                    <span class="form-text ms-2 w-auto invalid-feedback"></span>
-                                                </div>
-                                            </div>
-                                            {{/*Payoneer Email*/}}
-                                        </div>
-
-
-                                        <div id="method_currency"
-                                             {{if ne .Billing.TableUserBilling.Method "currency"}}class="d-none"{{end}}>
-                                            <div class="row my-4">
-                                                <div class="d-flex align-items-center">
-                                                    <label class="col-form-label form-label form-label-lg w-input-group"></label>
-                                                    <div class="w-50-custom">
-                                                        <div class="alert alert-warning mx-auto w-70 border" role="alert">
-                                                            <p class="fw-normal">
-                                                                Minimum Payment Threshold: <strong>100 USD</strong>
-                                                            </p>
-                                                            <hr>
-                                                            <p class="mb-0 fw-normal">Due to the fund preparation, payment will be processed from the 15th of the month.</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row my-4">
-                                                <div class="d-flex">
-                                                    <label class="col-form-label form-label form-label-lg w-input-group" for="cryptocurrency">
-                                                        Crypto Currency <span class="required-label">*</span></label>
-                                                    <div class="w-50-custom">
-                                                        <select id="cryptocurrency" name="cryptocurrency" class="form-select form-control input-full select2"
-                                                                data-placeholder="Select your payment method">
-                                                            <option {{if eq .Billing.TableUserBilling.Cryptocurrency "BCH"}}selected{{end}} value="BCH">Bitcoin Cash (BCH)</option>
-                                                            <option {{if eq .Billing.TableUserBilling.Cryptocurrency "BTC"}}selected{{end}} value="BTC">Bitcoin (BTC)</option>
-                                                            <option {{if eq .Billing.TableUserBilling.Cryptocurrency "USDT"}}selected{{end}} value="USDT">Tether (USDT - ERC20)</option>
-                                                        </select>
-                                                    </div>
-                                                    <span class="form-text ms-2 w-auto invalid-feedback"></span>
-                                                </div>
-                                            </div>
-                                            <div class="row my-4">
-                                                <div class="d-flex">
-                                                    <label class="col-form-label form-label form-label-lg w-input-group"
-                                                           for="wallet_id">
-                                                        Wallet ID <span class="required-label">*</span></label>
-                                                    <input id="wallet_id" name="wallet_id" class="form-control w-50-custom" value="{{.Billing.TableUserBilling.WalletId}}"/>
-                                                    <span class="form-text ms-2 w-auto invalid-feedback"></span>
-                                                </div>
-                                            </div>
-                                            {{/*Currency*/}}
-                                        </div>
-                                        {{/*Main Card*/}}
-
-                                        <div class="row">
-                                            <div class="col-sm-12 text-lg-end">
-                                                <button type="submit" class="btn dm4 btn-lg text-white submit">{{$UserLang.Button}}</button>
-                                            </div>
-                                        </div>
-                                        {{/* Button*/}}
-                                    </form>
-                                </div>
-                                {{/*Tab Billing*/}}
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {{/*Main Card*/}}
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade p-4 active show" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                {{template "user/account/profile" .}}
+            </div>
+            <div class="tab-pane fade p-4" id="nav-change-password" role="tabpanel" aria-labelledby="nav-change-password-tab">
+                {{template "user/account/change-password" .}}
+            </div>
+            <div class="tab-pane fade p-4" id="nav-billing" role="tabpanel" aria-labelledby="nav-billing-tab">
+                {{template "user/account/billing" .}}
             </div>
         </div>
     </div>
+
 </div>
-{{/*Form Infomation*/}}
+
 <style>
     .nav-tabs.nav-tabs-line .nav-link.active {
         border-color: #0b7ef4;
+    }
+    .cus-selectpicker .dropdown-toggle {
+        width: 440px!important;
+    }
+    .pp10 {
+        width: 440px!important;
     }
 </style>

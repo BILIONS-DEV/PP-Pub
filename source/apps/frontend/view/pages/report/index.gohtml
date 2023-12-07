@@ -51,19 +51,45 @@
 <div class="pb-3 height-main">
     <div class="container-fluid px-0">
         <script>
-            let URLPlus = `https://api.bilsyndication.com/report`;
+            let URLPlus = "https://api.bilsyndication.com/report";
             let URLRouter = "/report";
         </script>
         <link href="https://s3.vlitag.com/s3-pw/subpub/static/css/app.css?v={{.Version}}" rel=stylesheet>
 
-        <div id="app"></div>
-
-        <script type=text/javascript src="https://s3.vlitag.com/s3-pw/subpub/static/js/manifest-pro.js?v={{.Version}}">
-        </script>
-        <script type=text/javascript src="https://s3.vlitag.com/s3-pw/subpub/static/js/vendor-pro.js?v={{.Version}}">
-        </script>
-        <script type=text/javascript src="https://s3.vlitag.com/s3-pw/subpub/static/js/app-pro.js?v={{.Version}}">
-        </script>
+        <div id="app">
+            <style>.css-1ni6cv7 {
+                    width: 35px;
+                    height: 35px;
+                    border-radius: 100%;
+                    border-width: 2px;
+                    border-style: solid;
+                    border-image: initial;
+                    border-color: rgb(253, 166, 56) rgb(253, 166, 56) transparent;
+                    display: inline-block;
+                    animation: 0.75s linear 0s infinite normal both running animation-qnag8y;
+                    background: transparent !important;
+                }
+                @keyframes animation-qnag8y {
+                    0% {
+                        transform: rotate(0deg) scale(1);
+                    }
+                    50% {
+                        transform: rotate(180deg) scale(0.8);
+                    }
+                    100% {
+                        transform: rotate(360deg) scale(1);
+                    }
+                }
+            </style>
+            <div class="o-chart__loading_spinner">
+                <div class="css-1ni6cv7"></div>
+            </div>
+        </div>
     </div>
+
+    <script type=text/javascript src="https://s3.vlitag.com/s3-pw/subpub/static/js/manifest-pro.js?v={{.Version}}"></script>
+    <script type=text/javascript src="https://s3.vlitag.com/s3-pw/subpub/static/js/vendor-pro.js?v={{.Version}}"></script>
+    <script type=text/javascript src="https://s3.vlitag.com/s3-pw/subpub/static/js/app-pro.js?v={{.Version}}"></script>
+</div>
 </div>
 

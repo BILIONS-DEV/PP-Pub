@@ -1,0 +1,309 @@
+{{- /*gotype: source/apps/frontend/controller.AssignInventory*/ -}}
+{{$TabConfig := .Schema.LANG.Pages.Inventory.Setup.TabConfig}}
+<form action="" id="formGeneral">
+    <input hidden value="{{.Config.TableInventoryConfig.Id}}" name="id"/>
+    <input hidden value="{{.Row.TableInventory.Id}}" name="inventory_id"/>
+    <div class="pp6">
+        <div class="pp14">
+            <div class="pp15">
+                <div class="pp5">{{$TabConfig.DirectSales}}</div>
+                <span class="pp16" type="button" tabindex="0" data-bs-toggle="popover" data-bs-content="{{$TabConfig.DirectSalesDesc}}">
+                <svg viewBox="64 64 896 896" focusable="false" data-icon="question-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                    <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
+                    <path d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"></path>
+                </svg>
+            </span>
+            </div>
+            <div class="pp7">
+                <label class="switch">
+                    <input type="checkbox" id="direct_sales" name="direct_sales" {{if eq .Config.TableInventoryConfig.DirectSales 1}}checked{{end}}>
+                    <span class="slider round"></span> <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                </label>
+                <div class="pp8"></div>
+            </div>
+            {{/*Direct Sales*/}}
+
+            <div class="pp5">{{$TabConfig.GAMAdUnitAutoCreate}}</div>
+            <div class="pp7">
+                <label class="switch">
+                    <input type="checkbox" id="gam_auto_create" name="gam_auto_create" {{if eq .Config.TableInventoryConfig.GamAutoCreate 1}}checked{{end}}>
+                    <span class="slider round"></span> </label>
+                <div class="pp8">
+                    Automatically generate GAM Ad Unit when a new ad tag is created on the {{.UserLogin.Brand}} platform.
+                </div>
+            </div>
+            {{/*Gam Adunit Auto Create*/}}
+
+            <div class="pp5">{{$TabConfig.SafeFrame}}</div>
+            <div class="pp7">
+                <label class="switch">
+                    <input type="checkbox" id="safe_frame" name="safe_frame" {{if eq .Config.TableInventoryConfig.SafeFrame 1}}checked{{end}}>
+                    <span class="slider round"></span> </label>
+                <div class="pp8">
+                    Serve ads through safe-frame. For more information, see
+                    <a href="https://support.google.com/admanager/answer/6023110?hl=en" target="_blank">this document.</a>
+                </div>
+            </div>
+            {{/*SafeFrame*/}}
+
+            <div class="pp5">{{$TabConfig.PbRenderMode}}</div>
+            <div class="pp7 cus-selectpicker">
+                <select id="pb_render_mode" name="pb_render_mode" class="form-control selectpicker"
+                        data-placeholder="{{$TabConfig.PbRenderModePlaceholder}}">
+                    <option {{if eq 1 .Config.TableInventoryConfig.PbRenderMode}}selected{{end}} value="1">
+                        In Iframe
+                    </option>
+                    <option {{if eq 2 .Config.TableInventoryConfig.PbRenderMode}}selected{{end}} value="2">
+                        In Root Document
+                    </option>
+                </select> <span class="form-text ms-2 w-auto invalid-feedback"></span>
+            </div>
+            {{/*PassBack Render Mode*/}}
+
+            <div class="pp15">
+                <div class="pp5">{{$TabConfig.PrebidTimeout}}</div>
+                <span class="pp16" type="button" tabindex="0" data-bs-toggle="popover" data-bs-content="{{$TabConfig.PrebidTimeoutDesc}}">
+                <svg viewBox="64 64 896 896" data-icon="question-circle" width="1em" height="1em" fill="currentColor" type="button" tabindex="0">
+                    <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
+                    <path d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"></path>
+                </svg>
+            </span>
+            </div>
+            <div class="pp-9">
+                <div class="pp7">
+                    <input style="width: 224px;border-top-right-radius: 0;border-bottom-right-radius: 0;" class="pp10" type="number" placeholder="1000"
+                           id="prebid_timeout" name="prebid_timeout" value="{{.Config.TableInventoryConfig.PrebidTimeOut}}">
+                    <div class="pp11"><span style="width: 50px">ms</span></div>
+                    <div class="pp8">
+                    </div>
+                </div>
+                <span class="form-text ms-2 w-auto invalid-feedback"></span>
+            </div>
+            {{/*Prebid Timeout*/}}
+
+            <div class="pp15">
+                <div class="pp5">{{$TabConfig.AdRefresh}}</div>
+                <span class="pp16" type="button" tabindex="0" data-bs-toggle="popover" data-bs-content="{{$TabConfig.AdRefreshDesc}}">
+                <svg viewBox="64 64 896 896" focusable="false" data-icon="question-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                    <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
+                    <path d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"></path>
+                </svg>
+            </span>
+            </div>
+            <div class="pp7">
+                <label class="switch">
+                    <input type="checkbox" id="ad_refresh" name="ad_refresh" {{if eq .Config.TableInventoryConfig.AdRefresh 1}}checked{{end}}>
+                    <span class="slider round"></span> <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                </label>
+                <div class="pp8"></div>
+            </div>
+            {{/*Ad Refresh*/}}
+
+            <div id="enable_ad_refresh" {{if eq .Config.TableInventoryConfig.AdRefresh 2}}hidden{{end}}>
+                <div class="pp15">
+                    <div class="pp5">{{$TabConfig.AdRefreshTime}}</div>
+                    <span class="pp16" type="button" tabindex="0" data-bs-toggle="popover" data-bs-content="{{$TabConfig.AdRefreshTimeDesc}}">
+                        <svg viewBox="64 64 896 896" focusable="false" data-icon="question-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                            <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
+                            <path d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"></path>
+                        </svg>
+                    </span>
+                </div>
+                <div class="pp-9">
+                    <div class="pp7">
+                        <input style="width: 224px;border-top-right-radius: 0;border-bottom-right-radius: 0;" class="pp10" type="number" placeholder="30"
+                               id="ad_refresh_time" name="ad_refresh_time" value="{{.Config.TableInventoryConfig.AdRefreshTime}}">
+                        <span class="pp11">seconds</span>
+                        <div class="pp8"></div>
+                    </div>
+                    <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                </div>
+                {{/*Ad Refresh Time*/}}
+
+                <div class="pp15">
+                    <div class="pp5">{{$TabConfig.AdRefreshType}}</div>
+                    <span class="pp16" type="button" tabindex="0" data-bs-toggle="popover" data-bs-content="{{$TabConfig.AdRefreshTypeDesc}}">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="question-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                        <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
+                        <path d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"></path>
+                    </svg>
+                </span>
+                </div>
+                <div class="pp7 cus-selectpicker">
+                    <select id="ad_refresh_type" name="ad_refresh_type" class="form-control selectpicker" data-placeholder="Load Ad Refresh">
+                        <option {{if eq "signal reload" .Config.TableInventoryConfig.LoadAdRefresh}}selected{{end}} value="signal reload">
+                            Signal Reload
+                        </option>
+                        <option {{if eq "auto" .Config.TableInventoryConfig.LoadAdRefresh}}selected{{end}} value="auto">
+                            Auto
+                        </option>
+                    </select> <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                    <div class="pp8"></div>
+                </div>
+                {{/*Ad Refresh Type*/}}
+            </div>
+        </div>
+
+        <div class="pp14">
+            <div class="pp15">
+                <div class="pp5">{{$TabConfig.LoadAdType}}</div>
+                <span class="pp16" type="button" tabindex="0" data-bs-toggle="popover" data-bs-content="{{$TabConfig.LoadAdTypeDesc}}">
+                <svg viewBox="64 64 896 896" focusable="false" data-icon="question-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                    <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
+                    <path d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"></path>
+                </svg>
+            </span>
+            </div>
+            <div class="pp7 cus-selectpicker">
+                <select id="load_ad_type" name="load_ad_type" class="form-control selectpicker" data-placeholder="{{$TabConfig.LoadAdTypePlaceholder}}">
+                    <option {{if eq "lazyload" .Config.TableInventoryConfig.LoadAdType}}selected{{end}} value="lazyload">
+                        Lazy Load
+                    </option>
+                    <option {{if eq "auto" .Config.TableInventoryConfig.LoadAdType}}selected{{end}} value="auto">
+                        Auto
+                    </option>
+                </select> <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                <div class="pp8"></div>
+            </div>
+            {{/*Load Ad Type*/}}
+            <div class="load_ad_type_lazyload">
+                <div class="pp15">
+                    <div class="pp5">{{$TabConfig.FetchMarginPercent}}</div>
+                    <span class="pp16" type="button" tabindex="0" data-bs-toggle="popover" data-bs-content="{{$TabConfig.FetchMarginPercentDesc}}">
+                <svg viewBox="64 64 896 896" focusable="false" data-icon="question-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                    <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
+                    <path d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"></path>
+                </svg>
+            </span>
+                </div>
+                <div class="pp7">
+                    <div class="w-100">
+                        <div id="box_fetch_margin_percent">
+                            <div class="btn-group btn-group-custom" role="group">
+                                <input type="radio" class="btn-check btn-group-radio"
+                                       name="fetch_margin_percent" id="fetch_margin_percent_1" value="500"
+                                       {{if eq .Config.TableInventoryConfig.FetchMarginPercent 500}}checked{{end}}>
+                                <label class="btn pp12 btn-outline-warning text-black m-0 rounded-left rounded-2 "
+                                       for="fetch_margin_percent_1" style="border-left: 1px solid #aab4c8;">500</label>
+                                <input type="radio" class="btn-check btn-group-radio"
+                                       name="fetch_margin_percent" id="fetch_margin_percent_2" value="400"
+                                       {{if eq .Config.TableInventoryConfig.FetchMarginPercent 400}}checked{{end}}>
+                                <label class="btn pp12 btn-outline-warning text-black m-0"
+                                       for="fetch_margin_percent_2">400</label>
+                                <input type="radio" class="btn-check btn-group-radio"
+                                       name="fetch_margin_percent" id="fetch_margin_percent_3" value="300"
+                                       {{if eq .Config.TableInventoryConfig.FetchMarginPercent 300}}checked{{end}}>
+                                <label class="btn pp12 btn-outline-warning text-black m-0"
+                                       for="fetch_margin_percent_3">300</label>
+                                <input type="radio" class="btn-check btn-group-radio"
+                                       name="fetch_margin_percent" id="fetch_margin_percent_4" value="200"
+                                       {{if eq .Config.TableInventoryConfig.FetchMarginPercent 200}}checked{{end}}>
+                                <label class="btn pp12 btn-outline-warning text-black m-0"
+                                       for="fetch_margin_percent_4">200</label>
+                                <input type="radio" class="btn-check btn-group-radio"
+                                       name="fetch_margin_percent" id="fetch_margin_percent_5" value="100"
+                                       {{if eq .Config.TableInventoryConfig.FetchMarginPercent 100}}checked{{end}}>
+                                <label class="btn pp12 btn-outline-warning text-black m-0"
+                                       for="fetch_margin_percent_5">100</label>
+                                <input type="radio" class="btn-check btn-group-radio"
+                                       name="fetch_margin_percent" id="fetch_margin_percent_6" value="0"
+                                       {{if eq .Config.TableInventoryConfig.FetchMarginPercent 0}}checked{{end}}>
+                                <label class="btn pp12 btn-outline-warning text-black m-0"
+                                       for="fetch_margin_percent_6">0</label>
+                            </div>
+                            <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                        </div>
+                        <div class="pp8"></div>
+                    </div>
+                </div>
+            </div>
+            {{/*Fetch Margin Percent*/}}
+
+            <div class="load_ad_type_lazyload">
+                <div class="pp15">
+                    <div class="pp5">{{$TabConfig.RenderMarginPercent}}</div>
+                    <span class="pp16" type="button" tabindex="0" data-bs-toggle="popover" data-bs-content="{{$TabConfig.RenderMarginPercentDesc}}">
+                        <svg viewBox="64 64 896 896" focusable="false" data-icon="question-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                            <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
+                            <path d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"></path>
+                        </svg>
+                    </span>
+                </div>
+                <div class="pp7">
+                    <div class="w-100">
+                        <div id="box_render_margin_percent">
+                            <div class="btn-group btn-group-custom" role="group">
+                                <input type="radio" class="btn-check btn-group-radio"
+                                       name="render_margin_percent" id="render_margin_percent_1" value="500"
+                                       {{if eq .Config.TableInventoryConfig.RenderMarginPercent 500}}checked{{end}}>
+                                <label class="btn pp12 btn-outline-warning text-black m-0 rounded-left rounded-2"
+                                       for="render_margin_percent_1" style="border-left: 1px solid #aab4c8;">500</label>
+                                <input type="radio" class="btn-check btn-group-radio"
+                                       name="render_margin_percent" id="render_margin_percent_2" value="400"
+                                       {{if eq .Config.TableInventoryConfig.RenderMarginPercent 400}}checked{{end}}>
+                                <label class="btn pp12 btn-outline-warning text-black m-0"
+                                       for="render_margin_percent_2">400</label>
+                                <input type="radio" class="btn-check btn-group-radio"
+                                       name="render_margin_percent" id="render_margin_percent_3" value="300"
+                                       {{if eq .Config.TableInventoryConfig.RenderMarginPercent 300}}checked{{end}}>
+                                <label class="btn pp12 btn-outline-warning text-black m-0"
+                                       for="render_margin_percent_3">300</label>
+                                <input type="radio" class="btn-check btn-group-radio"
+                                       name="render_margin_percent" id="render_margin_percent_4" value="200"
+                                       {{if eq .Config.TableInventoryConfig.RenderMarginPercent 200}}checked{{end}}>
+                                <label class="btn pp12 btn-outline-warning text-black m-0"
+                                       for="render_margin_percent_4">200</label>
+                                <input type="radio" class="btn-check btn-group-radio"
+                                       name="render_margin_percent" id="render_margin_percent_5" value="100"
+                                       {{if eq .Config.TableInventoryConfig.RenderMarginPercent 100}}checked{{end}}>
+                                <label class="btn pp12 btn-outline-warning text-black m-0"
+                                       for="render_margin_percent_5">100</label>
+                                <input type="radio" class="btn-check btn-group-radio"
+                                       name="render_margin_percent" id="render_margin_percent_6" value="0"
+                                       {{if eq .Config.TableInventoryConfig.RenderMarginPercent 0}}checked{{end}}>
+                                <label class="btn pp12 btn-outline-warning text-black m-0"
+                                       for="render_margin_percent_6">0</label>
+                            </div>
+                        </div>
+                        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                    </div>
+                    <div class="pp8"></div>
+                </div>
+            </div>
+            {{/*Render Margin Percent*/}}
+
+            <div class="load_ad_type_lazyload">
+                <div class="pp15">
+                    <div class="pp5">{{$TabConfig.MobileScaling}}</div>
+                    <span class="pp16" type="button" tabindex="0" data-bs-toggle="popover" data-bs-content="{{$TabConfig.MobileScalingDesc}}">
+                        <svg viewBox="64 64 896 896" focusable="false" data-icon="question-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                            <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
+                            <path d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"></path>
+                        </svg>
+                    </span>
+                </div>
+                <div class="pp7">
+                    <div class="w-100">
+                        <div id="box_mobile_scaling">
+                            <div class="btn-group btn-group-custom " role="group">
+                                <input type="radio" class="btn-check btn-group-radio"
+                                       name="mobile_scaling" id="mobile_scaling_1" value="1"
+                                       {{if eq .Config.TableInventoryConfig.MobileScaling 1}}checked{{end}}>
+                                <label class="btn pp12 btn-outline-warning text-black m-0 rounded-left rounded-2"
+                                       for="mobile_scaling_1" style=" border-left: 1px solid #aab4c8;">1</label>
+                                <input type="radio" class="btn-check btn-group-radio"
+                                       name="mobile_scaling" id="mobile_scaling_2" value="2"
+                                       {{if eq .Config.TableInventoryConfig.MobileScaling 2}}checked{{end}}>
+                                <label class="btn pp12 btn-outline-warning text-black m-0"
+                                       for="mobile_scaling_2">2</label>
+                            </div>
+                        </div>
+                        <span class="form-text ms-2 w-auto invalid-feedback"></span>
+                    </div>
+                    <div class="pp8"></div>
+                </div>
+            </div>
+            {{/*Render Mobile Scaling*/}}
+        </div>
+    </div>
+</form>

@@ -20,19 +20,19 @@ const (
 	// => UserBackend
 	URIUserBe = "/be/user"
 
-	URIInventory                       = "/supply"
-	URIInventorySubmit                 = "/supply/submit"
-	URIInventorySetup                  = "/supply/setup"
-	URIInventoryConsent                = "/supply/setupConsent"
-	URIInventoryUserId                 = "/supply/setupUserId"
-	URIInventoryDelete                 = "/supply/del"
-	URIInventoryAdTag                  = "/supply/adtag"
-	URIInventoryLoadParam              = "/supply/loadParam"
-	URIInventoryCollapse               = "/supply/collapse"
-	URIInventoryCopyAdTag              = "/supply/copyAdTag"
-	URIInventoryBuildScript            = "/supply/buildScript"
-	URIInventoryConnection             = "/supply/connection"
-	URIInventoryChangeStatusConnection = "/supply/change-status-connection"
+	URIInventory                       = "/websites"
+	URIInventorySubmit                 = "/websites/submit"
+	URIInventorySetup                  = "/websites/setup"
+	URIInventoryConsent                = "/websites/setupConsent"
+	URIInventoryUserId                 = "/websites/setupUserId"
+	URIInventoryDelete                 = "/websites/del"
+	URIInventoryAdTag                  = "/websites/adtag"
+	URIInventoryLoadParam              = "/websites/loadParam"
+	URIInventoryCollapse               = "/websites/collapse"
+	URIInventoryCopyAdTag              = "/websites/copyAdTag"
+	URIInventoryBuildScript            = "/websites/buildScript"
+	URIInventoryConnection             = "/websites/connection"
+	URIInventoryChangeStatusConnection = "/websites/change-status-connection"
 
 	URIInventorySetupV2 = "/supply-v2/setup"
 
@@ -373,6 +373,9 @@ func init() {
 	) // Dimension
 	SidebarSetup.Saved = append(SidebarSetup.Saved,
 		URIReportSaved, // => Saved
+	) // Saved
+	SidebarSetup.Report = append(SidebarSetup.Report,
+		URIReport, // => Report
 	) // Saved
 	SidebarSetup.SystemGroup = append(SidebarSetup.SystemGroup, SidebarSetup.Bidder...)
 	SidebarSetup.SystemGroup = append(SidebarSetup.SystemGroup, SidebarSetup.Config...)

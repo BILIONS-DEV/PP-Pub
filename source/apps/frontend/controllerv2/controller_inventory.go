@@ -1,7 +1,6 @@
 package controllerv2
 
 import (
-	"fmt"
 	"github.com/gofiber/fiber/v2"
 	"source/apps/frontend/config"
 	"source/apps/frontend/view"
@@ -20,8 +19,8 @@ func (h *handler) InitRoutesInventory(app fiber.Router) {
 	this := inventory{h}
 	app.Get(config.URIInventory, this.Index)
 	app.Post(config.URIInventory, this.IndexPost)
-	app.Get(config.URIInventorySetup, this.Setup)
-	app.Post(config.URIInventorySetup, this.SetupPost)
+	//app.Get(config.URIInventorySetup, this.Setup)
+	//app.Post(config.URIInventorySetup, this.SetupPost)
 }
 
 type AssignInventory struct {
@@ -34,11 +33,11 @@ func (t *inventory) Index(ctx *fiber.Ctx) (err error) {
 	if err := ctx.QueryParser(&params); err != nil {
 		return err
 	}
-	assigns := AssignInventory{Assign: newAssign(ctx, "Supply")}
+	assigns := AssignInventory{Assign: newAssign(ctx, "Websites")}
 	// assigns
 	assigns.Params = params
 
-	return ctx.Render("supply/index", assigns, view.LAYOUTMain)
+	return ctx.Render("websites/index", assigns, view.LAYOUTMain)
 }
 
 func (t *inventory) IndexPost(ctx *fiber.Ctx) (err error) {
@@ -51,7 +50,6 @@ func (t *inventory) IndexPost(ctx *fiber.Ctx) (err error) {
 		)
 	}
 	payload.UserID = userLogin.ID
-	fmt.Println("data: ", userLogin.ID)
 	if errs := payload.Validate(); len(errs) > 0 {
 		return ctx.Status(fiber.StatusBadRequest).JSON(
 			dto.MakeResponseErrorWithID(errs...),
@@ -89,12 +87,12 @@ func (t *inventory) makeResponseDatatable(inventories []*model.InventoryModel) (
 		rec := dto.ResponseInventoryDatatable{
 			InventoryModel: inventory,
 			RowId:          strconv.FormatInt(inventory.ID, 10),
-			Name:           t.block.RenderToString("supply/index/block.name.gohtml", inventory),
+			Name:           t.block.RenderToString("websites/index/block.name.gohtml", inventory),
 			Type:           inventory.Type.String(),
-			Status:         t.block.RenderToString("supply/index/block.status.gohtml", inventory),
-			Live:           t.block.RenderToString("supply/index/block.live.gohtml", inventory),
-			SyncAdsTxt:     t.block.RenderToString("supply/index/block.sync_ads_txt.gohtml", inventory),
-			Action:         t.block.RenderToString("supply/index/block.action.gohtml", inventory),
+			Status:         t.block.RenderToString("websites/index/block.status.gohtml", inventory),
+			Live:           t.block.RenderToString("websites/index/block.live.gohtml", inventory),
+			SyncAdsTxt:     t.block.RenderToString("websites/index/block.sync_ads_txt.gohtml", inventory),
+			Action:         t.block.RenderToString("websites/index/block.action.gohtml", inventory),
 		}
 		records = append(records, rec)
 	}
@@ -136,7 +134,7 @@ func (t *inventory) Setup(ctx *fiber.Ctx) (err error) {
 
 	assigns.CountConnectWaiting = t.useCases.Inventory.CountConnectWaiting(inventory)
 
-	return ctx.Render("supply/setup", assigns, view.LAYOUTMain)
+	return ctx.Render("websites/setup", assigns, view.LAYOUTMain)
 }
 
 func (t *inventory) SetupPost(ctx *fiber.Ctx) (err error) {

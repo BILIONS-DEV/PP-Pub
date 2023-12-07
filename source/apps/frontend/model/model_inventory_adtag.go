@@ -85,12 +85,12 @@ func (t *InventoryAdTag) MakeResponseDatatable(inventoryAdTags []InventoryAdTagR
 		rec := InventoryAdTagRecordDatatable{
 			InventoryAdTagRecord: inventoryAdTag,
 			RowId:                strconv.FormatInt(inventoryAdTag.Id, 10),
-			Name:                 htmlblock.Render("supply/adtag/block.name.gohtml", inventoryAdTag).String(),
-			Status:               htmlblock.Render("supply/adtag/block.status.gohtml", inventoryAdTag).String(),
+			Name:                 htmlblock.Render("websites/adtag/block.name.gohtml", inventoryAdTag).String(),
+			Status:               htmlblock.Render("websites/adtag/block.status.gohtml", inventoryAdTag).String(),
 			Type:                 inventoryAdTag.TableInventoryAdTag.Type.String(),
-			Size:                 htmlblock.Render("supply/adtag/block.size.gohtml", adSize).String(),
+			Size:                 htmlblock.Render("websites/adtag/block.size.gohtml", adSize).String(),
 			//FloorPrice:           "$" + fmt.Sprintf("%.2f", inventoryAdTag.TableInventoryAdTag.FloorPrice),
-			//Action: htmlblock.Render("supply/adtag/block.action.gohtml", fiber.Map{
+			//Action: htmlblock.Render("websites/adtag/block.action.gohtml", fiber.Map{
 			//	"adTag":     inventoryAdTag,
 			//	"isDisable": isDisable,
 			//}).String(),

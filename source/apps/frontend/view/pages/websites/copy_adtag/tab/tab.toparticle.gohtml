@@ -1,0 +1,43 @@
+{{- /*gotype: source/apps/frontend/controller.CopyTag*/ -}}
+<div class="card rounded-0 shadow-dark-80 border border-gray-50 mb-2">
+    <div class="d-flex align-items-center bg-dominant px-4 toggle-collapse">
+        <h5 class="card-header-title font-weight-semibold m-2">Ad Tag</h5>
+        <div class="ms-auto pe-md-2">
+            <div class="export-dropdown">
+                <a aria-controls="collapseTopArticle"
+                   data-bs-target="#collapseTopArticle"
+                   data-bs-toggle="collapse"
+                   aria-expanded="true"
+                   class="btn btn-link px-3"
+                   href="javascript:void(0);">
+                    <svg class="ms-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 13 13">
+                        <rect data-name="Icons/Tabler/Chevron Down background" width="16" height="16"
+                              fill="none"></rect>
+                        <path d="M.214.212a.738.738,0,0,1,.952-.07l.082.07L7.1,5.989a.716.716,0,0,1,.071.94L7.1,7.011l-5.85,5.778a.738.738,0,0,1-1.034,0,.716.716,0,0,1-.071-.94l.071-.081L5.547,6.5.214,1.233A.716.716,0,0,1,.143.293Z"
+                              transform="translate(13 3.25) rotate(90)" fill="#1e1e1e"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="collapseTopArticle"
+         class="collapse show">
+        <div class="card-body px-5 py-for-card">
+            {{if not .ListAdTagSticky}}
+                <p class="text-danger">Sorry, we couldn't find any data. Please initialize your ad tag</p>
+            {{else}}
+                {{range .ListAdTagSticky}}
+                    <div class="mb-3 px-1">
+                        <label for="pw_{{.AdTag.TableInventoryAdTag.Id}}" class="form-control-label">{{.AdTag.TableInventoryAdTag.Name}}</label>
+{{/*                        <input type="text" class="form-control text-muted" id="pw_{{.AdTag.TableInventoryAdTag.Id}}"*/}}
+{{/*                               value='<script type="text/javascript"> (wapTag.Init = window.wapTag.Init || []).push(function () { wAPITag.initStickyBanner("pw_{{.AdTag.TableInventoryAdTag.Id}}"); }); </script>'*/}}
+{{/*                               readonly="readonly" onclick="this.select();"/>*/}}
+                        <input type="text" class="form-control text-muted" id="pw_{{.AdTag.TableInventoryAdTag.Id}}"
+                               value='<div class="futureads" data-ad-slot="pw_{{.AdTag.TableInventoryAdTag.Id}}"></div><script type="text/javascript"> (wapTag.Init = window.wapTag.Init || []).push(function () { wAPITag.initPowerPinZone("pw_{{.AdTag.TableInventoryAdTag.Id}}"); }); </script>'
+                               readonly="readonly" onclick="this.select();"/>
+                    </div>
+                {{end}}
+            {{end}}
+        </div>
+    </div>
+</div>

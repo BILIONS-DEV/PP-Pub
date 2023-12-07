@@ -155,7 +155,7 @@ func bootstrap(ctx *fiber.Ctx, h *handler) error {
 		BackURL:      backURL,
 		CurrentURL:   currentURL,
 		Version:      "dev",
-		Title:        "Self-service advertising system - Valueimpression.com",
+		Title:        "Self-service advertising system",
 		Theme:        "muze",
 		TemplatePath: uri,
 		LANG:         h.translation,

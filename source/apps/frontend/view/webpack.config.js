@@ -52,9 +52,9 @@ const Config = (env, argv) => {
             //=> Page: Home
             "home/dashboard": ["./pages/home/dashboard.js"],
             //=> Page: Inventory
-            "supply/index": ["./pages/supply/index.js"],
-            "supply/setup": ["./pages/supply/setup.js"],
-            "supply-v2/setup": ["./pages/supply_v2/setup.js"],
+            "websites/index": ["./pages/websites/index.js"],
+            "websites/setup": ["./pages/websites/setup.js"],
+            "websites-v2/setup": ["./pages/websites_v2/setup.js"],
             //=> Page: LineItem
             "line-item/index": ["./pages/line-item/index.js"],
             "line-item/add": ["./pages/line-item/add.js"],
@@ -81,11 +81,11 @@ const Config = (env, argv) => {
             "playlist/view": ["./pages/playlist/view.js"],
             //=> Page: User
             "user/account": ["./pages/user/account.js"],
-            "user/billing": ["./pages/user/billing.js"],
+            // "user/billing": ["./pages/user/billing.js"],
             "user/forget-password": ["./pages/user/forget-password.js"],
             "user/login": ["./pages/user/login.js"],
             "user/register": ["./pages/user/register.js"],
-            "user/password": ["./pages/user/password.js"],
+            // "user/password": ["./pages/user/password.js"],
             "user/new-password": ["./pages/user/new-password.js"],
             //=> Page: Video
             "video/index": ["./pages/video/index.js"],

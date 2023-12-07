@@ -1,0 +1,45 @@
+{{- /*gotype: source/apps/frontend/controller.AssignInventory*/ -}}
+<div class="it1">
+    <div class="nav nav-verticle flex-column nav-pills it2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <a class="nav-link active it3" id="pills-display-tab" data-bs-toggle="pill" href="#pills-display" role="tab" aria-controls="pills-display" aria-selected="true">Display</a>
+        <a class="nav-link  it3" id="pills-stickybanner-tab" data-bs-toggle="pill" href="#pills-stickybanner" role="tab" aria-controls="pills-stickybanner" aria-selected="true">Sticky Banner</a>
+        <a class="nav-link  it3" id="pills-instream-tab" data-bs-toggle="pill" href="#pills-instream" role="tab" aria-controls="pills-instream" aria-selected="true">Instream</a>
+        <a class="nav-link  it3" id="pills-outstream-tab" data-bs-toggle="pill" href="#pills-outstream" role="tab" aria-controls="pills-outstream" aria-selected="true">Outstream</a>
+        <a class="nav-link  it3" id="pills-pin-zone-tab" data-bs-toggle="pill" href="#pills-pin-zone" role="tab" aria-controls="pills-pin-zone" aria-selected="true">Pin Zone</a>
+        <a class="nav-link  it3" id="pills-play-zone-tab" data-bs-toggle="pill" href="#pills-play-zone" role="tab" aria-controls="pills-play-zone" aria-selected="true">Play Zone</a>
+        <a class="nav-link  it3" id="pills-native-tab" data-bs-toggle="pill" href="#pills-native" role="tab" aria-controls="pills-native" aria-selected="true">Native</a>
+        <a class="nav-link  it3" id="pills-sticky4k-tab" data-bs-toggle="pill" href="#pills-sticky4k" role="tab" aria-controls="pills-sticky4k" aria-selected="true">Sticky 4k</a>
+        <a class="nav-link  it3" id="pills-tool-tab" data-bs-toggle="pill" href="#pills-tool" role="tab" aria-controls="pills-tool" aria-selected="true">Tool</a>
+    </div>
+    <div class="it9">
+        <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-display" role="tabpanel" aria-labelledby="pills-display-tab">
+                {{template "websites/copy_adtag/tab/tab.display" .}}
+            </div>
+            <div class="tab-pane fade" id="pills-stickybanner" role="tabpanel" aria-labelledby="pills-stickybanner-tab">
+                {{template "websites/copy_adtag/tab/tab.sticky" .}}
+            </div>
+            <div class="tab-pane fade" id="pills-instream" role="tabpanel" aria-labelledby="pills-instream-tab">
+                {{template "websites/copy_adtag/tab/tab.instream" .}}
+            </div>
+            <div class="tab-pane fade" id="pills-outstream" role="tabpanel" aria-labelledby="pills-outstream-tab">
+                {{template "websites/copy_adtag/tab/tab.outstream" .}}
+            </div>
+            <div class="tab-pane fade" id="pills-pin-zone" role="tabpanel" aria-labelledby="pills-pin-zone-tab">
+                {{template "websites/copy_adtag/tab/tab.pinzone" .}}
+            </div>
+            <div class="tab-pane fade" id="pills-play-zone" role="tabpanel" aria-labelledby="pills-play-zone-tab">
+                {{template "websites/copy_adtag/tab/tab.playzone" .}}
+            </div>
+            <div class="tab-pane fade" id="pills-native" role="tabpanel" aria-labelledby="pills-native-tab">
+                {{template "websites/copy_adtag/tab/tab.native" .}}
+            </div>
+            <div class="tab-pane fade" id="pills-sticky4k" role="tabpanel" aria-labelledby="pills-sticky4k-tab">
+                {{template "websites/copy_adtag/tab/tab.sticky4k" .}}
+            </div>
+            <div class="tab-pane fade" id="pills-tool" role="tabpanel" aria-labelledby="pills-tool-tab">
+                {{template "websites/copy_adtag/tab/tab.tool" .}}
+            </div>
+        </div>
+    </div>
+</div>

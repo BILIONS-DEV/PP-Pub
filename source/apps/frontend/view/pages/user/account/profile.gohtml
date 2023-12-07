@@ -1,0 +1,66 @@
+<form id="profile">
+    <div class="pp6">
+        <div class="pp14">
+            <div class="pp5">Email</div>
+            <div class="pp7 mt-2">
+                <input class="pp10" id="email" name="email" value="{{.Row.TableUser.Email}}">
+                <span class="form-text ms-2 w-auto invalid-feedback"></span>
+            </div>
+            {{/*Email*/}}
+            <div class="pp5">First Name</div>
+            <div class="pp7 mt-2">
+                <input id="first_name" name="first_name" class="pp10" value="{{.Row.TableUser.FirstName}}"/>
+                <span class="form-text ms-2 w-auto invalid-feedback"></span>
+            </div>
+            {{/*First Name*/}}
+            <div class="pp5">Last Name</div>
+            <div class="pp7 mt-2">
+                <input id="last_name" name="last_name" class="pp10" value="{{.Row.TableUser.LastName}}"/>
+                <span class="form-text ms-2 w-auto invalid-feedback"></span>
+            </div>
+            {{/*Last Name*/}}
+            <div class="pp5">Address</div>
+            <div class="pp7 mt-2">
+                <input id="address" name="address" class="pp10" value="{{.Row.TableUser.Address}}"/>
+                <span class="form-text ms-2 w-auto invalid-feedback"></span>
+            </div>
+            {{/*address*/}}
+            <div class="pp5">State</div>
+            <div class="pp7 mt-2">
+                <input id="state" name="state" class="pp10" value="{{.Row.TableUser.State}}"/>
+                <span class="form-text ms-2 w-auto invalid-feedback"></span>
+            </div>
+            {{/*state*/}}
+            <div class="pp5">City</div>
+            <div class="pp7 mt-2">
+                <input id="city" name="city" class="pp10" value="{{.Row.TableUser.City}}"/>
+                <span class="form-text ms-2 w-auto invalid-feedback"></span>
+            </div>
+            {{/*city*/}}
+            <div class="pp5">Country</div>
+            <div class="pp7 mt-2">
+                <input id="country" name="country" class="pp10" value="{{.Row.TableUser.Country}}"/>
+                <span class="form-text ms-2 w-auto invalid-feedback"></span>
+            </div>
+            {{/*country*/}}
+            <div class="pp5">Zip Code</div>
+            <div class="pp7 mt-2">
+                <input id="zip_code" name="zip_code" class="pp10" value="{{.Row.TableUser.ZipCode}}"/>
+                <span class="form-text ms-2 w-auto invalid-feedback"></span>
+            </div>
+            {{/*ZipCode*/}}
+            <div class="pp5">Phone Number</div>
+            <div class="pp7 mt-2">
+                <input id="phone_number" name="phone_number" class="pp10" value="{{.Row.TableUser.PhoneNumber}}"/>
+                <span class="form-text ms-2 w-auto invalid-feedback"></span>
+            </div>
+            {{/*PhoneNumber*/}}
+        </div>
+
+    </div>
+    <div class=" pp6 pt-0">
+        <button type="submit" class="btn dm4 btn-lg text-white submit">
+            SUBMIT
+        </button>
+    </div>
+</form>
