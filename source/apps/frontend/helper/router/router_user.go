@@ -21,7 +21,7 @@ func User(app *fiber.App) {
 	app.Post(config.URIForgotPassWord, User.ForgotPassWordPost)
 	app.Get(config.URIResetPassWord, User.NewPassWord)
 	app.Post(config.URIResetPassWord, User.NewPassWordPost)
-	app.Get(config.URIChangePassWord, User.ChangePasswordGet)
+	//app.Get(config.URIChangePassWord, User.ChangePasswordGet)
 	// app.Post(config.URIChangePassWord, User.ChangePasswordPost)
 	app.Post(config.URIChangePassword, User.PassWordSettingPost)
 	app.Get(config.URIAtl, User.AutoLogin)

@@ -75,6 +75,9 @@ func (t *User) LoginPost(ctx *fiber.Ctx) error {
 //
 // param: ctx
 func (t *User) Register(ctx *fiber.Ctx) error {
+
+	return ctx.SendStatus(fiber.StatusNotFound)
+
 	reddit := ctx.Query("utm_campain")
 	assigns := AssignHome{Schema: assign.Get(ctx)}
 	assigns.Title = config.TitleWithPrefix("Register")
@@ -295,7 +298,7 @@ func (t *User) NewPassWordPost(ctx *fiber.Ctx) error {
 func (t *User) ChangePasswordGet(ctx *fiber.Ctx) error {
 	userLogin := GetUserLogin(ctx)
 	userAdmin := GetUserAdmin(ctx)
-	isAccept := new(model.User).CheckUserLogin(userLogin, userAdmin, config.URIChangePassWord)
+	isAccept := new(model.User).CheckUserLogin(userLogin, userAdmin, config.URIChangePassword)
 	if !isAccept {
 		return ctx.SendStatus(fiber.StatusNotFound)
 	}
@@ -307,7 +310,7 @@ func (t *User) ChangePasswordGet(ctx *fiber.Ctx) error {
 func (t *User) ChangePasswordPost(ctx *fiber.Ctx) error {
 	userLogin := GetUserLogin(ctx)
 	userAdmin := GetUserAdmin(ctx)
-	isAccept := new(model.User).CheckUserLogin(userLogin, userAdmin, config.URIChangePassWord)
+	isAccept := new(model.User).CheckUserLogin(userLogin, userAdmin, config.URIChangePassword)
 	if !isAccept {
 		return ctx.SendStatus(fiber.StatusNotFound)
 	}

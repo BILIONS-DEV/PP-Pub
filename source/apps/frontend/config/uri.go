@@ -11,7 +11,7 @@ const (
 	URILogout         = "/user/logout"
 	URIBillingSetting = "/user/billing"
 	URIAccountSetting = "/user/account"
-	URIChangePassWord = "/user/password"
+	//URIChangePassWord = "/user/password"
 	URIForgotPassWord = "/user/forgot-password"
 	URIResetPassWord  = "/user/new-password"
 	URIChangePassword = "/user/changePassword"

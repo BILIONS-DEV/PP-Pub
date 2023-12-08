@@ -5,7 +5,7 @@
             <input name="user_id" id="user_id" hidden value="{{.Billing.TableUserBilling.UserId}}"/>
 
             <div class="pp5">Method</div>
-            <div class="pp7 mt-2">
+            <div class="pp7 mt-2 mb-0">
                 <div class="pp7 cus-selectpicker">
                     <select id="method" name="method" class="form-control selectpicker" data-placeholder="Select your payment method">
                         <option {{if eq .Billing.TableUserBilling.Method "bank"}}selected{{end}} value="bank">Bank</option>
