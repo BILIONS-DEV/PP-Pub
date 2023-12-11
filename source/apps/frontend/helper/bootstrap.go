@@ -14,14 +14,7 @@ import (
 )
 
 func Bootstrap(ctx *fiber.Ctx) error {
-	hostName := ctx.Hostname()
-	is, _ := utility.InStringArray(hostName, []string{
-		"self-serve.interdogmedia.com",
-	})
-	if is {
-		ctx.Context().Response.Header.SetContentType(fiber.MIMETextHTMLCharsetUTF8)
-		return ctx.SendString(`Go to page: <a href="https://apps.valueimpression.com/">https://apps.valueimpression.com</a>`)
-	}
+
 	isLogin, _ := utility.InStringArray(string(ctx.Request().URI().Path()), []string{
 		"/user/login",
 	})
@@ -51,7 +44,7 @@ func Bootstrap(ctx *fiber.Ctx) error {
 
 	if !utility.InArray(uri, []string{
 		config.URILogin, config.URIRegister, config.URILogout,
-		config.URIForgotPassWord, config.URIResetPassWord,
+		//config.URIForgotPassWord, config.URIResetPassWord,
 		config.URILinkVideo, config.URIAtl, config.URIAtlQuick}, false) {
 		// Nếu không phải các page Login / Register / Logout,... & chưa đăng nhập
 		if !UserLogin.IsFound() {

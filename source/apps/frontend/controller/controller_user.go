@@ -92,6 +92,7 @@ func (t *User) Register(ctx *fiber.Ctx) error {
 }
 
 func (t *User) RegisterPost(ctx *fiber.Ctx) error {
+	return ctx.SendStatus(fiber.StatusNotFound)
 	postData := new(payload.Register)
 	if err := ctx.BodyParser(postData); err != nil {
 		return err
@@ -245,12 +246,16 @@ func (t *User) Logout(ctx *fiber.Ctx) error {
 }
 
 func (t *User) ForgotPassWordGet(ctx *fiber.Ctx) error {
+	return ctx.SendStatus(fiber.StatusNotFound)
+
 	assigns := AssignUserAccount{Schema: assign.Get(ctx)}
 	assigns.Title = config.TitleWithPrefix("Forget PassWord")
 	return ctx.Render("user/forget-password", assigns, view.LAYOUTLogin)
 }
 
 func (t *User) ForgotPassWordPost(ctx *fiber.Ctx) error {
+	return ctx.SendStatus(fiber.StatusNotFound)
+
 	assigns := AssignUserAccount{Schema: assign.Get(ctx)}
 	postData := new(payload.UpdateAccount)
 	if err := ctx.BodyParser(postData); err != nil {
