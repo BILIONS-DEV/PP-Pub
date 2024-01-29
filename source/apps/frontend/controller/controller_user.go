@@ -2,7 +2,6 @@ package controller
 
 import (
 	"encoding/hex"
-	"fmt"
 	"github.com/gofiber/fiber/v2"
 	"net/url"
 	"source/apps/frontend/config"
@@ -50,7 +49,6 @@ func (t *User) Login(ctx *fiber.Ctx) error {
 
 	// Lấy domain từ URL
 	domain := ctx.Hostname()
-	fmt.Println("domain: ", domain)
 	if domain != "" {
 		publisherAdmin := new(model.User).GetInFoPublisherAdminBySubDomain(domain)
 		if publisherAdmin.Id > 0 {
@@ -59,7 +57,6 @@ func (t *User) Login(ctx *fiber.Ctx) error {
 			config.TitlePrefix = publisherAdmin.Brand
 		}
 	}
-
 	if assigns.UserLogin.IsFound() {
 		return ctx.Redirect(assigns.BackURL)
 	}
