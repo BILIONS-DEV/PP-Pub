@@ -1,7 +1,7 @@
 package config
 
 var (
-	TitlePrefix = "Valueimpression"
+	TitlePrefix = "Your Brand"
 )
 
 // TitleWithPrefix render title with prefix default

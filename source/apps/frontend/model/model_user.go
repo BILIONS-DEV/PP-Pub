@@ -1309,3 +1309,8 @@ func (t *User) GetSellerSystem(user UserRecord) (sellerID int64, errs []ajax.Err
 
 	return
 }
+
+func (t *User) GetInFoPublisherAdminBySubDomain(subDomain string) (record UserRecord) {
+	mysql.Client.Where("sub_domain = ?", subDomain).Find(&record)
+	return
+}

@@ -2,7 +2,9 @@ package controller
 
 import (
 	"encoding/hex"
+	"fmt"
 	"github.com/gofiber/fiber/v2"
+	"net/url"
 	"source/apps/frontend/config"
 	"source/apps/frontend/config/assign"
 	"source/apps/frontend/model"
@@ -44,6 +46,20 @@ func (t *User) Login(ctx *fiber.Ctx) error {
 	assigns := AssignHome{Schema: assign.Get(ctx)}
 	assigns.Title = config.TitleWithPrefix("Login")
 	assigns.Theme = "muze-login"
+	assigns.Logo = ""
+
+	// Lấy domain từ URL
+	domain := ctx.Hostname()
+	fmt.Println("domain: ", domain)
+	if domain != "" {
+		publisherAdmin := new(model.User).GetInFoPublisherAdminBySubDomain(domain)
+		if publisherAdmin.Id > 0 {
+			assigns.Logo = publisherAdmin.Logo
+			assigns.Brand = publisherAdmin.Brand
+			config.TitlePrefix = publisherAdmin.Brand
+		}
+	}
+
 	if assigns.UserLogin.IsFound() {
 		return ctx.Redirect(assigns.BackURL)
 	}
@@ -250,6 +266,29 @@ func (t *User) ForgotPassWordGet(ctx *fiber.Ctx) error {
 
 	assigns := AssignUserAccount{Schema: assign.Get(ctx)}
 	assigns.Title = config.TitleWithPrefix("Forget PassWord")
+	assigns.Logo = ""
+
+	// Lấy đường dẫn URL chính của yêu cầu
+	urlPath := ctx.OriginalURL()
+
+	// Parse URL từ đường dẫn
+	parsedURL, err := url.Parse(urlPath)
+	if err != nil {
+		// Xử lý lỗi nếu cần thiết
+		return err
+	}
+
+	// Lấy domain từ URL
+	domain := parsedURL.Hostname()
+	if domain != "" {
+		publisherAdmin := new(model.User).GetInFoPublisherAdminBySubDomain(domain)
+		if publisherAdmin.Id > 0 {
+			assigns.Logo = publisherAdmin.Logo
+			assigns.Brand = publisherAdmin.Brand
+			config.TitlePrefix = publisherAdmin.Brand
+		}
+	}
+
 	return ctx.Render("user/forget-password", assigns, view.LAYOUTLogin)
 }
 

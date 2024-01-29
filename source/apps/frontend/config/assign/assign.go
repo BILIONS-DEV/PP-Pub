@@ -19,6 +19,8 @@ type Schema struct {
 	CurrentURL   string           `json:"current_url"`
 	Version      string           `json:"version"`
 	Title        string           `json:"title"`
+	Logo         string           `json:"logo"`
+	Brand        string           `json:"brand"`
 	Theme        string           `json:"theme"`
 	TemplatePath string           `json:"template_path"`
 	RedditPixel  bool             `json:"reddit_pixel"`
