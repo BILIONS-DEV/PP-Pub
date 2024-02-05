@@ -79,9 +79,10 @@ func Bootstrap(ctx *fiber.Ctx) error {
 		LANG:         lang.Translate,
 		DeviceUA:     utility.GetDeviceFromUA(string(ctx.Context().UserAgent())),
 	})
-	if UserLogin.Logo != "" && UserLogin.RootDomain != "" {
-		config.TitlePrefix = UserLogin.Brand
-	}
+	//if UserLogin.Logo != "" && UserLogin.RootDomain != "" {
+	config.TitlePrefix = UserLogin.Brand
+	//}
+	//fmt.Printf("%+v\n", UserLogin)
 	ctx.Locals("UserLogin", UserLogin)
 	ctx.Locals("UserAdmin", userAdmin)
 	return ctx.Next()

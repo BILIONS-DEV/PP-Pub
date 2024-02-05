@@ -9,7 +9,11 @@ var (
 // param: title
 // return:
 func TitleWithPrefix(title string) (titleWithPrefix string) {
-	titleWithPrefix = title + " - " + TitlePrefix
+	if TitlePrefix != "" {
+		titleWithPrefix = title + " - " + TitlePrefix
+	} else {
+		titleWithPrefix = title
+	}
 	return
 }
 
