@@ -8,10 +8,18 @@
             <div class="pp7 mt-2 mb-0">
                 <div class="pp7 cus-selectpicker">
                     <select id="method" name="method" class="form-control selectpicker" data-placeholder="Select your payment method">
-                        <option {{if eq .Billing.TableUserBilling.Method "bank"}}selected{{end}} value="bank">Bank</option>
-                        <option {{if eq .Billing.TableUserBilling.Method "paypal"}}selected{{end}} value="paypal">Paypal</option>
-                        <option {{if eq .Billing.TableUserBilling.Method "payoneer"}}selected{{end}} value="payoneer">Payoneer</option>
-                        <option {{if eq .Billing.TableUserBilling.Method "currency"}}selected{{end}} value="currency">Currency</option>
+                        {{ if InArray "bank" .BillingMethod true}}
+                            <option {{if eq .Billing.TableUserBilling.Method "bank"}}selected{{end}} value="bank">Bank</option>
+                        {{ end }}
+                        {{ if InArray "paypal" .BillingMethod true}}
+                            <option {{if eq .Billing.TableUserBilling.Method "paypal"}}selected{{end}} value="paypal">Paypal</option>
+                        {{ end }}
+                        {{ if InArray "payoneer" .BillingMethod true}}
+                            <option {{if eq .Billing.TableUserBilling.Method "payoneer"}}selected{{end}} value="payoneer">Payoneer</option>
+                        {{ end }}
+                        {{ if InArray "currency" .BillingMethod true}}
+                            <option {{if eq .Billing.TableUserBilling.Method "currency"}}selected{{end}} value="currency">Currency</option>
+                        {{ end }}
                     </select>
                     <span class="form-text ms-2 w-auto invalid-feedback"></span>
                 </div>

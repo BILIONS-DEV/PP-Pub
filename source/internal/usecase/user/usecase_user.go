@@ -24,6 +24,7 @@ type UsecaseUser interface {
 	UpdateProfile(input *dto.PayloadProfile, userLogin model.User) (errs []ajax.Error)
 	GetBillingByUser(userID int64) (billing model.UserBilling, err error)
 	UpdateBilling(input *dto.PayloadBilling) (errs []ajax.Error)
+	GetInfoByUserID(ID int64) (record model.TableUserInfo)
 	GetByEmail(email string) (record model.User)
 }
 
@@ -38,6 +39,10 @@ func NewUserFeUsecase(repos *repo.Repositories, lang *lang.Translation) *user {
 
 func (t *user) GetByID(ID int64, fields ...string) (record model.User) {
 	return t.Repos.User.FindByID(ID, fields...)
+}
+
+func (t *user) GetInfoByUserID(ID int64) (record model.TableUserInfo) {
+	return t.Repos.User.GetInfoByUserID(ID)
 }
 
 func (t *user) GetUserLogin(ID int64, accountManagerID ...int64) (record model.UserLoginModel) {

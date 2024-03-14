@@ -206,6 +206,7 @@ func (t *Inventory) Delete(ctx *fiber.Ctx) error {
 }
 
 func (t *Inventory) Index(ctx *fiber.Ctx) error {
+	fmt.Printf("%+v\n", "XXX")
 	userLogin := GetUserLogin(ctx)
 	userAdmin := GetUserAdmin(ctx)
 	isAccept := new(model.User).CheckUserLogin(userLogin, userAdmin, config.URIInventory)

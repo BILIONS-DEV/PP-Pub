@@ -1,6 +1,7 @@
 package controllerv2
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
@@ -148,6 +149,9 @@ func bootstrap(ctx *fiber.Ctx, h *handler) error {
 	//	return ctx.Status(fiber.StatusNotFound).SendString("permission denied")
 	//}
 
+	parentSub := h.useCases.User.GetInfoByUserID(userLogin.Presenter)
+	s, _ := json.MarshalIndent(parentSub, "", "\t")
+	fmt.Printf("%+v\n", string(s))
 	ctx.Locals(assignKEY, Assign{
 		Uri:          uri,
 		RootDomain:   rootDomain,
@@ -156,6 +160,8 @@ func bootstrap(ctx *fiber.Ctx, h *handler) error {
 		CurrentURL:   currentURL,
 		Version:      "dev",
 		Title:        "Self-service advertising system",
+		Logo:         parentSub.Logo,
+		Brand:        parentSub.Brand,
 		Theme:        "muze",
 		TemplatePath: uri,
 		LANG:         h.translation,
@@ -235,6 +241,8 @@ type Assign struct {
 	CurrentURL   string      `json:"current_url"`
 	Version      string      `json:"version"`
 	Title        string      `json:"title"`
+	Logo         string      `json:"logo"`
+	Brand        string      `json:"brand"`
 	Theme        string      `json:"theme"`
 	TemplatePath string      `json:"template_path"`
 	ThemeSetting interface{} `json:"theme_setting"`

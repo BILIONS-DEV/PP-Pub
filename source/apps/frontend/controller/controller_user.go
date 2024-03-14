@@ -17,15 +17,11 @@ import (
 
 type User struct{}
 
-type AssignUserBilling struct {
-	assign.Schema
-	Row model.UserBillingRecord
-}
-
 type AssignUserAccount struct {
 	assign.Schema
-	Row     model.UserRecord
-	Billing model.UserBillingRecord
+	Row           model.UserRecord
+	Billing       model.UserBillingRecord
+	BillingMethod []string
 }
 
 type AssignUserForgetPassword struct {
@@ -52,9 +48,9 @@ func (t *User) Login(ctx *fiber.Ctx) error {
 	if domain != "" {
 		publisherAdmin := new(model.User).GetInFoPublisherAdminBySubDomain(domain)
 		if publisherAdmin.Id > 0 {
-			assigns.Logo = publisherAdmin.Logo
-			assigns.Brand = publisherAdmin.Brand
-			config.TitlePrefix = publisherAdmin.Brand
+			assigns.Logo = publisherAdmin.UserInfo.Logo
+			assigns.Brand = publisherAdmin.UserInfo.Brand
+			config.TitlePrefix = publisherAdmin.UserInfo.Brand
 		}
 	}
 	if assigns.UserLogin.IsFound() {
@@ -132,6 +128,11 @@ func (t *User) RegisterPost(ctx *fiber.Ctx) error {
 	return ctx.JSON(response)
 }
 
+type AssignUserBilling struct {
+	assign.Schema
+	Row model.UserBillingRecord
+}
+
 func (t *User) BillingSettingGet(ctx *fiber.Ctx) error {
 	userLogin := GetUserLogin(ctx)
 	userAdmin := GetUserAdmin(ctx)
@@ -180,6 +181,14 @@ func (t *User) AccountSettingGet(ctx *fiber.Ctx) error {
 	assigns.Title = config.TitleWithPrefix("Update Account")
 	assigns.Row = new(model.User).GetById(userLogin.Id)
 	assigns.Billing = new(model.UserBilling).GetByUserId(userLogin.Id)
+	publisherAdmin := new(model.User).GetById(userLogin.Presenter)
+	if publisherAdmin.Id > 0 {
+		if strings.TrimSpace(publisherAdmin.UserInfo.BillingMethod) == "" {
+			assigns.BillingMethod = []string{"bank", "paypal", "payoneer", "currency"}
+		} else {
+			assigns.BillingMethod = strings.Split(publisherAdmin.UserInfo.BillingMethod, ",")
+		}
+	}
 	return ctx.Render("user/account", assigns, view.LAYOUTMain)
 }
 
@@ -280,9 +289,9 @@ func (t *User) ForgotPassWordGet(ctx *fiber.Ctx) error {
 	if domain != "" {
 		publisherAdmin := new(model.User).GetInFoPublisherAdminBySubDomain(domain)
 		if publisherAdmin.Id > 0 {
-			assigns.Logo = publisherAdmin.Logo
-			assigns.Brand = publisherAdmin.Brand
-			config.TitlePrefix = publisherAdmin.Brand
+			assigns.Logo = publisherAdmin.UserInfo.Logo
+			assigns.Brand = publisherAdmin.UserInfo.Brand
+			config.TitlePrefix = publisherAdmin.UserInfo.Brand
 		}
 	}
 
