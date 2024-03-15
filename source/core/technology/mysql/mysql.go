@@ -32,6 +32,7 @@ type config struct {
 
 type tables struct {
 	User                      string
+	UserInfo                  string
 	Inventory                 string
 	InventoryAdTag            string
 	TagRewardedAdConfig       string
@@ -154,6 +155,7 @@ func init() {
 	*/
 	Tables = tables{
 		User:                      "user",
+		UserInfo:                  "user_info",
 		Inventory:                 "inventory",
 		InventoryAdTag:            "inventory_ad_tag",
 		TagRewardedAdConfig:       "tag_rewarded_ad_config",

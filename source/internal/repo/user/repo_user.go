@@ -27,6 +27,7 @@ type RepoUser interface {
 	ResetCacheAll(userId int64) (err error)
 	GetUsersByPermission(permissions []int64) (records []model.User, err error)
 	GetBySearch(keyword string) (users []model.User, err error)
+	GetInfoByUserID(ID int64) (record model.TableUserInfo)
 }
 
 type user struct {
@@ -125,6 +126,11 @@ func (t *user) GetByEmail(email string) (record model.User) {
 	return
 }
 
+func (t *user) GetInfoByUserID(ID int64) (record model.TableUserInfo) {
+	t.DB.Model(&model.TableUserInfo{}).Where("user_id = ?", ID).Find(&record)
+	return
+}
+
 func (t *user) GetByEmails(emails []string) (records []model.User) {
 	t.DB.Model(&model.User{}).Where("email in ?", emails).Find(&records)
 	return
@@ -155,7 +161,7 @@ func (t *user) FindByLoginToken(loginToken string, fields ...string) (record mod
 	if len(fields) > 0 {
 		query = query.Select(fields)
 	}
-	err = query.Take(&record).Error
+	err = query.Find(&record).Error
 	return
 }
 

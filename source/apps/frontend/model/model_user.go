@@ -6,6 +6,7 @@ import (
 	"github.com/badoux/checkmail"
 	"github.com/gofiber/fiber/v2"
 	"gorm.io/gorm"
+	"gorm.io/gorm/clause"
 	"io/ioutil"
 	"net/http"
 	"net/mail"
@@ -204,9 +205,9 @@ func (t *User) UserLogin(ctx *fiber.Ctx) (user UserRecord) {
 	if user.Presenter != 0 {
 		presenter := t.GetById(user.Presenter)
 		if presenter.ParentSub == "yes" {
-			user.Logo = presenter.Logo
-			user.RootDomain = presenter.RootDomain
-			user.Brand = presenter.Brand
+			user.UserInfo.Logo = presenter.UserInfo.Logo
+			user.UserInfo.RootDomain = presenter.UserInfo.RootDomain
+			user.UserInfo.Brand = presenter.UserInfo.Brand
 		}
 	}
 	if !user.IsAdmin() {
@@ -527,8 +528,8 @@ func (rec *UserRecord) SetLoginAdmin(ctx *fiber.Ctx) {
 }
 
 func (t *User) GetById(id int64) (user UserRecord) {
-	mysql.Client.Where("id = ?", id).Find(&user)
-	user.GetRls()
+	mysql.Client.Where("id = ?", id).Preload(clause.Associations).Find(&user)
+	//user.GetRls()
 	return
 }
 
@@ -1311,6 +1312,6 @@ func (t *User) GetSellerSystem(user UserRecord) (sellerID int64, errs []ajax.Err
 }
 
 func (t *User) GetInFoPublisherAdminBySubDomain(subDomain string) (record UserRecord) {
-	mysql.Client.Where("sub_domain = ?", subDomain).Find(&record)
+	mysql.Client.Where("sub_domain = ?", subDomain).Preload(clause.Associations).Find(&record)
 	return
 }
