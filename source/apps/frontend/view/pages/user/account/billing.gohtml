@@ -1,3 +1,4 @@
+{{- /*gotype: source/apps/frontend/controller.AssignUserAccount*/ -}}
 <form id="submitBilling">
     <div class="pp6">
         <div class="pp14">
@@ -17,8 +18,14 @@
                         {{ if InArray "payoneer" .BillingMethod true}}
                             <option {{if eq .Billing.TableUserBilling.Method "payoneer"}}selected{{end}} value="payoneer">Payoneer</option>
                         {{ end }}
-                        {{ if InArray "currency" .BillingMethod true}}
-                            <option {{if eq .Billing.TableUserBilling.Method "currency"}}selected{{end}} value="currency">Currency</option>
+                        {{ if InArray "btc" .BillingMethod true}}
+                            <option {{if and (eq .Billing.TableUserBilling.Method "currency") (eq .Billing.TableUserBilling.Cryptocurrency "BTC")}}selected{{end}} value="BTC">Bitcoin (BTC)</option>
+                        {{ end }}
+                        {{ if InArray "bch" .BillingMethod true}}
+                            <option {{if and (eq .Billing.TableUserBilling.Method "currency") (eq .Billing.TableUserBilling.Cryptocurrency "BCH")}}selected{{end}} value="BCH">Bitcoin Cash (BCH)</option>
+                        {{ end }}
+                        {{ if InArray "usdt" .BillingMethod true}}
+                            <option {{if and (eq .Billing.TableUserBilling.Method "currency") (eq .Billing.TableUserBilling.Cryptocurrency "USDT")}}selected{{end}} value="USDT">Tether (USDT - ERC20)</option>
                         {{ end }}
                     </select>
                     <span class="form-text ms-2 w-auto invalid-feedback"></span>
@@ -139,7 +146,9 @@
                         <label class="col-form-label form-label form-label-lg w-input-group"></label>
                         <div class="alert alert-warning mx-auto w-70 border" role="alert">
                             <p class="fw-normal">
-                                Minimum Payment Threshold: <strong>100 USD</strong>
+                                Minimum Payment Threshold: <strong class="currency-minpay currency-BCH">100 USD</strong>
+                                <strong class="currency-minpay currency-BTC d-none">1,000 USD</strong>
+                                <strong class="currency-minpay currency-USDT d-none">1,000 USD</strong>
                             </p>
                             <hr>
                             <p class="mb-0 fw-normal">Due to the fund preparation, payment will be processed from the 15th of the month.</p>
@@ -147,18 +156,6 @@
                     </div>
                 </div>
                 {{/*alert*/}}
-                <div class="pp5">Crypto Currency</div>
-                <div class="pp7 mt-2">
-                    <div class="pp7 cus-selectpicker">
-                        <select id="cryptocurrency" name="cryptocurrency" class="form-control selectpicker" data-placeholder="Select your payment method">
-                            <option {{if eq .Billing.TableUserBilling.Cryptocurrency "BCH"}}selected{{end}} value="BCH">Bitcoin Cash (BCH)</option>
-                            <option {{if eq .Billing.TableUserBilling.Cryptocurrency "BTC"}}selected{{end}} value="BTC">Bitcoin (BTC)</option>
-                            <option {{if eq .Billing.TableUserBilling.Cryptocurrency "USDT"}}selected{{end}} value="USDT">Tether (USDT - ERC20)</option>
-                        </select>
-                        <span class="form-text ms-2 w-auto invalid-feedback"></span>
-                    </div>
-                </div>
-                {{/*Currency*/}}
                 <div class="pp5">Wallet ID</div>
                 <div class="pp7 mt-2">
                     <input class="pp10" id="wallet_id" name="wallet_id" value="{{.Billing.TableUserBilling.WalletId}}">

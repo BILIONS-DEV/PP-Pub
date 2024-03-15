@@ -3,7 +3,7 @@ $(document).ready(function () {
     SumitFormAccount("changePassword", "/user/changePassword", Submit)
     SumitFormBilling("submitBilling", "/user/billing", Submit);
 
-    $("#method").on("change", function () {
+        $("#method").on("change", function () {
         ChangeSelectBilling($(this))
     })
     ChangeTab()
@@ -83,6 +83,7 @@ function GetMethodDefaultBilling() {
 function ChangeSelectBilling(element) {
     let selectValue = element.val();
     ShowHideByMethod(selectValue)
+    ChangeMinPayCcurrency(element)
 }
 
 function ShowHideByMethod(method) {
@@ -111,6 +112,24 @@ function ShowHideByMethod(method) {
             $("#method_payoneer").addClass("d-none");
             $("#method_paypal").addClass("d-none");
             break;
+        case  "BTC":
+            $("#method_currency").removeClass("d-none");
+            $("#method_bank").addClass("d-none");
+            $("#method_payoneer").addClass("d-none");
+            $("#method_paypal").addClass("d-none");
+            break;
+        case  "BCH":
+            $("#method_currency").removeClass("d-none");
+            $("#method_bank").addClass("d-none");
+            $("#method_payoneer").addClass("d-none");
+            $("#method_paypal").addClass("d-none");
+            break;
+        case   "USDT":
+            $("#method_currency").removeClass("d-none");
+            $("#method_bank").addClass("d-none");
+            $("#method_payoneer").addClass("d-none");
+            $("#method_paypal").addClass("d-none");
+            break;
         default:
             $("#method_bank").removeClass("d-none");
             $("#method_payoneer").addClass("d-none");
@@ -119,7 +138,6 @@ function ShowHideByMethod(method) {
             break;
     }
 }
-
 function SumitFormBilling(formID, ajaxUrl, callback) {
     let formElement = $("#" + formID);
     formElement.find("input").on("click change blur", function (e) {
@@ -185,4 +203,10 @@ function ChangeTab() {
         $("#tab-change-password").removeClass("active")
         $("#tab-billing").addClass("active")
     })
+}
+
+function ChangeMinPayCcurrency(element) {
+    let selectValue = element.val();
+    $(".currency-minpay").addClass("d-none");
+    $(".currency-" + selectValue).removeClass("d-none");
 }
