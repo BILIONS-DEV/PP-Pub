@@ -70,6 +70,8 @@ func Bootstrap(ctx *fiber.Ctx) error {
 		CurrentURL:   currentURL,
 		Version:      "dev",
 		Title:        "Self-service advertising system - Valueimpression.com",
+		Logo:         UserLogin.UserInfo.Logo,
+		Brand:        UserLogin.UserInfo.Brand,
 		Theme:        "muze",
 		TemplatePath: uri,
 		ThemeSetting: view.Setting.ReleVersion,
