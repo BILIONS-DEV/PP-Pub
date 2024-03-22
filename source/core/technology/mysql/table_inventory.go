@@ -127,11 +127,21 @@ func (rec *TableInventory) GetAdsTxt() (adsTxt []string, err error) {
 	if !rec.IsFound() {
 		return
 	}
+	var managerDomain = "pubpower.io"
+	publisher := TableUser{}
+	Client.Where("id = ?", rec.UserId).Find(&publisher)
+	if publisher.Id > 0 && publisher.ParentSub == "yes" {
+		var pubConfig TableUserInfo
+		Client.Where("user_id = ?", publisher.Id).Find(&pubConfig)
+		if pubConfig.Id > 0 && pubConfig.RootDomain != "" {
+			managerDomain = pubConfig.RootDomain
+		}
+	}
 
 	// Case Ads Txt đặc biệt
 	//adsTxt = append(adsTxt, "\n")
 	adsTxt = append(adsTxt, "OWNERDOMAIN="+rec.Name)
-	adsTxt = append(adsTxt, "MANAGERDOMAIN=pubpower.io")
+	adsTxt = append(adsTxt, "MANAGERDOMAIN="+managerDomain)
 
 	// Get ads txt từ bidder của pub
 	var bidderGoogles []TableBidder
