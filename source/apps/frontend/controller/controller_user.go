@@ -48,9 +48,9 @@ func (t *User) Login(ctx *fiber.Ctx) error {
 	if domain != "" {
 		publisherAdmin := new(model.User).GetInFoPublisherAdminBySubDomain(domain)
 		if publisherAdmin.Id > 0 {
-			assigns.Logo = publisherAdmin.UserInfo.Logo
-			assigns.Brand = publisherAdmin.UserInfo.Brand
-			config.TitlePrefix = publisherAdmin.UserInfo.Brand
+			assigns.Logo = publisherAdmin.Logo
+			assigns.Brand = publisherAdmin.Brand
+			config.TitlePrefix = publisherAdmin.Brand
 		}
 	}
 	if assigns.UserLogin.IsFound() {
@@ -289,9 +289,9 @@ func (t *User) ForgotPassWordGet(ctx *fiber.Ctx) error {
 	if domain != "" {
 		publisherAdmin := new(model.User).GetInFoPublisherAdminBySubDomain(domain)
 		if publisherAdmin.Id > 0 {
-			assigns.Logo = publisherAdmin.UserInfo.Logo
-			assigns.Brand = publisherAdmin.UserInfo.Brand
-			config.TitlePrefix = publisherAdmin.UserInfo.Brand
+			assigns.Logo = publisherAdmin.Logo
+			assigns.Brand = publisherAdmin.Brand
+			config.TitlePrefix = publisherAdmin.Brand
 		}
 	}
 

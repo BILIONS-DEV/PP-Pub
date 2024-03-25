@@ -37,6 +37,14 @@ func (UserRecord) TableName() string {
 	return mysql.Tables.User
 }
 
+type UserInfoRecord struct {
+	mysql.TableUserInfo
+}
+
+func (UserInfoRecord) TableName() string {
+	return mysql.Tables.UserInfo
+}
+
 type RecoverPassword struct {
 	RootDomain string
 	UserName   string
@@ -1311,7 +1319,7 @@ func (t *User) GetSellerSystem(user UserRecord) (sellerID int64, errs []ajax.Err
 	return
 }
 
-func (t *User) GetInFoPublisherAdminBySubDomain(subDomain string) (record UserRecord) {
-	mysql.Client.Where("sub_domain = ?", subDomain).Preload(clause.Associations).Find(&record)
+func (t *User) GetInFoPublisherAdminBySubDomain(subDomain string) (record UserInfoRecord) {
+	mysql.Client.Where("sub_domain = ?", subDomain).Debug().Find(&record)
 	return
 }
