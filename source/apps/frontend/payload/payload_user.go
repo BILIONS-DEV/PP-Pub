@@ -14,6 +14,7 @@ type Register struct {
 	ConfirmPassWord string `form:"confirm_password" json:"confirm_password"`
 	FirstName       string `json:"first_name" form:"first_name"`
 	LastName        string `json:"last_name" form:"last_name"`
+	SubDomain       string `json:"sub_domain" form:"sub_domain"`
 	Agree           int    `json:"agree" form:"agree"`
 }
 

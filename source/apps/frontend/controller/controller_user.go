@@ -84,16 +84,26 @@ func (t *User) LoginPost(ctx *fiber.Ctx) error {
 //
 // param: ctx
 func (t *User) Register(ctx *fiber.Ctx) error {
-
-	return ctx.SendStatus(fiber.StatusNotFound)
-
+	//return ctx.SendStatus(fiber.StatusNotFound)
 	reddit := ctx.Query("utm_campain")
 	assigns := AssignHome{Schema: assign.Get(ctx)}
+	assigns.Logo = ""
 	assigns.Title = config.TitleWithPrefix("Register")
 	assigns.Theme = "muze-login"
 	if reddit == "reddit" {
 		assigns.RedditPixel = true
 	}
+	// Lấy domain từ URL
+	domain := ctx.Hostname()
+	if domain != "" {
+		publisherAdmin := new(model.User).GetInFoPublisherAdminBySubDomain(domain)
+		if publisherAdmin.Id > 0 {
+			assigns.Logo = publisherAdmin.Logo
+			assigns.Brand = publisherAdmin.Brand
+			config.TitlePrefix = publisherAdmin.Brand
+		}
+	}
+
 	if assigns.UserLogin.IsFound() {
 		return ctx.Redirect(assigns.BackURL)
 	}
@@ -101,10 +111,17 @@ func (t *User) Register(ctx *fiber.Ctx) error {
 }
 
 func (t *User) RegisterPost(ctx *fiber.Ctx) error {
-	return ctx.SendStatus(fiber.StatusNotFound)
+	//return ctx.SendStatus(fiber.StatusNotFound)
 	postData := new(payload.Register)
 	if err := ctx.BodyParser(postData); err != nil {
 		return err
+	}
+	domain := ctx.Hostname()
+	if domain != "" {
+		publisherAdmin := new(model.User).GetInFoPublisherAdminBySubDomain(domain)
+		if publisherAdmin.Id > 0 {
+			postData.SubDomain = domain
+		}
 	}
 	response := ajax.Responses{}
 	referer := new(model.User).GetReferer(ctx)

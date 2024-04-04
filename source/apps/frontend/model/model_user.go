@@ -342,18 +342,18 @@ func (t *User) Register(postData *payload.Register, referer string, lang lang.Tr
 		})
 		return
 	} else {
-		var info = mailjet.InfoMail{
-			To: mailjet.Email{
-				Email: postData.Email,
-				Name:  postData.FirstName + postData.LastName,
-			},
-			CC:          nil,
-			BCC:         nil,
-			Subject:     "Registration successful.Welcome" + postData.FirstName + postData.LastName,
-			ContentText: "",
-			ContentHtml: htmlblock.Render("user/block/register_success.gohtml", newMember).String(),
-		}
-		err = info.SendMail()
+		//var info = mailjet.InfoMail{
+		//	To: mailjet.Email{
+		//		Email: postData.Email,
+		//		Name:  postData.FirstName + postData.LastName,
+		//	},
+		//	CC:          nil,
+		//	BCC:         nil,
+		//	Subject:     "Registration successful.Welcome" + postData.FirstName + postData.LastName,
+		//	ContentText: "",
+		//	ContentHtml: htmlblock.Render("user/block/register_success.gohtml", newMember).String(),
+		//}
+		//err = info.SendMail()
 		// fmt.Println(err)
 	}
 
@@ -464,6 +464,12 @@ func (t *User) CreateMemberPending(postData *payload.Register, referer string) (
 // return:
 func (t *User) CreateMemberApproved(postData *payload.Register, referer string) (user UserRecord, err error) {
 	user.makeMemberInfo(postData, referer)
+	if postData.SubDomain != "" {
+		publisherAdmin := t.GetInFoPublisherAdminBySubDomain(postData.SubDomain)
+		if publisherAdmin.Id > 0 {
+			user.Presenter = publisherAdmin.UserId
+		}
+	}
 	user.Status = mysql.StatusApproved
 	err = mysql.Client.Create(&user).Error
 	return
@@ -1320,6 +1326,6 @@ func (t *User) GetSellerSystem(user UserRecord) (sellerID int64, errs []ajax.Err
 }
 
 func (t *User) GetInFoPublisherAdminBySubDomain(subDomain string) (record UserInfoRecord) {
-	mysql.Client.Where("sub_domain = ?", subDomain).Debug().Find(&record)
+	mysql.Client.Where("sub_domain = ?", subDomain).Find(&record)
 	return
 }
