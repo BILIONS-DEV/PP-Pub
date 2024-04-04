@@ -17,6 +17,7 @@ import (
 type TableInventory struct {
 	Id                  int64                          `gorm:"column:id" json:"id"`
 	UserId              int64                          `gorm:"column:user_id" json:"user_id"`
+	SubPubId            int64                          `gorm:"column:sub_pub_id;default:null" json:"sub_pub_id"`
 	Presenter           int64                          `gorm:"column:presenter" json:"presenter"`
 	Name                string                         `gorm:"column:name" json:"name"`
 	Domain              string                         `gorm:"column:domain" json:"domain"`

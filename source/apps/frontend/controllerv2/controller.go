@@ -1,7 +1,6 @@
 package controllerv2
 
 import (
-	"encoding/json"
 	"fmt"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
@@ -150,8 +149,6 @@ func bootstrap(ctx *fiber.Ctx, h *handler) error {
 	//}
 
 	parentSub := h.useCases.User.GetInfoByUserID(userLogin.Presenter)
-	s, _ := json.MarshalIndent(parentSub, "", "\t")
-	fmt.Printf("%+v\n", string(s))
 	ctx.Locals(assignKEY, Assign{
 		Uri:          uri,
 		RootDomain:   rootDomain,

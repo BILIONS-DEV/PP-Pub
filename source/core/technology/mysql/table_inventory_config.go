@@ -32,6 +32,7 @@ type TableInventoryConfig struct {
 	MobileScaling       int                   `gorm:"column:mobile_scaling" json:"mobile_scaling"`
 	CustomGoogleShare   *string               `gorm:"default:null;column:custom_google_share" json:"custom_google_share"`
 	GoogleRequestMode   TYPEGoogleRequestMode `gorm:"default:always;column:google_request_mode" json:"google_request_mode"`
+	AnalyticsID         string                `gorm:"column:analytics_id" json:"analytics_id"`
 	DeletedAt           gorm.DeletedAt        `gorm:"column:deleted_at" json:"deleted_at"`
 }
 

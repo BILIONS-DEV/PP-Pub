@@ -440,7 +440,7 @@ func (t *InventoryConfig) MakeRowDefault(inventoryId int64) (cf InventoryConfigR
 		MobileScaling:       2,
 	}}
 	mysql.Client.
-		Debug().
+		//Debug().
 		Model(&InventoryConfigRecord{}).Create(&cf)
 	return
 }

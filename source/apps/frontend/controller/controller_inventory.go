@@ -206,7 +206,6 @@ func (t *Inventory) Delete(ctx *fiber.Ctx) error {
 }
 
 func (t *Inventory) Index(ctx *fiber.Ctx) error {
-	fmt.Printf("%+v\n", "XXX")
 	userLogin := GetUserLogin(ctx)
 	userAdmin := GetUserAdmin(ctx)
 	isAccept := new(model.User).CheckUserLogin(userLogin, userAdmin, config.URIInventory)
@@ -290,8 +289,10 @@ func (t *Inventory) FilterConnection(ctx *fiber.Ctx) error {
 }
 
 func (t *Inventory) Submit(ctx *fiber.Ctx) error {
-	return ctx.SendStatus(fiber.StatusNotFound)
 	userLogin := GetUserLogin(ctx)
+	//s, _ := json.MarshalIndent(userLogin, "", "\t")
+	//fmt.Printf("%+v\n", string(s))
+	//return ctx.SendStatus(fiber.StatusNotFound)
 	userAdmin := GetUserAdmin(ctx)
 	isAccept := new(model.User).CheckUserLogin(userLogin, userAdmin, config.URIInventorySubmit)
 	if !isAccept {
@@ -301,7 +302,7 @@ func (t *Inventory) Submit(ctx *fiber.Ctx) error {
 	if err := ctx.BodyParser(inputs); err != nil {
 		return err
 	}
-	response := new(model.Inventory).Submit(inputs, userLogin.Id, GetLang(ctx))
+	response := new(model.Inventory).Submit(inputs, userLogin, GetLang(ctx))
 	return ctx.JSON(response)
 }
 

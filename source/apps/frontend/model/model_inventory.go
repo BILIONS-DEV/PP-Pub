@@ -237,7 +237,7 @@ func (t *Inventory) setOrder(inputs *payload.InventoryFilterPayload) func(db *go
 	}
 }
 
-func (t *Inventory) Submit(inputs *payload.InventorySubmit, userId int64, lang lang.Translation) (errs []ajax.Error) {
+func (t *Inventory) Submit(inputs *payload.InventorySubmit, user UserRecord, lang lang.Translation) (errs []ajax.Error) {
 	inventories := utility.SplitLines(inputs.Inventories)
 	totalInventory := len(inventories)
 	if totalInventory > 0 {
@@ -279,7 +279,7 @@ func (t *Inventory) Submit(inputs *payload.InventorySubmit, userId int64, lang l
 				// validate
 				var record InventoryRecord
 				mysql.Client.Select("id").
-					Where(InventoryRecord{mysql.TableInventory{Name: rootDomain, UserId: userId}}).
+					Where(InventoryRecord{mysql.TableInventory{Name: rootDomain, UserId: user.Presenter}}).
 					Last(&record)
 				if record.Id > 0 {
 					respChannel <- ajax.Error{
@@ -291,7 +291,7 @@ func (t *Inventory) Submit(inputs *payload.InventorySubmit, userId int64, lang l
 				}
 				// check unscoped record trong trường domain đã xóa nhưng pub muốn update lại trong user
 				mysql.Client.Unscoped().
-					Where(InventoryRecord{mysql.TableInventory{Name: rootDomain, UserId: userId}}).
+					Where(InventoryRecord{mysql.TableInventory{Name: rootDomain, UserId: user.Presenter}}).
 					Last(&record)
 				// Nếu inventory đã tồn tại khi bỏ deleted_at thì tiến hành update
 				var errI error
@@ -301,7 +301,8 @@ func (t *Inventory) Submit(inputs *payload.InventorySubmit, userId int64, lang l
 					errI = mysql.Client.Unscoped().Updates(&record).Error
 				} else {
 					record = InventoryRecord{mysql.TableInventory{
-						UserId:         userId,
+						UserId:         user.Presenter,
+						SubPubId:       user.Id,
 						Type:           mysql.InventoryTypeWeb,
 						Status:         mysql.StatusPending,
 						Name:           rootDomain,
@@ -332,11 +333,11 @@ func (t *Inventory) Submit(inputs *payload.InventorySubmit, userId int64, lang l
 				new(InventoryConfig).MakeRowDefault(record.Id)
 				_ = history.PushHistory(&history.Inventory{
 					Detail:    history.DetailInventorySubmitFE,
-					CreatorId: userId,
+					CreatorId: user.Presenter,
 					RecordNew: record.TableInventory,
 				})
 				if !utility.IsWindow() {
-					userModel := new(User).GetById(userId)
+					userModel := new(User).GetById(user.Presenter)
 					managerModel := new(User).GetById(userModel.Presenter)
 					// Gửi thông báo domain mới tạo vào nhóm sale telegram
 					_ = telegram.SendMessageGroupPubPowerNotify(record.Name, userModel.Email, managerModel.Email)
