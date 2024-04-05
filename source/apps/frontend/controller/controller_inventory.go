@@ -381,6 +381,9 @@ type CopyTag struct {
 	ListTagTool              []model.AdTagRecord
 	ListQuiz                 []model.QizPostsRecord
 	ListAdTagNative          []Tag
+	CodeJsNormal             string
+	CodeJsAsynchronous       string
+	CodeJsAutoAd             string
 }
 
 type Tag struct {
@@ -409,6 +412,7 @@ func (t *Inventory) CopyAdTag(ctx *fiber.Ctx) (err error) {
 	id, _ := strconv.ParseInt(ctx.Query("id"), 10, 64)
 	var copyTag CopyTag
 	copyTag.Inventory, err = new(model.Inventory).GetByIdSystem(id)
+	copyTag.CodeJsAsynchronous, copyTag.CodeJsNormal, copyTag.CodeJsAutoAd = copyTag.Inventory.GetLinkJS(userLogin.TableUser)
 	if err != nil {
 		return fmt.Errorf(GetLang(ctx).Errors.InventoryError.NotFound.ToString())
 	}

@@ -323,15 +323,11 @@ func (t TYPEInventorySyncAdsTxt) String() string {
 }
 
 func (rec TableInventory) GetLinkJS(user TableUser) (URLAsynchronous string, URLNormal string, URLAutoAds string) {
-	tag := "powerTag"
-	tagDomain := "nc.pubpowerplatform.io"
-	if user.Id != 0 && user.SystemSync == 1 { // system VLI
-		tagDomain = "cdn.vlitag.com"
-		tag = "vitag"
-	}
-	URLNormal = "<script type=\"text/javascript\" src=\"//" + tagDomain + "/w/" + rec.Uuid + ".js\" async defer></script><script>var " + tag + " = " + tag + " || {};" + tag + ".gdprShowConsentToolButton = false;</script>"
-	URLAsynchronous = "<script type=\"text/javascript\" src=\"//" + tagDomain + "/w/" + rec.Uuid + ".js\" async defer></script><script>var " + tag + " = " + tag + " || {};" + tag + ".gdprShowConsentToolButton = false;</script>"
+	tag := "wapTag"
+	tagDomain := "cdn.bilsyndication.com"
 
+	URLNormal = "<script type=\"text/javascript\" src=\"//" + tagDomain + "/w/" + rec.Uuid + ".js\"></script><script>var " + tag + " = " + tag + " || {};" + tag + ".gdprShowConsentToolButton = false;</script>"
+	URLAsynchronous = "<script type=\"text/javascript\" src=\"//" + tagDomain + "/w/" + rec.Uuid + ".js\" async defer></script><script>var " + tag + " = " + tag + " || {};" + tag + ".gdprShowConsentToolButton = false;</script>"
 	URLAutoAds = "<script type=\"text/javascript\" src=\"//" + tagDomain + "/ata/adv/" + rec.Uuid + ".js\" async defer></script>"
 	return
 }
