@@ -293,10 +293,18 @@ func (t *Inventory) Submit(inputs *payload.InventorySubmit, user UserRecord, lan
 				mysql.Client.Unscoped().
 					Where(InventoryRecord{mysql.TableInventory{Name: rootDomain, UserId: user.Presenter}}).
 					Last(&record)
-				// Nếu inventory đã tồn tại khi bỏ deleted_at thì tiến hành update
+
+				var status = mysql.StatusPending
+				// check inventoryName có status != pending đã tồn tại trong database chưa, có rồi set status theo record đó
+				var isExist InventoryRecord
+				mysql.Client.Where("name = ? and user_id != ? and status != 'pending'", inventoryName, user.Presenter).Last(&isExist)
+				if isExist.Id > 0 {
+					status = isExist.Status
+				}
+
 				var errI error
-				if record.Id != 0 {
-					record.Status = mysql.StatusPending
+				if record.Id != 0 { // Nếu inventory đã tồn tại khi bỏ deleted_at thì tiến hành update
+					record.Status = status
 					record.DeletedAt.Valid = false
 					errI = mysql.Client.Unscoped().Updates(&record).Error
 				} else {
@@ -304,7 +312,7 @@ func (t *Inventory) Submit(inputs *payload.InventorySubmit, user UserRecord, lan
 						UserId:         user.Presenter,
 						SubPubId:       user.Id,
 						Type:           mysql.InventoryTypeWeb,
-						Status:         mysql.StatusPending,
+						Status:         status,
 						Name:           rootDomain,
 						Domain:         rootDomain,
 						Uuid:           uuid.New().String(),
