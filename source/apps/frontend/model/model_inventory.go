@@ -301,6 +301,10 @@ func (t *Inventory) Submit(inputs *payload.InventorySubmit, user UserRecord, lan
 				if isExist.Id > 0 {
 					status = isExist.Status
 				}
+				// check nếu inventoryName có dạng "*.blogspot.com" thì auto reject
+				if strings.Contains(inventoryName, ".blogspot.com") {
+					status = mysql.StatusReject
+				}
 
 				var errI error
 				var flagCreate bool
@@ -343,7 +347,6 @@ func (t *Inventory) Submit(inputs *payload.InventorySubmit, user UserRecord, lan
 				if flagCreate {
 					// set default rate revenue share
 					rate, err := new(User).GetRevShareDefault(user.Presenter)
-					fmt.Println("data: ", rate)
 					if err != nil {
 						respChannel <- ajax.Error{
 							Id:      inventoryName,
