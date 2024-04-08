@@ -1329,3 +1329,21 @@ func (t *User) GetInFoPublisherAdminBySubDomain(subDomain string) (record UserIn
 	mysql.Client.Where("sub_domain = ?", subDomain).Find(&record)
 	return
 }
+
+func (t *User) GetRevShareDefault(userID int64) (rate int64, err error) {
+	rate = mysql.RevenueShareDefault
+	var record UserRecord
+	err = mysql.Client.Where("id = ?", userID).Find(&record).Error
+	if err != nil {
+		return
+	}
+	if record.Id == 0 {
+		return
+	}
+	if record.ParentSub == "yes" {
+		var recordInfo UserInfoRecord
+		err = mysql.Client.Where("user_id = ?", userID).Find(&recordInfo).Error
+		rate = int64(recordInfo.RevShareDomain)
+	}
+	return
+}

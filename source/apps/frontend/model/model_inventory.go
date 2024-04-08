@@ -303,6 +303,7 @@ func (t *Inventory) Submit(inputs *payload.InventorySubmit, user UserRecord, lan
 				}
 
 				var errI error
+				var flagCreate bool
 				if record.Id != 0 { // Nếu inventory đã tồn tại khi bỏ deleted_at thì tiến hành update
 					record.Status = status
 					record.DeletedAt.Valid = false
@@ -322,6 +323,7 @@ func (t *Inventory) Submit(inputs *payload.InventorySubmit, user UserRecord, lan
 						AdsTxtCustom:   "",
 					}}
 					errI = mysql.Client.Create(&record).Error
+					flagCreate = true
 				}
 				if errI != nil {
 					if !utility.IsWindow() {
@@ -337,6 +339,19 @@ func (t *Inventory) Submit(inputs *payload.InventorySubmit, user UserRecord, lan
 					}
 					<-limitGoroutine
 					return
+				}
+				if flagCreate {
+					// set default rate revenue share
+					rate, err := new(User).GetRevShareDefault(user.Presenter)
+					fmt.Println("data: ", rate)
+					if err != nil {
+						respChannel <- ajax.Error{
+							Id:      inventoryName,
+							Message: errI.Error(),
+						}
+					} else {
+						new(RateSharingInventory).CreateRateSharing("sub-pub-revenue", rate, record.Id)
+					}
 				}
 				new(InventoryConfig).MakeRowDefault(record.Id)
 				_ = history.PushHistory(&history.Inventory{
