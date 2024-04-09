@@ -372,12 +372,14 @@ type CopyTag struct {
 	ListAdTagDisplay         []Tag
 	ListAdTagOutstream       []Tag
 	ListAdTagInstream        []Tag
+	ListAdTagVideo           []Tag
 	ListAdTagSticky          []Tag
 	ListAdTagPinZone         []Tag
 	ListAdTagPlayZoneRelated []Tag
 	ListAdTagPlayZoneQuiz    []Tag
 	VastAdTagInstream        []VastTag
 	VastAdTagOutstream       []VastTag
+	VastAdTagVideo           []VastTag
 	ListTagTool              []model.AdTagRecord
 	ListQuiz                 []model.QizPostsRecord
 	ListAdTagNative          []Tag
@@ -482,6 +484,27 @@ func (t *Inventory) CopyAdTag(ctx *fiber.Ctx) (err error) {
 				copyTag.VastAdTagOutstream = append(copyTag.VastAdTagOutstream, vastTag)
 			} else {
 				copyTag.ListAdTagOutstream = append(copyTag.ListAdTagOutstream, Tag{
+					AdTag: tag,
+					Size:  size,
+				})
+			}
+		} else if tag.Type == mysql.TYPEVideo {
+			if tag.Renderer != mysql.TYPERendererPubPower && tag.Renderer != mysql.TYPERendererOverlayAd && tag.Status == mysql.TypeStatusAdTagLive {
+				vastTag := VastTag{
+					AdTag: tag,
+					VastVpaid: Vast{
+						// VastUrl:  "https://cdn.vlitag.com/vpaid/w/" + copyTag.Inventory.Uuid + "?tagid=" + strconv.FormatInt(tag.Id, 10) + "&page_url=" + pageUrl + "&sz=" + playerSize,
+						VastUrl:  "https://cdn.bilsyndication.com/vpaid/w/" + copyTag.Inventory.Uuid + "?tagid=" + strconv.FormatInt(tag.Id, 10) + "&page_url=" + pageUrl + "&sz=" + playerSize,
+						VastName: "Vast Vpaid",
+					},
+					VastS2s: Vast{
+						VastUrl:  "https://ss-pbs.quantumdex.io/vast?description_url=" + pageUrl + "&sz=" + playerSize + "&tagid=" + strconv.FormatInt(tag.Id, 10) + "&ad_type=video&tfcd=0&vpmute=1&vpos=preroll&vpa=auto",
+						VastName: "Vast S2S",
+					},
+				}
+				copyTag.VastAdTagVideo = append(copyTag.VastAdTagVideo, vastTag)
+			} else {
+				copyTag.ListAdTagVideo = append(copyTag.ListAdTagVideo, Tag{
 					AdTag: tag,
 					Size:  size,
 				})
