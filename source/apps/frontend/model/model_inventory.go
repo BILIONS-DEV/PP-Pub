@@ -298,11 +298,18 @@ func (t *Inventory) Submit(inputs *payload.InventorySubmit, user UserRecord, lan
 				// check inventoryName có status != pending đã tồn tại trong database chưa, có rồi set status theo record đó
 				var isExist InventoryRecord
 				mysql.Client.Where("name = ? and user_id != ? and status != 'pending'", inventoryName, user.Presenter).Last(&isExist)
+				var flagApproved bool
 				if isExist.Id > 0 {
-					status = isExist.Status
+					if isExist.Status == mysql.StatusApproved {
+						// tạo cronjob để chuyển status về approved
+						flagApproved = true
+					} else if isExist.Status == mysql.StatusReject {
+						status = mysql.StatusReject
+					}
 				}
 				// check nếu inventoryName có dạng "*.blogspot.com" thì auto reject
 				if strings.Contains(inventoryName, ".blogspot.com") {
+					flagApproved = false
 					status = mysql.StatusReject
 				}
 
@@ -343,6 +350,18 @@ func (t *Inventory) Submit(inputs *payload.InventorySubmit, user UserRecord, lan
 					}
 					<-limitGoroutine
 					return
+				}
+				if flagApproved {
+					//nếu đã tồn tại inventory và status = approved thì tạo cronjob để chuyển về approved
+					new(Cronjob).Save(CronjobRecord{
+						TableCronjob: mysql.TableCronjob{
+							Name:     "Approved inventory " + inventoryName,
+							Type:     ChangeStatusDomain,
+							Data:     strconv.FormatInt(record.Id, 10),
+							DataMeta: mysql.StatusApproved.String(),
+							Status:   mysql.StatusPending.String(),
+						},
+					})
 				}
 				if flagCreate {
 					// set default rate revenue share
