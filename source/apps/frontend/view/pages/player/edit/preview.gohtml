@@ -3,20 +3,20 @@
         <div class="dm9">Preview</div>
     </div>
     <div class="dm11 preview">
-        <div id="videocontainer" class="adsbyvli"></div>
+        <pubtag id="videocontainer" class="adsbypubpower video-template-element"></pubtag>
         <script type="text/javascript">
-            (vitag.Init = window.vitag.Init || []).push(function () {
-                var config = {{.Config}};
-                viAPItag.initPowerVideoContainer(JSON.parse(config));
-            });
+			(powerTag.Init = window.powerTag.Init || []).push(function () {
+				var config = {{.Config}};
+				powerAPITag.initPowerVideoContainer(JSON.parse(config));
+			});
         </script>
-        <div id="resizeWrapper" class="resizable">
+        <div id="resizeWrapper" class="resizable native-template-element">
             <div class="resizer resizer-r"></div>
             <div id="adsPlacement" class="">
                 <div class="adsbypocpoc" data-ad-slot='preview'></div>
             </div>
         </div>
-        <div id="preview_size" class="d-flex d-inline-flex">
+        <div id="preview_size" class="d-flex d-inline-flex native-template-element">
             <div class="view_size me-3 py-4">
                   <span>Preview width: </span
                   ><span><span id="p_width">0</span>px</span>

@@ -1,6 +1,6 @@
 let _validFileImageExtensions = [".jpg", ".jpeg", ".bmp", ".gif", ".png"];
 let maxSize = 15 * 1024 * 1024;
-let api_upload_image = "https://ul.pubpowerplatform.io/api/v1/image";
+// let api_upload_image = "https://ul.pubpowerplatform.io/api/v1/image";
 let domainUpload = "https://ul.pubpowerplatform.io";
 // let api_upload_image = "http://127.0.0.1:8543/api/v1/image";
 // let domainUpload = "http://127.0.0.1:8543";
@@ -689,9 +689,9 @@ function makePreview() {
         data: JSON.stringify(postData),
         success: function (json) {
             document.querySelector("#videocontainer").innerHTML = "";
-            (vitag.Init = window.vitag.Init || []).push(function () {
+            (powerTag.Init = window.powerTag.Init || []).push(function () {
                 // var config = ""
-                viAPItag.initPowerVideoContainer(json);
+                powerAPITag.initPowerVideoContainer(json);
             });
         },
     });
@@ -722,29 +722,29 @@ function uploadFile(event, element) {
         new AlertError("You uploaded file over 10mb, please choose another file!");
         return;
     }
-    fd.append('file', file);
-    $.ajax({
-        url: api_upload_image,
-        type: "POST",
-        // dataType: 'json',
-        contentType: false,
-        processData: false,
-        data: fd,
-        beforeSend: function (xhr) {
-            // buttonElement.attr('disabled', true).text(submitButtonTextLoading);
-        },
-        error: function (jqXHR, exception) {
-            const msg = AjaxErrorMessage(jqXHR, exception);
-            new AlertError("AJAX ERROR: " + msg);
-            // buttonElement.attr('disabled', false).text(submitButtonText);
-        },
-        success: function (responseJSON) {
-            // buttonElement.attr('disabled', false).text(submitButtonText);
-        },
-        complete: function (res) {
-            afterUpload(res.responseJSON, element);
-        }
-    });
+    // fd.append('file', file);
+    // $.ajax({
+    //     url: api_upload_image,
+    //     type: "POST",
+    //     // dataType: 'json',
+    //     contentType: false,
+    //     processData: false,
+    //     data: fd,
+    //     beforeSend: function (xhr) {
+    //         // buttonElement.attr('disabled', true).text(submitButtonTextLoading);
+    //     },
+    //     error: function (jqXHR, exception) {
+    //         const msg = AjaxErrorMessage(jqXHR, exception);
+    //         new AlertError("AJAX ERROR: " + msg);
+    //         // buttonElement.attr('disabled', false).text(submitButtonText);
+    //     },
+    //     success: function (responseJSON) {
+    //         // buttonElement.attr('disabled', false).text(submitButtonText);
+    //     },
+    //     complete: function (res) {
+    //         afterUpload(res.responseJSON, element);
+    //     }
+    // });
 }
 
 function afterUpload(response, element) {

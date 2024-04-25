@@ -35,17 +35,7 @@
 <body class="hydrated">
 <div class="main">
     <div class="main-left">
-        {{if ne .UserAdmin.Email ""}}
-            {{template "_components/sidebar" .}}
-        {{else}}
-            {{if eq .UserLogin.Permission 6}} {{/*Permission Managed Service*/}}
-            {{template "_components/sidebar-managed_service" .}}
-            {{else if eq .UserLogin.Permission 7}}  {{/*Permission Publisher*/}}
-            {{template "_components/sidebar-publisher" .}}
-            {{else}}
-                {{template "_components/sidebar" .}}
-            {{end}}
-        {{end}}
+        {{template "_components/sidebar" .}}
     </div>
     <!-- Muze Main Content -->
     <div class="main-right">

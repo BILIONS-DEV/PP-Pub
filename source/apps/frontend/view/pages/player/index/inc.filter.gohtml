@@ -9,14 +9,20 @@
                             multiple="multiple" data-style="border-0"
                             data-live-search="false" data-actions-box="false" tabindex="-1" aria-hidden="true"
                             data-selected-text-format="count > 0" data-count-selected-text="{0} Type">
-                        <option value="2" {{if (InArray "1" .Params.Type false)}}selected{{end}}>
-                            In Stream
+{{/*                        <option value="2" {{if (InArray "1" .Params.Type false)}}selected{{end}}>*/}}
+{{/*                            In Stream*/}}
+{{/*                        </option>*/}}
+{{/*                        <option value="3" {{if (InArray "2" .Params.Type false)}}selected{{end}}>*/}}
+{{/*                            Out Stream*/}}
+{{/*                        </option>*/}}
+{{/*                        <option value="4" {{if (InArray "3" .Params.Type false)}}selected{{end}}>*/}}
+{{/*                            Top Articles*/}}
+{{/*                        </option>*/}}
+                        <option value="9" {{if (InArray "9" .Params.Type false)}}selected{{end}}>
+                            Video
                         </option>
-                        <option value="3" {{if (InArray "2" .Params.Type false)}}selected{{end}}>
-                            Out Stream
-                        </option>
-                        <option value="4" {{if (InArray "3" .Params.Type false)}}selected{{end}}>
-                            Top Articles
+                        <option value="8" {{if (InArray "8" .Params.Type false)}}selected{{end}}>
+                            Native
                         </option>
                     </select>
                 </div>

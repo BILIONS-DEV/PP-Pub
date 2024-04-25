@@ -48,15 +48,15 @@ type TableUser struct {
 	SystemSync          int64               `gorm:"column:system_sync" json:"system_sync"`
 	SyncPocPoc          string              `gorm:"default:pending;column:sync_pocpoc" json:"sync_pocpoc"`
 	ParentSub           string              `gorm:"column:parent_sub" json:"parent_sub"`
-	Logo                string              `gorm:"column:logo" json:"logo"`
-	RootDomain          string              `gorm:"column:root_domain" json:"root_domain"`
-	Brand               string              `gorm:"column:brand" json:"brand"`
-	CreatedBy           int64               `gorm:"column:created_by" json:"created_by"`
-	UpdatedBy           int64               `gorm:"column:updated_by" json:"updated_by"`
-	CreatedAt           time.Time           `gorm:"column:created_at" json:"created_at"`
-	DeletedAt           gorm.DeletedAt      `gorm:"column:deleted_at" json:"deleted_at"`
-	UserBilling         TableUserBilling    `gorm:"-"`
-	UserInfo            TableUserInfo       `gorm:"foreignKey:UserId;references:Id;" json:"user_info"`
+	//Logo                string              `gorm:"column:logo" json:"logo"`
+	//RootDomain          string              `gorm:"column:root_domain" json:"root_domain"`
+	//Brand               string              `gorm:"column:brand" json:"brand"`
+	CreatedBy   int64            `gorm:"column:created_by" json:"created_by"`
+	UpdatedBy   int64            `gorm:"column:updated_by" json:"updated_by"`
+	CreatedAt   time.Time        `gorm:"column:created_at" json:"created_at"`
+	DeletedAt   gorm.DeletedAt   `gorm:"column:deleted_at" json:"deleted_at"`
+	UserBilling TableUserBilling `gorm:"-"`
+	UserInfo    TableUserInfo    `gorm:"foreignKey:UserId;references:Id;" json:"user_info"`
 }
 
 func (TableUser) TableName() string {

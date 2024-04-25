@@ -17,9 +17,9 @@
     </div>
     <div class="cus-selectpicker pp-9">
         <select id="type" name="type" class="form-control selectpicker">
-            <option value="2">Instream</option>
-            <option value="3">Outstream</option>
-            <option value="4">Pin Zone</option>
+            {{/*            <option value="2">Instream</option>*/}}
+            {{/*            <option value="3">Outstream</option>*/}}
+            <option value="9">Video</option>
             <option value="8">Native</option>
         </select>
         <span class="form-text ms-2 w-auto invalid-feedback"></span>
@@ -34,28 +34,31 @@
             <div id="slider-container" class="slider1">
                 <input type="hidden" id="player_layout" name="player_layout" value="1">
                 <div class="slide selected" data-value="1">
-                    <img src="/assets/img/layout-basic.svg" alt="">
+                    <img src="/assets/img/layout-basic.svg" alt="" data-toggle="tooltip" title="Layout Instream" data-placement="top">
                 </div>
                 {{/*                <div class="slide" data-value="8">*/}}
                 {{/*                    <img src="/assets/img/layout-top-articles.svg" alt="">*/}}
                 {{/*                </div>*/}}
                 <div class="slide" data-value="2">
-                    <img src="/assets/img/layout-classic.svg" alt="">
+                    <img src="/assets/img/layout-classic.svg" alt="" data-toggle="tooltip" title="Layout Instream" data-placement="top">
                 </div>
                 <div class="slide" data-value="3">
-                    <img src="/assets/img/layout-small.svg" alt="">
+                    <img src="/assets/img/layout-small.svg" alt="" data-toggle="tooltip" title="Layout Instream" data-placement="top">
                 </div>
                 <div class="slide" data-value="4">
-                    <img src="/assets/img/layout-incontent.svg" alt="">
+                    <img src="/assets/img/layout-incontent.svg" alt="" data-toggle="tooltip" title="Layout Instream" data-placement="top">
                 </div>
                 <div class="slide" data-value="5">
-                    <img src="/assets/img/layout-side.svg" alt="">
+                    <img src="/assets/img/layout-side.svg" alt="" data-toggle="tooltip" title="Layout Instream" data-placement="top">
                 </div>
                 <div class="slide" data-value="6">
-                    <img src="/assets/img/layout-incontent-thumb.svg" alt="">
+                    <img src="/assets/img/layout-incontent-thumb.svg" alt="" data-toggle="tooltip" title="Layout Instream" data-placement="top">
                 </div>
                 <div class="slide" data-value="7">
-                    <img src="/assets/img/layout-incontent-text.svg" alt="">
+                    <img src="/assets/img/layout-incontent-text.svg" alt="" data-toggle="tooltip" title="Layout Instream" data-placement="top">
+                </div>
+                <div class="slide" data-value="9">
+                    <img src="/assets/img/layout-basic_outstream.svg" alt="" data-toggle="tooltip" title="Layout Outstream" data-placement="top">
                 </div>
                 <div onclick="prev()" class="control-prev-btn">
                     <div class="slide-left"></div>
@@ -166,7 +169,7 @@
         <div class="pp7" style="margin-bottom: 0;">
             <div class="fixed-size-input">
                 <span>
-                <input id="auto_start_on" type="radio" name="auto_start" value="1">
+                <input id="auto_start_on" type="radio" name="auto_start" value="1" checked>
                 <label class="light-font-label" for="auto_start_on">On</label>
                 </span>
             </div>
@@ -182,12 +185,12 @@
             {{/*                <label class="light-font-label" for="auto_start_when_view">When player is in view</label>*/}}
             {{/*                </span>*/}}
             {{/*        </div>*/}}
-            <div class="fixed-size-input" style="margin-left:10px">
-                <span>
-                <input id="auto_start_after" type="radio" name="auto_start" value="4" checked>
-                <label class="light-font-label" for="auto_start_after">After first ad is finished</label>
-                </span>
-            </div>
+            {{/*            <div class="fixed-size-input" style="margin-left:10px">*/}}
+            {{/*                <span>*/}}
+            {{/*                <input id="auto_start_after" type="radio" name="auto_start" value="4" checked>*/}}
+            {{/*                <label class="light-font-label" for="auto_start_after">After first ad is finished</label>*/}}
+            {{/*                </span>*/}}
+            {{/*            </div>*/}}
         </div>
         {{/* After first ad is finished */}}
     </div>
@@ -257,22 +260,22 @@
                         </svg>
                     </span>
                 </div>
-{{/*                <div class="d-flex">*/}}
-{{/*                    <div>*/}}
-{{/*                        <input id="floating_on_ad_fetched" name="floating_on_ad_fetched" class="floating_on_desktop" type="checkbox"*/}}
-{{/*                               checked>*/}}
-{{/*                        <label class="light-font-label disabled" for="floating_on_ad_fetched">Floating on an ad fetched</label>*/}}
-{{/*                    </div>*/}}
-{{/*                    <span class="pp16" type="button" tabindex="0" data-bs-toggle="popover"*/}}
-{{/*                          data-bs-content="Floating on an ad fetched" data-original-title="" title=""*/}}
-{{/*                          data-bs-original-title="">*/}}
-{{/*                        <svg viewBox="64 64 896 896" data-icon="question-circle" width="1em" height="1em"*/}}
-{{/*                             fill="currentColor" type="button" tabindex="0">*/}}
-{{/*                            <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>*/}}
-{{/*                            <path d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"></path>*/}}
-{{/*                        </svg>*/}}
-{{/*                    </span>*/}}
-{{/*                </div>*/}}
+                {{/*                <div class="d-flex">*/}}
+                {{/*                    <div>*/}}
+                {{/*                        <input id="floating_on_ad_fetched" name="floating_on_ad_fetched" class="floating_on_desktop" type="checkbox"*/}}
+                {{/*                               checked>*/}}
+                {{/*                        <label class="light-font-label disabled" for="floating_on_ad_fetched">Floating on an ad fetched</label>*/}}
+                {{/*                    </div>*/}}
+                {{/*                    <span class="pp16" type="button" tabindex="0" data-bs-toggle="popover"*/}}
+                {{/*                          data-bs-content="Floating on an ad fetched" data-original-title="" title=""*/}}
+                {{/*                          data-bs-original-title="">*/}}
+                {{/*                        <svg viewBox="64 64 896 896" data-icon="question-circle" width="1em" height="1em"*/}}
+                {{/*                             fill="currentColor" type="button" tabindex="0">*/}}
+                {{/*                            <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>*/}}
+                {{/*                            <path d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"></path>*/}}
+                {{/*                        </svg>*/}}
+                {{/*                    </span>*/}}
+                {{/*                </div>*/}}
 
             </div>
         </div>
@@ -430,22 +433,22 @@
                         </svg>
                     </span>
                 </div>
-                <div class="d-flex">
-                    <div>
-                        <input id="floating_on_ad_fetched_mobile" name="floating_on_ad_fetched_mobile" class="floating_on_mobile" type="checkbox"
-                               checked>
-                        <label class="light-font-label disabled" for="floating_on_ad_fetched_mobile">Floating on an ad fetched</label>
-                    </div>
-                    <span class="pp16" type="button" tabindex="0" data-bs-toggle="popover"
-                          data-bs-content="Floating on an ad fetched" data-original-title="" title=""
-                          data-bs-original-title="">
-                        <svg viewBox="64 64 896 896" data-icon="question-circle" width="1em" height="1em"
-                             fill="currentColor" type="button" tabindex="0">
-                            <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
-                            <path d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"></path>
-                        </svg>
-                    </span>
-                </div>
+                {{/*                <div class="d-flex">*/}}
+                {{/*                    <div>*/}}
+                {{/*                        <input id="floating_on_ad_fetched_mobile" name="floating_on_ad_fetched_mobile" class="floating_on_mobile" type="checkbox"*/}}
+                {{/*                               checked>*/}}
+                {{/*                        <label class="light-font-label disabled" for="floating_on_ad_fetched_mobile">Floating on an ad fetched</label>*/}}
+                {{/*                    </div>*/}}
+                {{/*                    <span class="pp16" type="button" tabindex="0" data-bs-toggle="popover"*/}}
+                {{/*                          data-bs-content="Floating on an ad fetched" data-original-title="" title=""*/}}
+                {{/*                          data-bs-original-title="">*/}}
+                {{/*                        <svg viewBox="64 64 896 896" data-icon="question-circle" width="1em" height="1em"*/}}
+                {{/*                             fill="currentColor" type="button" tabindex="0">*/}}
+                {{/*                            <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>*/}}
+                {{/*                            <path d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"></path>*/}}
+                {{/*                        </svg>*/}}
+                {{/*                    </span>*/}}
+                {{/*                </div>*/}}
             </div>
         </div>
         <div class="pp15">
@@ -620,11 +623,11 @@
     </div>
 </div>
 <script>
-    function prev() {
-        document.getElementById('slider-container').scrollLeft -= 270;
-    }
+	function prev() {
+		document.getElementById('slider-container').scrollLeft -= 270;
+	}
 
-    function next() {
-        document.getElementById('slider-container').scrollLeft += 270;
-    }
+	function next() {
+		document.getElementById('slider-container').scrollLeft += 270;
+	}
 </script>

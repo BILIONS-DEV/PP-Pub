@@ -1242,6 +1242,7 @@ $(document).ready(function () {
             BoxAdtag.find(".ad_refresh").addClass("d-none");
         }
         // inputCheckBox()
+        changeTemplate()
     });
 
     // $("#sticky_show_on_mobile").change(function () {
@@ -2354,29 +2355,34 @@ function changeRenderer() {
         $("#BoxAdtag").find("#template").closest("div.sidebar-content").addClass("d-none");
         $("#BoxAdtag").find("#content_source").closest("div.sidebar-content").addClass("d-none");
         $("#BoxAdtag").find("#output").closest("div.sidebar-content").removeClass("d-none");
-        $("#BoxAdtag").find(".content_source_sub").attr("hidden", true);
+        $("#BoxAdtag").find(".content_source_sub").addClass("d-none");
+        $("#BoxAdtag").find("#passback_type_outstream").closest("div.sidebar-content").addClass("d-none");
+        $("#BoxAdtag").find("#inline_tag_outstream").closest("div.sidebar-content").addClass("d-none");
+        $("#BoxAdtag").find("#pass_back_outstream").closest("div.sidebar-content").addClass("d-none");
+        // $("#BoxAdtag").find(".instream-show-wrapper").addClass("d-none");
+        // $("#BoxAdtag").find(".outstream-show-wrapper").addClass("d-none");
         if (parseInt(renderer) === 6) {
             $(".renderer_instream_overlay_ad").removeClass("d-none");
         } else {
             $(".renderer_instream_overlay_ad").addClass("d-none");
         }
     } else {
+        changeTemplate();
         $("#BoxAdtag").find("#output").closest("div.sidebar-content").addClass("d-none");
         $("#BoxAdtag").find("#template").closest("div.sidebar-content").removeClass("d-none");
-        $("#BoxAdtag").find("#content_source").closest("div.sidebar-content").removeClass("d-none");
         $(".renderer_instream_overlay_ad").addClass("d-none");
-        SelectContentSource()
-    }
 
-    var renderer_outstream = $("#BoxAdtag").find("#renderer_outstream").val()
-    if (parseInt(renderer_outstream) !== 1) {
-        $("#BoxAdtag").find("#template_outstream").closest("div.sidebar-content").addClass("d-none");
-        $("#BoxAdtag").find("#passback_type_outstream").closest("div.sidebar-content").addClass("d-none");
-        $("#BoxAdtag").find(".collapsePassbackType").addClass("d-none");
-    } else {
-        $("#BoxAdtag").find("#template_outstream").closest("div.sidebar-content").removeClass("d-none");
-        $("#BoxAdtag").find("#passback_type_outstream").closest("div.sidebar-content").removeClass("d-none");
-        checkPassbackType();
+        let templateNow = $("#ConfigVideoBox").find("#template").find(":selected").data("type");
+        if (templateNow == "Outstream") {
+            // $("#BoxAdtag").find(".outstream-show-wrapper").removeClass("d-none");
+            checkPassbackType();
+        }
+
+        if (templateNow == "Instream") {
+            // $("#BoxAdtag").find(".instream-show-wrapper").removeClass("d-none");
+            $("#BoxAdtag").find("#playlist").closest("div.sidebar-content").removeClass("d-none");
+            SelectContentSource()
+        }
     }
 }
 
@@ -2739,4 +2745,25 @@ function selectAdSizeCopyTag() {
             $(".ad-size-fixed").addClass("d-none")
         }
     })
+}
+
+function changeTemplate() {
+    var template = $("#BoxAdtag").find("#template").val();
+    var option = $("#BoxAdtag").find("#template").find('option:selected', this).attr('data-layout');
+    if (option == "None") {
+        $("#BoxAdtag").find("#content_source").closest(".sidebar-content").addClass("d-none");
+        $("#BoxAdtag").find("#playlist").closest(".sidebar-content").addClass("d-none");
+
+        $("#BoxAdtag").find("#passback_type_outstream").closest(".sidebar-content").removeClass("d-none");
+        // $("#BoxAdtag").find("#inline_tag_outstream").closest(".sidebar-content").removeClass("d-none");
+        checkPassbackType();
+    } else {
+        $("#BoxAdtag").find("#content_source").closest(".sidebar-content").removeClass("d-none");
+        $("#BoxAdtag").find("#playlist").closest(".sidebar-content").removeClass("d-none");
+        SelectContentSource()
+
+        $("#BoxAdtag").find("#passback_type_outstream").closest(".sidebar-content").addClass("d-none");
+        $("#BoxAdtag").find("#inline_tag_outstream").closest(".sidebar-content").addClass("d-none");
+        $("#BoxAdtag").find("#pass_back_outstream").closest(".sidebar-content").addClass("d-none");
+    }
 }

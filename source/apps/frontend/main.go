@@ -54,7 +54,6 @@ func initForV2(app fiber.Router) {
 		err   error
 	)
 	configs := config.NewConfig()
-	fmt.Printf("%+v\n", configs.Mysql)
 	//=> init Mysql
 	if configs.Mysql != nil {
 		fmt.Println("init mysql....", true)
