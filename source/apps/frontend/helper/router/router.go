@@ -21,7 +21,7 @@ func Register(app *fiber.App) {
 	//Bidder(app)
 	//Config(app)
 	//Video(app)
-	//AdsTxt(app)
+	AdsTxt(app)
 	//Blocking(app)
 	Support(app)
 	Notification(app)

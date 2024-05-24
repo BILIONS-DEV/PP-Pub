@@ -29,10 +29,12 @@ type LineTracking struct {
 }
 
 type LineInfo struct {
-	Domain string
-	Id     string
-	Type   string
-	Line   string
+	Domain          string
+	Id              string
+	Type            string
+	CertificationID string
+	Comment         string
+	Line            string
 }
 
 var c = colly.NewCollector(
@@ -86,7 +88,7 @@ func Scan(compares []string, samples []string) (resp Response) {
 			if err != nil {
 				continue
 			}
-			if sample.Id == compare.Id && sample.Domain == compare.Domain && sample.Type == compare.Type {
+			if sample.Id == compare.Id && sample.Domain == compare.Domain && sample.Type == compare.Type && sample.CertificationID == compare.CertificationID {
 				isMatch = true
 			}
 		}
@@ -134,20 +136,23 @@ func ReadURL(url string) (compares []string, err error, statusCode int) {
 	collect.WithTransport(&http.Transport{
 		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 	})
-	collect.SetRequestTimeout(10 * time.Second)
+	collect.SetRequestTimeout(30 * time.Second)
 	collect.OnResponse(func(r *colly.Response) {
-		if !strings.Contains(strings.ToLower(r.Headers.Get("Content-Type")), "text/plain") {
+		if !strings.Contains(strings.ToLower(r.Headers.Get("Content-Type")), "text/plain") || !strings.Contains(strings.ToLower(r.Headers.Get("Cache-Control")), "no-cache") {
 			linkInvalid = true
 		} else {
 			linkInvalid = false
 		}
 		body := string(r.Body)
 		//fmt.Printf("%+v \n", body)
+		fmt.Printf("Header: %+v \n", r.Headers)
+		fmt.Printf("Header: %+v \n", r.Request.URL)
 		compares = utility.SplitLines(body)
 		statusCode = r.StatusCode
 	})
 	// Set error handler
 	collect.OnError(func(r *colly.Response, errHandle error) {
+		//fmt.Println("ScanAds --Url: ", url, " --errHandle: ", errHandle, " --Body: ", string(r.Body))
 		statusCode = r.StatusCode
 		if errHandle != nil {
 			err = errHandle
@@ -160,28 +165,38 @@ func ReadURL(url string) (compares []string, err error, statusCode int) {
 			linkInvalid = true
 		}
 	})
-	err = collect.Visit(url + "?t=" + strconv.FormatInt(time.Now().Unix(), 10))
+	err = collect.Visit(url)
 	collect.Wait()
 	if linkInvalid {
-		err = collect.Visit(url)
+		linkInvalid = false
+		err = collect.Visit(url + "?t=" + strconv.FormatInt(time.Now().Unix(), 10))
 		collect.Wait()
+
+		if linkInvalid {
+			err = collect.Visit(url)
+			collect.Wait()
+		}
 	}
 	return
 }
 
 func ParseLine(line string) (parse LineInfo, err error) {
-	parser := strings.Split(line, ",")
-	if len(parser) < 3 {
+	// Tách phần comment nếu có
+	parts := strings.SplitN(line, "#", 2)
+	var comment string
+	if len(parts) == 2 {
+		comment = strings.TrimSpace(parts[1])
+	}
+	mainPart := strings.TrimSpace(parts[0])
+
+	parser := strings.Split(mainPart, ",")
+	if len(parser) < 3 || len(parser) > 4 {
 		err = errors.New("line is not in the correct format")
 		return
 	}
 
 	typeText := strings.ToLower(strings.TrimSpace(parser[2]))
-	if strings.Contains(typeText, "reseller") {
-		typeText = "reseller"
-	} else if strings.Contains(typeText, "direct") {
-		typeText = "direct"
-	} else {
+	if typeText != "reseller" && typeText != "direct" {
 		err = errors.New("type of line is not in the correct format")
 		return
 	}
@@ -189,7 +204,11 @@ func ParseLine(line string) (parse LineInfo, err error) {
 	parse.Domain = strings.ToLower(strings.TrimSpace(parser[0]))
 	parse.Id = strings.ToLower(strings.TrimSpace(parser[1]))
 	parse.Type = typeText
+	parse.Comment = comment
 	parse.Line = line
+	if len(parser) == 4 {
+		parse.CertificationID = strings.TrimSpace(parser[3])
+	}
 
 	return
 }

@@ -7,12 +7,13 @@ import (
 )
 
 func AdsTxt(app *fiber.App) {
-	AdsTxt := new(controller.AdsTxt)
-	app.Get("/jsx/test", AdsTxt.Test)
-	app.Get(config.URIAdsTxt, AdsTxt.Index)
-	app.Post(config.URIAdsTxt, AdsTxt.Filter)
-	app.Get(config.URIAdsTxtDetail, AdsTxt.Detail)
-	app.Post(config.URIAdsTxtDetail, AdsTxt.SaveAdsTxt)
-	app.Post(config.URIAdsTxtScan, AdsTxt.Scan)
-	app.Post(config.URIAdsTxtLoad, AdsTxt.Load)
+	// get url
+	adsTxt := new(controller.AdsTxt)
+	app.Get("/jsx/test", adsTxt.Test)
+	app.Get(config.URIAdsTxt, adsTxt.Index)
+	app.Post(config.URIAdsTxt, adsTxt.Filter)
+	app.Get(config.URIAdsTxtDetail, adsTxt.Detail)
+	app.Post(config.URIAdsTxtDetail, adsTxt.SaveAdsTxt)
+	app.Post(config.URIAdsTxtScan, adsTxt.Scan)
+	app.Post(config.URIAdsTxtLoad, adsTxt.Load)
 }
