@@ -179,29 +179,23 @@ function SumitFormBilling(formID, ajaxUrl, callback) {
 }
 
 function ChangeTab() {
-    $(".custom-tab").on("click", ".nav-link", function () {
-        $(".custom-tab").find(".nav-link").removeClass("pp-4").removeClass('at-1')
-        $(this).addClass("pp-4")
-        var tab = $(this).attr("data-tab")
-        if (tab != "1") {
-            $(this).addClass("at-1")
-        }
-    })
-
     $("#tab-profile").on("click", function () {
-        $("#tab-profile").addClass("active")
-        $("#tab-change-password").removeClass("active")
-        $("#tab-billing").removeClass("active")
+        $("#tab-profile").addClass("active pp-4")
+        $("#tab-change-password").removeClass("active pp-4")
+        $("#tab-billing").removeClass("active pp-4")
+        makeParamsUrl("profile")
     })
     $("#tab-change-password").on("click", function () {
-        $("#tab-profile").removeClass("active")
-        $("#tab-change-password").addClass("active")
-        $("#tab-billing").removeClass("active")
+        $("#tab-profile").removeClass("active pp-4")
+        $("#tab-change-password").addClass("active pp-4")
+        $("#tab-billing").removeClass("active pp-4")
+        makeParamsUrl("password")
     })
     $("#tab-billing").on("click", function () {
-        $("#tab-profile").removeClass("active")
-        $("#tab-change-password").removeClass("active")
-        $("#tab-billing").addClass("active")
+        $("#tab-profile").removeClass("active pp-4")
+        $("#tab-change-password").removeClass("active pp-4")
+        $("#tab-billing").addClass("active pp-4")
+        makeParamsUrl("billing")
     })
 }
 
@@ -209,4 +203,12 @@ function ChangeMinPayCcurrency(element) {
     let selectValue = element.val();
     $(".currency-minpay").addClass("d-none");
     $(".currency-" + selectValue).removeClass("d-none");
+}
+
+function makeParamsUrl(params) {
+    // let params = jQuery.param(obj)
+    let newUrl = "/user/" + params
+    // console.log(newUrl);
+    window.history.pushState("object or string", "Title", newUrl);
+    window.history.replaceState("object or string", "Title", newUrl);
 }

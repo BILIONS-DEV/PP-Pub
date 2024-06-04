@@ -22,6 +22,7 @@ type AssignUserAccount struct {
 	Row           model.UserRecord
 	Billing       model.UserBillingRecord
 	BillingMethod []string
+	Tab           string
 }
 
 type AssignUserForgetPassword struct {
@@ -190,11 +191,22 @@ func (t *User) BillingSettingPost(ctx *fiber.Ctx) error {
 func (t *User) AccountSettingGet(ctx *fiber.Ctx) error {
 	userLogin := GetUserLogin(ctx)
 	userAdmin := GetUserAdmin(ctx)
-	isAccept := new(model.User).CheckUserLogin(userLogin, userAdmin, config.URIAccountSetting)
+	isAccept := new(model.User).CheckUserLogin(userLogin, userAdmin, config.URIAccountProfile)
 	if !isAccept {
 		return ctx.SendStatus(fiber.StatusNotFound)
 	}
 	assigns := AssignUserAccount{Schema: assign.Get(ctx)}
+	// get uri
+	uri := ctx.Path()
+	switch strings.TrimSpace(uri) {
+	case "/user/profile", "/user/account":
+		assigns.Tab = "profile"
+	case "/user/billing":
+		assigns.Tab = "billing"
+	case "/user/password":
+		assigns.Tab = "password"
+	}
+
 	assigns.Title = config.TitleWithPrefix("Update Account")
 	assigns.Row = new(model.User).GetById(userLogin.Id)
 	assigns.Billing = new(model.UserBilling).GetByUserId(userLogin.Id)

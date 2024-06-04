@@ -20,11 +20,11 @@ import (
 type Payment struct{}
 
 type PaymentRecord struct {
-	mysql.TablePaymentInvoice
+	mysql.TablePaymentSubPub
 }
 
 func (PaymentRecord) TableName() string {
-	return mysql.Tables.PaymentInvoice
+	return mysql.Tables.PaymentSubPub
 }
 
 func (t *Payment) GetByFilters(inputs *payload.InputPaymentFilter, user UserRecord) (response datatable.Response, err error) {

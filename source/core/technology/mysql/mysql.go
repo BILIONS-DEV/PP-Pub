@@ -85,6 +85,7 @@ type tables struct {
 	LineItemAccount           string
 	PaymentInvoice            string
 	PaymentRequest            string
+	PaymentSubPub             string
 	LogErrorPushLineItem      string
 	LogErrorPushLineItemDfp   string
 	LogErrorWorker            string
@@ -209,6 +210,7 @@ func init() {
 		LineItemAccount:           "line_item_account",
 		PaymentInvoice:            "payment_invoice",
 		PaymentRequest:            "payment_request",
+		PaymentSubPub:             "payment_sub_pub",
 		LogErrorPushLineItem:      "log_error_push_line_item",
 		LogErrorPushLineItemDfp:   "log_error_push_line_item_dfp",
 		LogErrorWorker:            "log_error_worker",

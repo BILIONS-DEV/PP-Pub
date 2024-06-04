@@ -34,7 +34,13 @@
         <js link="/assets/plugins/bootstrap-select-1.13.18/js/bootstrap-select.min.js"/>
         <jsOnBottom link="/assets/user/account.js"/>
     </page>
-    <page path="/user/password" includePath="/user/form">
+    <page path="/user/profile" includePath="/user/account">
+        <jsOnBottom link="/assets/user/account.js"/>
+    </page>
+    <page path="/user/password" includePath="/user/account">
+        <jsOnBottom link="/assets/user/account.js"/>
+    </page>
+    <page path="/user/billing" includePath="/user/account">
         <jsOnBottom link="/assets/user/account.js"/>
     </page>
     <page path="/user/forgot-password" includePath="/user/form">

@@ -49,13 +49,13 @@
         {{template "user/account/inc.tab" .}}
 
         <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade p-4 active show" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <div class="tab-pane fade p-4 {{if eq .Tab "profile"}}active show{{end}}" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                 {{template "user/account/profile" .}}
             </div>
-            <div class="tab-pane fade p-4" id="nav-change-password" role="tabpanel" aria-labelledby="nav-change-password-tab">
+            <div class="tab-pane fade p-4 {{if eq .Tab "password"}}active show{{end}}" id="nav-change-password" role="tabpanel" aria-labelledby="nav-change-password-tab">
                 {{template "user/account/change-password" .}}
             </div>
-            <div class="tab-pane fade p-4" id="nav-billing" role="tabpanel" aria-labelledby="nav-billing-tab">
+            <div class="tab-pane fade p-4 {{if eq .Tab "billing"}}active show{{end}}" id="nav-billing" role="tabpanel" aria-labelledby="nav-billing-tab">
                 {{template "user/account/billing" .}}
             </div>
         </div>

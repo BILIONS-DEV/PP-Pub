@@ -74,7 +74,6 @@ type AssignPaymentInvoice struct {
 	Today              string
 	PaidDate           string
 	TotalAmountReqeust string
-	Requests           []model.PaymentRequestRecord
 	// RevenueShare int64
 }
 

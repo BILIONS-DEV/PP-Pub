@@ -5,12 +5,15 @@ const (
 	URIDashboards = "/dashboards"
 	URIITest      = "/test"
 
-	URIUser           = "/user"
-	URIRegister       = "/register"
-	URILogin          = "/login"
-	URILogout         = "/user/logout"
-	URIBillingSetting = "/user/billing"
-	URIAccountSetting = "/user/account"
+	URIUser            = "/user"
+	URIRegister        = "/register"
+	URILogin           = "/login"
+	URILogout          = "/user/logout"
+	URIBillingSetting  = "/user/billing"
+	URIAccountSetting  = "/user/account"
+	URIAccountProfile  = "/user/profile"
+	URIAccountPassword = "/user/password"
+	URIAccountBilling  = "/user/billing"
 	//URIChangePassWord = "/user/password"
 	URIForgotPassWord = "/user/forgot-password"
 	URIResetPassWord  = "/user/new-password"
@@ -274,22 +277,18 @@ type SidebarSetupUri struct {
 	ReportGroup  []string
 	SupportGroup []string
 	SalesGroup   []string
+	PaymentGroup []string
 
 	// Support
-	Support []string
-
-	Blocking []string
-
-	Identity []string
-
-	Payment []string
-
-	History []string
-
+	Support     []string
+	Blocking    []string
+	Identity    []string
+	Payment     []string
+	Billing     []string
+	History     []string
 	SalesReport []string
 	Campaign    []string
-
-	AdBlock []string
+	AdBlock     []string
 }
 
 var SidebarSetup SidebarSetupUri
@@ -376,7 +375,10 @@ func init() {
 	) // Saved
 	SidebarSetup.Report = append(SidebarSetup.Report,
 		URIReport, // => Report
-	) // Saved
+	) // Report
+	SidebarSetup.Billing = append(SidebarSetup.Billing,
+		URIAccountBilling, // => billing
+	)
 	SidebarSetup.SystemGroup = append(SidebarSetup.SystemGroup, SidebarSetup.Bidder...)
 	SidebarSetup.SystemGroup = append(SidebarSetup.SystemGroup, SidebarSetup.Config...)
 	// SetupGroup
@@ -400,4 +402,7 @@ func init() {
 	// SalesGroup
 	SidebarSetup.SalesGroup = append(SidebarSetup.SalesGroup, SidebarSetup.SalesReport...)
 	SidebarSetup.SalesGroup = append(SidebarSetup.SalesGroup, SidebarSetup.Campaign...)
+	// PaymentGroup
+	SidebarSetup.PaymentGroup = append(SidebarSetup.PaymentGroup, SidebarSetup.Payment...)
+	SidebarSetup.PaymentGroup = append(SidebarSetup.PaymentGroup, SidebarSetup.Billing...)
 }
