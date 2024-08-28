@@ -131,7 +131,7 @@
 
                     <div class="mb-4">
                         <p>{{$AdsTxtLang.RedirectUrl}}</p>
-                        <input class="form-control" value="https://ads-txt.bilsyndication.com/{{.Domain.Uuid}}/ads.txt"/>
+                        <input class="form-control" value="https://{{.ServiceHostName}}/{{.Domain.Uuid}}/ads.txt"/>
                     </div>
 
                     <div>
@@ -141,7 +141,7 @@
                             <div class="bg-gray-50 p-3">
                                 <code>
                                     <span>Redirect 301 /ads.txt</span>
-                                    https://ads-txt.bilsyndication.com/{{.Domain.Uuid}}/ads.txt
+                                    https://{{.ServiceHostName}}/{{.Domain.Uuid}}/ads.txt
                                 </code>
                             </div>
                         </div>
@@ -152,7 +152,7 @@
                                     server {<br>
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;location ~ /ads.txt {<br>
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 301
-                                    https://ads-txt.bilsyndication.com/{{.Domain.Uuid}}/ads.txt;<br>
+                                    https://{{.ServiceHostName}}/{{.Domain.Uuid}}/ads.txt;<br>
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
                                     }
                                 </code>
@@ -182,7 +182,7 @@
                                     }<br><br>
                                     if (getRequestUri() == "/ads.txt") {<br>
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; header('Location:
-                                    https://ads-txt.bilsyndication.com/{{.Domain.Uuid}}/ads.txt');<br>
+                                    https://{{.ServiceHostName}}/{{.Domain.Uuid}}/ads.txt');<br>
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; exit;<br>
                                     };<br>
                                 </code>

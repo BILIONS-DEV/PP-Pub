@@ -78,7 +78,7 @@
     <p>In order for Ads.txt Manager to handle your ads.txt file, you’ll need to set a redirect for your ads.txt file so that Ads.txt Manager can handle the file.</p>
     <div class="pp7" style="width: 800px;">
         <span class="pp11" style="border-left: 1px solid #aab4c8;border-right: 0;border-radius: 2px 0 0 2px;font-size: 12px;">Ads.txt redirect url</span>
-        <input style="width: 424px;border-top-left-radius: 0;border-bottom-left-radius: 0;" class="pp10" type="text" value="https://ads-txt.bilsyndication.com/{{.Row.Uuid}}/ads.txt">
+        <input style="width: 424px;border-top-left-radius: 0;border-bottom-left-radius: 0;" class="pp10" type="text" value="https://{{.ServiceHostName}}/{{.Row.Uuid}}/ads.txt">
     </div>
     <div class="pp30">There are 3 different ways you can set your redirect</div>
     <div class="pp31">
@@ -92,13 +92,13 @@
             </nav>
             <div class="tab-content mt-3 pp34" id="nav-tabContent">
                 <div class="tab-pane fade active show" id="nav-htaccess" role="tabpanel" aria-labelledby="nav-htaccess-tab">
-                    <code> <span>Redirect 301 /ads.txt</span> https://ads-txt.bilsyndication.com/{{.Row.Uuid}}/ads.txt
+                    <code> <span>Redirect 301 /ads.txt</span> https://{{.ServiceHostName}}/{{.Row.Uuid}}/ads.txt
                     </code>
                 </div>
                 <div class="tab-pane fade" id="nav-nginx" role="tabpanel" aria-labelledby="nav-nginx-tab">
                     <code> server {<br>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;location ~ /ads.txt {<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 301 https://ads-txt.bilsyndication.com/{{.Row.Uuid}}/ads.txt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 301 https://{{.ServiceHostName}}/{{.Row.Uuid}}/ads.txt;<br>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br> } </code>
                 </div>
                 <div class="tab-pane fade" id="nav-php" role="tabpanel" aria-labelledby="nav-php-tab">
@@ -113,7 +113,7 @@
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$request_uri = str_replace("?" . $_SERVER['QUERY_STRING'], "", $_SERVER['REQUEST_URI']);<br>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return $request_uri;<br> }<br><br> if (getRequestUri() == "/ads.txt") {<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; header('Location: https://ads-txt.bilsyndication.com/{{.Row.Uuid}}/ads.txt');<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; header('Location: https://{{.ServiceHostName}}/{{.Row.Uuid}}/ads.txt');<br>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; exit;<br> };<br> </code>
                 </div>
             </div>
@@ -123,7 +123,7 @@
         {{/*            <a href="#" class="pp33">.htaccess</a> <a href="#">Nginx</a> <a href="#">PHP</a>*/}}
         {{/*        </div>*/}}
         {{/*        <div class="pp34">*/}}
-        {{/*            <span>Redirect 301 /ads.txt https://ads-txt.bilsyndication.com/d1f317a3-ff94-4fdc-825d-39a74aadcb42/ads.txt</span>*/}}
+        {{/*            <span>Redirect 301 /ads.txt https://{{.ServiceHostName}}/d1f317a3-ff94-4fdc-825d-39a74aadcb42/ads.txt</span>*/}}
         {{/*            <a href="#">*/}}
         {{/*                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="ds-icon-dashboard-copy">*/}}
         {{/*                    <path d="M19.75 8.69h-2.37V6.31a2 2 0 0 0-2-2H4.25a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2.37v2.38a2 2 0 0 0 2 2h11.13a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2zm-15.5 4.62v-7h11.13v2.38H8.62a2 2 0 0 0-2 2v2.62zm15.5 4.38H8.62v-7h11.13z">*/}}

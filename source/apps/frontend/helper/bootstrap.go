@@ -61,25 +61,29 @@ func Bootstrap(ctx *fiber.Ctx) error {
 	if uri == "/" || uri == "/user/login" {
 		return ctx.Redirect(config.URIDashboards)
 	}
-
+	var serviceHost = "ads-txt.bilsyndication.com"
+	if UserLogin.UserInfo.ServiceHostName != "" {
+		serviceHost = UserLogin.UserInfo.ServiceHostName
+	}
 	ctx.Locals(assign.KEY, assign.Schema{
-		Uri:          uri,
-		RootDomain:   rootDomain,
-		HostName:     ctx.Hostname(),
-		BackURL:      backURL,
-		CurrentURL:   currentURL,
-		Version:      "dev",
-		Title:        "Self-service advertising system - Valueimpression.com",
-		Logo:         UserLogin.UserInfo.Logo,
-		Brand:        UserLogin.UserInfo.Brand,
-		Theme:        "muze",
-		TemplatePath: uri,
-		ThemeSetting: view.Setting.ReleVersion,
-		UserLogin:    UserLogin,
-		UserAdmin:    userAdmin,
-		SidebarSetup: config.SidebarSetup,
-		LANG:         lang.Translate,
-		DeviceUA:     utility.GetDeviceFromUA(string(ctx.Context().UserAgent())),
+		Uri:             uri,
+		RootDomain:      rootDomain,
+		HostName:        ctx.Hostname(),
+		BackURL:         backURL,
+		CurrentURL:      currentURL,
+		Version:         "dev",
+		Title:           "Self-service advertising system - Valueimpression.com",
+		Logo:            UserLogin.UserInfo.Logo,
+		Brand:           UserLogin.UserInfo.Brand,
+		ServiceHostName: serviceHost,
+		Theme:           "muze",
+		TemplatePath:    uri,
+		ThemeSetting:    view.Setting.ReleVersion,
+		UserLogin:       UserLogin,
+		UserAdmin:       userAdmin,
+		SidebarSetup:    config.SidebarSetup,
+		LANG:            lang.Translate,
+		DeviceUA:        utility.GetDeviceFromUA(string(ctx.Context().UserAgent())),
 	})
 	//if UserLogin.Logo != "" && UserLogin.RootDomain != "" {
 	config.TitlePrefix = UserLogin.UserInfo.Brand

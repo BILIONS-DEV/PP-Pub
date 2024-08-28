@@ -216,6 +216,7 @@ func (t *User) UserLogin(ctx *fiber.Ctx) (user UserRecord) {
 			user.UserInfo.Logo = presenter.UserInfo.Logo
 			user.UserInfo.RootDomain = presenter.UserInfo.RootDomain
 			user.UserInfo.Brand = presenter.UserInfo.Brand
+			user.UserInfo.ServiceHostName = presenter.UserInfo.ServiceHostName
 		}
 	}
 	if !user.IsAdmin() {
