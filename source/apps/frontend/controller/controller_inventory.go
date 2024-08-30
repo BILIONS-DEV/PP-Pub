@@ -559,6 +559,7 @@ type BuildScript struct {
 	TextColor       string
 	BorderColor     string
 	IsShowStyle     bool
+	Publisher       model.UserRecord
 }
 
 type ScriptTag struct {
@@ -593,6 +594,7 @@ func (t *Inventory) BuildScript(ctx *fiber.Ctx) (err error) {
 	if tagDesktop.Size.Width != tagMobile.Size.Width || tagDesktop.Size.Height != tagMobile.Size.Height {
 		isShowStyle = true
 	}
+	PubWhiteLable := new(model.User).GetById(userLogin.Presenter)
 	// data := htmlblock.Render("websites/box.copy_adtag.gohtml", copyTag).String()
 	return ctx.Render("websites/copy_adtag/script", BuildScript{
 		TimeStamp:       time.Now().Unix(),
@@ -603,6 +605,7 @@ func (t *Inventory) BuildScript(ctx *fiber.Ctx) (err error) {
 		TextColor:       buildScript.TextColor,
 		BorderColor:     buildScript.BorderColor,
 		IsShowStyle:     isShowStyle,
+		Publisher:       PubWhiteLable,
 	})
 }
 

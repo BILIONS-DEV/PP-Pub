@@ -1,33 +1,68 @@
 {{- /*gotype: source/apps/frontend/controller.BuildScript*/ -}}
+    {{if ne .Publisher.TableUser.ParentSub "yes"}}
 {{if eq .TagDesktop.AdTag.TableInventoryAdTag.Type 1}}{{if eq .IsShowStyle true}}<style>
         /{{""}}* Fixed Heigh for CLS - Cumulative Layout Shift */
         @media only screen and (min-width: 992px) {
-            #div-vi-{{$.TimeStamp}} {
+            #div-pw-{{$.TimeStamp}} {
                 width: {{.TagDesktop.Size.Width}}px !important;
                 height: {{.TagDesktop.Size.Height}}px !important;
             }
         }
     </style>
-    {{end}}<div id="div-vi-{{$.TimeStamp}}"
+    {{end}}<div id="div-pw-{{$.TimeStamp}}"
          style="width: {{.TagMobile.Size.Width}}px;height: {{.TagMobile.Size.Height}}px;{{if eq .PlaceHolder 1}}border: 1px solid {{.BorderColor}};margin: 0 auto;display: flex;justify-content: center;align-items: center;font-weight: bold;color: {{.TextColor}};{{end}}">{{if eq .PlaceHolder 1}}<span>{{.PlaceHolderText}}</span>{{end}}</div>
     <script type="text/javascript">
-        (vitag.Init = window.vitag.Init || []).push(function () {
-            if (viAPItag.mobileDetect()) {
-                document.getElementById("div-vi-{{$.TimeStamp}}").innerHTML = '<div class="futureads" style="width:{{.TagMobile.Size.Width}}px;height:{{.TagMobile.Size.Height}}px;display:inline-block;" data-ad-slot="{{.TagMobile.Slot}}"></div>';
-                viAPItag.display("{{.TagMobile.Slot}}");
+        (powerTag.Init = window.powerTag.Init || []).push(function () {
+            if (powerAPITag.mobileDetect()) {
+                document.getElementById("div-pw-{{$.TimeStamp}}").innerHTML = '<pubtag class="adsbypubpower" style="width:{{.TagMobile.Size.Width}}px;height:{{.TagMobile.Size.Height}}px;display:inline-block;" data-ad-slot="{{.TagMobile.Slot}}"></pubtag>';
+                powerAPITag.display("{{.TagMobile.Slot}}");
             } else {
-                document.getElementById("div-vi-{{$.TimeStamp}}").innerHTML = '<div class="futureads" style="width:{{.TagDesktop.Size.Width}}px;height:{{.TagDesktop.Size.Height}}px;display:inline-block;" data-ad-slot="{{.TagDesktop.Slot}}"></div>';
-                viAPItag.display("{{.TagDesktop.Slot}}");
+                document.getElementById("div-pw-{{$.TimeStamp}}").innerHTML = '<pubtag class="adsbypubpower" style="width:{{.TagDesktop.Size.Width}}px;height:{{.TagDesktop.Size.Height}}px;display:inline-block;" data-ad-slot="{{.TagDesktop.Slot}}"></pubtag>';
+                powerAPITag.display("{{.TagDesktop.Slot}}");
             }
         })
     </script>
 {{else if eq .TagDesktop.AdTag.TableInventoryAdTag.Type 5}}<script type="text/javascript">
-        (vitag.Init = window.vitag.Init || []).push(function () {
-            if (viAPItag.mobileDetect()) {
-                viAPItag.initStickyBanner("{{.TagMobile.Slot}}")
+        (powerTag.Init = window.powerTag.Init || []).push(function () {
+            if (powerAPITag.mobileDetect()) {
+                powerAPITag.initStickyBanner("{{.TagMobile.Slot}}")
             } else {
-                viAPItag.initStickyBanner("{{.TagDesktop.Slot}}");
+                powerAPITag.initStickyBanner("{{.TagDesktop.Slot}}");
             }
         })
     </script>
 {{end}}
+    {{else}}
+{{if eq .TagDesktop.AdTag.TableInventoryAdTag.Type 1}}{{if eq .IsShowStyle true}}<style>
+    /{{""}}* Fixed Heigh for CLS - Cumulative Layout Shift */
+    @media only screen and (min-width: 992px) {
+        #div-pw-{{$.TimeStamp}} {
+            width: {{.TagDesktop.Size.Width}}px !important;
+            height: {{.TagDesktop.Size.Height}}px !important;
+        }
+    }
+</style>
+{{end}}<div id="div-pw-{{$.TimeStamp}}"
+     style="width: {{.TagMobile.Size.Width}}px;height: {{.TagMobile.Size.Height}}px;{{if eq .PlaceHolder 1}}border: 1px solid {{.BorderColor}};margin: 0 auto;display: flex;justify-content: center;align-items: center;font-weight: bold;color: {{.TextColor}};{{end}}">{{if eq .PlaceHolder 1}}<span>{{.PlaceHolderText}}</span>{{end}}</div>
+<script type="text/javascript">
+    (wapTag.Init = window.wapTag.Init || []).push(function () {
+        if (wAPITag.mobileDetect()) {
+            document.getElementById("div-pw-{{$.TimeStamp}}").innerHTML = '<div class="futureads" style="width:{{.TagMobile.Size.Width}}px;height:{{.TagMobile.Size.Height}}px;display:inline-block;" data-ad-slot="{{.TagMobile.Slot}}"></div>';
+            wAPITag.display("{{.TagMobile.Slot}}");
+        } else {
+            document.getElementById("div-pw-{{$.TimeStamp}}").innerHTML = '<div class="futureads" style="width:{{.TagDesktop.Size.Width}}px;height:{{.TagDesktop.Size.Height}}px;display:inline-block;" data-ad-slot="{{.TagDesktop.Slot}}"></div>';
+            wAPITag.display("{{.TagDesktop.Slot}}");
+        }
+    })
+</script>
+{{else if eq .TagDesktop.AdTag.TableInventoryAdTag.Type 5}}<script type="text/javascript">
+        (wapTag.Init = window.wapTag.Init || []).push(function () {
+            if (wAPITag.mobileDetect()) {
+                wAPITag.initStickyBanner("{{.TagMobile.Slot}}")
+            } else {
+                wAPITag.initStickyBanner("{{.TagDesktop.Slot}}");
+            }
+        })
+    </script>
+{{end}}
+    {{end}}
