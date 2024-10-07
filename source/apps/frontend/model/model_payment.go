@@ -139,7 +139,7 @@ func (t *Payment) MakeResponseDatatable(Invoices []PaymentRecord) (records []Pay
 		// endDate, _ := time.Parse("20060102", strconv.Itoa(Invoice.EndDate))
 		rec := PaymentRecordDatatable{
 			Period: block.RenderToString("payment/index/block.period.gohtml", fiber.Map{
-				"Month": Invoice.StartDate.Format("January 2006"),
+				"Month": Invoice.StartDate.Format("01/02/2006") + " - " + Invoice.EndDate.Format("01/02/2006"),
 			}),
 			Amout: block.RenderToString("payment/index/block.amount.gohtml", fiber.Map{
 				"Amount":       php2go.NumberFormat(Invoice.Amount, 2, ".", ","),
