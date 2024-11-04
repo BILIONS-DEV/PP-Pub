@@ -20,6 +20,7 @@ type Schema struct {
 	Version         string           `json:"version"`
 	Title           string           `json:"title"`
 	Logo            string           `json:"logo"`
+	LogoWidth       int              `json:"logo_width"`
 	Brand           string           `json:"brand"`
 	ServiceHostName string           `json:"service_host_name`
 	Theme           string           `json:"theme"`

@@ -214,6 +214,7 @@ func (t *User) UserLogin(ctx *fiber.Ctx) (user UserRecord) {
 		presenter := t.GetById(user.Presenter)
 		if presenter.ParentSub == "yes" {
 			user.UserInfo.Logo = presenter.UserInfo.Logo
+			user.UserInfo.LogoWidth = presenter.UserInfo.LogoWidth
 			user.UserInfo.RootDomain = presenter.UserInfo.RootDomain
 			user.UserInfo.Brand = presenter.UserInfo.Brand
 			user.UserInfo.ServiceHostName = presenter.UserInfo.ServiceHostName

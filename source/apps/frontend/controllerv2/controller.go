@@ -158,6 +158,7 @@ func bootstrap(ctx *fiber.Ctx, h *handler) error {
 		Version:      "dev",
 		Title:        "Self-service advertising system",
 		Logo:         parentSub.Logo,
+		LogoWidth:    parentSub.LogoWidth,
 		Brand:        parentSub.Brand,
 		Theme:        "muze",
 		TemplatePath: uri,
@@ -239,6 +240,7 @@ type Assign struct {
 	Version      string      `json:"version"`
 	Title        string      `json:"title"`
 	Logo         string      `json:"logo"`
+	LogoWidth    int         `json:"logo_width"`
 	Brand        string      `json:"brand"`
 	Theme        string      `json:"theme"`
 	TemplatePath string      `json:"template_path"`

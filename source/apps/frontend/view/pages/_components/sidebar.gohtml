@@ -16,7 +16,7 @@
         {{/*        </div>*/}}
         <a href="/" class="">
             {{if (ne .Logo "")}}
-                <img src="{{.Logo}}" alt="{{.Brand}}">
+                <img src="{{.Logo}}" alt="{{.Brand}}" style="width: {{.LogoWidth}}px!important;">
                 {{/*                <img src="{{.RootDomain}}/assets/svg/brand/logo-white.svg" alt="Muze" class="white-logo2">*/}}
                 {{/*                <img src="{{.RootDomain}}/assets/svg/brand/muze-icon.svg" class="muze-icon" alt="Muze">*/}}
                 {{/*                <img src="{{.RootDomain}}/assets/svg/brand/muze-icon-white.svg" class="muze-icon-white" alt="Muze"> </a>*/}}
@@ -153,35 +153,35 @@
                     </div>
                     <span class="ms-3">Websites</span> </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#sidebarVideo" data-bs-toggle="collapse" role="button"
-                   aria-expanded="{{if IsActiveSidebarWithGroup .Uri .SidebarSetup.VideoGroup}}true{{end}}"
-                   aria-controls="sidebarAuthentication">
-                    <div class="menu-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                             class="bi bi-play-circle-fill" viewBox="0 0 16 16">
-                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/>
-                        </svg> &nbsp;
-                    </div>
-                    <span class="ms-3">Studio</span> </a>
-                <div class="collapse collapse-box {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.VideoGroup}}show{{end}}"
-                     id="sidebarVideo" data-bs-parent="#sidebarParent">
-                    <ul class="nav nav-sm flex-column" id="sidebarVideoSubmenu" {{.Uri}}>
-                        <li class="nav-item">
-                            <a href="/player/template" class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.Template}}active{{end}}"> Template </a>
-                        </li>
-                        {{/*                        <li class="nav-item">*/}}
-                        {{/*                            <a href="{{$channelURI}}" class="nav-link {{if or (eq .Uri $channelURI) (eq .Uri $channelEditURI) (eq .Uri $channelAddURI)}}active{{end}}"> Channels </a>*/}}
-                        {{/*                        </li>*/}}
-                        {{/*                        <li class="nav-item">*/}}
-                        {{/*                            <a href="{{$contentURI}}" class="nav-link {{if or (eq .Uri $contentURI) (eq .Uri $contentAddVideoURI) (eq .Uri $contentEditVideoURI) (eq .Uri $contentAddQuizURI) (eq .Uri $contentEditQuizURI)}}active{{end}}"> Content </a>*/}}
-                        {{/*                        </li>*/}}
-                        <li class="nav-item">
-                            <a href="/playlist" class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.Playlist}}active{{end}}"> Playlist </a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+{{/*            <li class="nav-item">*/}}
+{{/*                <a class="nav-link collapsed" href="#sidebarVideo" data-bs-toggle="collapse" role="button"*/}}
+{{/*                   aria-expanded="{{if IsActiveSidebarWithGroup .Uri .SidebarSetup.VideoGroup}}true{{end}}"*/}}
+{{/*                   aria-controls="sidebarAuthentication">*/}}
+{{/*                    <div class="menu-icon">*/}}
+{{/*                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"*/}}
+{{/*                             class="bi bi-play-circle-fill" viewBox="0 0 16 16">*/}}
+{{/*                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/>*/}}
+{{/*                        </svg> &nbsp;*/}}
+{{/*                    </div>*/}}
+{{/*                    <span class="ms-3">Studio</span> </a>*/}}
+{{/*                <div class="collapse collapse-box {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.VideoGroup}}show{{end}}"*/}}
+{{/*                     id="sidebarVideo" data-bs-parent="#sidebarParent">*/}}
+{{/*                    <ul class="nav nav-sm flex-column" id="sidebarVideoSubmenu" {{.Uri}}>*/}}
+{{/*                        <li class="nav-item">*/}}
+{{/*                            <a href="/player/template" class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.Template}}active{{end}}"> Template </a>*/}}
+{{/*                        </li>*/}}
+{{/*                        */}}{{/*                        <li class="nav-item">*/}}
+{{/*                        */}}{{/*                            <a href="{{$channelURI}}" class="nav-link {{if or (eq .Uri $channelURI) (eq .Uri $channelEditURI) (eq .Uri $channelAddURI)}}active{{end}}"> Channels </a>*/}}
+{{/*                        */}}{{/*                        </li>*/}}
+{{/*                        */}}{{/*                        <li class="nav-item">*/}}
+{{/*                        */}}{{/*                            <a href="{{$contentURI}}" class="nav-link {{if or (eq .Uri $contentURI) (eq .Uri $contentAddVideoURI) (eq .Uri $contentEditVideoURI) (eq .Uri $contentAddQuizURI) (eq .Uri $contentEditQuizURI)}}active{{end}}"> Content </a>*/}}
+{{/*                        */}}{{/*                        </li>*/}}
+{{/*                        <li class="nav-item">*/}}
+{{/*                            <a href="/playlist" class="nav-link {{if IsActiveSidebarWithGroup .Uri .SidebarSetup.Playlist}}active{{end}}"> Playlist </a>*/}}
+{{/*                        </li>*/}}
+{{/*                    </ul>*/}}
+{{/*                </div>*/}}
+{{/*            </li>*/}}
             {{/*Setup*/}}
 
             <li class="nav-item">

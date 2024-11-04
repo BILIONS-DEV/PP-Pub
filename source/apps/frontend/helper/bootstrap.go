@@ -65,6 +65,9 @@ func Bootstrap(ctx *fiber.Ctx) error {
 	if UserLogin.UserInfo.ServiceHostName != "" {
 		serviceHost = UserLogin.UserInfo.ServiceHostName
 	}
+	if UserLogin.UserInfo.LogoWidth == 0 {
+		UserLogin.UserInfo.LogoWidth = 100
+	}
 	ctx.Locals(assign.KEY, assign.Schema{
 		Uri:             uri,
 		RootDomain:      rootDomain,
@@ -74,6 +77,7 @@ func Bootstrap(ctx *fiber.Ctx) error {
 		Version:         "dev",
 		Title:           "Self-service advertising system - Valueimpression.com",
 		Logo:            UserLogin.UserInfo.Logo,
+		LogoWidth:       UserLogin.UserInfo.LogoWidth,
 		Brand:           UserLogin.UserInfo.Brand,
 		ServiceHostName: serviceHost,
 		Theme:           "muze",

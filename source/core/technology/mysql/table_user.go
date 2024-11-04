@@ -297,6 +297,7 @@ type TableUserInfo struct {
 	Avatar          string    `gorm:"column:avatar" json:"avatar"`
 	AvatarVLI       string    `gorm:"column:avatar_vli" json:"avatar_vli"`
 	Logo            string    `gorm:"column:logo" json:"logo"`
+	LogoWidth       int       `gorm:"column:logo_width" json:"logo_width"`
 	RootDomain      string    `gorm:"column:root_domain" json:"root_domain"`
 	SubDomain       string    `gorm:"column:sub_domain" json:"sub_domain"`
 	Brand           string    `gorm:"column:brand" json:"brand"`
