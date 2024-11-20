@@ -15,35 +15,35 @@
 {{/*                    <a  class="header-btn customize-btn" href="javascript:void(0)">Add Supply</a>*/}}
 {{/*                </div>*/}}
                 <div class="col-auto d-flex flex-wrap align-items-center icon-blue-hover ps-0">
-                    <div class="dropdown grid-option box-notifi">
-                        <a href="#" class="text-dark ms-3 mb-0 notification" data-bs-toggle="dropdown" id="notification"
-                           data-bs-auto-close="outside" data-bs-autoClose="false">
-                            <svg id="Icons_tabler_notification" class="notification"
-                                 data-name="Icons/tabler/notification"
-                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                <rect id="Icons_Tabler_Notification_background"
-                                      data-name="Icons/Tabler/Notification background" width="24" height="24"
-                                      fill="none"/>
-                                <path d="M6.162,19.63l-.005-.246v-.308H.926A.923.923,0,0,1,.471,17.35a4,4,0,0,0,1.956-2.66l.036-.229V10.726A9.492,9.492,0,0,1,7.292,2.873l.147-.08,0-.018A3.369,3.369,0,0,1,10.566.007L10.771,0a3.379,3.379,0,0,1,3.287,2.573l.045.22.147.08a9.556,9.556,0,0,1,4.806,7.541l.023.355-.007,3.582a4.016,4.016,0,0,0,2,3,.924.924,0,0,1-.329,1.719l-.126.008H15.387v.308a4.616,4.616,0,0,1-9.225.246ZM8,19.385a2.769,2.769,0,0,0,5.532.189l.007-.189v-.308H8ZM9.242,3.228l-.012.238-.005.045L9.2,3.63l-.039.113-.054.107-.035.055L9,4l-.036.038-.05.046-.1.074L8.7,4.219A7.7,7.7,0,0,0,4.332,10.46l-.022.309-.007,3.8a5.875,5.875,0,0,1-.94,2.541l-.084.119H18.266l-.007-.012a6.007,6.007,0,0,1-.983-2.452l-.043-.306V10.812a7.674,7.674,0,0,0-4.4-6.593.919.919,0,0,1-.518-.7l-.009-.132a1.538,1.538,0,0,0-3.069-.157Z"
-                                      transform="translate(1.499)" fill="#1e1e1e"/>
-                            </svg>
-                            <sup class="status bg-danger notification text-center d-none"
-                                 id="number-notification"></sup> </a>
-                        <div class="dropdown-menu dropdown-menu-end py-0"
-                             aria-labelledby="dropdownMenuClickableOutside">
-                            <div class="dropdown-header d-flex align-items-center px-4 py-2 border-bottom d-flex justify-content-between">
-                                <span class="fs-16 Montserrat-font font-weight-semibold text-black-600"
-                                      style="height: 1.9375rem;line-height: 1.9375rem;">Notification</span>
-                                <a class="close-notification text-black-50" href="javascript:void(0)">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor"
-                                         class="bi bi-x-lg" viewBox="0 0 16 16">
-                                        <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"></path>
-                                    </svg>
-                                </a>
-                            </div>
-                            <div class="dropdown-body" data-simplebar id="result-notification"></div>
-                        </div>
-                    </div>
+{{/*                    <div class="dropdown grid-option box-notifi">*/}}
+{{/*                        <a href="#" class="text-dark ms-3 mb-0 notification" data-bs-toggle="dropdown" id="notification"*/}}
+{{/*                           data-bs-auto-close="outside" data-bs-autoClose="false">*/}}
+{{/*                            <svg id="Icons_tabler_notification" class="notification"*/}}
+{{/*                                 data-name="Icons/tabler/notification"*/}}
+{{/*                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">*/}}
+{{/*                                <rect id="Icons_Tabler_Notification_background"*/}}
+{{/*                                      data-name="Icons/Tabler/Notification background" width="24" height="24"*/}}
+{{/*                                      fill="none"/>*/}}
+{{/*                                <path d="M6.162,19.63l-.005-.246v-.308H.926A.923.923,0,0,1,.471,17.35a4,4,0,0,0,1.956-2.66l.036-.229V10.726A9.492,9.492,0,0,1,7.292,2.873l.147-.08,0-.018A3.369,3.369,0,0,1,10.566.007L10.771,0a3.379,3.379,0,0,1,3.287,2.573l.045.22.147.08a9.556,9.556,0,0,1,4.806,7.541l.023.355-.007,3.582a4.016,4.016,0,0,0,2,3,.924.924,0,0,1-.329,1.719l-.126.008H15.387v.308a4.616,4.616,0,0,1-9.225.246ZM8,19.385a2.769,2.769,0,0,0,5.532.189l.007-.189v-.308H8ZM9.242,3.228l-.012.238-.005.045L9.2,3.63l-.039.113-.054.107-.035.055L9,4l-.036.038-.05.046-.1.074L8.7,4.219A7.7,7.7,0,0,0,4.332,10.46l-.022.309-.007,3.8a5.875,5.875,0,0,1-.94,2.541l-.084.119H18.266l-.007-.012a6.007,6.007,0,0,1-.983-2.452l-.043-.306V10.812a7.674,7.674,0,0,0-4.4-6.593.919.919,0,0,1-.518-.7l-.009-.132a1.538,1.538,0,0,0-3.069-.157Z"*/}}
+{{/*                                      transform="translate(1.499)" fill="#1e1e1e"/>*/}}
+{{/*                            </svg>*/}}
+{{/*                            <sup class="status bg-danger notification text-center d-none"*/}}
+{{/*                                 id="number-notification"></sup> </a>*/}}
+{{/*                        <div class="dropdown-menu dropdown-menu-end py-0"*/}}
+{{/*                             aria-labelledby="dropdownMenuClickableOutside">*/}}
+{{/*                            <div class="dropdown-header d-flex align-items-center px-4 py-2 border-bottom d-flex justify-content-between">*/}}
+{{/*                                <span class="fs-16 Montserrat-font font-weight-semibold text-black-600"*/}}
+{{/*                                      style="height: 1.9375rem;line-height: 1.9375rem;">Notification</span>*/}}
+{{/*                                <a class="close-notification text-black-50" href="javascript:void(0)">*/}}
+{{/*                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor"*/}}
+{{/*                                         class="bi bi-x-lg" viewBox="0 0 16 16">*/}}
+{{/*                                        <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"></path>*/}}
+{{/*                                    </svg>*/}}
+{{/*                                </a>*/}}
+{{/*                            </div>*/}}
+{{/*                            <div class="dropdown-body" data-simplebar id="result-notification"></div>*/}}
+{{/*                        </div>*/}}
+{{/*                    </div>*/}}
                     <div class="">
 {{/*                        <a href="https://pubpower.tawk.help/" class="text-dark ms-3 mb-0" target="_blank" rel="nofollow">*/}}
 {{/*                            <svg width="24" height="24" viewBox="0 0 16 16" class="bi bi-question-circle"*/}}
