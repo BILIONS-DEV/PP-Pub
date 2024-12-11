@@ -165,13 +165,14 @@ func (t *AdTag) LoadMoreData(key, value string) (rows []AdTagRecord, isMoreData 
 }
 
 func (t *AdTag) makeInfoCreate(inputs payload.AdTagAdd, userLogin UserRecord) (record AdTagRecord, mapRecord map[string]interface{}) {
+	pubAdmin := new(User).GetById(userLogin.Presenter)
 	// mapRecord để xử lý các trường hợp đặc biêt
 	mapRecord = make(map[string]interface{})
 	cfDomain := new(InventoryConfig).GetByInventoryId(inputs.InventoryId)
 	// record.Id = inputs.Id
 	record.Name = inputs.Name
 	record.Type = inputs.Type
-	record.UserId = userLogin.Id
+	record.UserId = pubAdmin.Id
 	record.Status = inputs.Status
 	record.InventoryId = inputs.InventoryId
 	record.PrimaryAdSizeMobile = 0
@@ -304,7 +305,7 @@ func (adTag *AdTagRecord) makeInfoUpdate(inputs payload.AdTagAdd, userLogin User
 	adTag.Id = inputs.Id
 	adTag.Name = inputs.Name
 	adTag.Type = oldRecord.Type
-	adTag.UserId = userLogin.Id
+	//adTag.UserId = userLogin.Id
 	adTag.Status = inputs.Status
 	adTag.InventoryId = inputs.InventoryId
 	adTag.BidOutStream = inputs.BidOutStream
@@ -612,6 +613,7 @@ func (t *AdTag) ValidateCreate(inputs payload.AdTagAdd, user UserRecord) (errs [
 }
 
 func (t *AdTag) ValidateEdit(inputs payload.AdTagAdd, row AdTagRecord, user UserRecord) (errs []ajax.Error) {
+	pubAdmin := new(User).GetById(user.Presenter)
 	flag := t.VerificationRecord(inputs.Id, user.Id, inputs.InventoryId)
 	if !flag {
 		errs = append(errs, ajax.Error{
@@ -626,7 +628,7 @@ func (t *AdTag) ValidateEdit(inputs payload.AdTagAdd, row AdTagRecord, user User
 			Message: "Name is required",
 		})
 	}
-	flagName := t.VerificationRecordName(inputs.Name, inputs.Id, user.Id, inputs.InventoryId)
+	flagName := t.VerificationRecordName(inputs.Name, inputs.Id, pubAdmin.Id, inputs.InventoryId)
 	if !flagName {
 		errs = append(errs, ajax.Error{
 			Id:      "name",
