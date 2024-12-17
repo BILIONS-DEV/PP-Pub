@@ -238,6 +238,7 @@ func (t *Inventory) setOrder(inputs *payload.InventoryFilterPayload) func(db *go
 }
 
 func (t *Inventory) Submit(inputs *payload.InventorySubmit, user UserRecord, lang lang.Translation) (errs []ajax.Error) {
+	publisherAdmin := new(User).GetById(user.Presenter)
 	inventories := utility.SplitLines(inputs.Inventories)
 	totalInventory := len(inventories)
 	if totalInventory > 0 {
@@ -295,18 +296,22 @@ func (t *Inventory) Submit(inputs *payload.InventorySubmit, user UserRecord, lan
 					Last(&record)
 
 				var status = mysql.StatusPending
-				// check inventoryName có status != pending đã tồn tại trong database chưa, có rồi set status theo record đó
-				var isExist InventoryRecord
-				mysql.Client.Where("name = ? and user_id != ? and status != 'pending'", inventoryName, user.Presenter).Last(&isExist)
 				var flagApproved bool
-				if isExist.Id > 0 {
-					if isExist.Status == mysql.StatusApproved {
-						// tạo cronjob để chuyển status về approved
-						flagApproved = true
-					} else if isExist.Status == mysql.StatusReject {
-						status = mysql.StatusReject
+
+				if publisherAdmin.Presenter > 0 {
+					// check inventoryName có status != pending đã tồn tại trong database chưa, có rồi set status theo record đó
+					var isExist InventoryRecord
+					mysql.Client.Where("name = ? and user_id != ? and status != 'pending'", inventoryName, user.Presenter).Last(&isExist)
+					if isExist.Id > 0 {
+						if isExist.Status == mysql.StatusApproved {
+							// tạo cronjob để chuyển status về approved
+							flagApproved = true
+						} else if isExist.Status == mysql.StatusReject {
+							status = mysql.StatusReject
+						}
 					}
 				}
+
 				// check nếu inventoryName có dạng "*.blogspot.com" thì auto reject
 				if strings.Contains(inventoryName, ".blogspot.com") {
 					flagApproved = false
