@@ -146,18 +146,30 @@ func (rec *TableInventoryAdTag) GetAdTag(isSticky4k string) string {
 	Client.Find(&userRecord, rec.UserId)
 
 	tag := "pw_" + strconv.FormatInt(rec.Id, 10)
+	//var class, bTag, bAPI, divTag, tagDomain string
 	var class, bTag, bAPI, divTag string
-	if userRecord.SystemSync == 1 {
-		class = "adsbyvli"
-		bTag = "vitag"
-		bAPI = "viAPItag"
+	if userRecord.ParentSub == "yes" {
+		class = "futureads"
+		bTag = "wapTag"
+		bAPI = "wAPITag"
 		divTag = "div"
+		//tagDomain = "cdn.bilsyndication.com"
 	} else {
-		class = "adsbypubpower"
-		bTag = "powerTag"
-		bAPI = "powerAPITag"
-		divTag = "pubtag"
+		if userRecord.SystemSync == 1 {
+			class = "adsbyvli"
+			bTag = "vitag"
+			bAPI = "viAPItag"
+			divTag = "div"
+			//tagDomain = "cdn.vlitag.com"
+		} else {
+			class = "adsbypubpower"
+			bTag = "powerTag"
+			bAPI = "powerAPITag"
+			divTag = "pubtag"
+			//tagDomain = "nc.pubpowerplatform.io"
+		}
 	}
+
 	switch rec.Type {
 	case TYPEDisplay:
 		var style string
@@ -179,6 +191,7 @@ func (rec *TableInventoryAdTag) GetAdTag(isSticky4k string) string {
 		var strTag string
 		if rec.Renderer != TYPERendererPubPower && rec.Renderer != TYPERendererOverlayAd && rec.Status == TypeStatusAdTagLive {
 			//strTag = "https://nc.pubpowerplatform.io/vpaid/w/" + copyTag.Inventory.Uuid + "?tagid=" + strconv.FormatInt(tag.Id, 10) + "&page_url=" + pageUrl + "&sz=" + playerSize
+			//strTag = = "https://" + tagDomain + "/vpaid/w/" + uuid + "?tagid=" + strconv.FormatInt(rec.Id, 10) + "&page_url=" + pageUrl + "&sz=" + playerSize
 		} else {
 			if rec.Renderer == TYPERendererOverlayAd {
 				strTag = "<button onclick='loadAd();'>Load AD</button> <" + divTag + " class='" + class + "' data-ad-slot='" + tag + "'></" + divTag + "> <script> var " + bTag + " = " + bTag + " || {}; " + bTag + ".instreamConfig = " + bTag + ".instreamConfig || {}; " + bTag + ".instreamConfig = {loadingText: 'Loading advertisement..',started: function(){}, complete: function() {}, error: function() {}, hidden: function() {} }; function loadAd() { (" + bTag + ".Init = window." + bTag + ".Init || []).push(function () { " + bAPI + ".initPowerInstream('" + tag + "'); }); } </script>"
@@ -191,6 +204,7 @@ func (rec *TableInventoryAdTag) GetAdTag(isSticky4k string) string {
 		var strTag string
 		if rec.Renderer != TYPERendererPubPower && rec.Status == TypeStatusAdTagLive {
 			//strTag = "https://nc.pubpowerplatform.io/vpaid/w/" + copyTag.Inventory.Uuid + "?tagid=" + strconv.FormatInt(tag.Id, 10) + "&page_url=" + pageUrl + "&sz=" + playerSize
+			//strTag = "https://" + tagDomain + "/vpaid/w/" + uuid + "?tagid=" + strconv.FormatInt(rec.Id, 10) + "&page_url=" + pageUrl + "&sz=" + playerSize
 		} else {
 			strTag = "<" + divTag + " class='" + class + "' data-ad-slot='" + tag + "'></" + divTag + "><script type='text/javascript'> (" + bTag + ".Init = window." + bTag + ".Init || []).push(function () { " + bAPI + ".initPowerOutstream('pw_{{.AdTag.TableInventoryAdTag.Id}}'); }); </script>"
 		}
@@ -206,7 +220,17 @@ func (rec *TableInventoryAdTag) GetAdTag(isSticky4k string) string {
 	case TYPEPNative:
 		return "<" + divTag + " class='" + class + "' data-ad-slot='" + tag + "'></" + divTag + "> <script type='text/javascript'> (" + bTag + ".Init = window." + bTag + ".Init || []).push(function () { " + bAPI + ".initNativeAds('" + tag + "') }) </script>"
 	case TYPEVideo:
-		return ""
+		var strTag string
+		if rec.Renderer != TYPERendererPubPower && rec.Renderer != TYPERendererOverlayAd && rec.Status == TypeStatusAdTagLive {
+			//strTag = "https://" + tagDomain + "/vpaid/w/" + uuid + "?tagid=" + strconv.FormatInt(rec.Id, 10) + "&page_url=" + pageUrl + "&sz=" + playerSize
+		} else {
+			if rec.Renderer == TYPERendererOverlayAd {
+				strTag = "<button onclick='loadAd();'>Load AD</button> <" + divTag + " class='" + class + "' data-ad-slot='" + tag + "'></" + divTag + "> <script> var " + bTag + " = " + bTag + " || {}; " + bTag + ".instreamConfig = " + bTag + ".instreamConfig || {}; " + bTag + ".instreamConfig = {loadingText: 'Loading advertisement..',started: function(){}, complete: function() {}, error: function() {}, hidden: function() {} }; function loadAd() { (" + bTag + ".Init = window." + bTag + ".Init || []).push(function () { " + bAPI + ".initPowerVideoAds('" + tag + "'); }); } </script>"
+			} else {
+				strTag = "<" + divTag + " class='" + class + "' data-ad-slot='" + tag + "'></" + divTag + "><script type='text/javascript'> (" + bTag + ".Init = window." + bTag + ".Init || []).push(function () { " + bAPI + ".initPowerVideoAds('" + tag + "'); }); </script>"
+			}
+		}
+		return strTag
 	}
 	return ""
 }

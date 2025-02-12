@@ -797,7 +797,7 @@ func (t *User) Update(row UserRecord) (err error) {
 }
 
 func (t *User) GetByEmail(email string) (row UserRecord, err error) {
-	mysql.Client.Where("email = ?", email).Find(&row)
+	mysql.Client.Where("email = ? AND system_sync = ?", email).Find(&row)
 	return
 }
 

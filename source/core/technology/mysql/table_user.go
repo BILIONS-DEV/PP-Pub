@@ -45,7 +45,7 @@ type TableUser struct {
 	GuaranteePeriods    string              `gorm:"column:guarantee_periods" json:"guarantee_periods"`
 	PaymentNote         string              `gorm:"column:payment_note" json:"payment_note"`
 	Logged              int64               `gorm:"column:logged" json:"logged"`
-	SystemSync          int64               `gorm:"column:system_sync" json:"system_sync"`
+	SystemSync          TypeSystem          `gorm:"column:system_sync" json:"system_sync"`
 	SyncPocPoc          string              `gorm:"default:pending;column:sync_pocpoc" json:"sync_pocpoc"`
 	ParentSub           string              `gorm:"column:parent_sub" json:"parent_sub"`
 	//Logo                string              `gorm:"column:logo" json:"logo"`
@@ -306,3 +306,12 @@ type TableUserInfo struct {
 	BillingMethod   string    `gorm:"column:billing_method" json:"billing_method"`
 	CreatedAt       time.Time `gorm:"column:created_at" json:"created_at"`
 }
+
+type TypeSystem int64
+
+const (
+	TYPESystemPubpower TypeSystem = iota
+	TYPESystemVLI
+	TYPESystemAdful
+	TYPESystemSubWhiteLable
+)
