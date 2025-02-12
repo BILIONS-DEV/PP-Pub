@@ -2962,3 +2962,20 @@ a.disabled {
 /*# sourceMappingURL=style_dev.css.map */
 
 /*# sourceMappingURL=style_dev.css.map */
+
+
+/* ===== Css Config ===== */
+/* font */
+body {
+  --font_family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --sidebar_background_color: #f3f3f3;
+}
+.navbar-vertical.navbar-expand-lg .navbar-nav .nav-link {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: var(--font_family);
+}
+
+/* background color */
+.main-left {
+  background-color: var(--sidebar_background_color)!important;
+}
