@@ -2967,8 +2967,27 @@ a.disabled {
 /* ===== Css Config ===== */
 /* font */
 body {
-  --font_family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --sidebar_background_color: #f3f3f3;
+  --font_family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  --sidebar_background_color: #f3f3f3 /* #f3f3f3 */;
+  --sidebar_background_color_default: #f3f3f3;
+
+  --tab_background_color: #aab4c8; /* #aab4c8 */
+  --tab_background_color_default: #aab4c8;
+
+  --footer_background_color: #f3f5f8; /* #f3f5f8 */
+  --footer_background_color_default: #f3f5f8; 
+  --select_background_color: #f3f5f8; /* #f3f5f8 */
+  --select_background_color_default: #f3f5f8;
+  font-family: var(--font_family);
+
+  --button_color: #fff; /* #fff */
+  --button_color_default: #fff; /* #fff */
+  --button_background_color: #0b7ef4; /* #0b7ef4 */
+  --button_background_color_default: #0b7ef4; /* #0b7ef4 */
+  --button_background_hover_color: #0f4e90; /* #0f4e90 */
+  --button_background_hover_color_default: #0f4e90; /* #0f4e90 */
+  letter-spacing: .2px;
+
 }
 .navbar-vertical.navbar-expand-lg .navbar-nav .nav-link {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -2977,5 +2996,23 @@ body {
 
 /* background color */
 .main-left {
-  background-color: var(--sidebar_background_color)!important;
+  background-color: var(--sidebar_background_color, #f3f3f3)!important;
+}
+
+/* font */
+.navbar .nav-link .ms-3 {
+  font-family: Roboto, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji !important;
+  letter-spacing: .7px;
+}
+.header-body .header-main {
+  font-family: var(--font_family);
+}
+
+/* button */
+.o-button.btn-dominant, .dm4, .header-btn {
+  background: var(--button_background_color, --button_background_color_default)!important;
+  color: var(--button_color, --button_color_default)!important;
+}
+.o-button.btn-dominant:hover, .dm4:hover, .header-btn:hover {
+  background: var(--button_background_hover_color, --button_background_hover_color_default)!important;
 }

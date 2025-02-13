@@ -1,11 +1,12 @@
 package mysql
 
 import (
-	"github.com/syyongx/php2go"
-	"gorm.io/gorm"
 	"source/pkg/utility"
 	"strings"
 	"time"
+
+	"github.com/syyongx/php2go"
+	"gorm.io/gorm"
 )
 
 type TableUser struct {
@@ -304,5 +305,38 @@ type TableUserInfo struct {
 	ServiceHostName string    `gorm:"column:service_host_name" json:"service_host_name"`
 	RevShareDomain  int       `gorm:"column:rev_share_domain" json:"rev_share_domain"`
 	BillingMethod   string    `gorm:"column:billing_method" json:"billing_method"`
+	TemplateConfig	string    `gorm:"column:template_config" json:"template_config"`
 	CreatedAt       time.Time `gorm:"column:created_at" json:"created_at"`
 }
+
+type TemplateConfig struct {
+	FontFamily                 string `json:"font_family"`
+	SidebarBackgroundColor     string `json:"sidebar_background_color"`
+	TabBackgroundColor         string `json:"tab_background_color"`
+	FooterBackgroundColor      string `json:"footer_background_color"`
+	ButtonColor                string `json:"button_color"`
+	ButtonBackgroundColor      string `json:"button_background_color"`
+	ButtonBackgroundHoverColor string `json:"button_background_hover_color"`
+}
+
+func TemplateConfigDefault() TemplateConfig {
+	return TemplateConfig{
+		FontFamily: "Open Sans, Arial, sans-serif",
+		SidebarBackgroundColor: "#f3f3f3",
+		TabBackgroundColor: "#aab4c8",
+		FooterBackgroundColor: "#f3f5f8",
+		ButtonColor: "#fff",
+		ButtonBackgroundColor: "#0b7ef4",
+		ButtonBackgroundHoverColor: "#0f4e90",
+	}
+}
+
+
+
+
+
+
+
+
+
+

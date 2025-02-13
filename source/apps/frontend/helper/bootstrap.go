@@ -1,16 +1,19 @@
 package helper
 
 import (
-	"github.com/gofiber/fiber/v2"
+	"encoding/json"
 	"net/url"
 	"source/apps/frontend/config"
 	"source/apps/frontend/config/assign"
 	"source/apps/frontend/lang"
 	"source/apps/frontend/model"
 	"source/apps/frontend/view"
+	"source/core/technology/mysql"
 	"source/pkg/utility"
 	"strings"
 	"time"
+
+	"github.com/gofiber/fiber/v2"
 )
 
 func Bootstrap(ctx *fiber.Ctx) error {
@@ -68,6 +71,11 @@ func Bootstrap(ctx *fiber.Ctx) error {
 	if UserLogin.UserInfo.LogoWidth == 0 {
 		UserLogin.UserInfo.LogoWidth = 100
 	}
+	var TemplateConfig mysql.TemplateConfig
+	err := json.Unmarshal([]byte(UserLogin.UserInfo.TemplateConfig), &TemplateConfig)
+	if (err != nil) {
+
+	}
 	ctx.Locals(assign.KEY, assign.Schema{
 		Uri:             uri,
 		RootDomain:      rootDomain,
@@ -79,6 +87,7 @@ func Bootstrap(ctx *fiber.Ctx) error {
 		Logo:            UserLogin.UserInfo.Logo,
 		LogoWidth:       UserLogin.UserInfo.LogoWidth,
 		Brand:           UserLogin.UserInfo.Brand,
+		TemplateConfig:	 TemplateConfig,
 		ServiceHostName: serviceHost,
 		Theme:           "muze",
 		TemplatePath:    uri,
