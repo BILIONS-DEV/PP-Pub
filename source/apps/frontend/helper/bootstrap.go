@@ -87,6 +87,7 @@ func Bootstrap(ctx *fiber.Ctx) error {
 		Logo:            UserLogin.UserInfo.Logo,
 		LogoWidth:       UserLogin.UserInfo.LogoWidth,
 		Brand:           UserLogin.UserInfo.Brand,
+		Template: 		 UserLogin.UserInfo.Template,
 		TemplateConfig:	 TemplateConfig,
 		ServiceHostName: serviceHost,
 		Theme:           "muze",

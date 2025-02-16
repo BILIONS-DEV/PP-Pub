@@ -243,6 +243,7 @@ type Assign struct {
 	LogoWidth    int         `json:"logo_width"`
 	Brand        string      `json:"brand"`
 	Theme        string      `json:"theme"`
+	Template	 string		 `json:"template"`
 	TemplatePath string      `json:"template_path"`
 	ThemeSetting interface{} `json:"theme_setting"`
 	UserLogin    model.User  `json:"user_login"`

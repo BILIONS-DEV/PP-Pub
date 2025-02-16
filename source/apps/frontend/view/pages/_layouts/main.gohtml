@@ -61,7 +61,7 @@
 {{/*    <!--End of Tawk.to Script-->*/}}
 {{/*{{end}}*/}}
 {{/*</body>*/}}
-<body class="hydrated">
+<body class='hydrated {{ if ne .Template "on" }} template_config {{ end }}'>
 <div class="main">
     <div class="main-left">
         {{template "_components/sidebar" .}}

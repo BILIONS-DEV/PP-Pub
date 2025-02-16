@@ -2966,7 +2966,7 @@ a.disabled {
 
 /* ===== Css Config ===== */
 /* font */
-body {
+body.template_config {
   --font_family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
   --sidebar_background_color: #f3f3f3 /* #f3f3f3 */;
   --sidebar_background_color_default: #f3f3f3;
@@ -2989,30 +2989,34 @@ body {
   letter-spacing: .2px;
 
 }
-.navbar-vertical.navbar-expand-lg .navbar-nav .nav-link {
+.template_config .navbar-vertical.navbar-expand-lg .navbar-nav .nav-link {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-family: var(--font_family);
 }
 
 /* background color */
-.main-left {
+.template_config .main-left {
   background-color: var(--sidebar_background_color, #f3f3f3)!important;
 }
 
 /* font */
-.navbar .nav-link .ms-3 {
+.template_config .navbar .nav-link .ms-3 {
   font-family: Roboto, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji !important;
   letter-spacing: .7px;
 }
-.header-body .header-main {
+.template_config .header-body .header-main {
   font-family: var(--font_family);
 }
 
 /* button */
-.o-button.btn-dominant, .dm4, .header-btn {
+.template_config .o-button.btn-dominant, 
+.template_config .dm4, 
+.template_config .header-btn {
   background: var(--button_background_color, --button_background_color_default)!important;
   color: var(--button_color, --button_color_default)!important;
 }
-.o-button.btn-dominant:hover, .dm4:hover, .header-btn:hover {
+.template_config .o-button.btn-dominant:hover,
+.template_config .dm4:hover,
+.template_config .header-btn:hover {
   background: var(--button_background_hover_color, --button_background_hover_color_default)!important;
 }

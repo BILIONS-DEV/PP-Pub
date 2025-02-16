@@ -24,6 +24,7 @@ type Schema struct {
 	Logo            string               `json:"logo"`
 	LogoWidth       int                  `json:"logo_width"`
 	Brand           string               `json:"brand"`
+	Template		string		 		 `json:template`
 	TemplateConfig  mysql.TemplateConfig `json:"template_config"`
 	ServiceHostName string               `json:"service_host_name`
 	Theme           string               `json:"theme"`

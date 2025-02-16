@@ -305,6 +305,7 @@ type TableUserInfo struct {
 	ServiceHostName string    `gorm:"column:service_host_name" json:"service_host_name"`
 	RevShareDomain  int       `gorm:"column:rev_share_domain" json:"rev_share_domain"`
 	BillingMethod   string    `gorm:"column:billing_method" json:"billing_method"`
+	Template		string    `gorm:"column:template;type:enum('on', 'off');default:'off'" json:"template"`
 	TemplateConfig	string    `gorm:"column:template_config" json:"template_config"`
 	CreatedAt       time.Time `gorm:"column:created_at" json:"created_at"`
 }
