@@ -2966,12 +2966,17 @@ a.disabled {
 
 /* ===== Css Config ===== */
 /* font */
-body.template_config {
-  --font_family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-  --sidebar_background_color: #f3f3f3 /* #f3f3f3 */;
+body#template_config {
+  /* --font_family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"; */
+  --font_family: "Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  --font_family_default: "Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  --sidebar_background_color: #313a46 /* #f3f3f3 */;
   --sidebar_background_color_default: #f3f3f3;
+  --sidebar_font_color: #c2c7d0;
+  --sidebar_font_color_active: #fff;
+  --sidebar_font_hover_color: #fff;
 
-  --tab_background_color: #aab4c8; /* #aab4c8 */
+  --tab_background_color: #e2e2e2; /* #aab4c8 */
   --tab_background_color_default: #aab4c8;
 
   --footer_background_color: #f3f5f8; /* #f3f5f8 */
@@ -2982,41 +2987,110 @@ body.template_config {
 
   --button_color: #fff; /* #fff */
   --button_color_default: #fff; /* #fff */
-  --button_background_color: #0b7ef4; /* #0b7ef4 */
-  --button_background_color_default: #0b7ef4; /* #0b7ef4 */
-  --button_background_hover_color: #0f4e90; /* #0f4e90 */
-  --button_background_hover_color_default: #0f4e90; /* #0f4e90 */
+  --button_background_color: #3f80ea; /* #0b7ef4 */
+  --button_background_color_default: #3f80ea; /* #0b7ef4 */
+  --button_background_hover_color: #366dc7; /* #0f4e90 */
+  --button_background_hover_color_default: #366dc7; /* #0f4e90 */
   letter-spacing: .2px;
 
 }
-.template_config .navbar-vertical.navbar-expand-lg .navbar-nav .nav-link {
+#template_config .navbar-vertical.navbar-expand-lg .navbar-nav .nav-link {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-family: var(--font_family);
+  font-family: var(--font_family, --font_family_default);
 }
 
 /* background color */
-.template_config .main-left {
-  background-color: var(--sidebar_background_color, #f3f3f3)!important;
+#template_config .main-left, #template_config .main-left .navbar {
+  background-color: var(--sidebar_background_color, --sidebar_background_color_default)!important;
+  border-color: var(--sidebar_background_color, --sidebar_background_color_default)!important;
 }
 
 /* font */
-.template_config .navbar .nav-link .ms-3 {
+#template_config .navbar .nav-link .ms-3 {
   font-family: Roboto, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji !important;
   letter-spacing: .7px;
 }
-.template_config .header-body .header-main {
-  font-family: var(--font_family);
+#template_config .header-body .header-main {
+  font-family: var(--font_family, --font_family_default);
 }
 
 /* button */
-.template_config .o-button.btn-dominant, 
-.template_config .dm4, 
-.template_config .header-btn {
+#template_config .o-button.btn-dominant, 
+#template_config .dm4, 
+#template_config .header-btn,
+#template_config .save-domain {
   background: var(--button_background_color, --button_background_color_default)!important;
   color: var(--button_color, --button_color_default)!important;
+  font-weight: 500;
 }
-.template_config .o-button.btn-dominant:hover,
-.template_config .dm4:hover,
-.template_config .header-btn:hover {
+#template_config .o-button.btn-dominant:hover,
+#template_config .dm4:hover,
+#template_config .header-btn:hover,
+#template_config .save-domain:hover {
   background: var(--button_background_hover_color, --button_background_hover_color_default)!important;
+}
+
+#template_config .header-btn {
+  padding: 8px 10px;
+}
+
+#template_config .btn-outline-secondary:hover {
+  background-color: #495057;
+  border-color: #495057;
+}
+
+/* sidebar */
+@media screen and (max-width: 991px) {
+    .navbar-vertical.navbar-expand-lg {
+      top: 0;
+      height: unset;
+  }
+}
+#template_config  .navbar-nav>.nav-item {
+  margin-top: .75rem;
+}
+#template_config  .navbar-nav ul>.nav-item {
+  margin-top: .125rem;
+}
+#template_config .nav-item .nav-link span.ms-3 {
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+#template_config .navbar {
+  color: var(--sidebar_font_color);
+}
+#template_config .navbar .nav-link,
+#template_config .navbar .nav-link[aria-expanded=true]{
+  color: var(--sidebar_font_color)!important;
+}
+#template_config .navbar svg {
+  fill: var(--sidebar_font_color)!important;
+}
+
+#template_config .navbar-nav .nav-link.active,
+#template_config .navbar-nav .nav-link:hover,
+#template_config .navbar-nav .nav-link[aria-expanded=true] {
+  color: var(--sidebar_font_hover_color)!important;
+}
+
+#template_config .navbar-nav .nav-link.active svg path,
+#template_config .navbar .nav-link.active svg path,
+#template_config .navbar .nav-link:hover svg path,
+#template_config .navbar .nav-link[aria-expanded=true] svg path,
+#template_config .navbar a:hover svg,
+#template_config .navbar a:hover svg path {
+  fill: var(--sidebar_font_hover_color)!important;
+}
+
+/* footer */
+#template_config .footer {
+  background-color: var(--sidebar_background_color); border-top-color: var(--sidebar_background_color);
+}
+
+/* tab */
+#template_config .pp-2,
+#template_config .o-report-bar.o-report-bar__bg-light
+{
+  background-color: var(--tab_background_color, --tab_background_color_default);
 }
