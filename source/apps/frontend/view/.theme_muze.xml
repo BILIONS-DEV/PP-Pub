@@ -24,6 +24,7 @@
         <!--        <jsOnBottom link="/assets/js/functions.min.js" module="true" defer="false"/>-->
         <jsOnBottom link="/assets/js/functions.js" module="false" defer="false"/>
         <jsOnBottom link="/assets/js/theme-custom.js"/>
+        <jsOnBottom link="/assets/js/fe.js"/>
         <!--        <jsOnTop link="jsOnTopDefault.js" async="false" defer="true" module="false"/>-->
         <!--        <jsOnBottom link="jsOnBottomDefault.js" async="false" defer="true" module="false"/>-->
     </page>

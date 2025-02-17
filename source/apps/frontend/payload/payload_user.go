@@ -82,3 +82,8 @@ type NewPassWord struct {
 	Uuid            string `form:"column:uuid" json:"uuid"`
 	Email           string `form:"column:email" json:"email"`
 }
+
+type UpdateTemplate struct {
+	Template     string `form:"column:template" json:"template"`
+	TemplateConfig     string `form:"column:template_config" json:"template_config"`
+}

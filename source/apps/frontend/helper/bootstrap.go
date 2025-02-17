@@ -74,7 +74,7 @@ func Bootstrap(ctx *fiber.Ctx) error {
 	var TemplateConfig mysql.TemplateConfig
 	err := json.Unmarshal([]byte(UserLogin.UserInfo.TemplateConfig), &TemplateConfig)
 	if (err != nil) {
-
+		// TemplateConfig = mysql.TemplateConfigDefault()
 	}
 	ctx.Locals(assign.KEY, assign.Schema{
 		Uri:             uri,

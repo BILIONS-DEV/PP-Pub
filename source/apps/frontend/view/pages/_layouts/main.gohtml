@@ -32,6 +32,39 @@
             ppocTag.uId = `xxx-xxx-xxx`;
         </script>
     {{end}}
+    {{ if ne .Template "on" }}
+    <style>
+        body#template_config {
+            {{ if .TemplateConfig.FontFamily }}
+                --font_family: .TemplateConfig.FontFamily
+            {{ end }}
+            {{ if .TemplateConfig.SidebarBackgroundColor }}
+                --sidebar_background_color: .TemplateConfig.SidebarBackgroundColor
+            {{ end }}
+            {{ if .TemplateConfig.SidebarColor }}
+                --sidebar_color: .TemplateConfig.SidebarColor
+            {{ end }}
+            {{ if .TemplateConfig.SidebarHoverColor }}
+                --sidebar_hover_color: .TemplateConfig.SidebarHoverColor
+            {{ end }}
+            {{ if .TemplateConfig.TabBackgroundColor }}
+                --tab_background_color: .TemplateConfig.TabBackgroundColor
+            {{ end }}
+            {{ if .TemplateConfig.FooterBackgroundColor }}
+                --footer_background_color: .TemplateConfig.FooterBackgroundColor
+            {{ end }}
+            {{ if .TemplateConfig.ButtonColor }}
+                --button_color: .TemplateConfig.ButtonColor
+            {{ end }}
+            {{ if .TemplateConfig.ButtonBackgroundColor }}
+                --button_background_color: .TemplateConfig.ButtonBackgroundColor
+            {{ end }}
+            {{ if .TemplateConfig.ButtonBackgroundHoverColor }}
+                --button_background_hover_color: .TemplateConfig.ButtonBackgroundHoverColor
+            {{ end }}
+        }
+    </style>
+    {{ end }}
 </head>
 {{/*<body class="bg-gray-100 null">*/}}
 {{/*{{template "_components/sidebar" .}}*/}}
@@ -61,7 +94,7 @@
 {{/*    <!--End of Tawk.to Script-->*/}}
 {{/*{{end}}*/}}
 {{/*</body>*/}}
-<body class='hydrated' id='{{ if ne .Template "on" }}template_config{{ end }}'>
+<body class='hydrated' id='{{ if eq .Template "on" }}template_config{{ end }}'>
 <div class="main">
     <div class="main-left">
         {{template "_components/sidebar" .}}

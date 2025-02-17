@@ -313,6 +313,8 @@ type TableUserInfo struct {
 type TemplateConfig struct {
 	FontFamily                 string `json:"font_family"`
 	SidebarBackgroundColor     string `json:"sidebar_background_color"`
+	SidebarColor     		   string `json:"sidebar_color"`
+	SidebarHoverColor     	   string `json:"sidebar_hover_color"`
 	TabBackgroundColor         string `json:"tab_background_color"`
 	FooterBackgroundColor      string `json:"footer_background_color"`
 	ButtonColor                string `json:"button_color"`
@@ -324,6 +326,8 @@ func TemplateConfigDefault() TemplateConfig {
 	return TemplateConfig{
 		FontFamily: "Open Sans, Arial, sans-serif",
 		SidebarBackgroundColor: "#f3f3f3",
+		SidebarColor: "#c2c7d0",
+		SidebarHoverColor: "fff",
 		TabBackgroundColor: "#aab4c8",
 		FooterBackgroundColor: "#f3f5f8",
 		ButtonColor: "#fff",

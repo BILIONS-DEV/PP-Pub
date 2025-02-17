@@ -18,6 +18,7 @@ const (
 	URIForgotPassWord = "/user/forgot-password"
 	URIResetPassWord  = "/user/new-password"
 	URIChangePassword = "/user/changePassword"
+	URIChangeTemplate = "/user/changeTemplate"
 	URIAtl            = "/altlog"
 	URIAtlQuick       = "/altlogq"
 	// => UserBackend
@@ -244,6 +245,9 @@ const (
 	// AdBlock
 	URIAdBlockAnalytics      = "/adblock/analytics"
 	URIAdBlockAlertGenerator = "/adblock/generator"
+
+	// Api
+	URIAPIGetInfoAccount = "/api/get-account-manager"
 )
 
 type SidebarSetupUri struct {
