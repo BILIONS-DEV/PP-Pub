@@ -2964,9 +2964,36 @@ a.disabled {
 /*# sourceMappingURL=style_dev.css.map */
 
 
+/* ===== Header ===== */
+.account-manager .dropdown-toggle::after {
+  display: none;
+}
+.account-manager a, .account-manager a:hover {
+  color: #646464!important;
+  font-weight: 400;
+}
+.account-manager .avatar {
+  min-width: initial;
+  width: 40px;
+  height: 40px;
+}
+.account-manager .avatar img {
+  width: 40px!important;
+  height: 40px!important;
+  object-fit: cover;
+}
+.account-manager .site-menu-title {
+  font-weight: 500;
+}
+.acc-manager-info {
+  max-width: 500px;
+}
+
 /* ===== Css Config ===== */
 /* font */
 body#template_config {
+  --color_main: #1e1e1e;
+
   /* --font_family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"; */
   --font_family: "Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   --font_family_default: "Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
@@ -3022,6 +3049,7 @@ body#template_config {
 }
 #template_config .header-body .header-main {
   font-family: var(--font_family, --font_family_default);
+  color: #444444;
 }
 
 /* button */

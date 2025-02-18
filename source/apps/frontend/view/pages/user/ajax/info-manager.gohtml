@@ -1,0 +1,73 @@
+{{- /*gotype: source/apps/fronend/api.URIAPIGetInfoAccount*/ -}}
+<div class="d-flex flex-wrap align-items-center border-right dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="manager-info" style="margin-left: 15px; height: 100%;">
+    <a class="nav-link waves-round pr-0 text-center" style="text-wrap: nowrap;padding: 11px 0px;">
+        <!--                    <a class="nav-link waves-round pr-0" style="text-wrap: nowrap;">-->
+        <div class="" style="font-size: 11px">Account Manager</div>
+        <div class="site-menu-title mne" style="font-weight: 600;">{{.FirstName}} {{.LastName}}</div>
+    </a>
+    <div class="nav-link navbar-avatar" type="button">
+        <span class="avatar avatar-online">
+             {{ if ne .Avatar "" }}
+                 {{/*                 <img src="https://s3.vlitag.com/s5-pubpower/{{.Avatar}}" alt="..." style="border-radius: 100px;height: inherit;width: 100%;">*/}}
+                 <img style="background-image: url(https://s3.pubpowerplatform.io/s5-pubpower/{{.Avatar}});
+                         background-repeat: no-repeat;
+                         background-position: center;
+                         background-size: cover;
+                         border-radius: 100px;height: inherit;width: 100%;">
+             {{ else }}
+                 <img src="/assets/img/avatar-default.jpg" alt="..." style="border-radius: 100px;height: inherit;width: 100%;">
+             {{ end }}
+        </span>
+    </div>
+</div>
+<div class="dropdown-menu dropdown-menu-right acc-manager-info" role="menu" aria-labelledby="manager-info" style="width: max-content;">
+    {{ if ne .Email "" }}
+        <span class="dropdown-item d-flex justify-content-between">
+                <a class="text-nowrap" href="mailto:{{.Email}}" style="color: #76838f;">
+                    <i class="fa fa-envelope me-2" aria-hidden="true"></i> Email:  <span id="email-manager">{{.Email}}</span>
+                </a>
+                <span class="copy-mail text-right" style="min-width: 50px;">
+                    <i class="fa fa-files-o" aria-hidden="true" style="cursor: pointer"></i>
+                    <div class="copies text-right w-100 d-none">Copied!</div>
+                </span>
+            </span>
+    {{ end }}
+    {{ if ne .Telegram "" }}
+        <div class="dropdown-item text-nowrap">
+            <a href="{{.Telegram}}" target="_blank">
+                <i class="fa fa-telegram me-2" aria-hidden="true"></i> Telegram: {{.Telegram}}
+            </a>
+        </div>
+    {{ end }}
+    {{ if ne .Skype "" }}
+        <div class="dropdown-item text-nowrap">
+            <a href="skype:{{.Skype}}">
+                <i class="fa fa-skype me-2" aria-hidden="true" style="font-size: 15px;"></i> Skype: like:{{.Skype}}
+            </a>
+        </div>
+    {{ end }}
+    {{ if ne .Linkedin "" }}
+        <div class="dropdown-item text-nowrap">
+            <a href="{{.Linkedin}}" target="_blank">
+                <i class="fa fa-linkedin-square me-2" aria-hidden="true" style="font-size: 15px;"></i> Linkedin: {{.Linkedin}}
+            </a>
+        </div>
+    {{ end }}
+    {{ if ne .Whatsapp "" }}
+        <div class="dropdown-item text-nowrap">
+            <a href="{{.Whatsapp}}" target="_blank">
+                <i class="fa fa-whatsapp me-2" aria-hidden="true" style="font-size: 15px;"></i> Whatsapp: {{.Whatsapp}}
+            </a>
+        </div>
+    {{ end }}
+    {{ if ne .Wechat "" }}
+        <div class="dropdown-item text-nowrap">
+            <div href="javascript:void(0)" target="_blank">
+                <i class="fa fa-weixin me-2" aria-hidden="true" style="font-size: 15px;"></i> Wechat ID: {{.Wechat}}
+            </div>
+        </div>
+    {{ end }}
+    <!-- <div class="dropdown-item text-nowrap">
+        <div><i class="fa fa-clock-o me-2" aria-hidden="true" style="font-size: 15px;"></i> Agency Time: {{/* .AgencyTime */}} </div>
+    </div> -->
+</div>

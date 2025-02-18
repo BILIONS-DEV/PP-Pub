@@ -6,38 +6,22 @@ import (
 	// "io"
 	// "net/http"
 	"source/apps/frontend/model"
+	// "source/core/technology/mysql"
 	// "source/apps/frontend/payload"
 	// "source/core/technology/mysql"
 	"source/pkg/ajax"
 	// "source/pkg/utility"
 	// "strconv"
+	// "fmt"
 	"source/apps/frontend/view"
 	"strings"
-	"time"
-	"fmt"
+	// "time"
 )
 
 type Api struct {
-}
 
-type AccountInfo struct {
-	Email     string `json:"email"`
-	FirstName string `json:"first_name"`
-	LastName  string `json:"last_name"`
-	Phone     string `json:"phone"`
-	Telegram  string `json:"telegram"`
-	Skype     string `json:"skype"`
-	Linkedin  string `json:"linkedin"`
-	Avatar    string `json:"avatar"`
 }
-type DataDomains struct {
-	ID     int64  `json:"id"`
-	Domain string `json:"domain"`
-	Status string `json:"status"`
-}
-
 type AssignAccountManagerInfo struct {
-	Agency     model.UserRecord
 	Avatar     string
 	Name       string
 	Email      string
@@ -55,10 +39,10 @@ func (t *Api) GetInfoAccount(ctx *fiber.Ctx) error {
 	requestHeaders := ctx.GetReqHeaders()
 	token, exist := requestHeaders["Token"]
 	if !exist || token == "" {
-		// return ctx.JSON(map[string]string{
-		// 	"error": "Token is required",
-		// })
-		token = "e0c5303bafd0a6db0d872be15b1d6d79"
+		return ctx.JSON(map[string]string{
+			"error": "Token is required",
+		})
+		// token = "e0c5303bafd0a6db0d872be15b1d6d79"
 	}
 
 	publisher := new(model.User).GetByLoginToken(token)
@@ -68,95 +52,26 @@ func (t *Api) GetInfoAccount(ctx *fiber.Ctx) error {
 		return ctx.JSON(response)
 	}
 
+	// var Manager mysql.TableUserManager
 	presenter := new(model.User).GetById(publisher.Presenter)
 	if (presenter.Id == 0) {
 		return ctx.SendString("")
 	}
-	fmt.Println(presenter)
 
-	// agency := new(model.User).GetById(publisher.Id)
-	// if err != nil {
-	// 	response.Status = ajax.ERROR
-	// 	response.Message = "Agency not found"
-	// 	return ctx.JSON(response)
-	// }
-	data := AccountInfo{
-		Email:     publisher.Email,
-		FirstName: publisher.FirstName,
-		LastName:  publisher.LastName,
-		Phone:     publisher.PhoneNumber,
+	manager, err := new(model.UserManager).GetManagerByPubId(presenter.Id, publisher.Id)
+	if err != nil {
+		return ctx.SendString(err.Error())
 	}
-	// var domains []model.InventoryRecord
-	// domains, err = new(model.Inventory).GetByUserId(publisher.Id)
-	// for _, value := range domains {
-	// 	if value.DeletedAt.Valid {
-	// 		continue
-	// 	}
-	// 	data.Domains = append(data.Domains, DataDomains{
-	// 		ID:     value.Id,
-	// 		Domain: value.Domain,
-	// 		Status: value.Status.String(),
-	// 	})
 
-	// }
-	//data.Agency = agency
-	response.Status = ajax.SUCCESS
-	response.DataObject = data
-	return ctx.JSON(response)
-}
+	assigns := manager
 
-func (t *User) GetInfoAccountManager1(ctx *fiber.Ctx) error {
-	locVN, _ := time.LoadLocation("Asia/Ho_Chi_Minh")
-	requestHeaders := ctx.GetReqHeaders()
-	token, exist := requestHeaders["Token"]
-	if !exist || len(token) == 0 {
-		return ctx.JSON(map[string]string{
-			"error": "Token is required",
-		})
-	}
-	userLogin := new(model.User).GetByLoginToken(token)
-	assigns := AssignAccountManagerInfo{
-		AgencyTime: time.Now().In(locVN).Format("15:04"),
-	}
-	agency := new(model.User).GetById(userLogin.Presenter)
-	// if err != nil {
-	// 	return ctx.SendStatus(fiber.StatusNotFound)
-	// }
-	if agency.Id == 0 {
-		return ctx.JSON("")
-	}
-	q := ctx.Query("q")
-	if q != "vli" && q != "pp" {
-		return ctx.JSON("")
-	}
-	if q == "vli" {
-		assigns.Avatar = agency.UserInfo.AvatarVLI
-		assigns.Name = agency.UserInfo.NameVLI
-		assigns.Email = agency.UserInfo.EmailVLI
-		assigns.Telegram = agency.UserInfo.TelegramVLI
-		assigns.Skype = agency.UserInfo.SkypeVLI
-		assigns.Linkedin = agency.UserInfo.LinkedinVLI
-		// assigns.Whatsapp = agency.UserInfo.Whatsapp
-		// assigns.Wechat = agency.UserInfo.Wechat
-	}
-	if q == "pp" {
-		assigns.Avatar = agency.UserInfo.Avatar
-		assigns.Name = agency.UserInfo.Name
-		assigns.Email = agency.UserInfo.Email
-		assigns.Telegram = agency.UserInfo.Telegram
-		assigns.Skype = agency.UserInfo.Skype
-		assigns.Linkedin = agency.UserInfo.Linkedin
-		// assigns.Whatsapp = agency.UserInfo.Whatsapp
-		// assigns.Wechat = agency.UserInfo.Wechat
-	}
-	if assigns.Email == "" {
-		return ctx.JSON("")
-	}
 	if assigns.Telegram != "" {
-		if !strings.Contains(assigns.Telegram, "t.me/") {
-			assigns.Telegram = "https://t.me/" + assigns.Telegram
-		} else if !strings.Contains(assigns.Telegram, "http") {
-			assigns.Telegram = "https://" + assigns.Telegram
+		if !strings.Contains(assigns.Telegram, "http") {
+			if !strings.Contains(assigns.Telegram, "t.me/") {
+				assigns.Telegram = "https://t.me/" + assigns.Telegram
+			} else {
+				assigns.Telegram = "https://" + assigns.Telegram
+			}
 		}
 	}
 	if assigns.Skype != "" {
@@ -171,6 +86,5 @@ func (t *User) GetInfoAccountManager1(ctx *fiber.Ctx) error {
 			assigns.Linkedin = "https://" + assigns.Linkedin
 		}
 	}
-	assigns.Agency = agency
-	return ctx.Render("user/ajax/info-agency", assigns, view.LAYOUTEmpty)
+	return ctx.Render("user/ajax/info-manager", assigns, view.LAYOUTEmpty)
 }
