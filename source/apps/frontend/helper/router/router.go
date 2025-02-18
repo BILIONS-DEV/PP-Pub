@@ -37,4 +37,5 @@ func Register(app *fiber.App) {
 	AdTagV2(app)
 	//PlayerV2(app)
 	//AdBlock(app)
+	Api(app)
 }

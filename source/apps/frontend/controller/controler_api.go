@@ -11,28 +11,24 @@ import (
 	"source/pkg/ajax"
 	// "source/pkg/utility"
 	// "strconv"
+	"source/apps/frontend/view"
 	"strings"
 	"time"
-	"source/apps/frontend/view"
+	"fmt"
 )
 
-type Api struct{
-
+type Api struct {
 }
 
 type AccountInfo struct {
-	Email     string        `json:"email"`
-	FirstName string        `json:"first_name"`
-	LastName  string        `json:"last_name"`
-	Agency    string        `json:"agency"`
-	ZipCode   string        `json:"zipcode"`
-	State     string        `json:"state"`
-	Address   string        `json:"address"`
-	City      string        `json:"city"`
-	Country   string        `json:"country"`
-	Phone     string        `json:"phone"`
-	Company   string        `json:"company"`
-	Domains   []DataDomains `json:"domains"`
+	Email     string `json:"email"`
+	FirstName string `json:"first_name"`
+	LastName  string `json:"last_name"`
+	Phone     string `json:"phone"`
+	Telegram  string `json:"telegram"`
+	Skype     string `json:"skype"`
+	Linkedin  string `json:"linkedin"`
+	Avatar    string `json:"avatar"`
 }
 type DataDomains struct {
 	ID     int64  `json:"id"`
@@ -59,10 +55,12 @@ func (t *Api) GetInfoAccount(ctx *fiber.Ctx) error {
 	requestHeaders := ctx.GetReqHeaders()
 	token, exist := requestHeaders["Token"]
 	if !exist || token == "" {
-		return ctx.JSON(map[string]string{
-			"error": "Token is required",
-		})
+		// return ctx.JSON(map[string]string{
+		// 	"error": "Token is required",
+		// })
+		token = "e0c5303bafd0a6db0d872be15b1d6d79"
 	}
+
 	publisher := new(model.User).GetByLoginToken(token)
 	if publisher.Id == 0 {
 		response.Status = ajax.ERROR
@@ -70,7 +68,13 @@ func (t *Api) GetInfoAccount(ctx *fiber.Ctx) error {
 		return ctx.JSON(response)
 	}
 
-	agency := new(model.User).GetById(publisher.Id)
+	presenter := new(model.User).GetById(publisher.Presenter)
+	if (presenter.Id == 0) {
+		return ctx.SendString("")
+	}
+	fmt.Println(presenter)
+
+	// agency := new(model.User).GetById(publisher.Id)
 	// if err != nil {
 	// 	response.Status = ajax.ERROR
 	// 	response.Message = "Agency not found"
@@ -80,14 +84,7 @@ func (t *Api) GetInfoAccount(ctx *fiber.Ctx) error {
 		Email:     publisher.Email,
 		FirstName: publisher.FirstName,
 		LastName:  publisher.LastName,
-		Agency:    agency.Email,
-		ZipCode:   publisher.ZipCode,
-		State:     publisher.State,
-		Address:   publisher.Address,
-		City:      publisher.City,
-		Country:   publisher.Country,
 		Phone:     publisher.PhoneNumber,
-		Domains:   make([]DataDomains, 0),
 	}
 	// var domains []model.InventoryRecord
 	// domains, err = new(model.Inventory).GetByUserId(publisher.Id)

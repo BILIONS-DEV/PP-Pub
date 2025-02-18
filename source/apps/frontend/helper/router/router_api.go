@@ -8,5 +8,5 @@ import (
 
 func Api(app *fiber.App) {
 	api := new(controller.Api)
-	app.Post(config.URIAPIGetInfoAccount, api.GetInfoAccount)
+	app.Get(config.URIAPIGetInfoAccount, api.GetInfoAccount)
 }
