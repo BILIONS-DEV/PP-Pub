@@ -21,17 +21,6 @@ type TableUserManager struct {
 	Avatar      string    `gorm:"column:avatar" json:"avatar"`
 	Whatsapp    string    `gorm:"column:whatsapp" json:"whatsapp"`
 	Wechat      string    `gorm:"column:wechat" json:"wechat"`
+	Status      TYPEStatusOnOff    `gorm:"column:status" json:"status"`
 	CreatedAt   time.Time `gorm:"column:created_at" json:"created_at"`
-}
-
-func (TableUserManagerPub) TableName() string {
-	return Tables.UserManagerPub
-}
-
-type TableUserManagerPub struct {
-	Id            int64     `gorm:"column:id" json:"id"`
-	UserManagerId string    `gorm:"column:user_manager_id" json:"user_manager_id"`
-	PresenterId   int64     `gorm:"column:presenter_id" json:"presenter_id"`
-	Pubid        string    `gorm:"column:pub_id" json:"pub_id"`
-	CreatedAt     time.Time `gorm:"column:created_at" json:"created_at"`
 }

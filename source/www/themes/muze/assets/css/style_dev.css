@@ -146,6 +146,11 @@ p {
   border-right-style: solid;
   will-change: transform;
   min-width: 240px;
+  display: flex;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  height: 100vh;
 }
 
 .main-left .main-menu {
@@ -2965,6 +2970,32 @@ a.disabled {
 
 
 /* ===== Header ===== */
+@media (max-width: 991px) {
+  .main-left {
+      display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .main-right {
+    min-width: 500px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .sidebar-menu .main-left {
+    display: block;
+  }
+  .sidebar-menu .navbar-vertical {
+    top: 0;
+    height: unset;
+  }
+  .navbar-vertical.navbar-expand-lg {
+    top: 0;
+    height: unset;
+  }
+}
+
 .account-manager .dropdown-toggle::after {
   display: none;
 }
@@ -2987,6 +3018,12 @@ a.disabled {
 }
 .acc-manager-info {
   max-width: 500px;
+}
+
+@media (max-width: 575px) {
+  .account-manager #manager-info>a {
+    display: none;
+  }
 }
 
 /* ===== Css Config ===== */

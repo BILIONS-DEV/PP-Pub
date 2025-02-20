@@ -6,6 +6,7 @@ import (
 	// "io"
 	// "net/http"
 	"source/apps/frontend/model"
+	"source/core/technology/mysql"
 	// "source/core/technology/mysql"
 	// "source/apps/frontend/payload"
 	// "source/core/technology/mysql"
@@ -33,7 +34,7 @@ type AssignAccountManagerInfo struct {
 	AgencyTime string
 }
 
-func (t *Api) GetInfoAccount(ctx *fiber.Ctx) error {
+func (t *Api) GetInfoAccountManager(ctx *fiber.Ctx) error {
 	response := ajax.Responses{}
 	//locVN, _ := time.LoadLocation("Asia/Ho_Chi_Minh")
 	requestHeaders := ctx.GetReqHeaders()
@@ -58,9 +59,12 @@ func (t *Api) GetInfoAccount(ctx *fiber.Ctx) error {
 		return ctx.SendString("")
 	}
 
-	manager, err := new(model.UserManager).GetManagerByPubId(presenter.Id, publisher.Id)
+	manager, err := new(model.UserManager).GetByUser(publisher)
 	if err != nil {
 		return ctx.SendString(err.Error())
+	}
+	if (manager.Id == 0 || manager.Status != mysql.TYPEStatusOn) {
+		return ctx.SendString("")
 	}
 
 	assigns := manager
