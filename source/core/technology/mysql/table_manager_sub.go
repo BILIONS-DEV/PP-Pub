@@ -4,11 +4,11 @@ import (
 	"time"
 )
 
-func (TableUserManager) TableName() string {
-	return Tables.UserManager
+func (TableManagerSub) TableName() string {
+	return Tables.ManagerSub
 }
 
-type TableUserManager struct {
+type TableManagerSub struct {
 	Id          int64     `gorm:"column:id" json:"id"`
 	PresenterId int64     `gorm:"column:presenter_id" json:"presenter_id"`
 	FirstName   string    `gorm:"column:first_name" json:"first_name"`

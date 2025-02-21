@@ -144,8 +144,7 @@ type tables struct {
 	CronJobBlockedPage        string
 	FloorTargeting            string
 	Cronjob                   string
-	UserManager               string
-	UserManagerPub			  string	
+	ManagerSub               string
 }
 
 var Tables tables
@@ -271,8 +270,7 @@ func init() {
 		CronJobBlockedPage:        "cronjob_blocked_page",
 		FloorTargeting:            "floor_targeting",
 		Cronjob:                   "cronjob",
-		UserManager:               "user_manager",
-		UserManagerPub:            "user_manager_pub",
+		ManagerSub:                "manager_sub",
 	}
 	Client = Connect()
 	Crawler = ConnectCrawler()

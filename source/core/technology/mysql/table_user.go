@@ -52,7 +52,7 @@ type TableUser struct {
 	//Logo                string              `gorm:"column:logo" json:"logo"`
 	//RootDomain          string              `gorm:"column:root_domain" json:"root_domain"`
 	//Brand               string              `gorm:"column:brand" json:"brand"`
-	UserManagerId       int64 				`gorm:"column:user_manager_id" json:"user_manager_id"`
+	ManagerSubId       int64 				`gorm:"column:manager_sub_id" json:"manager_sub_id"`
 	CreatedBy   int64            `gorm:"column:created_by" json:"created_by"`
 	UpdatedBy   int64            `gorm:"column:updated_by" json:"updated_by"`
 	CreatedAt   time.Time        `gorm:"column:created_at" json:"created_at"`

@@ -53,13 +53,13 @@ func (t *Api) GetInfoAccountManager(ctx *fiber.Ctx) error {
 		return ctx.JSON(response)
 	}
 
-	// var Manager mysql.TableUserManager
+	// var Manager mysql.TableManagerSub
 	presenter := new(model.User).GetById(publisher.Presenter)
 	if (presenter.Id == 0) {
 		return ctx.SendString("")
 	}
 
-	manager, err := new(model.UserManager).GetByUser(publisher)
+	manager, err := new(model.ManagerSub).GetByUser(publisher)
 	if err != nil {
 		return ctx.SendString(err.Error())
 	}
