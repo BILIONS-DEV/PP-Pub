@@ -2968,6 +2968,23 @@ a.disabled {
 
 /*# sourceMappingURL=style_dev.css.map */
 
+/* sidebar */
+@media screen and (max-width: 991px) {
+  .navbar-vertical.navbar-expand-lg {
+    background-color: #f3f5f8;
+  }
+  .navbar-vertical.navbar-expand-lg {
+    top: 0;
+    height: unset;
+    background-color: #f3f5f8;
+  }
+}
+@media screen and (max-width: 991px) {
+  body .navbar-vertical.navbar-expand-lg {
+      -webkit-transform: translateX(0%) !important;
+      transform: translateX(0%) !important;
+  }
+}
 
 /* ===== Header ===== */
 @media (max-width: 991px) {
