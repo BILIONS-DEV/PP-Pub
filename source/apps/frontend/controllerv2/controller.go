@@ -1,11 +1,8 @@
 package controllerv2
 
 import (
+	"encoding/json"
 	"fmt"
-	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/fiber/v2/middleware/cors"
-	"github.com/gofiber/fiber/v2/middleware/favicon"
-	"github.com/gofiber/template/html"
 	"html/template"
 	"log"
 	"net/url"
@@ -14,12 +11,18 @@ import (
 	"source/apps/frontend/helper"
 	"source/apps/frontend/helper/router"
 	"source/apps/frontend/view"
+	"source/core/technology/mysql"
 	"source/infrastructure/theme"
 	"source/internal/entity/model"
 	"source/internal/lang"
 	"source/internal/usecase"
 	"source/pkg/block"
 	"source/pkg/utility"
+
+	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
+	"github.com/gofiber/fiber/v2/middleware/favicon"
+	"github.com/gofiber/template/html"
 )
 
 type handler struct {
@@ -149,24 +152,31 @@ func bootstrap(ctx *fiber.Ctx, h *handler) error {
 	//}
 
 	parentSub := h.useCases.User.GetInfoByUserID(userLogin.Presenter)
+	var TemplateConfig mysql.TemplateConfig
+	err := json.Unmarshal([]byte(parentSub.TemplateConfig), &TemplateConfig)
+	if (err != nil) {
+		
+	}
 	ctx.Locals(assignKEY, Assign{
-		Uri:          uri,
-		RootDomain:   rootDomain,
-		HostName:     hostName,
-		BackURL:      backURL,
-		CurrentURL:   currentURL,
-		Version:      "dev",
-		Title:        "Self-service advertising system",
-		Logo:         parentSub.Logo,
-		LogoWidth:    parentSub.LogoWidth,
-		Brand:        parentSub.Brand,
-		Theme:        "muze",
-		TemplatePath: uri,
-		LANG:         h.translation,
-		UserLogin:    userLogin,
-		UserAdmin:    userAdmin,
-		SidebarSetup: config.SidebarSetup,
-		DeviceUA:     utility.GetDeviceFromUA(string(ctx.Context().UserAgent())),
+		Uri           : uri,
+		RootDomain    : rootDomain,
+		HostName      : hostName,
+		BackURL       : backURL,
+		CurrentURL    : currentURL,
+		Version       : "dev",
+		Title         : "Self-service advertising system",
+		Logo          : parentSub.Logo,
+		LogoWidth     : parentSub.LogoWidth,
+		Brand         : parentSub.Brand,
+		Template      : parentSub.Template,
+		TemplateConfig: TemplateConfig,
+		Theme         : "muze",
+		TemplatePath  : uri,
+		LANG          : h.translation,
+		UserLogin     : userLogin,
+		UserAdmin     : userAdmin,
+		SidebarSetup  : config.SidebarSetup,
+		DeviceUA      : utility.GetDeviceFromUA(string(ctx.Context().UserAgent())),
 	})
 	return ctx.Next()
 }
@@ -232,24 +242,26 @@ func checkPermissionPublisher(uri string) (isAccept bool) {
 }
 
 type Assign struct {
-	Uri          string      `json:"uri"`
-	RootDomain   string      `json:"root_domain"`
-	HostName     string      `json:"host_name"`
-	BackURL      string      `json:"back_url"`
-	CurrentURL   string      `json:"current_url"`
-	Version      string      `json:"version"`
-	Title        string      `json:"title"`
-	Logo         string      `json:"logo"`
-	LogoWidth    int         `json:"logo_width"`
-	Brand        string      `json:"brand"`
-	Theme        string      `json:"theme"`
-	TemplatePath string      `json:"template_path"`
-	ThemeSetting interface{} `json:"theme_setting"`
-	UserLogin    model.User  `json:"user_login"`
-	UserAdmin    model.User  `json:"user_admin"`
-	SidebarSetup config.SidebarSetupUri
-	LANG         *lang.Translation
-	DeviceUA     string `json:"is_set_currency"`
+	Uri             string               `json:"uri"`
+	RootDomain      string               `json:"root_domain"`
+	HostName        string               `json:"host_name"`
+	BackURL         string               `json:"back_url"`
+	CurrentURL      string               `json:"current_url"`
+	Version         string               `json:"version"`
+	Title           string               `json:"title"`
+	Logo            string               `json:"logo"`
+	LogoWidth       int                  `json:"logo_width"`
+	Brand           string               `json:"brand"`
+	Theme           string               `json:"theme"`
+	Template        string               `json:"template"`
+	TemplateConfig  mysql.TemplateConfig `json:"template_config"`
+	TemplatePath    string               `json:"template_path"`
+	ThemeSetting    interface{}          `json:"theme_setting"`
+	UserLogin       model.User           `json:"user_login"`
+	UserAdmin       model.User           `json:"user_admin"`
+	SidebarSetup    config.SidebarSetupUri
+	LANG            *lang.Translation
+	DeviceUA        string `json:"is_set_currency"`
 }
 
 func newAssign(ctx *fiber.Ctx, title string) Assign {

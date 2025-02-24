@@ -1,5 +1,4 @@
 import dataTable from "../../jspkg/datatable";
-
 let liSuccessTemp = `<li>
     <span class="avatar avatar-xs bg-teal-50 rounded-circle d-flex align-items-center justify-content-center">
         <img src="/static/svg/icons/right-check2.svg" width="14" height="14">

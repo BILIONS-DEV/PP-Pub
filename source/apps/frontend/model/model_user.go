@@ -218,6 +218,8 @@ func (t *User) UserLogin(ctx *fiber.Ctx) (user UserRecord) {
 			user.UserInfo.RootDomain = presenter.UserInfo.RootDomain
 			user.UserInfo.Brand = presenter.UserInfo.Brand
 			user.UserInfo.ServiceHostName = presenter.UserInfo.ServiceHostName
+			user.UserInfo.Template = presenter.UserInfo.Template
+			user.UserInfo.TemplateConfig = presenter.UserInfo.TemplateConfig
 		}
 	}
 	if !user.IsAdmin() {
@@ -1347,5 +1349,61 @@ func (t *User) GetRevShareDefault(userID int64) (rate int64, err error) {
 		err = mysql.Client.Where("user_id = ?", userID).Find(&recordInfo).Error
 		rate = int64(recordInfo.RevShareDomain)
 	}
+	return
+}
+
+
+func (t *User) validateTemplate(input *payload.UpdateTemplate, user UserRecord) (ajaxErrors []ajax.Error) {
+	if utility.ValidateString(input.Template) == "" {
+		ajaxErrors = append(ajaxErrors, ajax.Error{
+			Id:      "template",
+			Message: "Old PassWord is required",
+		})
+	}
+	return
+}
+func (t *User) UpdateTemplate(inputs *payload.UpdateTemplate, user UserRecord, userAdmin UserRecord, rootDomain string, lang lang.Translation) (result bool, errs []ajax.Error) {
+
+	var userInfo mysql.TableUserInfo
+	userInfo.UserId = user.Id
+
+	userID := user.Id 
+
+	err := mysql.Client.Where("user_id = ?", userID).First(&userInfo)
+	if (err != nil) {
+		
+	}
+
+	userInfo.Template = inputs.Template
+	userInfo.TemplateConfig = inputs.TemplateConfig
+
+	if (userInfo.Id < 1) {
+		errs = append(errs, ajax.Error{
+			Id:      "",
+			Message: "Not found record",
+		})
+		return
+
+		// create
+		// err := mysql.Client.Create(&userInfo).Error
+		// if (err != nil) {
+		// 	errs = append(errs, ajax.Error{
+		// 		Id:      "",
+		// 		Message: err.Error(),
+		// 	})
+		// 	return
+		// }
+	} else {
+		// update
+		err := mysql.Client.Where("user_id = ?", userID).Updates(&userInfo).Error
+		if (err != nil) {
+			errs = append(errs, ajax.Error{
+				Id:      "",
+				Message: err.Error(),
+			})
+			return
+		}
+	}
+	result = true
 	return
 }

@@ -1,11 +1,12 @@
 package mysql
 
 import (
-	"github.com/syyongx/php2go"
-	"gorm.io/gorm"
 	"source/pkg/utility"
 	"strings"
 	"time"
+
+	"github.com/syyongx/php2go"
+	"gorm.io/gorm"
 )
 
 type TableUser struct {
@@ -51,6 +52,7 @@ type TableUser struct {
 	//Logo                string              `gorm:"column:logo" json:"logo"`
 	//RootDomain          string              `gorm:"column:root_domain" json:"root_domain"`
 	//Brand               string              `gorm:"column:brand" json:"brand"`
+	ManagerSubId       int64 				`gorm:"column:manager_sub_id" json:"manager_sub_id"`
 	CreatedBy   int64            `gorm:"column:created_by" json:"created_by"`
 	UpdatedBy   int64            `gorm:"column:updated_by" json:"updated_by"`
 	CreatedAt   time.Time        `gorm:"column:created_at" json:"created_at"`
@@ -304,5 +306,43 @@ type TableUserInfo struct {
 	ServiceHostName string    `gorm:"column:service_host_name" json:"service_host_name"`
 	RevShareDomain  int       `gorm:"column:rev_share_domain" json:"rev_share_domain"`
 	BillingMethod   string    `gorm:"column:billing_method" json:"billing_method"`
+	Template		string    `gorm:"column:template;type:enum('on', 'off');default:'off'" json:"template"`
+	TemplateConfig	string    `gorm:"column:template_config" json:"template_config"`
 	CreatedAt       time.Time `gorm:"column:created_at" json:"created_at"`
 }
+
+type TemplateConfig struct {
+	FontFamily                 string `json:"font_family"`
+	SidebarBackgroundColor     string `json:"sidebar_background_color"`
+	SidebarColor     		   string `json:"sidebar_color"`
+	SidebarHoverColor     	   string `json:"sidebar_hover_color"`
+	TabBackgroundColor         string `json:"tab_background_color"`
+	FooterBackgroundColor      string `json:"footer_background_color"`
+	ButtonColor                string `json:"button_color"`
+	ButtonBackgroundColor      string `json:"button_background_color"`
+	ButtonBackgroundHoverColor string `json:"button_background_hover_color"`
+}
+
+func TemplateConfigDefault() TemplateConfig {
+	return TemplateConfig{
+		FontFamily: "Open Sans, Arial, sans-serif",
+		SidebarBackgroundColor: "#f3f3f3",
+		SidebarColor: "#c2c7d0",
+		SidebarHoverColor: "fff",
+		TabBackgroundColor: "#aab4c8",
+		FooterBackgroundColor: "#f3f5f8",
+		ButtonColor: "#fff",
+		ButtonBackgroundColor: "#0b7ef4",
+		ButtonBackgroundHoverColor: "#0f4e90",
+	}
+}
+
+
+
+
+
+
+
+
+
+

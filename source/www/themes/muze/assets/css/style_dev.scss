@@ -3011,3 +3011,222 @@ a.disabled {
 }
 
 /*# sourceMappingURL=style_dev.css.map */
+
+/* ===== Header ===== */
+@media (max-width: 991px) {
+  .main-left {
+      display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .main-right {
+    min-width: 500px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .sidebar-menu .main-left {
+    display: block;
+  }
+  .sidebar-menu .navbar-vertical {
+    top: 0;
+    height: unset;
+  }
+  .navbar-vertical.navbar-expand-lg {
+    top: 0;
+    height: unset;
+  }
+}
+
+.account-manager .dropdown-toggle::after {
+  display: none;
+}
+.account-manager a, .account-manager a:hover {
+  color: #646464!important;
+  font-weight: 400;
+}
+.account-manager .avatar {
+  min-width: initial;
+  width: 40px;
+  height: 40px;
+}
+.account-manager .avatar img {
+  width: 40px!important;
+  height: 40px!important;
+  object-fit: cover;
+}
+.account-manager .site-menu-title {
+  font-weight: 500;
+}
+.acc-manager-info {
+  max-width: 500px;
+}
+
+@media (max-width: 575px) {
+  .account-manager #manager-info>a {
+    display: none;
+  }
+}
+
+body#template_config .account-manager .avatar,body#template_config  .account-manager .avatar img {
+  min-width: initial;
+  width: 35px!important;
+  height: 35px!important;
+}
+
+/* ===== Css Config ===== */
+/* font */
+body#template_config {
+  --color_main: #1e1e1e;
+
+  /* --font_family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"; */
+  --font_family: var(--font_family_set, "Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol");
+  --sidebar_background_color: var(--select_background_color_set, #313a46) /* #f3f3f3, #405189, 313a46 */;
+  --sidebar_color: var(--sidebar_color_set, #c2c7d0); /* */
+  --sidebar_color_active: var(--sidebar_color_active_set, #fff); /* */
+  --sidebar_hover_color: var(---sidebar_hover_color_set, #fff); /* */
+
+  --tab_background_color: var(---tab_background_color_set, #d0dce794); /* #aab4c8 */
+
+  --footer_background_color: var(--footer_background_color_set, #f3f5f8); /* #f3f5f8 */
+  --footer_background_color_default: #f3f5f8; 
+  --select_background_color: var(--select_background_color_set, #f3f5f8); /* #f3f5f8 */
+  font-family: var(--font_family);
+
+  --button_color: var(--button_color_set, #fff); /* #fff */
+  --button_background_color: var(--button_background_color_set, #712cf9); /* #0b7ef4 #3f80ea */
+  --button_background_hover_color: var(--button_background_hover_color_set, #6528e0); /* #0f4e90 #366dc7*/
+  
+  letter-spacing: .2px;
+
+}
+#template_config .navbar-vertical.navbar-expand-lg .navbar-nav .nav-link {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: var(--font_family);
+}
+
+/* background color */
+#template_config .main-left, #template_config .main-left .navbar {
+  background-color: var(--sidebar_background_color)!important;
+  border-color: var(--sidebar_background_color)!important;
+}
+#template_config .it5 {
+  background-color: var(--sidebar_background_color);
+}
+#template_config .it1 .nav-pills .nav-link.active,
+#template_config .it1 .nav-pills .show > .nav-link {
+  background: linear-gradient(to right, #3577f1, #3577f1 0.4rem, #F4F6F6 0.4rem, #F4F6F6) !important;
+}
+#template_config .pp36 a {
+  background-color: var(--button_background_color);
+}
+
+/* font */
+#template_config .navbar .nav-link .ms-3 {
+  font-family: Roboto, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji !important;
+  letter-spacing: .7px;
+}
+#template_config .header-body .header-main {
+  font-family: var(--font_family);
+  color: #444444;
+}
+
+/* button */
+#template_config .o-button.btn-dominant, 
+#template_config .dm4, 
+#template_config .header-btn,
+#template_config .save-domain {
+  background: var(--button_background_color)!important;
+  border-color: var(--button_background_hover_color)!important;
+  color: var(--button_color)!important;
+  font-weight: 500;
+}
+#template_config .o-button.btn-dominant:hover,
+#template_config .dm4:hover,
+#template_config .header-btn:hover,
+#template_config .save-domain:hover {
+  background: var(--button_background_hover_color)!important;
+  border-color: var(--button_background_hover_color)!important;
+}
+
+#template_config .header-btn {
+  padding: 8px 10px;
+}
+
+#template_config .btn-outline-secondary:hover {
+  background-color: #495057;
+  border-color: #495057;
+}
+
+#template_config .btn-outline-secondary:hover {
+  background-color: var(--button_background_hover_color);
+  border-color: var(--button_background_hover_color);
+}
+
+/* sidebar */
+@media screen and (max-width: 991px) {
+    .navbar-vertical.navbar-expand-lg {
+      top: 0;
+      height: unset;
+  }
+}
+#template_config  .navbar-nav>.nav-item {
+  margin-top: .75rem;
+}
+#template_config  .navbar-nav ul>.nav-item {
+  margin-top: .125rem;
+}
+#template_config .nav-item .nav-link span.ms-3 {
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+#template_config .navbar {
+  color: var(--sidebar_color);
+}
+#template_config .navbar .nav-link,
+#template_config .navbar .nav-link[aria-expanded=true]{
+  color: var(--sidebar_color)!important;
+}
+#template_config .navbar svg,
+#template_config .navbar svg path {
+  fill: var(--sidebar_color)!important;
+}
+
+#template_config .navbar-nav .nav-link.active,
+#template_config .navbar-nav .nav-link:hover,
+#template_config .navbar-nav .nav-link[aria-expanded=true] {
+  color: var(--sidebar_hover_color)!important;
+}
+
+#template_config .navbar-nav .nav-link.active svg path,
+#template_config .navbar .nav-link.active svg path,
+#template_config .navbar .nav-link:hover svg path,
+#template_config .navbar .nav-link[aria-expanded=true] svg path,
+#template_config .navbar a:hover svg,
+#template_config .navbar a:hover svg path {
+  fill: var(--sidebar_hover_color)!important;
+}
+
+/* footer */
+#template_config .footer {
+  background-color: var(--sidebar_background_color); border-top-color: var(--sidebar_background_color);
+}
+
+/* tab */
+#template_config .pp-2,
+#template_config .o-report-bar.o-report-bar__bg-light
+{
+  background-color: var(--tab_background_color);
+}
+
+/* form */
+#template_config .pp10:focus {
+  border-color: var(--button_background_color);
+  /* box-shadow: 0 0 0 2px rgba(48, 66, 249, 0.2); */
+  box-shadow: none;
+}
+#template_config .form-select:focus {
+  box-shadow: none;
+}

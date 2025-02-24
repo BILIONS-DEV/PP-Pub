@@ -83,6 +83,12 @@
             <li class="nav-item">
                 <div id="tab-integration" class="nav-link pp-3 {{if eq .Tab 6}}pp-4 at-1{{end}}" data-tab="6" data-bs-toggle="tab" data-bs-target="#nav-integration" type="button" role="tab" aria-controls="nav-integration">
                     <div class="dm2">
+                        {{ if ne .Template "on" }}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16">
+                                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"></path>
+                                <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0m2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0"></path>
+                            </svg>
+                        {{ else }}
                         <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 511 511" style="enable-background:new 0 0 511 511;" xml:space="preserve">
                             <g>
                                 <path d="M455.5,40h-400C24.897,40,0,64.897,0,95.5v320C0,446.103,24.897,471,55.5,471h400c30.603,0,55.5-24.897,55.5-55.5v-320
@@ -105,6 +111,7 @@
                                     c0.846,0.308,1.711,0.453,2.563,0.453c3.064,0,5.941-1.893,7.049-4.938l64-176C295.964,206.17,293.956,201.867,290.063,200.451z"></path>
                             </g>
                         </svg>
+                        {{ end }}
                     </div>
                     <div class="dm1">Integration</div>
                 </div>

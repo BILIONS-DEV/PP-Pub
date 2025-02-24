@@ -245,27 +245,29 @@ func (TableUserInfo) TableName() string {
 }
 
 type TableUserInfo struct {
-	Id            int64     `gorm:"column:id" json:"id"`
-	UserId        int64     `gorm:"column:user_id" json:"user_id"`
-	Name          string    `gorm:"column:name" json:"name"`
-	NameVLI       string    `gorm:"column:name_vli" json:"name_vli"`
-	DateOfBirth   string    `gorm:"column:date_of_birth;default:null" json:"date_of_birth"`
-	Email         string    `gorm:"column:email" json:"email"`
-	EmailVLI      string    `gorm:"column:email_vli" json:"email_vli"`
-	Gender        string    `gorm:"column:gender" json:"gender"`
-	Telegram      string    `gorm:"column:telegram" json:"telegram"`
-	TelegramVLI   string    `gorm:"column:telegram_vli" json:"telegram_vli"`
-	Skype         string    `gorm:"column:skype" json:"skype"`
-	SkypeVLI      string    `gorm:"column:skype_vli" json:"skype_vli"`
-	Linkedin      string    `gorm:"column:linkedin" json:"linkedin"`
-	LinkedinVLI   string    `gorm:"column:linkedin_vli" json:"linkedin_vli"`
-	Avatar        string    `gorm:"column:avatar" json:"avatar"`
-	AvatarVLI     string    `gorm:"column:avatar_vli" json:"avatar_vli"`
-	Logo          string    `gorm:"column:logo" json:"logo"`
-	LogoWidth     int       `gorm:"column:logo_width" json:"logo_width"`
-	RootDomain    string    `gorm:"column:root_domain" json:"root_domain"`
-	SubDomain     string    `gorm:"column:sub_domain" json:"sub_domain"`
-	Brand         string    `gorm:"column:brand" json:"brand"`
-	BillingMethod string    `gorm:"column:billing_method" json:"billing_method"`
-	CreatedAt     time.Time `gorm:"column:created_at" json:"created_at"`
+	Id             int64     `gorm:"column:id" json:"id"`
+	UserId         int64     `gorm:"column:user_id" json:"user_id"`
+	Name           string    `gorm:"column:name" json:"name"`
+	NameVLI        string    `gorm:"column:name_vli" json:"name_vli"`
+	DateOfBirth    string    `gorm:"column:date_of_birth;default:null" json:"date_of_birth"`
+	Email          string    `gorm:"column:email" json:"email"`
+	EmailVLI       string    `gorm:"column:email_vli" json:"email_vli"`
+	Gender         string    `gorm:"column:gender" json:"gender"`
+	Telegram       string    `gorm:"column:telegram" json:"telegram"`
+	TelegramVLI    string    `gorm:"column:telegram_vli" json:"telegram_vli"`
+	Skype          string    `gorm:"column:skype" json:"skype"`
+	SkypeVLI       string    `gorm:"column:skype_vli" json:"skype_vli"`
+	Linkedin       string    `gorm:"column:linkedin" json:"linkedin"`
+	LinkedinVLI    string    `gorm:"column:linkedin_vli" json:"linkedin_vli"`
+	Avatar         string    `gorm:"column:avatar" json:"avatar"`
+	AvatarVLI      string    `gorm:"column:avatar_vli" json:"avatar_vli"`
+	Logo           string    `gorm:"column:logo" json:"logo"`
+	LogoWidth      int       `gorm:"column:logo_width" json:"logo_width"`
+	RootDomain     string    `gorm:"column:root_domain" json:"root_domain"`
+	SubDomain      string    `gorm:"column:sub_domain" json:"sub_domain"`
+	Brand          string    `gorm:"column:brand" json:"brand"`
+	BillingMethod  string    `gorm:"column:billing_method" json:"billing_method"`
+	Template       string    `gorm:"column:template;type:enum('on', 'off');default:'off'" json:"template"`
+	TemplateConfig string    `gorm:"column:template_config" json:"template_config"`
+	CreatedAt      time.Time `gorm:"column:created_at" json:"created_at"`
 }

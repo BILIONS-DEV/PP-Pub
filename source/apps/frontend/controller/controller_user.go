@@ -268,6 +268,32 @@ func (t *User) PassWordSettingPost(ctx *fiber.Ctx) error {
 	return ctx.JSON(response)
 }
 
+func (t *User) ChangeTemplatePost(ctx *fiber.Ctx) error {
+	userLogin := GetUserLogin(ctx)
+	userAdmin := GetUserAdmin(ctx)
+	isAccept := new(model.User).CheckUserLogin(userLogin, userAdmin, config.URIChangePassword)
+	if !isAccept {
+		return ctx.SendStatus(fiber.StatusNotFound)
+	}
+
+	assigns := AssignUserAccount{Schema: assign.Get(ctx)}
+
+	postData := new(payload.UpdateTemplate)
+	if err := ctx.BodyParser(postData); err != nil {
+		return err
+	}
+
+	response := ajax.Responses{}
+	_, errs := new(model.User).UpdateTemplate(postData, userLogin, userAdmin, assigns.RootDomain, GetLang(ctx))
+	if len(errs) > 0 {
+		response.Status = ajax.ERROR
+		response.Errors = errs
+	} else {
+		response.Status = ajax.SUCCESS
+	}
+	return ctx.JSON(response)
+}
+
 func (t *User) Logout(ctx *fiber.Ctx) error {
 	ctx.Request().Header.VisitAllCookie(func(key, value []byte) {
 		ctx.Cookie(&fiber.Cookie{
