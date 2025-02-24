@@ -1,4 +1,5 @@
-{{/* <div class="header border-bottom py-0">
+{{- /*gotype: source/apps/frontend/controller.AssignInventory*/ -}}
+<div class="header border-bottom py-0">
     <div class="container-fluid px-0 h-100">
         <div class="header-body px-3 h-100">
             <div class="row align-items-center h-100">
@@ -6,14 +7,15 @@
                     <img src="{{.RootDomain}}/assets/svg/icons/hamburger1.svg" alt="img">
                     <img src="{{.RootDomain}}/assets/svg/icons/close1.svg" style="width:20px;" class="menu-close"
                          alt="img"> </a> <a class="navbar-brand mx-auto col-auto px-0" href="#">
-                    <h1 class="header-main">Dashboards</h1>
+                    <h1 class="header-main">Reports - Overview</h1>
                 </a>
                 <div class="col d-flex align-items-center">
-                </div> */}}
-                {{/*                <div class="col-auto d-flex flex-wrap align-items-center icon-blue-hover ps-0 pe-0 h-100 border-right">*/}}
-                {{/*                    <a  class="header-btn customize-btn" href="javascript:void(0)">Add Supply</a>*/}}
-                {{/*                </div>*/}}
-                {{/* <div class="col-auto d-flex flex-wrap align-items-center icon-blue-hover ps-0"> */}}
+                </div>
+
+                <!-- account manager -->
+                <div class="col-auto icon-blue-hover ps-0 pe-0 h-100 account-manager dropdown"></div>
+
+                <div class="col-auto d-flex flex-wrap align-items-center icon-blue-hover ps-0">
 {{/*                    <div class="dropdown grid-option box-notifi">*/}}
 {{/*                        <a href="#" class="text-dark ms-3 mb-0 notification" data-bs-toggle="dropdown" id="notification"*/}}
 {{/*                           data-bs-auto-close="outside" data-bs-autoClose="false">*/}}
@@ -43,29 +45,18 @@
 {{/*                            <div class="dropdown-body" data-simplebar id="result-notification"></div>*/}}
 {{/*                        </div>*/}}
 {{/*                    </div>*/}}
-                {{/* </div>
+                    <div class="">
+                        {{/*                        <a href="https://pubpower.tawk.help/" class="text-dark ms-3 mb-0" target="_blank" rel="nofollow">*/}}
+                        {{/*                            <svg width="24" height="24" viewBox="0 0 16 16" class="bi bi-question-circle"*/}}
+                        {{/*                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">*/}}
+                        {{/*                                <path fill-rule="evenodd"*/}}
+                        {{/*                                      d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>*/}}
+                        {{/*                                <path d="M5.25 6.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"></path>*/}}
+                        {{/*                            </svg>*/}}
+                        {{/*                        </a>*/}}
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div> */}}
-
-{{template "home/index/inc.header" .}}
-
-<div class="pb-3 height-main">
-    <div class="container-fluid px-0">
-    <script>
-    let URLPlus = "https://api.bilsyndication.com/report";
-    let URLRouter = "/report";
-    </script>
-        <link href="https://s3.vlitag.com/s3-pw/subpub/static/css/app.css?v={{.Version}}" rel=stylesheet>
-
-    <div id="app"></div>
-
-    <script type=text/javascript src="https://s3.vlitag.com/s3-pw/subpub/static/js/manifest-pro.js?v={{.Version}}">
-    </script>
-    <script type=text/javascript src="https://s3.vlitag.com/s3-pw/subpub/static/js/vendor-pro.js?v={{.Version}}">
-    </script>
-    <script type=text/javascript src="https://s3.vlitag.com/s3-pw/subpub/static/js/app-pro.js?v={{.Version}}">
-    </script>
     </div>
 </div>
