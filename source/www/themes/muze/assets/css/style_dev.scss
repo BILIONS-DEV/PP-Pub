@@ -3012,7 +3012,33 @@ a.disabled {
 
 /*# sourceMappingURL=style_dev.css.map */
 
+/* sidebar */
+@media screen and (max-width: 991px) {
+  .navbar-vertical.navbar-expand-lg {
+    background-color: #f3f5f8;
+  }
+  .navbar-vertical.navbar-expand-lg {
+    top: 0;
+    height: unset;
+    background-color: #f3f5f8;
+  }
+}
+@media screen and (max-width: 991px) {
+  body .navbar-vertical.navbar-expand-lg {
+      -webkit-transform: translateX(0%) !important;
+      transform: translateX(0%) !important;
+  }
+}
+
 /* ===== Header ===== */
+.main-right {
+  height: 100vh!important;
+  overflow-x: hidden!important;
+  overflow-y: auto!important;
+}
+.main-right>.header {
+  flex-shrink: 0!important;
+}
 @media (max-width: 991px) {
   .main-left {
       display: none;
@@ -3082,12 +3108,12 @@ body#template_config {
 
   /* --font_family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"; */
   --font_family: var(--font_family_set, "Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol");
-  --sidebar_background_color: var(--select_background_color_set, #313a46) /* #f3f3f3, #405189, 313a46 */;
+  --sidebar_background_color: var(--sidebar_background_color_set, #4f576e) /* #f3f3f3, #405189, 313a46 */;
   --sidebar_color: var(--sidebar_color_set, #c2c7d0); /* */
-  --sidebar_color_active: var(--sidebar_color_active_set, #fff); /* */
-  --sidebar_hover_color: var(---sidebar_hover_color_set, #fff); /* */
+  --sidebar_hover_color: var(--sidebar_hover_color_set, #fff); /* */
+  --sidebar_color_active: var(--sidebar_hover_color_set, #fff); /* */
 
-  --tab_background_color: var(---tab_background_color_set, #d0dce794); /* #aab4c8 */
+  --tab_background_color: var(--tab_background_color_set, #d0dce794); /* #aab4c8 */
 
   --footer_background_color: var(--footer_background_color_set, #f3f5f8); /* #f3f5f8 */
   --footer_background_color_default: #f3f5f8; 
@@ -3218,7 +3244,7 @@ body#template_config {
 #template_config .pp-2,
 #template_config .o-report-bar.o-report-bar__bg-light
 {
-  background-color: var(--tab_background_color);
+  background-color: var(--tab_background_color)!important;
 }
 
 /* form */
