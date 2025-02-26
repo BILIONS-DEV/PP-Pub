@@ -32,35 +32,35 @@
             ppocTag.uId = `xxx-xxx-xxx`;
         </script>
     {{end}}
-    {{ if ne .Template "on" }}
-    <style>
+    {{ if eq .Template "on" }}
+    <style id>
         body#template_config {
             {{ if .TemplateConfig.FontFamily }}
-                --font_family_set: .TemplateConfig.FontFamily
+                --font_family_set: {{ .TemplateConfig.FontFamily }};
             {{ end }}
             {{ if .TemplateConfig.SidebarBackgroundColor }}
-                --sidebar_background_color_set: .TemplateConfig.SidebarBackgroundColor
+                --sidebar_background_color_set: {{ .TemplateConfig.SidebarBackgroundColor }};
             {{ end }}
             {{ if .TemplateConfig.SidebarColor }}
-                --sidebar_color_set: .TemplateConfig.SidebarColor
+                --sidebar_color_set: {{ .TemplateConfig.SidebarColor }};
             {{ end }}
             {{ if .TemplateConfig.SidebarHoverColor }}
-                --sidebar_hover_color_set: .TemplateConfig.SidebarHoverColor
+                --sidebar_hover_color_set: {{ .TemplateConfig.SidebarHoverColor }};
             {{ end }}
             {{ if .TemplateConfig.TabBackgroundColor }}
-                --tab_background_color_set: .TemplateConfig.TabBackgroundColor
+                --tab_background_color_set: {{ .TemplateConfig.TabBackgroundColor }};
             {{ end }}
             {{ if .TemplateConfig.FooterBackgroundColor }}
-                --footer_background_color_set: .TemplateConfig.FooterBackgroundColor
+                --footer_background_color_set: {{ .TemplateConfig.FooterBackgroundColor }};
             {{ end }}
             {{ if .TemplateConfig.ButtonColor }}
-                --button_color_set: .TemplateConfig.ButtonColor
+                --button_color_set: {{ .TemplateConfig.ButtonColor }};
             {{ end }}
             {{ if .TemplateConfig.ButtonBackgroundColor }}
-                --button_background_color_set: .TemplateConfig.ButtonBackgroundColor
+                --button_background_color_set: {{ .TemplateConfig.ButtonBackgroundColor }};
             {{ end }}
             {{ if .TemplateConfig.ButtonBackgroundHoverColor }}
-                --button_background_hover_color_set: .TemplateConfig.ButtonBackgroundHoverColor
+                --button_background_hover_color_set: {{ .TemplateConfig.ButtonBackgroundHoverColor }};
             {{ end }}
         }
     </style>
