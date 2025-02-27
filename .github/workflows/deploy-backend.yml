@@ -29,8 +29,8 @@ jobs:
 
       - name: Build GO
         run: |
-          cd source/apps/aff-api
-          CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o aff-api main.go
+          cd source/apps/frontend
+          CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o frontend main.go
 
       - name: Copy File Build to Server
         uses: appleboy/scp-action@master
@@ -39,18 +39,8 @@ jobs:
           username: aff
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
-          source: ./source/apps/aff-api/aff-api
-          target: /home/aff/go/arb-backend/
-
-      - name: Copy File Docs to Server
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: aff
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.SSH_PORT }}
-          source: ./source/apps/aff-api/docs
-          target: /home/aff/go/arb-backend/
+          source: ./source/apps/frontend/aff-api
+          target: /home/assyrian/go/pubpower-subpub/
 
       - name: Run command on server
         uses: appleboy/ssh-action@master
@@ -60,8 +50,8 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            cd /home/aff/go/arb-backend
-            supervisorctl -c /usr/share/supervisor/aff/supervisord.conf restart AffAPI
+            cd /home/assyrian/go/pubpower-subpub
+            supervisorctl -c /usr/share/supervisor/assyrian/supervisord.conf restart AffAPI
 
   notify-telegram:
     needs: [build-and-deploy]
@@ -71,7 +61,7 @@ jobs:
       - name: Send notification to Telegram Bot
         uses: appleboy/telegram-action@master
         with:
-          to: ${{ secrets.CHATID_TELEGRAM_ARBDEV }}
+          to: ${{ secrets.CHATID_TELEGRAM }}
           token: ${{ secrets.BOTID_TELEGRAM_PUBPOWER }}
           message: |
             [${{ needs.build-and-deploy.result }}] ${{ github.workflow }} - ${{ github.repository }}
