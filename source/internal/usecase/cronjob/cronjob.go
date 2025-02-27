@@ -23,7 +23,7 @@ func NewCronJobUC(repos *repo.Repositories) *cronJobUC {
 }
 
 type cronJobUC struct {
-	repos     *repo.Repositories
+	repos *repo.Repositories
 }
 
 func (t *cronJobUC) GetQueues(limit int) (records []model.CronjobModel, err error) {
@@ -66,13 +66,6 @@ func (t *cronJobUC) Handler(record *model.CronjobModel) (errs []error) {
 		return
 	}
 
-	//=> Handler
-	logData, logError = impl.handler(record)
-	if logError != "" {
-		err = errors.New("error handler")
-		errs = append(errs, err)
-		return
-	}
 	return
 }
 
@@ -80,7 +73,6 @@ func (t *cronJobUC) makeImpl(typ model.TYPECronJob) (impl cronJobImplInterface, 
 	switch typ {
 	case
 		model.TYPECronJobCreateKeyValueGAM:
-		impl = newCronJobKeyValue(t)
 
 	default:
 		return nil, errors.New("Malformed")

@@ -62,7 +62,6 @@ func (t *Payment) IndexFilter(ctx *fiber.Ctx) error {
 		return err
 	}
 	// // Print Data to JSON
-	// return ctx.JSON("")
 	return ctx.JSON(dataTable)
 }
 

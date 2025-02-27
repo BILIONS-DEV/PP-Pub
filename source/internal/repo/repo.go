@@ -20,8 +20,6 @@ import (
 	"source/internal/repo/creative"
 	"source/internal/repo/cronjob"
 	"source/internal/repo/gam"
-	gamNetwork "source/internal/repo/gam-network"
-	googleAdsApi "source/internal/repo/google-ads-api"
 	"source/internal/repo/history"
 	"source/internal/repo/inventory"
 	inventory_ad_tag "source/internal/repo/inventory-ad-tag"
@@ -66,13 +64,11 @@ type Repositories struct {
 	Category                category.RepoCategory
 	AdSchedule              adschedule.RepoAdSchedule
 	Gam                     gam.RepoGam
-	GamNetwork              gamNetwork.RepoGamNetwork
 	AdType                  adType.RepoAdType
 	Bidder                  bidder.RepoBidder
 	KeyValue                keyValue.RepoKeyValue
 	KeyValueGam             keyValueGAM.RepoKeyValueGam
 	CronJob                 cronjob.RepoCronJob
-	GoogleAdsAPI            googleAdsApi.RepoGoogleAdsAPI
 	ReportBodis             reportbodis.RepoReportBodis
 	ReportBodisTraffic      reportBodisTraffic.RepoReportBodisTraffic
 	ReportOpenMailSubID     reportOpenMailSubID.RepoReportOpenMailSubID
@@ -115,13 +111,11 @@ func NewRepositories(deps *Deps) *Repositories {
 		History:                 history.NewHistoryRepo(deps.Db, deps.Cache),
 		Category:                category.NewCategoryRepo(deps.Db, deps.Cache),
 		Gam:                     gam.NewGamRepo(deps.Db, deps.Cache),
-		GamNetwork:              gamNetwork.NewGamNetworkRepo(deps.Db, deps.Cache),
 		AdType:                  adType.NewAdTypeRepo(deps.Db),
 		Bidder:                  bidder.NewBidderRepo(deps.Db),
 		KeyValue:                keyValue.NewKeyValueRepo(deps.Db),
 		KeyValueGam:             keyValueGAM.NewKeyValueRepo(deps.Db),
 		CronJob:                 cronjob.NewCronJobRepo(deps.Db),
-		GoogleAdsAPI:            googleAdsApi.NewGoogleAdsAPIRepo(deps.Db),
 		ReportBodis:             reportbodis.NewReportBodisRepo(deps.Db),
 		ReportBodisTraffic:      reportBodisTraffic.NewReportBodisTrafficRepo(deps.Db, deps.Kafka),
 		ReportOpenMailSubID:     reportOpenMailSubID.NewReportOpenMailSubIDRepo(deps.Db, deps.Kafka),

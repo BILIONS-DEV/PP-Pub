@@ -82,7 +82,6 @@ func NewUseCases(deps *Deps) *UseCases {
 		Inventory:          inventory.NewInventoryUC(deps.Repos),
 		User:               user.NewUserFeUsecase(deps.Repos, deps.Translation),
 		Category:           category.NewCategoryUsecase(deps.Repos, deps.Translation),
-		GamNetwork:         gamNetwork.NewGamNetworkUC(deps.Repos),
 		AdType:             adType.NewAdTypeUC(deps.Repos),
 		Bidder:             bidder.NewBidderUC(deps.Repos),
 		KeyValue:           keyValue.NewKeyValueUC(deps.Repos),

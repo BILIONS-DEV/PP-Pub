@@ -1,6 +1,8 @@
 package controllerv2
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/gofiber/fiber/v2"
 	"source/apps/frontend/config"
 	"source/apps/frontend/view"
@@ -43,6 +45,8 @@ func (t *inventory) Index(ctx *fiber.Ctx) (err error) {
 func (t *inventory) IndexPost(ctx *fiber.Ctx) (err error) {
 	// get user login
 	userLogin := getUserLogin(ctx)
+	s, _ := json.MarshalIndent(userLogin, "", "\t")
+	fmt.Printf("%+v\n", string(s))
 	var payload dto.PayloadInventoryIndexPost
 	if err = ctx.BodyParser(&payload); err != nil {
 		return ctx.Status(fiber.StatusBadRequest).JSON(
@@ -129,7 +133,6 @@ func (t *inventory) Setup(ctx *fiber.Ctx) (err error) {
 	// Get inventory
 	inventory, _ := t.useCases.Inventory.GetById(params.Id)
 	assigns.Row = inventory
-	assigns.GamNetworks, _ = t.useCases.GamNetwork.GetByUser(userLogin.ID)
 	assigns.AdTypes, _ = t.useCases.AdType.GetByUser(userLogin.ID)
 
 	assigns.CountConnectWaiting = t.useCases.Inventory.CountConnectWaiting(inventory)
