@@ -65,7 +65,6 @@ type InputFilter struct {
 func (t *inventoryRepo) Filter(input *InputFilter) (totalRecord int64, records []*model.InventoryModel, err error) {
 	var table = model.InventoryModel{}.TableName()
 	err = t.Db.
-		//Debug().
 		Scopes(
 			t.setFilterCondition(input.UserID, input.Status, input.SupplyType, input.SyncAdsTxt),
 			t.setFilterQuerySearch(input.Search),
