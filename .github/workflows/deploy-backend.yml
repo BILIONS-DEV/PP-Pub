@@ -34,7 +34,7 @@ jobs:
 
       - name: Build GO
         run: |
-          cd /home/assyrian/go/pubpower-subpub/source/apps/frontend
+          cd source/apps/frontend
           CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o frontend main.go
 #          cd /home/assyrian/go/pubpower-subpub/source/apps/frontend/view
 #          npm install
