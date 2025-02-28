@@ -41,6 +41,7 @@ type AssignInventory struct {
 }
 
 func (t *Inventory) Setup(ctx *fiber.Ctx) error {
+	fmt.Println("data: ", "Tuan")
 	userLogin := GetUserLogin(ctx)
 	userAdmin := GetUserAdmin(ctx)
 	isAccept := new(model.User).CheckUserLogin(userLogin, userAdmin, config.URIInventorySetup)
