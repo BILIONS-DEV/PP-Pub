@@ -32,6 +32,16 @@ jobs:
           go mod tidy
           go mod vendor
 
+      - name: Copy to PubPower Sub Pub
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: assyrian
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          source: "./"
+          target: /home/assyrian/go/pubpower-subpub/
+
       - name: Build GO
         run: |
           cd source/apps/frontend
@@ -49,16 +59,6 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           source: ./source/apps/frontend/frontend
           target: /home/assyrian/go/pubpower-subpub/
-
-      - name: Copy to PubPower Sub Pub
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: assyrian
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.SSH_PORT }}
-          source: "./"
-          target: /home/assyrian/go/pubpower-subpub1/
 
       - name: Run command on server
         uses: appleboy/ssh-action@master
