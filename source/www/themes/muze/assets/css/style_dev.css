@@ -3120,7 +3120,7 @@ body#template_config {
 #template_config .header-btn,
 #template_config .save-domain {
   background: var(--button_background_color)!important;
-  border-color: var(--button_background_hover_color)!important;
+  border-color: var(--button_background_color)!important;
   color: var(--button_color)!important;
   font-weight: 500;
 }
