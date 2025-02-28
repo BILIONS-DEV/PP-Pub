@@ -3072,14 +3072,14 @@ body#template_config {
   --tab_background_color: var(--tab_background_color_set, #d0dce794); /* #aab4c8 */
 
   --footer_background_color: var(--footer_background_color_set, #f3f5f8); /* #f3f5f8 */
-  --footer_background_color_default: #f3f5f8; 
+  --footer_background_color_default: #f3f5f8;
   --select_background_color: var(--select_background_color_set, #f3f5f8); /* #f3f5f8 */
   font-family: var(--font_family);
 
   --button_color: var(--button_color_set, #fff); /* #fff */
   --button_background_color: var(--button_background_color_set, #712cf9); /* #0b7ef4 #3f80ea */
   --button_background_hover_color: var(--button_background_hover_color_set, #6528e0); /* #0f4e90 #366dc7*/
-  
+
   letter-spacing: .2px;
 
 }
@@ -3115,8 +3115,8 @@ body#template_config {
 }
 
 /* button */
-#template_config .o-button.btn-dominant, 
-#template_config .dm4, 
+#template_config .o-button.btn-dominant,
+#template_config .dm4,
 #template_config .header-btn,
 #template_config .save-domain {
   background: var(--button_background_color)!important;
@@ -3203,7 +3203,7 @@ body#template_config {
   background-color: var(--tab_background_color)!important;
 }
 
-/* form*/
+/* form data*/
 #template_config .pp10:focus {
   border-color: var(--button_background_color);
   /* box-shadow: 0 0 0 2px rgba(48, 66, 249, 0.2); */
