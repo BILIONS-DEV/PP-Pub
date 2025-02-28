@@ -5,7 +5,7 @@
 
 # Node artifact files
 node_modules/
-.assets/
+source/apps/frontend/view/node_modules
 .vscode
 
 # Compiled Java class files
@@ -75,7 +75,7 @@ source/apps/service/js/prebid_source
 
 source/apps/frontend/view/quickstart
 
-source/www/themes/muze/assets/vendor/vendor/
+source/www/themes/muze/assets/vendor
 
 source/www/themes/muze/assets/vendor/composer.json
 
