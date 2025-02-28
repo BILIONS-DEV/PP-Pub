@@ -153,8 +153,11 @@ const Config = (env, argv) => {
                     use: {
                         loader: 'babel-loader',
                         options: {
-                            presets: ['@babel/preset-env'],
-                            plugins: ['@babel/plugin-proposal-object-rest-spread']
+                            presets: ["@babel/preset-env", "@babel/preset-react"],
+                            plugins: [
+                                "@babel/plugin-transform-class-properties",
+                                "@babel/plugin-proposal-object-rest-spread"
+                            ]
                         }
                     }
                 },
