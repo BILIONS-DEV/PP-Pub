@@ -18,16 +18,16 @@ const Config = (env, argv) => {
             // "be/supply/index": ["./pages/_backend/supply/index.js"],
 
             //=> Page:  AdsTxt
-            "ads_txt/index": ["./pages/ads_txt/index.js", "./pages/ads_txt/index.css"],
-            "ads_txt/detail": ["./pages/ads_txt/detail.js"],
+            // "ads_txt/index": ["./pages/ads_txt/index.js", "./pages/ads_txt/index.css"],
+            // "ads_txt/detail": ["./pages/ads_txt/detail.js"],
             //=> Page: AdTag
             // "adtag/add": ["./pages/adtag/add.js"],
             // "adtag/edit": ["./pages/adtag/edit.js"],
             //=> Page: Bidder
-            "bidder/index": ["./pages/bidder/index.js"],
-            "bidder/add": ["./pages/bidder/add.js"],
-            "bidder/edit": ["./pages/bidder/edit.js"],
-            "bidder/view": ["./pages/bidder/view.js"],
+            // "bidder/index": ["./pages/bidder/index.js"],
+            // "bidder/add": ["./pages/bidder/add.js"],
+            // "bidder/edit": ["./pages/bidder/edit.js"],
+            // "bidder/view": ["./pages/bidder/view.js"],
             //=> Page: Blocking
             // "blocking/index": ["./pages/blocking/index.js"],
             // "blocking/add": ["./pages/blocking/add.js"],
@@ -43,12 +43,12 @@ const Config = (env, argv) => {
             // "content/edit/quiz": ["./pages/content/edit.js"],
             // "content/edit/video": ["./pages/content/edit.js"],
             //=> Page: Floor
-            "floor/index": ["./pages/floor/index.js"],
-            "floor/add": ["./pages/floor/add.js"],
-            "floor/edit": ["./pages/floor/edit.js"],
+            // "floor/index": ["./pages/floor/index.js"],
+            // "floor/add": ["./pages/floor/add.js"],
+            // "floor/edit": ["./pages/floor/edit.js"],
             //=> Page: GAM
-            "gam/index": ["./pages/gam/index.js"],
-            "gam/edit": ["./pages/gam/edit.js"],
+            // "gam/index": ["./pages/gam/index.js"],
+            // "gam/edit": ["./pages/gam/edit.js"],
             //=> Page: Home
             "home/dashboard": ["./pages/home/dashboard.js"],
             //=> Page: Inventory
@@ -88,11 +88,11 @@ const Config = (env, argv) => {
             // "user/password": ["./pages/user/password.js"],
             "user/new-password": ["./pages/user/new-password.js"],
             //=> Page: Video
-            "video/index": ["./pages/video/index.js"],
+            // "video/index": ["./pages/video/index.js"],
             //=> Page: Video
-            "support/index": ["./pages/support/index.css", "./pages/support/index.js"],
-            "support/product-description": ["./pages/support/index.css"],
-            "support/tickets/new": ["./pages/support/index.css", "./pages/support/index.js"],
+            // "support/index": ["./pages/support/index.css", "./pages/support/index.js"],
+            // "support/product-description": ["./pages/support/index.css"],
+            // "support/tickets/new": ["./pages/support/index.css", "./pages/support/index.js"],
             //=> Page: Identity
             // "identity/index": ["./pages/identity/index.js"],
             // "identity/add": ["./pages/identity/add.js"],
@@ -109,10 +109,10 @@ const Config = (env, argv) => {
             "payment": ["./pages/payment/index.js"],
             "payment/index": ["./pages/payment/index.js"],
             //=> Page: Rule
-            "rule/index": ["./pages/rule/index.js"],
+            // "rule/index": ["./pages/rule/index.js"],
             //=> Page: Rule
-            "blocked-page/add": ["./pages/blocked-page/add.js"],
-            "blocked-page/edit": ["./pages/blocked-page/edit.js"],
+            // "blocked-page/add": ["./pages/blocked-page/add.js"],
+            // "blocked-page/edit": ["./pages/blocked-page/edit.js"],
             //=> Page: Activity
             "history/index": ["./pages/history/index.js"],
             //=> Page: Content Quiz
@@ -127,8 +127,8 @@ const Config = (env, argv) => {
             // "campaigns": ["./pages/campaign/index.js"],
             // "campaigns/index": ["./pages/campaign/index.js"],
             //=> Page: Ad Block
-            "adblock/analytics": ["./pages/adblock/analytics.js"],
-            "adblock/generator": ["./pages/adblock/generator.js"],
+            // "adblock/analytics": ["./pages/adblock/analytics.js"],
+            // "adblock/generator": ["./pages/adblock/generator.js"],
             //=> Page: Report
             // "report/index": ["./pages/report/analytics.js"],
             // "report/dimension": ["./pages/report/generator.js"],
