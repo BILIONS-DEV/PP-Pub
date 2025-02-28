@@ -2,14 +2,16 @@
 <theme name="muze">
     <page path="/report">
         <!-- Import CSS -->
-<!--        <css link="/assets/plugins/bootstrap-toggle/bootstrap-toggle.min.css"/>-->
-<!--        <css link="/assets/plugins/datatables/datatables.min.css"/>-->
+        <css link="/assets/plugins/bootstrap431/css/bootstrap.min.css" rel="stylesheet" media="all" inline="false"/>
+        <!-- <css link="/assets/plugins/datatables/datatables.min.css" rel="stylesheet" media="all" inline="false"/> -->
+<!--        <css link="/assets/plugins/ajax-bootstrap-select-1.4.5/dist/css/ajax-bootstrap-select.min.css"/>-->
+        <!-- <css link="/assets/plugins/bootstrap-select-1.13.18/css/bootstrap-select.min.css" rel="stylesheet" media="all"/> -->
         <!-- Import JS -->
-<!--        <js link="/assets/plugins/select2/dist/js/select2.full.min.js"/>-->
-<!--        <js link="/assets/plugins/select2/dist/js/select2.multi-checkboxes.js"/>-->
-<!--        <js link="/assets/plugins/bootstrap-toggle/js/bootstrap-toggle.min.js"/>-->
-<!--        <js link="/assets/plugins/datatables/datatables.min.js"/>-->
-<!--        <js link="/assets/plugins/jquery-collapser/dist/jquery.collapser.min.js"/>-->
+        <js link="/assets/js/popper.min.js"/>
+        <js link="/assets/plugins/bootstrap431/js/bootstrap.min.js"/>
+        <!-- <js link="/assets/plugins/datatables/datatables.min.js"/> -->
+        <!-- <js link="/assets/plugins/select2/dist/js/select2.full.js"/> -->
+        <!-- <js link="/assets/plugins/bootstrap-select-1.13.18/js/bootstrap-select.min.js"/> -->
     </page>
     <page path="/report/dimension" includePath="/report">
 

@@ -2,12 +2,15 @@
 <theme name="muze">
     <page path="/">
         <!-- Import JS -->
+        <css link="/assets/plugins/bootstrap431/css/bootstrap.min.css" rel="stylesheet" media="all" inline="false"/>
 <!--        <js link="/assets/vendor/highcharts/highmaps.js"/>-->
 <!--        <js link="/assets/vendor/apexcharts/dist/apexcharts.min.js"/>-->
 <!--        <js link="/assets/home/dashboard.js"/>-->
     </page>
     <page path="/dashboards">
         <!-- Import JS -->
+        <js link="/assets/js/popper.min.js"/>
+        <js link="/assets/plugins/bootstrap431/js/bootstrap.min.js"/>
 <!--        <js link="/assets/vendor/highcharts/highmaps.js"/>-->
 <!--        <js link="/assets/vendor/apexcharts/dist/apexcharts.min.js"/>-->
 <!--        <js link="/assets/home/dashboard.js"/>-->
