@@ -32,7 +32,7 @@
         <js link="/assets/plugins/datatables/datatables.min.js"/>
 <!--        <js link="/assets/plugins/select2/dist/js/select2.full.js"/>-->
 <!--        <js link="/assets/plugins/anno-js/anno.js"/>-->
-<!--        <js link="/assets/plugins/anno-js/jquery.scrollintoview.min.js"/>-->
+        <js link="/assets/plugins/anno-js/jquery.scrollintoview.min.js"/>
         <js link="/assets/plugins/bootstrap-select-1.13.18/js/bootstrap-select.min.js"/>
 <!--        <js link="/assets/plugins/ajax-bootstrap-select-1.4.5/dist/js/ajax-bootstrap-select.min.js"/>-->
         <js link="/assets/supply-v2/setup.js"/>
