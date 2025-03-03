@@ -21,7 +21,6 @@ import (
 )
 
 func main() {
-	fmt.Println("Tuan test")
 	lang.Register("EN")
 
 	engine := helper.Engine()
