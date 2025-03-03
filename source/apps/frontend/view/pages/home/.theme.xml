@@ -16,7 +16,7 @@
         <js link="/assets/js/popper.min.js"/>
         <js link="/assets/plugins/bootstrap431/js/bootstrap.min.js"/>
         <js link="/assets/vendor/highcharts/highmaps.js"/>
-<!--        <js link="/assets/vendor/apexcharts/dist/apexcharts.min.js"/>-->
+        <js link="/assets/vendor/apexcharts/dist/apexcharts.min.js"/>
 <!--        <js link="/assets/home/dashboard.js"/>-->
     </page>
 </theme>
