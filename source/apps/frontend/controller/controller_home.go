@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"fmt"
 	"github.com/gofiber/fiber/v2"
 	"github.com/joho/godotenv"
 	"os"
@@ -17,6 +18,7 @@ type AssignHome struct {
 }
 
 func (th *Home) Dashboard(ctx *fiber.Ctx) error {
+	fmt.Println("data: ", "tuan")
 	assigns := AssignHome{Schema: assign.Get(ctx)}
 	assigns.Title = config.TitleWithPrefix("Dashboards")
 
